@@ -429,7 +429,16 @@
                         <div class="preview-item-content d-flex flex-grow">
                           <div class="flex-grow">
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                              <button class='btn-danger btn btn-fw'>Delete Account</button>
+                              
+  
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Team: </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                  <a class="dropdown-item" href="#">Basketball</a>
+                                  <a class="dropdown-item" href="#">Baseball</a>
+                                  <a class="dropdown-item" href="#">Soccer</a>
+                                  <div class="dropdown-divider"></div>
+                                  
+                                </div>
                                 
                               
                             </div>
@@ -462,18 +471,27 @@
                         </div>
                       </div>
                         
+      
                         
                         <div class="preview-item border-bottom">
                         
                         <div class="preview-item-content d-flex flex-grow">
                           <div class="flex-grow">
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
+
+                              <!-- Rounded switch -->
+                              <label class="switch">
+                                <input type="checkbox" id="vehicle1" name ="vehicle1" value="Bike">
+                                <span class="slider round"></span>
+                              </label>
+                           
+                              <label for="vehicle1"> Disable Access to Athlete Info</label><br>
+                              
+
                               <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Team: </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                          <a class="dropdown-item" href="#">Basketball</a>
-                          <a class="dropdown-item" href="#">Baseball</a>
-                          <a class="dropdown-item" href="#">Soccer</a>
+                        
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                  
                           <div class="dropdown-divider"></div>
                           
                         </div>
@@ -523,10 +541,7 @@
                           <div class="flex-grow">
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
 
-                                
-                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-  <label for="vehicle1"> Disabled Access to Athlete Info</label><br>
-                                
+                              <button class='btn-danger btn btn-fw'>Delete Account</button>
                               
                             </div>
                             
@@ -617,12 +632,7 @@
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
-          <footer class="footer">
-            <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span>
-            </div>
-          </footer>
+          
           <!-- partial -->
         </div>
         <!-- main-panel ends -->
