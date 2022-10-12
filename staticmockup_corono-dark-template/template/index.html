@@ -515,7 +515,18 @@
   
           <div class = "row">
               <div class = "col-md-6 grid-margin stretch-card">
-                  Card 3
+                   <div class="card-body">
+                    <h4 class="card-title">Team Overview</h4>
+
+                    <button type="button" style="float:right;" class="btn btn-light btn-fw">Last 10 Days ▼ </button>
+                    <button type="button" style="float:right;" class="btn btn-inverse-light btn-fw">Download CSV</button>
+          
+                    <canvas id="linechart-multi" style="height:250px"></canvas>
+                
+                       <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+                       <script src="assets/js/chart.js"></script>
+                  </div>
+                  
               </div>
   
               <div class = "col-md-6 grid-margin stretch-card">
