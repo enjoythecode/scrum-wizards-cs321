@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
+    <title>Permissions</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -25,7 +25,106 @@
   <body>
     <div class="container-scroller">
       <!-- partial:partials/_sidebar.html -->
-      
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+          <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
+          <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+        </div>
+        <ul class="nav">
+          <li class="nav-item profile">
+            <div class="profile-desc">
+              <div class="profile-pic">
+                <div class="count-indicator">
+                  <img class="img-xs rounded-circle " src="assets/images/faces/face15.jpg" alt="">
+                  <span class="count bg-success"></span>
+                </div>
+                <div class="profile-name">
+                  <h5 class="mb-0 font-weight-normal">Anne Beethe</h5>
+                  <span>PEAK SuperAdmin</span>
+                </div>
+              </div>
+              <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
+              <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
+                <a href="#" class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-dark rounded-circle">
+                      <i class="mdi mdi-settings text-primary"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-dark rounded-circle">
+                      <i class="mdi mdi-onepassword  text-info"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-dark rounded-circle">
+                      <i class="mdi mdi-calendar-today text-success"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item nav-category">
+            <span class="nav-link">Navigation</span>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="permissions.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+              <span class="menu-title">Edit Permissions</span>
+            </a>
+          </li>
+
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+              <span class="menu-icon">
+                <i class="mdi mdi-security"></i>
+              </span>
+              <span class="menu-title">Add User</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+              <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="addathlete.html"> Add Athlete </a></li>
+                <li class="nav-item"> <a class="nav-link" href="addcoach.html"> Add Coach </a></li>
+                <li class="nav-item"> <a class="nav-link" href="addpeak.html"> Add PEAK Admin </a></li>
+<!--
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+-->
+              </ul>
+            </div>
+          </li>
+<!--
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+              </span>
+              <span class="menu-title">Documentation</span>
+            </a>
+          </li>
+-->
+        </ul>
+      </nav>
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_navbar.html -->
@@ -40,13 +139,13 @@
             <ul class="navbar-nav w-100">
               <li class="nav-item w-100">
                 <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                  <input type="text" class="form-control" placeholder="Search products">
+                  <input type="text" class="form-control" placeholder="Search Teams">
                 </form>
               </li>
             </ul>
             <ul class="navbar-nav navbar-nav-right">
               <li class="nav-item dropdown d-none d-lg-block">
-                <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="#">+ Create New Project</a>
+                <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="#">Current Team: Hockey</a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
                   <h6 class="p-3 mb-0">Projects</h6>
                   <div class="dropdown-divider"></div>
@@ -86,6 +185,10 @@
                   <p class="p-3 mb-0 text-center">See all projects</p>
                 </div>
               </li>
+                  
+                  <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="#"></a>
+                  
+                  
               <li class="nav-item nav-settings d-none d-lg-block">
                 <a class="nav-link" href="#">
                   <i class="mdi mdi-view-grid"></i>
@@ -183,7 +286,7 @@
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
                     <img class="img-xs rounded-circle" src="assets/images/faces/face15.jpg" alt="">
-                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Anne Beethe</p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
                 </a>
@@ -224,182 +327,17 @@
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
-
-
-            <div class = "row">
-
-
-              <!-- Card 1 -->
-              <div class = "col-md-6 grid-margin stretch-card align-items-center">
-
-
-                <div class = "row">
-
-                  <!-- Mini card 1 -->
-                  <div class = "col-md-9 grid-margin ">
-                    <div class = "card-title">Sleep</div>
-                    <img class="rounded-circle" src="assets/images/rings/sleep.png" alt="" width="350" height="">
-                  </div>
-
-
-                  <div class = "col-md-3 grid-margin">
-                    
-                    <div class = "row">
-                      <!-- Mini card 2 -->
-                      <div class = "col-md-12 grid-margin ">
-                        <div class = "card-title">Recovery</div>
-                      <img class="rounded-circle" src="assets/images/rings/recovery.png" alt="" width="130" height="">
-                      </div>
-                    </div>
-                    <div class = "row">
-                      <div class = "col-md-12 grid-margin ">
-                        <div class = "card-title">Calorie</div>
-                      <img class="rounded-circle" src="assets/images/rings/calorie.png" alt="" width="130" height="">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                
-              </div>
-  
-              <div class = "col-md-6 grid-margin stretch-card">
-                <div class="col-12 grid-margin">
-                  <div class="card">
-                    <div class="card-body">
-                      <h4 class="card-title">Athlete Breakdown</h4>
-                      <div class="add-items d-flex">
-                        <input type="text" class="form-control todo-list-input" placeholder="Search...">
-                        <button class="add btn btn-primary todo-list-add-btn">🔍</button>
-                      </div>
-                      <div class="table-responsive">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th> Status </th>
-                              <th> Athlete Name </th>
-                              <th> Sleep </th>
-                              <th> Quality </th>
-                              <th> Recovery </th>
-                              <th> Calorie Intake </th>
-                
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <div class="badge badge-outline-success">Cleared </div>
-                              </td>
-                              <td>
-                                <img src="assets/images/faces/face1.jpg" alt="image">
-                                <span class="pl-2">Henry Klein</span>
-                              </td>
-                              <td> 9.0 Hr </td>
-                              <td> 90% </td>
-                              <td> 88% </td>
-                              <td> 2800 cal </td>
-                          
-                        
-                            </tr>
-                            <tr>
-                              
-                              <td>
-                                <div class="badge badge-outline-danger">Not Cleared </div>
-                              </td>
-                
-                              <td>
-                                <img src="assets/images/faces/face2.jpg" alt="image">
-                                <span class="pl-2">Estella Bryan</span>
-                              </td>
-                              <td> 5.5 Hr </td>
-                              <td> 40% </td>
-                              <td> 35% </td>
-                              <td> 1800 cal </td>
-                   
-                              
-                            </tr>
-                            <tr>
-                              <td>
-                                <div class="badge badge-outline-success">Cleared </div>
-                              </td>
-                              <td>
-                                <img src="assets/images/faces/face5.jpg" alt="image">
-                                <span class="pl-2">Lucy Abbott</span>
-                              </td>
-                              <td> 8.5 Hr </td>
-                              <td> 95% </td>
-                              <td> 85% </td>
-                              <td> 2300 cal </td>
-
-                              
-                            </tr>
-                            <tr>
-                              <td>
-                                <div class="badge badge-outline-warning">Partially Cleared </div>
-                              </td>
-                              <td>
-                                <img src="assets/images/faces/face3.jpg" alt="image">
-                                <span class="pl-2">Peter Gill</span>
-                              </td>
-                              <td> 7.5 Hr </td>
-                              <td> 70% </td>
-                              <td> 80%</td>
-                              <td> 2700 cal </td>
-               
-                           
-                            </tr>
-                            <tr>
-                              <td>
-                                <div class="badge badge-outline-warning">Partially Cleared</div>
-                              </td>
-                              <td>
-                                <img src="assets/images/faces/face4.jpg" alt="image">
-                                <span class="pl-2">Sallie Reyes</span>
-                              </td>
-                              <td> 7.0 Hr </td>
-                              <td> 65% </td>
-                              <td> 60% </td>
-                              <td> 2500 cal </td>
-       
-                             
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </div>
-  
-          <div class = "row">
-              <div class = "col-md-6 grid-margin stretch-card">
-                   <div class="card-body">
-                    <h4 class="card-title">Team Overview</h4>
-
-                    <button type="button" style="float:right;" class="btn btn-light btn-fw">Last 10 Days ▼ </button>
-                    <button type="button" style="float:right;" class="btn btn-inverse-light btn-fw">Download CSV</button>
-          
-                    <canvas id="linechart-multi" style="height:250px"></canvas>
-                
-                       <script src="assets/vendors/js/vendor.bundle.base.js"></script>
-                       <script src="assets/js/chart.js"></script>
-                  </div>
-                  
-              </div>
-  
-              <div class = "col-md-6 grid-margin stretch-card">
-                  Card 4
-              </div>
-          </div>
             <div class="row">
               <div class="col-12 grid-margin stretch-card">
                 <div class="card corona-gradient-card">
                   <div class="card-body py-0 px-0 px-sm-3">
                     <div class="row align-items-center">
+<!--
                       <div class="col-4 col-sm-3 col-xl-2">
                         <img src="assets/images/dashboard/Group126@2x.png" class="gradient-corona-img img-fluid" alt="">
                       </div>
+
+<!--
                       <div class="col-5 col-sm-7 col-xl-8 p-0">
                         <h4 class="mb-1 mb-sm-0">Want even more features?</h4>
                         <p class="mb-0 font-weight-normal d-none d-sm-block">Check out our Pro version with 5 unique layouts!</p>
@@ -409,11 +347,13 @@
                           <a href="https://www.bootstrapdash.com/product/corona-admin-template/" target="_blank" class="btn btn-outline-light btn-rounded get-started-btn">Upgrade to PRO</a>
                         </span>
                       </div>
+-->
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+<!--
             <div class="row">
               <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
                 <div class="card">
@@ -496,15 +436,17 @@
                 </div>
               </div>
             </div>
+-->
+<!--
             <div class="row">
               <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Transaction History</h4>
+                    <h4 class="card-title">Choose User</h4>
                     <canvas id="transaction-history" class="transaction-chart"></canvas>
                     <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
                       <div class="text-md-center text-xl-left">
-                        <h6 class="mb-1">Transfer to Paypal</h6>
+                        <h6 class="mb-1">Coach</h6>
                         <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
                       </div>
                       <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
@@ -513,7 +455,7 @@
                     </div>
                     <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
                       <div class="text-md-center text-xl-left">
-                        <h6 class="mb-1">Tranfer to Stripe</h6>
+                        <h6 class="mb-1">Athlete</h6>
                         <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
                       </div>
                       <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
@@ -625,6 +567,8 @@
                 </div>
               </div>
             </div>
+-->
+<!--
             <div class="row">
               <div class="col-sm-4 grid-margin">
                 <div class="card">
@@ -684,11 +628,13 @@
                 </div>
               </div>
             </div>
+-->
+<!--
             <div class="row ">
               <div class="col-12 grid-margin">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Order Status</h4>
+                    <h4 class="card-title">Choose Athlete</h4>
                     <div class="table-responsive">
                       <table class="table">
                         <thead>
@@ -700,9 +646,9 @@
                                 </label>
                               </div>
                             </th>
-                            <th> Client Name </th>
-                            <th> Order No </th>
-                            <th> Product Cost </th>
+                            <th> Athlete Name </th>
+                            <th> Sport </th>
+                            <th> In/Out Season </th>
                             <th> Project </th>
                             <th> Payment Mode </th>
                             <th> Start Date </th>
@@ -722,8 +668,8 @@
                               <img src="assets/images/faces/face1.jpg" alt="image" />
                               <span class="pl-2">Henry Klein</span>
                             </td>
-                            <td> 02312 </td>
-                            <td> $14,500 </td>
+                            <td> Basketball </td>
+                            <td> In </td>
                             <td> Dashboard </td>
                             <td> Credit card </td>
                             <td> 04 Dec 2019 </td>
@@ -822,26 +768,44 @@
                 </div>
               </div>
             </div>
+-->
             <div class="row">
               <div class="col-md-6 col-xl-4 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <div class="d-flex flex-row justify-content-between">
-                      <h4 class="card-title">Messages</h4>
+                      <h4 class="card-title">Athletes</h4>
                       <p class="text-muted mb-1 small">View all</p>
                     </div>
+                      
+                      <div class="add-items d-flex">
+                      <input type="text" class="form-control todo-list-input" placeholder="Search Athlete">
+                      <button class="add btn btn-primary todo-list-add-btn">Go</button>
+                    </div>
+                      
                     <div class="preview-list">
                       <div class="preview-item border-bottom">
                         <div class="preview-thumbnail">
                           <img src="assets/images/faces/face6.jpg" alt="image" class="rounded-circle" />
                         </div>
+                          
+                          
+                          
                         <div class="preview-item-content d-flex flex-grow">
                           <div class="flex-grow">
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                              <h6 class="preview-subject">Leonard</h6>
-                              <p class="text-muted text-small">5 minutes ago</p>
+
+                                <a class="nav-link" href="athletepermissions.html"> Athlete #1 </a>
+                                
+                                
+<!--
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+-->
+              </ul>
+                              
                             </div>
-                            <p class="text-muted">Well, it seems to be working now.</p>
+                            
                           </div>
                         </div>
                       </div>
@@ -852,10 +816,10 @@
                         <div class="preview-item-content d-flex flex-grow">
                           <div class="flex-grow">
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                              <h6 class="preview-subject">Luella Mills</h6>
-                              <p class="text-muted text-small">10 Minutes Ago</p>
+                              <a class="nav-link" href="athletepermissions.html"> Athlete #2 </a>
+                              
                             </div>
-                            <p class="text-muted">Well, it seems to be working now.</p>
+                            
                           </div>
                         </div>
                       </div>
@@ -866,10 +830,10 @@
                         <div class="preview-item-content d-flex flex-grow">
                           <div class="flex-grow">
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                              <h6 class="preview-subject">Ethel Kelly</h6>
-                              <p class="text-muted text-small">2 Hours Ago</p>
+                             <a class="nav-link" href="athletepermissions.html"> Athlete #3 </a>
+                             
                             </div>
-                            <p class="text-muted">Please review the tickets</p>
+                       
                           </div>
                         </div>
                       </div>
@@ -880,10 +844,10 @@
                         <div class="preview-item-content d-flex flex-grow">
                           <div class="flex-grow">
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                              <h6 class="preview-subject">Herman May</h6>
-                              <p class="text-muted text-small">4 Hours Ago</p>
+                              <a class="nav-link" href="athletepermissions.html"> Athlete #4 </a>
+                            
                             </div>
-                            <p class="text-muted">Thanks a lot. It was easy to fix it .</p>
+                        
                           </div>
                         </div>
                       </div>
@@ -894,39 +858,73 @@
               <div class="col-md-6 col-xl-4 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Portfolio Slide</h4>
-                    <div class="owl-carousel owl-theme full-width owl-carousel-dash portfolio-carousel" id="owl-carousel-basic">
-                      <div class="item">
-                        <img src="assets/images/dashboard/Rectangle.jpg" alt="">
-                      </div>
-                      <div class="item">
-                        <img src="assets/images/dashboard/Img_5.jpg" alt="">
-                      </div>
-                      <div class="item">
-                        <img src="assets/images/dashboard/img_6.jpg" alt="">
-                      </div>
+                    <div class="d-flex flex-row justify-content-between">
+                      <h4 class="card-title">Coaches</h4>
+                      <p class="text-muted mb-1 small">View all</p>
                     </div>
-                    <div class="d-flex py-4">
-                      <div class="preview-list w-100">
-                        <div class="preview-item p-0">
-                          <div class="preview-thumbnail">
-                            <img src="assets/images/faces/face12.jpg" class="rounded-circle" alt="">
-                          </div>
-                          <div class="preview-item-content d-flex flex-grow">
-                            <div class="flex-grow">
-                              <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                                <h6 class="preview-subject">CeeCee Bass</h6>
-                                <p class="text-muted text-small">4 Hours Ago</p>
-                              </div>
-                              <p class="text-muted">Well, it seems to be working now.</p>
+                      
+                      <div class="add-items d-flex">
+                      <input type="text" class="form-control todo-list-input" placeholder="Search Coach">
+                      <button class="add btn btn-primary todo-list-add-btn">Go</button>
+                    </div>
+                      
+                    <div class="preview-list">
+                      <div class="preview-item border-bottom">
+                        <div class="preview-thumbnail">
+                          <img src="assets/images/faces/face6.jpg" alt="image" class="rounded-circle" />
+                        </div>
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                              <a class="nav-link" href="coachpermissions.html"> Coach #1 </a>
+                              
                             </div>
+                            
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <p class="text-muted">Well, it seems to be working now. </p>
-                    <div class="progress progress-md portfolio-progress">
-                      <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      <div class="preview-item border-bottom">
+                        <div class="preview-thumbnail">
+                          <img src="assets/images/faces/face8.jpg" alt="image" class="rounded-circle" />
+                        </div>
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                              <a class="nav-link" href="coachpermissions.html"> Coach #2 </a>
+                              
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                      <div class="preview-item border-bottom">
+                        <div class="preview-thumbnail">
+                          <img src="assets/images/faces/face9.jpg" alt="image" class="rounded-circle" />
+                        </div>
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                              <a class="nav-link" href="coachpermissions.html"> Coach #3 </a>
+                             
+                            </div>
+                       
+                          </div>
+                        </div>
+                      </div>
+                      <div class="preview-item border-bottom">
+                        <div class="preview-thumbnail">
+                          <img src="assets/images/faces/face11.jpg" alt="image" class="rounded-circle" />
+                        </div>
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                              <a class="nav-link" href="coachpermissions.html"> Coach #4 </a>
+                            
+                            </div>
+                        
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -934,11 +932,106 @@
               <div class="col-md-12 col-xl-4 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">To do list</h4>
+                    <h4 class="card-title">Out of Season Sports</h4>
+                      
+                      
+                      <div class="preview-list">
+                      <div class="preview-item border-bottom">
+                        <div class="preview-thumbnail">
+<!--                          <img src="assets/images/faces/face6.jpg" alt="image" class="rounded-circle" />-->
+                        </div>
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                              <h6 class="preview-subject">Basketball</h6>
+                              
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                      <div class="preview-item border-bottom">
+                        <div class="preview-thumbnail">
+<!--                          <img src="assets/images/faces/face8.jpg" alt="image" class="rounded-circle" />-->
+                        </div>
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                              <h6 class="preview-subject">Lacrosse</h6>
+                              
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                      <div class="preview-item border-bottom">
+                        <div class="preview-thumbnail">
+<!--                          <img src="assets/images/faces/face9.jpg" alt="image" class="rounded-circle" />-->
+                        </div>
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                              <h6 class="preview-subject">Nordic Ski</h6>
+                             
+                            </div>
+                       
+                          </div>
+                        </div>
+                      </div>
+                      <div class="preview-item border-bottom">
+                        <div class="preview-thumbnail">
+<!--                          <img src="assets/images/faces/face11.jpg" alt="image" class="rounded-circle" />-->
+                        </div>
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                              <h6 class="preview-subject">Swimming</h6>
+                            
+                            </div>
+                        
+                          </div>
+                        </div>
+                      </div>
+                          
+                          
+                          <div class="preview-item border-bottom">
+                        <div class="preview-thumbnail">
+<!--                          <img src="assets/images/faces/face8.jpg" alt="image" class="rounded-circle" />-->
+                        </div>
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                              <h6 class="preview-subject">Indoor Track</h6>
+
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                          
+                          <div class="preview-item border-bottom">
+                        <div class="preview-thumbnail">
+<!--                          <img src="assets/images/faces/face8.jpg" alt="image" class="rounded-circle" />-->
+                        </div>
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                              <h6 class="preview-subject">Hockey</h6>
+                              
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                          
+                    </div>
+<!--
                     <div class="add-items d-flex">
                       <input type="text" class="form-control todo-list-input" placeholder="enter task..">
                       <button class="add btn btn-primary todo-list-add-btn">Add</button>
                     </div>
+-->
+<!--
                     <div class="list-wrapper">
                       <ul class="d-flex flex-column-reverse text-white todo-list todo-list-custom">
                         <li>
@@ -978,10 +1071,12 @@
                         </li>
                       </ul>
                     </div>
+-->
                   </div>
                 </div>
               </div>
             </div>
+<!--
             <div class="row">
               <div class="col-12">
                 <div class="card">
@@ -1052,6 +1147,7 @@
                 </div>
               </div>
             </div>
+-->
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
