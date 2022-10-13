@@ -3,6 +3,7 @@ Athlete Data Management System for CS321 (Fall 2022) at Colby College, ME
 
 <br>
 
+
 <h1 align="center">Milestone 3 Report</h1>
 <h3 align="center"> Static Website on GitHub</h3>
 
@@ -15,10 +16,21 @@ Athlete Data Management System for CS321 (Fall 2022) at Colby College, ME
 
 <br><br>
 
-<h2 align="left">Results</h3>
+<h2 align="left">Results</h2>
 <p>In this milestone, we each split up into groups– one for dashboards for athlete, coach, and PEAK admin, another group to focus on the design for permissions (which is an extension of the PEAK admin view), and had a Scrum Master (Sinan) who worked on the repository and all the github, as well as helped us with any html or github questions. We eventually, after pair programming, came together and pushed all of our edits to the original themewagon.com template in our repository to create the website shown below. </p>
 
 <br>
 
-<p align="center">A live preview of our mock can be seen [at this URL](https://admirable-daffodil-a41025.netlify.app/) for ([superadmin](https://admirable-daffodil-a41025.netlify.app/superadmin), [admin](https://admirable-daffodil-a41025.netlify.app/admin/), [athlete](https://admirable-daffodil-a41025.netlify.app/athlete/))</p>
-<p align="center">Our GitHub [repository](https://github.com/enjoythecode/scrum-wizards-cs321)</p>
+<p align="center">
+    <div>
+</p>
+
+<div align="center">A live preview of our mock can be seen <a href="http://example.com/](https://admirable-daffodil-a41025.netlify.app/">
+at this URL</a> for (<a href="https://admirable-daffodil-a41025.netlify.app/superadmin">
+superadmin</a>, <a href="https://admirable-daffodil-a41025.netlify.app/admin/">
+admin</a>, <a href="https://admirable-daffodil-a41025.netlify.app/athlete/">athlete</a></div>
+<div align="center">Our GitHub <a href="https://github.com/enjoythecode/scrum-wizards-cs321">repository</a></div>
+
+<br>
+
+
