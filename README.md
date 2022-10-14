@@ -88,9 +88,9 @@ admin</a>, <a href="https://admirable-daffodil-a41025.netlify.app/athlete/">athl
 	
 <h2 align="left">Contributions</h3>	
 
-_List of all group members contributions_
+**List of all group members contributions**
 
-Chandra Gowda
+_Chandra Gowda_
 
 * Adapted HTML from the Corona Template to create the base-model index.html template for the 3 dashboard screens (with layout structure for the 4 cards)
 * Worked on the coach dashboard for the following HTML/CSS sections:
@@ -104,7 +104,7 @@ Chandra Gowda
 * Participated in pair-programming with Sinan
 * Practiced the GitHUb workflow, creating/merging branches, and creating and reviewing pull requests
 
-Zehra 
+_Zehra_ 
 
 * Adapted the HTML from the Corona template to create the following pages / features:
 	- Created the Athlete Breakdown board on the PEAK/ Coach dashboard index.html.
@@ -115,7 +115,7 @@ Zehra
 * Participated in pair-programming with Sinan.
 * Practiced the GitHub workflow, created and reviewed pull requests, merged branches
 
-Sinan
+_Sinan_
 
 * Served the team as the Scrum Master
 * Lead pair programming to teach all teammates about Git and HTML, oversaw branching strategy, helped debug various issues to unblock individual work
@@ -124,7 +124,7 @@ Sinan
 * Polished folder structure after teammates pushed their commits
 * Created Login HTML mock with links to individual mocks for superadmin, admin, and athlete
 
-Jasper Loverude
+_Jasper Loverude_
 
 * Pair programmed with Kelly on Athletepermissions.html and Coachpermissions.html
 * Added custom HTML element (toggle) for disabling coach view out-of-season
@@ -135,7 +135,7 @@ Jasper Loverude
 * Added Anne Beethe profile photo
 * Worked on Extension 3: Worked on adding milestone 3 report to markdown on the README.md file on the github repository.
 
-Kelly Putnam
+_Kelly Putnam_
 
 * Adapted the HTML from the Corona template to create the following pages: 
 	-Permissions.html, which is essentially where PEAK admin can choose a team, coach, or athlete and choose to adjust their permissions. They can also choose to add a user here.
@@ -147,7 +147,7 @@ Kelly Putnam
 * Focused on design elements for the above pages and created a baseline for the rest of the group to approve, improve, and adapt
 * Extension 1: adding a bit of functionality so that the navigation buttons on the side of the permissions website actually leads to add a user, and clicking on a user leads to their permissions
 
-Ghailan Fadah
+_Ghailan Fadah_
 
 * Used the Corona template to create part of the coaches dashboard
 * Created the bar graph in the coaches view
