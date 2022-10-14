@@ -85,7 +85,9 @@ admin</a>, <a href="https://admirable-daffodil-a41025.netlify.app/athlete/">athl
 
 <h2 align="left">Team Reflection</h3>
 	This milestone was critical to our team development as we had to balance working separately, transitioning to pair programming once we were back together, and finally pushing all of our work together and making sure it flowed coherently and looked professional. We also all helped each other by playing to each other’s strengths and weaknesses, so we are all much more comfortable asking each other questions now that we know how to help each other best. This milestone was also crucial to immersing ourselves in HTML and CSS, since the majority of our group had never used these before. Instead of listening to lectures, we learned much faster by looking at stellar examples of HTML from our template, then adjusting it to our specific wants and needs. We also, with the much-needed help of our Scrum Master, learned how to use github to work together, make commits, push, merge, and make pull requests. We are now much more prepared for the new, more involved milestones we will have to accomplish. 
-Contributions
+	
+<h2 align="left">Contributions</h3>	
+
 Table of each group members contributions
 Chandra Gowda
 Adapted HTML from the Corona Template to create the base-model index.html template for the 3 dashboard screens (with layout structure for the 4 cards)
