@@ -88,62 +88,73 @@ admin</a>, <a href="https://admirable-daffodil-a41025.netlify.app/athlete/">athl
 	
 <h2 align="left">Contributions</h3>	
 
-Table of each group members contributions
-Chandra Gowda
-Adapted HTML from the Corona Template to create the base-model index.html template for the 3 dashboard screens (with layout structure for the 4 cards)
-Worked on the coach dashboard for the following HTML/CSS sections:
-index.html in the admin folder - created the rings panel in the top left portion of the HTML file, and modified the sidebar and nav bar to suit the specific CAMS design
-Worked on the athlete dashboard for the following HTML/CSS sections:
-index.html in the athlete folder - changed the layout structure of the cards to match the views, removed the team dropdown menu, added the notes section in the bottom right part of the screen. 
-Worked on Extension 3: Creating our milestone 3 report in markdown on the README.md file on the github repository.
-Participated in pair-programming with Sinan
-Practiced the GitHUb workflow, creating/merging branches, and creating and reviewing pull requests
-Zehra 
--Adapted the HTML from the Corona template to create the following pages / features:
-Created the Athlete Breakdown board on the PEAK/ Coach dashboard index.html.
-Created the main admin dashboard index.html, added:
-The charts presenting team results
-A list of users and a search bar for users.
-Buttons to download reports / edit user permissions.
--Participated in pair-programming with Sinan.
--Practiced the GitHub workflow, created and reviewed pull requests, merged branches.
+_List of all group members contributions_
 
+Chandra Gowda
+
+* Adapted HTML from the Corona Template to create the base-model index.html template for the 3 dashboard screens (with layout structure for the 4 cards)
+* Worked on the coach dashboard for the following HTML/CSS sections:
+* index.html in the admin folder - created the rings panel in the top left portion of the HTML file, and modified the sidebar and nav bar to suit the specific CAMS design
+* Worked on the athlete dashboard for the following HTML/CSS sections:
+	-index.html in the athlete folder 
+	- changed the layout structure of the cards to match the views
+	- removed the team dropdown menu 
+	- added the notes section in the bottom right part of the screen. 
+* Worked on Extension 3: Creating our milestone 3 report in markdown on the README.md file on the github repository.
+* Participated in pair-programming with Sinan
+* Practiced the GitHUb workflow, creating/merging branches, and creating and reviewing pull requests
+
+Zehra 
+
+* Adapted the HTML from the Corona template to create the following pages / features:
+	- Created the Athlete Breakdown board on the PEAK/ Coach dashboard index.html.
+	- Created the main admin dashboard index.html, added:
+	- The charts presenting team results
+	- A list of users and a search bar for users.
+	- Buttons to download reports / edit user permissions.
+* Participated in pair-programming with Sinan.
+* Practiced the GitHub workflow, created and reviewed pull requests, merged branches
 
 Sinan
-Served the team as the Scrum Master
-Lead pair programming to teach all teammates about Git and HTML, oversaw branching strategy, helped debug various issues to unblock individual work
-Created GitHub repository, configured Netlify with automated deploys of all branches (Previews for PRs and production deploys on the main branch)
-Created GitHub issues
-Polished folder structure after teammates pushed their commits
-Created Login HTML mock with links to individual mocks for superadmin, admin, and athlete
+
+* Served the team as the Scrum Master
+* Lead pair programming to teach all teammates about Git and HTML, oversaw branching strategy, helped debug various issues to unblock individual work
+* Created GitHub repository, configured Netlify with automated deploys of all branches (Previews for PRs and production deploys on the main branch)
+* Created GitHub issues
+* Polished folder structure after teammates pushed their commits
+* Created Login HTML mock with links to individual mocks for superadmin, admin, and athlete
 
 Jasper Loverude
 
-Pair programmed with Kelly on Athletepermissions.html and Coachpermissions.html
-Added custom HTML element (toggle) for disabling coach view out-of-season
-Added appropriate CSS to core css file for animation, styling of out-of-season toggle
-Helped resolved Git problems related to branching and managing remote/local branches
-Helped team navigate commits and merging
-Connected PRs to issues on Github project so that work is tracked and efficiency can be recorded
-Added Anne Beethe profile photo
-Worked on Extension 3: Worked on adding milestone 3 report to markdown on the README.md file on the github repository.
+* Pair programmed with Kelly on Athletepermissions.html and Coachpermissions.html
+* Added custom HTML element (toggle) for disabling coach view out-of-season
+* Added appropriate CSS to core css file for animation, styling of out-of-season toggle
+* Helped resolved Git problems related to branching and managing remote/local branches
+* Helped team navigate commits and merging
+	- Connected PRs to issues on Github project so that work is tracked and efficiency can be recorded
+* Added Anne Beethe profile photo
+* Worked on Extension 3: Worked on adding milestone 3 report to markdown on the README.md file on the github repository.
+
 Kelly Putnam
-Adapted the HTML from the Corona template to create the following pages: 
-Permissions.html, which is essentially where PEAK admin can choose a team, coach, or athlete and choose to adjust their permissions. They can also choose to add a user here.
-Athletepermissions.html, which adjusts athlete permissions
-Coachpermissions.html, which adjusts coach permissions
-Addcoach.html, which adds a coach
-Addathlete.html which adds an athlete and adds personal information about the athlete
-Addpeak.html, which adds an admin
-Focused on design elements for the above pages and created a baseline for the rest of the group to approve, improve, and adapt
-Extension 1: adding a bit of functionality so that the navigation buttons on the side of the permissions website actually leads to add a user, and clicking on a user leads to their permissions
+
+* Adapted the HTML from the Corona template to create the following pages: 
+	-Permissions.html, which is essentially where PEAK admin can choose a team, coach, or athlete and choose to adjust their permissions. They can also choose to add a user here.
+	- Athletepermissions.html, which adjusts athlete permissions
+	- Coachpermissions.html, which adjusts coach permissions
+	- Addcoach.html, which adds a coach
+	- Addathlete.html which adds an athlete and adds personal information about the athlete
+	- Addpeak.html, which adds an admin
+* Focused on design elements for the above pages and created a baseline for the rest of the group to approve, improve, and adapt
+* Extension 1: adding a bit of functionality so that the navigation buttons on the side of the permissions website actually leads to add a user, and clicking on a user leads to their permissions
+
 Ghailan Fadah
-Used the Corona template to create part of the coaches dashboard
-Created the bar graph in the coaches view
-Created the dropdown bottom on the coaches team selection
-Created the download and time selection buttons
-Took part in pair programming sessions with Sinan
-Used the github flow  to push and pull template with teammates
+
+* Used the Corona template to create part of the coaches dashboard
+* Created the bar graph in the coaches view
+* Created the dropdown bottom on the coaches team selection
+* Created the download and time selection buttons
+* Took part in pair programming sessions with Sinan
+* Used the github flow  to push and pull template with teammates
 
 
 
