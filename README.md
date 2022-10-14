@@ -83,6 +83,82 @@ admin</a>, <a href="https://admirable-daffodil-a41025.netlify.app/athlete/">athl
 
 <br><br>
 
+<h2 align="left">Team Reflection</h3>
+	This milestone was critical to our team development as we had to balance working separately, transitioning to pair programming once we were back together, and finally pushing all of our work together and making sure it flowed coherently and looked professional. We also all helped each other by playing to each other’s strengths and weaknesses, so we are all much more comfortable asking each other questions now that we know how to help each other best. This milestone was also crucial to immersing ourselves in HTML and CSS, since the majority of our group had never used these before. Instead of listening to lectures, we learned much faster by looking at stellar examples of HTML from our template, then adjusting it to our specific wants and needs. We also, with the much-needed help of our Scrum Master, learned how to use github to work together, make commits, push, merge, and make pull requests. We are now much more prepared for the new, more involved milestones we will have to accomplish. 
+Contributions
+Table of each group members contributions
+Chandra Gowda
+Adapted HTML from the Corona Template to create the base-model index.html template for the 3 dashboard screens (with layout structure for the 4 cards)
+Worked on the coach dashboard for the following HTML/CSS sections:
+index.html in the admin folder - created the rings panel in the top left portion of the HTML file, and modified the sidebar and nav bar to suit the specific CAMS design
+Worked on the athlete dashboard for the following HTML/CSS sections:
+index.html in the athlete folder - changed the layout structure of the cards to match the views, removed the team dropdown menu, added the notes section in the bottom right part of the screen. 
+Worked on Extension 3: Creating our milestone 3 report in markdown on the README.md file on the github repository.
+Participated in pair-programming with Sinan
+Practiced the GitHUb workflow, creating/merging branches, and creating and reviewing pull requests
+Zehra 
+-Adapted the HTML from the Corona template to create the following pages / features:
+Created the Athlete Breakdown board on the PEAK/ Coach dashboard index.html.
+Created the main admin dashboard index.html, added:
+The charts presenting team results
+A list of users and a search bar for users.
+Buttons to download reports / edit user permissions.
+-Participated in pair-programming with Sinan.
+-Practiced the GitHub workflow, created and reviewed pull requests, merged branches.
+
+
+Sinan
+Served the team as the Scrum Master
+Lead pair programming to teach all teammates about Git and HTML, oversaw branching strategy, helped debug various issues to unblock individual work
+Created GitHub repository, configured Netlify with automated deploys of all branches (Previews for PRs and production deploys on the main branch)
+Created GitHub issues
+Polished folder structure after teammates pushed their commits
+Created Login HTML mock with links to individual mocks for superadmin, admin, and athlete
+
+Jasper Loverude
+
+Pair programmed with Kelly on Athletepermissions.html and Coachpermissions.html
+Added custom HTML element (toggle) for disabling coach view out-of-season
+Added appropriate CSS to core css file for animation, styling of out-of-season toggle
+Helped resolved Git problems related to branching and managing remote/local branches
+Helped team navigate commits and merging
+Connected PRs to issues on Github project so that work is tracked and efficiency can be recorded
+Added Anne Beethe profile photo
+Worked on Extension 3: Worked on adding milestone 3 report to markdown on the README.md file on the github repository.
+Kelly Putnam
+Adapted the HTML from the Corona template to create the following pages: 
+Permissions.html, which is essentially where PEAK admin can choose a team, coach, or athlete and choose to adjust their permissions. They can also choose to add a user here.
+Athletepermissions.html, which adjusts athlete permissions
+Coachpermissions.html, which adjusts coach permissions
+Addcoach.html, which adds a coach
+Addathlete.html which adds an athlete and adds personal information about the athlete
+Addpeak.html, which adds an admin
+Focused on design elements for the above pages and created a baseline for the rest of the group to approve, improve, and adapt
+Extension 1: adding a bit of functionality so that the navigation buttons on the side of the permissions website actually leads to add a user, and clicking on a user leads to their permissions
+Ghailan Fadah
+Used the Corona template to create part of the coaches dashboard
+Created the bar graph in the coaches view
+Created the dropdown bottom on the coaches team selection
+Created the download and time selection buttons
+Took part in pair programming sessions with Sinan
+Used the github flow  to push and pull template with teammates
+
+
+
+<h2 align="left">Extensions</h3>
+
+Extension 1: Adding a bit of functionality and making our static website somewhat interactive.
+	
+	We used a bit of our previous knowledge of HTML from lectures and quizzes to make the permissions part of the software somewhat interactive. Clicking on Add User on the left will lead to a drop down so you can choose to add an athlete, coach, or PEAK admin. If you click on one of these options, you are immediately redirected to the permissions page that allows that. You can also click on a specific athlete or coach to lead to their specific permissions page, which differs based on if you click athlete or coach. 
+
+Extension 2: Using Netlify to automatically deploy static website and PR previews to a live server.
+
+	We used Netlify to create a free account and attach our GitHub repo for this project. Netlify is able to host static websites for us, creating both a production deploy at the defined “main” branch, as well as creating automatic “preview” PRs that show what a PR would look like when merged. These preview PRs facilitate much faster and reliable peer review, and they also update automatically when new commits are added to a PR.
+
+Extension 3: Write your report in Markdown as a readme file in your repository, including table images and appropriate tags and content.
+
+	We recreated this exact interactive report on the GitHub repository in the README.md file. The link to the README.md file (i.e. on the main repository) is this.
+
 
 
 
