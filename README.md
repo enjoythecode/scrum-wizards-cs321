@@ -153,9 +153,10 @@ Extension 1: Adding a bit of functionality and making our static website somewha
 	
 <p>	We used a bit of our previous knowledge of HTML from lectures and quizzes to make the permissions part of the software somewhat interactive. Clicking on Add User on the left will lead to a drop down so you can choose to add an athlete, coach, or PEAK admin. If you click on one of these options, you are immediately redirected to the permissions page that allows that. You can also click on a specific athlete or coach to lead to their specific permissions page, which differs based on if you click athlete or coach. </p>
 
-Extension 2: Using Netlify to automatically deploy static website and PR previews to a live server.
+<h3 align="left">Extension 2:</h4>
+Using Netlify to automatically deploy static website and PR previews to a live server.
 
-	We used Netlify to create a free account and attach our GitHub repo for this project. Netlify is able to host static websites for us, creating both a production deploy at the defined “main” branch, as well as creating automatic “preview” PRs that show what a PR would look like when merged. These preview PRs facilitate much faster and reliable peer review, and they also update automatically when new commits are added to a PR.
+<p>	We used Netlify to create a free account and attach our GitHub repo for this project. Netlify is able to host static websites for us, creating both a production deploy at the defined “main” branch, as well as creating automatic “preview” PRs that show what a PR would look like when merged. These preview PRs facilitate much faster and reliable peer review, and they also update automatically when new commits are added to a PR. </p>
 
 Extension 3: Write your report in Markdown as a readme file in your repository, including table images and appropriate tags and content.
 
