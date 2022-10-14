@@ -159,7 +159,7 @@ _Extension 2: Using Netlify to automatically deploy static website and PR previe
 
 _Extension 3: Write your report in Markdown as a readme file in your repository, including table images and appropriate tags and content._
 
-<p> We recreated this exact interactive report on the GitHub repository in the README.md file. The link to the README.md file (i.e. on the main repository) is this. </p>
+<p> We recreated our report on the GitHub repository in the README.md file, which you are looking at right now! </p>
 
 
 
