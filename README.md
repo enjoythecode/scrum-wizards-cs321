@@ -151,7 +151,7 @@ Used the github flow  to push and pull template with teammates
 
 Extension 1: Adding a bit of functionality and making our static website somewhat interactive.
 	
-	We used a bit of our previous knowledge of HTML from lectures and quizzes to make the permissions part of the software somewhat interactive. Clicking on Add User on the left will lead to a drop down so you can choose to add an athlete, coach, or PEAK admin. If you click on one of these options, you are immediately redirected to the permissions page that allows that. You can also click on a specific athlete or coach to lead to their specific permissions page, which differs based on if you click athlete or coach. 
+<p>	We used a bit of our previous knowledge of HTML from lectures and quizzes to make the permissions part of the software somewhat interactive. Clicking on Add User on the left will lead to a drop down so you can choose to add an athlete, coach, or PEAK admin. If you click on one of these options, you are immediately redirected to the permissions page that allows that. You can also click on a specific athlete or coach to lead to their specific permissions page, which differs based on if you click athlete or coach. </p>
 
 Extension 2: Using Netlify to automatically deploy static website and PR previews to a live server.
 
