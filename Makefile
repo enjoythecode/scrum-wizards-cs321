@@ -1,4 +1,7 @@
-.PHONY: dev, open
+.PHONY: dev, open, dependencies
+
+dependencies:
+	pip install -r requirements.txt
 
 dev:
 	python3.10 main.py
