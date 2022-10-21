@@ -61,6 +61,13 @@ class Team(db.Model):
     seasons = db.Column(db.String(150))
     users = db.relationship('User')
 
+class Entry(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    time = db.Column(db.DateTime(timezone=True), default=func.now())
+    athlete_user_id = db.Column(db.Integer)
+    kind = db.Column(db.String(150))
+    content = db.Column(db.String(150))
+
 # class Note(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)
 #     data = db.Column(db.String(10000))
