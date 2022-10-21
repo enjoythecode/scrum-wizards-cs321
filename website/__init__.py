@@ -18,12 +18,10 @@ def create_app():
 
     from .models import User, Permission, Team, Entry
 
-    create_database(app)
-
-    # with app.app_context():
-    #     if not path.exists('website/' + DB_NAME):
-    #         db.create_all()
-    #         print('Created Database!')
+    with app.app_context():
+        if not path.exists('website/' + DB_NAME):
+            db.create_all()
+            print('Created Database!')
 
 
     login_manager = LoginManager()
