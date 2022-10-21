@@ -55,6 +55,11 @@ class Permission(db.Model):
     can_view_all_entries = db.Column(db.Boolean)
     can_edit_all_entries = db.Column(db.Boolean)
 
+class Team(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    team_name = db.Column(db.String(150), unique=True)
+    seasons = db.Column(db.String(150))
+    users = db.relationship('User')
 
 # class Note(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)
