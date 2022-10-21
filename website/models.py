@@ -42,7 +42,7 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(150))
     password = db.Column(db.String(150))
     teams = db.relationship('Team')
-    permissions_assigned = db.relationship('Permission')
+    permissions = db.relationship('Permission')
 
 class Permission(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -64,7 +64,7 @@ class Team(db.Model):
 class Entry(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     time = db.Column(db.DateTime(timezone=True), default=func.now())
-    athlete_user_id = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     kind = db.Column(db.String(150))
     content = db.Column(db.String(150))
 
