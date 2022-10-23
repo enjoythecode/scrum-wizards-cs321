@@ -26,7 +26,13 @@ def send_individual():
     readyness = [8, -8, 8, -8, 8, -8, 8, -8, 8, -8]
     calorie = [2,2,2,2,2,2,2,2,2,2,2]
 
-    return render_template("individual_dashboard.html", sleep_data = sleep, readyness_data = readyness, calorie_data = calorie, )
+    sportsNotes = "Can only take part in 50% of practice and cannot exceed a heart-rate of 120bpm."
+    performanceNotes= "Consistent"
+    nutritionNotes = "Extra emphasis on vitamin E"
+
+    return render_template("individual_dashboard.html", sleep_data = sleep, readyness_data = readyness, calorie_data = calorie, sports = sportsNotes, performance = performanceNotes, nutrition = nutritionNotes )
+
+
 
 @views.route('/team_dashboard')
 def send_team():
