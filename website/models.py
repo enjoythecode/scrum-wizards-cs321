@@ -41,32 +41,32 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(150))
     last_name = db.Column(db.String(150))
     password = db.Column(db.String(150))
-    teams = db.relationship('Team')
-    permissions = db.relationship('Permission')
+    # team_id = db.Column(db.Integer, db.ForeignKey('team.id'))
+    # permissions = db.relationship('Permission')
 
 class Permission(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     permission_name = db.Column(db.String(150), unique=True)
-    restricted_to_season = db.Column(db.String(150))
-    can_view_self_entries = db.Column(db.Boolean)
-    can_edit_self_entries = db.Column(db.Boolean)
-    can_view_own_teams_entries = db.Column(db.Boolean)
-    can_edit_own_teams_entries = db.Column(db.Boolean)
-    can_view_all_entries = db.Column(db.Boolean)
-    can_edit_all_entries = db.Column(db.Boolean)
+    # restricted_to_season = db.Column(db.String(150))
+    # can_view_self_entries = db.Column(db.Boolean)
+    # can_edit_self_entries = db.Column(db.Boolean)
+    # can_view_own_teams_entries = db.Column(db.Boolean)
+    # can_edit_own_teams_entries = db.Column(db.Boolean)
+    # can_view_all_entries = db.Column(db.Boolean)
+    # can_edit_all_entries = db.Column(db.Boolean)
 
-class Team(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    team_name = db.Column(db.String(150), unique=True)
-    seasons = db.Column(db.String(150))
-    users = db.relationship('User')
+# class Team(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     team_name = db.Column(db.String(150), unique=True)
+#     seasons = db.Column(db.String(150))
+#     users = db.relationship('User')
 
-class Entry(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    time = db.Column(db.DateTime(timezone=True), default=func.now())
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    kind = db.Column(db.String(150))
-    content = db.Column(db.String(150))
+# class Entry(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     time = db.Column(db.DateTime(timezone=True), default=func.now())
+#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+#     kind = db.Column(db.String(150))
+#     content = db.Column(db.String(150))
 
 # class Note(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)

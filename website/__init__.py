@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from os import path
+from os import path, remove
 from flask_login import LoginManager
 
 db = SQLAlchemy()
@@ -16,14 +16,18 @@ def create_app():
 
     app.register_blueprint(views, url_prefix='/')
 
-    from .models import User, Permission, Team, Entry
+    from .models import User
 
     with app.app_context():
-        if not path.exists('website/' + DB_NAME):
-            db.create_all()
-            print('Created Database!')
-            addDummyData()
-            queryDummyData()
+        if path.exists('instance/' + DB_NAME):
+            # delete the database if it exists
+            remove("instance/" + DB_NAME)
+            
+            
+        db.create_all()
+        print('Created Database!')
+        addDummyData()
+
 
 
 
@@ -44,27 +48,23 @@ def create_app():
 
 def addDummyData():
     # Create a dummy user
-    from .models import User, Permission, Team, Entry
-    user = User()
-    user.email = 'cmgowd25@colby.edu'
-    user.first_name = 'Chandra'
-    user.last_name = 'Gowda'
-    user.set_password('password')
-    user.permissions = Permission.ADMIN
+    from .models import User
+    user = User(email = "chandra@gmail.com ", first_name = "Chandra", last_name = "Gowda", password = "password")
+
     db.session.add(user)
     db.session.commit()
     print("DB Committed")
 
 # Print all users
 def printAllUsers():
-    from .models import User, Permission, Team, Entry
+    from .models import User
     users = User.query.all()
     print(users)
     print("DB printed all users")
 
 # Query dummy data
 def queryDummyData():
-    from .models import User, Permission, Team, Entry
+    from .models import User
     user = User.query.filter_by('first_name' == 'Chandra').first()
     print(user)
     print("DB printed query")
