@@ -41,14 +41,11 @@ def create_app():
 
     return app
 
-# def create_database(app):
-#     if not path.exists('website/' + DB_NAME):
-#         db.create_all(app=app)
-#         print('Created Database!')
-
 def addDummyDB():
     addDummyTeam()
     addDummyUser()
+    addPermissionList()
+    addDummyEntry()
 
 def addDummyTeam():
     from .models import Team
@@ -75,6 +72,28 @@ def addDummyUser():
     print("DB User added")
 
     print(Team.query.filter_by(team_name = "Basketball").first().users[0].email)
+
+def addPermissionList():
+    from .models import Permission
+    superAdminPermission = Permission(permission_name = "SuperAdmin", restricted_to_season = "", can_view_self_entries = True, can_edit_self_entries = True, can_view_own_teams_entries = True, can_edit_own_teams_entries = True, can_view_all_entries = True, can_edit_all_entries = True)
+    adminPermission = Permission(permission_name = "Admin", restricted_to_season = "", can_view_self_entries = True, can_edit_self_entries = True, can_view_own_teams_entries = True, can_edit_own_teams_entries = True, can_view_all_entries = True, can_edit_all_entries = True)
+    coachPermission = Permission(permission_name = "Coach", restricted_to_season = "2020-2021", can_view_self_entries = True, can_edit_self_entries = True, can_view_own_teams_entries = True, can_edit_own_teams_entries = True, can_view_all_entries = False, can_edit_all_entries = False)
+    playerPermission = Permission(permission_name = "Player", restricted_to_season = "", can_view_self_entries = True, can_edit_self_entries = False, can_view_own_teams_entries = False, can_edit_own_teams_entries = False, can_view_all_entries = False, can_edit_all_entries = False)
+    db.session.add(superAdminPermission)
+    db.session.add(adminPermission)
+    db.session.add(coachPermission)
+    db.session.add(playerPermission)
+    db.session.commit()
+    print("DB Permissions added")
+
+
+def addDummyEntry():
+    from .models import Entry, User
+    user1 = User.query.filter_by(email = "chandra@gmail.com").first()
+    entry = Entry(user_id = user1.id, kind = "Psychology Notes", content = "Entry 1 Description")
+    db.session.add(entry)
+    db.session.commit()
+    print("DB Entry added")
 
     
     
