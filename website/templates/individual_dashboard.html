@@ -19,6 +19,7 @@
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/favicon.png" />
     <style>
@@ -125,7 +126,7 @@
                       var areaData = {
                         labels: ["Paypal", "Stripe","Cash"],
                         datasets: [{
-                            data: [55, 25, 20],
+                            data: [55, 300, 20],
                             backgroundColor: [
                               "#111111","#00d25b","#ffab00"
                             ]
@@ -197,9 +198,9 @@
                   <!-- Mini card 2 -->
                   <div class = "col-md-4 grid-margin" id="mini-card" >
                     <div class = "card-title">Recovery</div>
-                    <canvas id="transaction-history" class="transaction-chart"></canvas>
+                    <canvas id="transaction-history2" class="transaction-chart"></canvas>
                     <script>   
-                    if ($("#transaction-history").length) {
+                    if ($("#transaction-history2").length) {
                       var areaData = {
                         labels: ["Paypal", "Stripe","Cash"],
                         datasets: [{
@@ -261,7 +262,7 @@
                           ctx.save();
                         }
                       }
-                      var transactionhistoryChartCanvas = $("#transaction-history").get(0).getContext("2d");
+                      var transactionhistoryChartCanvas = $("#transaction-history2").get(0).getContext("2d");
                       var transactionhistoryChart = new Chart(transactionhistoryChartCanvas, {
                         type: 'doughnut',
                         data: areaData,
@@ -276,13 +277,13 @@
                   <!-- Mini card 3 -->
                   <div class = "col-md-4 grid-margin"  id="mini-card">
                     <div class = "card-title">Calorie</div>
-                    <canvas id="transaction-history" class="transaction-chart"></canvas>
+                    <canvas id="transaction-history3" class="transaction-chart"></canvas>
                     <script>   
-                    if ($("#transaction-history").length) {
+                    if ($("#transaction-history3").length) {
                       var areaData = {
                         labels: ["Paypal", "Stripe","Cash"],
                         datasets: [{
-                            data: [55, 25, 20],
+                            data: [55, 25, 300],
                             backgroundColor: [
                               "#111111","#00d25b","#ffab00"
                             ]
@@ -340,7 +341,7 @@
                           ctx.save();
                         }
                       }
-                      var transactionhistoryChartCanvas = $("#transaction-history").get(0).getContext("2d");
+                      var transactionhistoryChartCanvas = $("#transaction-history3").get(0).getContext("2d");
                       var transactionhistoryChart = new Chart(transactionhistoryChartCanvas, {
                         type: 'doughnut',
                         data: areaData,
@@ -482,7 +483,7 @@ var multiLineData = {
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+
     <!-- endinject -->
     <!-- Plugin js for this page -->
 

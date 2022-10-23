@@ -30,7 +30,7 @@ def send_individual():
     performanceNotes= "Consistent"
     nutritionNotes = "Extra emphasis on vitamin E"
 
-    return render_template("individual_dashboard.html", sleep_data = sleep, readyness_data = readyness, calorie_data = caloriesports = sportsNotes, performance = performanceNotes, nutrition = nutritionNotes )
+    return render_template("individual_dashboard.html", sleep_data = sleep, readyness_data = readyness, calorie_data = calorie, sports = sportsNotes, performance = performanceNotes, nutrition = nutritionNotes )
 
 
 
