@@ -4,10 +4,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
 
-auth = Blueprint('auth', __name__)
+addcoach = Blueprint('addcoach', __name__)
 
-@auth.route('/sign-up', methods= ['GET', 'POST'])
-def sign_up():
+@addcoach.route('/superadmin/addcoach.html', methods= ['POST'])
+def add_coach_form_submission():
 
     if request.method == 'POST':
         username = request.form.get('username')
@@ -40,6 +40,6 @@ def sign_up():
             db.session.commit()
             login_user(user, remember=True)
             flash('Account created!', category='success')
-            return redirect(url_for('views.home'))
+            return redirect("/superadmin/index.html")
 
-    return render_template("signup.html", user=current_user)
+    

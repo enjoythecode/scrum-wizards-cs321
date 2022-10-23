@@ -1,4 +1,5 @@
 from flask import Blueprint
+from flask import request
 from flask import render_template
 from flask import send_from_directory
 
@@ -16,9 +17,11 @@ def login():
 def send_asset(path):
     return send_from_directory('assets', path)
 
-@views.route('/superadmin/<path:path>')
+@views.route('/superadmin/<path:path>', methods=["GET"])
 def send_superadmin(path):
     return send_from_directory('templates/superadmin', path)
+
+    
 
 @views.route('/admin/index.html', methods=['GET'])
 def goto_admin_dash():

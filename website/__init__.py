@@ -21,8 +21,14 @@ def create_app():
     db.init_app(app)
 
     from .views import views
+    from .addcoach import addcoach
+    from .addathlete import addathlete
+    from .addadmin import addadmin
 
     app.register_blueprint(views, url_prefix='/')
+    app.register_blueprint(addcoach, url_prefix='/')
+    app.register_blueprint(addadmin, url_prefix='/')
+    app.register_blueprint(addathlete, url_prefix='/')
 
     from .models import User, Note
 
