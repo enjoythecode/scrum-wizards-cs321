@@ -30,14 +30,20 @@ def send_individual():
     performanceNotes= "Consistent"
     nutritionNotes = "Extra emphasis on vitamin E"
 
-    return render_template("individual_dashboard.html", sleep_data = sleep, readyness_data = readyness, calorie_data = calorie, sports = sportsNotes, performance = performanceNotes, nutrition = nutritionNotes )
+    return render_template("individual_dashboard.html", 
+    sleep_data = sleep,
+    readyness_data = readyness,
+    calorie_data = calorie,
+    sports = sportsNotes,
+    performance = performanceNotes,
+    nutrition = nutritionNotes )
 
 
 
 @views.route('/team_dashboard')
 def send_team():
-    Teams = ["soccer", "footabll", "track", "basketabll"]
-    Sleep = [4,-4,4,-4,]
+    Teams = ["Soccer (M)", "Football (M)", "Track (W) ", "Basketball (W)"]
+    Sleep = [4,4,4,4,]
     Quality = [60,80,20,-4,]
     Calorie = [2,2,2,2]
     Recovery = [6,6,6,6]

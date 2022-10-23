@@ -99,56 +99,13 @@
        
                             </thead>
                             <tbody>
+                              {% for i in range (4)%}
                               <tr>
-  
                                 <td>
-   
-                                  <span class="pl-2">Baseball (W)</span>
+                                  <span class="pl-2">{{ team_list[i] }}</span>
                                 </td>
-                        
-                          
                               </tr>
-                              <tr>
-                                
-        
-                  
-                                <td>
-  
-                                  <span class="pl-2">Ice Hockey (M)</span>
-                                </td>
-                        
-                     
-                                
-                              </tr>
-                              <tr>
-  
-                                <td>
-   
-                                  <span class="pl-2">Track and Field (W)</span>
-                                </td>
-                         
-  
-                                
-                              </tr>
-                              <tr>
-  
-                                <td>
-        
-                                  <span class="pl-2">Basketball (M)</span>
-                                </td>
-                     
-                             
-                              </tr>
-                              <tr>
-       
-                                <td>
-                          
-                                  <span class="pl-2">Tennis (W)</span>
-                                </td>
-                      
-         
-                               
-                              </tr>
+                              {% endfor %}
                             </tbody>
                           </table>
                         </div>
