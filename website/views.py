@@ -16,16 +16,9 @@ def login():
 def send_asset(path):
     return send_from_directory('assets', path)
 
-@views.route('/superadmin/index.html')
-def send_admin():
-    return render_template("superadmin/index.html")
-@views.route('/login', methods=['GET'])
-def login():
-    return render_template('index.html')
-
-@views.route('/superadmin/index.html', methods=['GET'])
-def goto_superadmin_dash():
-    return render_template('superadmin/index.html')
+@views.route('/superadmin/<path:path>')
+def send_superadmin(path):
+    return send_from_directory('templates/superadmin', path)
 
 @views.route('/admin/index.html', methods=['GET'])
 def goto_admin_dash():
