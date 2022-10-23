@@ -6,7 +6,7 @@ views = Blueprint('views', __name__)
 
 @views.route('/', methods=['GET'])
 def hello():
-    return "Hi Sinan!"
+    return "Hi Ghailan!"
 
 @views.route('/login', methods=['GET'])
 def login():
@@ -19,3 +19,15 @@ def send_asset(path):
 @views.route('/superadmin/index.html')
 def send_admin():
     return render_template("superadmin/index.html")
+
+@views.route('/individual_dashboard')
+def send_individual():
+    sleep = [4,-4,4,-4,4,-4,4,-4]
+    readyness = [8, -8, 8, -8, 8, -8, 8, -8, 8, -8]
+    calorie = [2,2,2,2,2,2,2,2,2,2,2]
+
+    return render_template("individual_dashboard.html", sleep_data = sleep, readyness_data = readyness, calorie_data = calorie, )
+
+@views.route('/team_dashboard')
+def send_team():
+    return render_template("team_dashboard.html")

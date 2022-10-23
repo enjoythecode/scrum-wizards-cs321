@@ -22,7 +22,7 @@ from sqlalchemy.sql import func
 # - can_edit_own_teams_entries
 # - can_view_all_entries
 # - can_edit_all_entries
-
+teamlist = ["soccer", "tennis", "football", "track"]
 # Teams
 # - team_id
 # - team_name
