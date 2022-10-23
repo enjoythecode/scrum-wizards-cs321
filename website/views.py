@@ -19,3 +19,24 @@ def send_asset(path):
 @views.route('/superadmin/index.html')
 def send_admin():
     return render_template("superadmin/index.html")
+@views.route('/login', methods=['GET'])
+def login():
+    return render_template('index.html')
+
+@views.route('/superadmin/index.html', methods=['GET'])
+def goto_superadmin_dash():
+    return render_template('superadmin/index.html')
+
+@views.route('/admin/index.html', methods=['GET'])
+def goto_admin_dash():
+    return render_template('admin/index.html')
+
+@views.route('/athlete/index.html', methods=['GET'])
+def goto_athlete_dash():
+    return render_template('athlete/index.html')
+
+
+
+
+
+
