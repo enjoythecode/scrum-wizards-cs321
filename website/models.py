@@ -41,11 +41,13 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(150))
     last_name = db.Column(db.String(150))
     password = db.Column(db.String(150))
-    # team_id = db.Column(db.Integer, db.ForeignKey('team.id'))
-    # permissions = db.relationship('Permission')
+    team_id = db.Column(db.Integer, db.ForeignKey('team.id'))
+    permissions_id = db.Column(db.Integer, db.ForeignKey('permission.id'))
+    # entries = db.relationship('Entry')
 
 class Permission(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    users = db.relationship('User')
     permission_name = db.Column(db.String(150), unique=True)
     # restricted_to_season = db.Column(db.String(150))
     # can_view_self_entries = db.Column(db.Boolean)
@@ -55,11 +57,11 @@ class Permission(db.Model):
     # can_view_all_entries = db.Column(db.Boolean)
     # can_edit_all_entries = db.Column(db.Boolean)
 
-# class Team(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     team_name = db.Column(db.String(150), unique=True)
-#     seasons = db.Column(db.String(150))
-#     users = db.relationship('User')
+class Team(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    team_name = db.Column(db.String(150), unique=True)
+    seasons = db.Column(db.String(150))
+    users = db.relationship('User')
 
 # class Entry(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)
@@ -67,16 +69,3 @@ class Permission(db.Model):
 #     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 #     kind = db.Column(db.String(150))
 #     content = db.Column(db.String(150))
-
-# class Note(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     data = db.Column(db.String(10000))
-#     date = db.Column(db.DateTime(timezone=True), default=func.now())
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
-# class User(db.Model, UserMixin):
-#     id = db.Column(db.Integer, primary_key=True)
-#     email = db.Column(db.String(150), unique=True)
-#     first_name = db.Column(db.String(150))
-#     password = db.Column(db.String(150))
-#     notes = db.relationship('Note')

@@ -26,7 +26,7 @@ def create_app():
             
         db.create_all()
         print('Created Database!')
-        addDummyData()
+        addDummyDB()
 
 
 
@@ -46,26 +46,35 @@ def create_app():
 #         db.create_all(app=app)
 #         print('Created Database!')
 
-def addDummyData():
-    # Create a dummy user
-    from .models import User
-    user = User(email = "chandra@gmail.com ", first_name = "Chandra", last_name = "Gowda", password = "password")
+def addDummyDB():
+    addDummyTeam()
+    addDummyUser()
 
-    db.session.add(user)
+def addDummyTeam():
+    from .models import Team
+    team1 = Team(team_name = "Basketball", seasons = "2020-2021")
+    team2 = Team(team_name = "Football", seasons = "2020-2021")
+    db.session.add(team1)
+    db.session.add(team2)
     db.session.commit()
-    print("DB Committed")
+    print("DB Team added")
 
-# Print all users
-def printAllUsers():
-    from .models import User
-    users = User.query.all()
-    print(users)
-    print("DB printed all users")
+def addDummyUser():
+    from .models import User, Team
+    team1 = Team.query.filter_by(team_name = "Basketball").first()
 
-# Query dummy data
-def queryDummyData():
-    from .models import User
-    user = User.query.filter_by('first_name' == 'Chandra').first()
-    print(user)
-    print("DB printed query")
+
+    team2 = Team.query.filter_by(team_name = "Football").first().id
+
+    user1 = User(email = "chandra@gmail.com", password = "1234", team_id = team1.id)
+    user2 = User(email = "sinan@gmail.com", password = "1234", team_id = team2)
+
+    db.session.add(user1)
+    db.session.add(user2)
+    db.session.commit()
+    print("DB User added")
+
+    print(Team.query.filter_by(team_name = "Basketball").first().users[0].email)
+
+    
     

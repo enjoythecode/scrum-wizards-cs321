@@ -4,6 +4,11 @@ from flask import send_from_directory
 
 views = Blueprint('views', __name__)
 
+@views.route('/debug', methods=['GET'])
+def debug():
+    
+    return "Debug"
+
 @views.route('/', methods=['GET'])
 def hello():
         return "Hi Sinan!"
