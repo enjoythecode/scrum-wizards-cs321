@@ -26,8 +26,14 @@ def send_individual():
     readyness = [8, -8, 8, -8, 8, -8, 8, -8, 8, -8]
     calorie = [2,2,2,2,2,2,2,2,2,2,2]
 
-    return render_template("individual_dashboard.html", sleep_data = sleep, readyness_data = readyness, calorie_data = calorie, )
+    return render_template("individual_dashboard.html", sleep_data = sleep, readyness_data = readyness, calorie_data = calorie)
 
 @views.route('/team_dashboard')
 def send_team():
-    return render_template("team_dashboard.html")
+    Teams = ["soccer", "footabll", "track", "basketabll"]
+    Sleep = [4,-4,4,-4,]
+    Quality = [60,80,20,-4,]
+    Calorie = [2,2,2,2]
+    Recovery = [6,6,6,6]
+
+    return render_template("team_dashboard.html", team_list = Teams, sleep_data = Sleep, quality_data = Quality, calorie_intake = Calorie, recovery_rate = Recovery)
