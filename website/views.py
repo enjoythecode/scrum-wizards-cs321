@@ -21,7 +21,16 @@ def send_asset(path):
 def send_superadmin(path):
     return send_from_directory('templates/superadmin', path)
 
-    
+@views.route("/superadmin/athletepermissions.html", methods = ["GET"])
+def goto_athlete_permissions():
+    return render_template('superadmin/athletepermissions.html')
+
+
+
+@views.route("/superadmin/coachpermissions.html", methods = ["GET"])
+def goto_coach_permissions():
+    return render_template('superadmin/coachpermissions.html')
+
 
 @views.route('/admin/index.html', methods=['GET'])
 def goto_admin_dash():

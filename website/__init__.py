@@ -24,11 +24,13 @@ def create_app():
     from .addcoach import addcoach
     from .addathlete import addathlete
     from .addadmin import addadmin
+    from .athletepermissions import athletepermissions
 
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(addcoach, url_prefix='/')
     app.register_blueprint(addadmin, url_prefix='/')
     app.register_blueprint(addathlete, url_prefix='/')
+    app.register_blueprint(athletepermissions, url_prefix='/')
 
     from .models import User, Note
 
