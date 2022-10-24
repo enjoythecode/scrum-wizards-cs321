@@ -16,32 +16,29 @@ def add_athlete_form_submission():
         firstname = request.form.get('firstname')
         lastname = request.form.get('lastname')
         id = request.form.get('id')
+        createuser = request.form.get('createuser')
         # below could be wrong since it's a dropdown menu
         # also need to make sure team2 and team3 can be emtpy
         team1 = request.form.get('team1')
         team2 = request.form.get('team2')
         team3 = request.form.get('team3')
-        print(username, password, firstname, lastname)
+        print(email, password, firstname, createuser, lastname, id, team1, team2, team3)
 
-        # coming up with teamid
-        # for team in [team1, team2, team3]
-        
-        
-        # right hand side
-        age = request.form.get('age')
-        weight = request.form.get('weight')
-        height = request.form.get('height')
-        gender = request.form.get('gender')
-        gradyear = request.form.get('gradyear')
-        print(age, weight, height, gender, gradyear)
+        # # coming up with teamid
+        # team_ids = []
+        # for team in [team1, team2, team3]:
+        #     if team is not None:
+        #         team_ids.append(team.team_id())
+        # return team_ids
+                
 
 
-        user = User.query.filter_by(username=username).first()
+        user = User.query.filter_by(email=email).first()
         if user:
             flash('Username already exists.', category='error')
         else:
             # add user to database
-            new_user = User(id = id, email = email, first_name = firstname, last_name = lastname, password=generate_password_hash(password, method='sha256'), team_id = [team1, team2, team3], permissions_id = permissions, entries = entries)
+            new_user = User(id = id, email = email, first_name = firstname, last_name = lastname, password=generate_password_hash(password, method='sha256'), team_id = team_ids, permissions_id = permissions, entries = entries)
             db.session.add(new_user)
             db.session.commit()
             login_user(user, remember=True)
