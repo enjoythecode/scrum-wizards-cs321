@@ -1,17 +1,25 @@
 from flask import Blueprint
-from flask import request
 from flask import render_template
-from flask import send_from_directory
+from flask import send_from_directory, redirect, url_for
+from flask_login import login_required, current_user
 
 views = Blueprint('views', __name__)
+auth = Blueprint('auth', __name__)
 
-@views.route('/', methods=['GET'])
-def hello():
-    return "Hi Sinan!"
+@views.route('/', methods=['GET', 'POST'])
+@login_required
+def hello(): 
+    return redirect(url_for('auth.login'))
+
+@views.route('/home', methods=['GET'])
+@login_required
+def home():     
+    return render_template("home.html", user=current_user)
+
 
 @views.route('/login', methods=['GET'])
 def login():
-    return render_template("index.html")
+    return render_template("login.html")
 
 @views.route('/assets/<path:path>')
 def send_asset(path):
