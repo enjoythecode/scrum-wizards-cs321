@@ -60,8 +60,8 @@ def addDummyUser():
     team1 = Team.query.filter_by(team_name = "Basketball").first()
     team2 = Team.query.filter_by(team_name = "Football").first().id
 
-    user1 = User(email = "chandra@gmail.com", password = generate_password_hash("1234", method='sha256'), team_id = team1.id)
-    user2 = User(email = "sinan@gmail.com", password = generate_password_hash("1234", method='sha256'), team_id = team2)
+    user1 = User(first_name = "Chandra", last_name = "Gowda", email = "chandra@gmail.com", password = generate_password_hash("1234", method='sha256'), team_id = team1.id)
+    user2 = User(first_name = "Sinan", last_name = "Yumurtaci", email = "sinan@gmail.com", password = generate_password_hash("1234", method='sha256'), team_id = team2)
 
     db.session.add(user1)
     db.session.add(user2)

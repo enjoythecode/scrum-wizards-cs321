@@ -39,7 +39,7 @@
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
-                  <h5 class="mb-0 font-weight-normal">Anne Beethe</h5>
+                  <h5 class="mb-0 font-weight-normal">{{ user.first_name + " "  +user.last_name }} </h5>
                   <span>PEAK SuperAdmin</span>
                 </div>
               </div>
@@ -286,7 +286,7 @@
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
                     <img class="img-xs rounded-circle" src="/assets/images/faces/face15.jpg" alt="">
-                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Anne Beethe</p>
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name">{{ user.first_name }}</p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
                 </a>
