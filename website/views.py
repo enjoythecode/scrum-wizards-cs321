@@ -5,11 +5,7 @@ from flask import send_from_directory
 views = Blueprint('views', __name__)
 
 @views.route('/', methods=['GET'])
-def hello():
-    return "Hi Sinan!"
-
-@views.route('/login', methods=['GET'])
-def login():
+def send_login():
     return render_template("index.html")
 
 @views.route('/assets/<path:path>')
