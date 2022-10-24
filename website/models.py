@@ -46,17 +46,6 @@ class User(db.Model, UserMixin):
     permissions = db.relationship('Permission')
     entries = db.relationship('Entry')
 
-# class Permission(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     users = db.relationship('User')
-#     permission_name = db.Column(db.String(150), unique=True)
-#     restricted_to_season = db.Column(db.String(150))
-#     can_view_self_entries = db.Column(db.Boolean, default = False)
-#     can_edit_self_entries = db.Column(db.Boolean)
-#     can_view_own_teams_entries = db.Column(db.Boolean)
-#     can_edit_own_teams_entries = db.Column(db.Boolean)
-#     can_view_all_entries = db.Column(db.Boolean)
-#     can_edit_all_entries = db.Column(db.Boolean)
 
 
 class Permission(db.Model):
