@@ -1,6 +1,6 @@
 
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from .models import User, Note
+from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
@@ -18,6 +18,8 @@ def athlete_permissions_form_submission(id):
         switchrole = request.form.get('switchrole')
         print(deleteaccount, team, switchrole)
 
+
+
         user = User.query.get(id)
         user.team = team
         user.role = switchrole
@@ -32,7 +34,7 @@ def athlete_permissions_form_submission(id):
         
 
 # deleting a user 
-# @views.route("/remove/<string:id>", methods=['GET', "POST"])
+@athletepermissions.route("/remove/<string:id>", methods=['GET', "POST"])
 @login_required
 def remove(id):
     user = User.query.get(id)
@@ -44,3 +46,4 @@ def remove(id):
             flash('User deleted!', category='success')
 
     return redirect("/superadmin/index.html")
+
