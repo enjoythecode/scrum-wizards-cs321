@@ -9,7 +9,7 @@ from website import views
 coachpermissions = Blueprint('coachpermissions', __name__)
 
 @coachpermissions.route('/superadmin/coachpermissions.html', methods= ['POST'])
-def coach_permissions_form_submission(id = current_user.id):
+def coach_permissions_form_submission():
 
     if request.method == 'POST':
 
@@ -21,12 +21,12 @@ def coach_permissions_form_submission(id = current_user.id):
 
         current_user.permissions = Permission(users = current_user, restricted_to_season = True, can_view_self_entries = True, can_edit_self_entries = True, can_view_own_teams_entries = True, can_edit_own_teams_entries = False, can_view_all_entries = False, can_edit_all_entries = False)
 
-        user = User.query.get(id)
-        user.team = team
-        user.role = switchrole
+        # user = User.query.get(id)
+        # user.team = team
+        # user.role = switchrole
 
-        if deleteaccount:
-            remove(id)
+        # if deleteaccount:
+        #     remove(id)
         
         return redirect("/superadmin/index.html")
 
