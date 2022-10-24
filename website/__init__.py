@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path, remove
 from flask_login import LoginManager
+from werkzeug.security import generate_password_hash, check_password_hash
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
@@ -13,8 +14,10 @@ def create_app():
     db.init_app(app)
 
     from .views import views
+    from .auth import auth
 
     app.register_blueprint(views, url_prefix='/')
+    app.register_blueprint(auth, url_prefix='/')
 
     from .models import User
 
@@ -23,16 +26,12 @@ def create_app():
             # delete the database if it exists
             remove("instance/" + DB_NAME)
             
-            
         db.create_all()
         print('Created Database!')
         addDummyDB()
 
-
-
-
     login_manager = LoginManager()
-    # login_manager.login_view = 'auth.login'
+    login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
 
     @login_manager.user_loader
@@ -59,12 +58,10 @@ def addDummyTeam():
 def addDummyUser():
     from .models import User, Team
     team1 = Team.query.filter_by(team_name = "Basketball").first()
-
-
     team2 = Team.query.filter_by(team_name = "Football").first().id
 
-    user1 = User(email = "chandra@gmail.com", password = "1234", team_id = team1.id)
-    user2 = User(email = "sinan@gmail.com", password = "1234", team_id = team2)
+    user1 = User(email = "chandra@gmail.com", password = generate_password_hash("1234", method='sha256'), team_id = team1.id)
+    user2 = User(email = "sinan@gmail.com", password = generate_password_hash("1234", method='sha256'), team_id = team2)
 
     db.session.add(user1)
     db.session.add(user2)
@@ -95,5 +92,4 @@ def addDummyEntry():
     db.session.commit()
     print("DB Entry added")
 
-    
     
