@@ -15,8 +15,14 @@ def athlete_permissions_form_submission():
 
         deleteaccount = request.form.get('deleteaccount')
         team = request.form.get('team')
-        switchrole = request.form.get('switchrole')
-        print(deleteaccount, team, switchrole)
+        role = request.form.get('switchrole')
+        print(deleteaccount, team, role)
+
+        # permissions
+        view_self_entries = request.form.get('viewselfentries')
+        edit_self_entries = request.form.get('editownentries')
+        view_entries_outofseason = request.form.get('outofseason')
+
 
 
         current_user.Permission = Permission(users = current_user, restricted_to_season = False, can_view_self_entries = True, can_edit_self_entries = False, can_view_own_teams_entries = False, can_edit_own_teams_entries = False, can_view_all_entries = False, can_edit_all_entries = False)

@@ -42,9 +42,10 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(150))
     password = db.Column(db.String(150))
     team_id = db.Column(db.Integer, db.ForeignKey('team.id'))
-    permissions_id = db.Column(db.Integer, db.ForeignKey('permission.id'))
-    role = db.Column(db.String(150))
-    # permissions = db.relationship('Permission')
+    permission = db.Column(db.Integer, db.ForeignKey('permission.id'))
+    # permission = db.Column(db.Integer, deb.ForeighK) #super-admin = 0, coach = 1, coach = 1, athlete = 2
+    # role = db.Column(db.String(150))
+    # permission = db.relationship('Permission')
     entries = db.relationship('Entry')
 
 
