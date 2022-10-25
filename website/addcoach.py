@@ -36,7 +36,7 @@ def add_coach_form_submission():
 
         user = User.query.filter_by(email=email).first()
         if user:
-            flash('Username already exists.', category='error')
+            flash('User already exists.', category='error')
         else:
             # add user to database
             new_user = User(id = id, email = email, permission = permission, first_name = firstname, last_name = lastname, password=generate_password_hash(password, method='sha256'), role = role)
