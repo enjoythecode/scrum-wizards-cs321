@@ -38,12 +38,19 @@ def add_coach_form_submission():
             flash('Username already exists.', category='error')
         else:
             # add user to database
-            new_user = User(id = id, email = email, first_name = firstname, last_name = lastname, password=generate_password_hash(password, method='sha256'))
+            new_user = User(id = id, email = email, first_name = firstname, last_name = lastname, password=generate_password_hash(password, method='sha256'), role = role)
             # new_user = User(id = id, email = email, first_name = firstname, last_name = lastname, password=generate_password_hash(password, method='sha256'), team_id = team_ids, permissions_id = permissions, entries = entries)
             db.session.add(new_user)
             db.session.commit()
             login_user(user, remember=True)
             flash('Account created!', category='success')
-            return redirect("/superadmin/index.html")
+            
+            # userlist = []
+            # for user in User.query.all():
+            #     if user.role == 'coach':
+            #         userlist.append(user)
+            # return render_template("/superadmin/index.html", coachlist = userlist)
+
+            return redirect('/superadmin/index.html')
 
     

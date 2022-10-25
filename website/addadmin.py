@@ -24,11 +24,18 @@ def add_admin_form_submission():
             flash('Username already exists.', category='error')
         else:
             # add user to database
-            new_user = User(id = id, email = email, first_name = firstname, last_name = lastname, password=generate_password_hash(password, method='sha256'), team_id = None)
+            new_user = User(id = id, email = email, first_name = firstname, last_name = lastname, password=generate_password_hash(password, method='sha256'), role = role, team_id = None)
             db.session.add(new_user)
             db.session.commit()
             login_user(user, remember=True)
             flash('Account created!', category='success')
-            return redirect("/superadmin/index.html")
+            
+            # userlist = []
+            # for user in User.query.all():
+            #     if user.role == 'admin':
+            #         userlist.append(user)
+            # return render_template("/superadmin/index.html", adminlist = userlist)
+
+            return redirect('/superadmin/index.html')
 
     # return render_template("signup.html", user=current_user)
