@@ -339,91 +339,14 @@
 
 
             <div class="row">
-<!--
-              <div class="col-md-6 col-xl-4 grid-margin stretch-card">
+<form method = "POST">
+              <div class="col-md-10 col-xl-8 grid-margin stretch-card">
+                  
+<!--                  <form method = "POST">-->
                 <div class="card">
                   <div class="card-body">
                     <div class="d-flex flex-row justify-content-between">
-                      <h4 class="card-title">Athletes</h4>
-                      <p class="text-muted mb-1 small">View all</p>
-                    </div>
-                      
-                      <div class="add-items d-flex">
-                      <input type="text" class="form-control todo-list-input" placeholder="Search Athlete">
-                      <button class="add btn btn-primary todo-list-add-btn">Go</button>
-                    </div>
-                      
-                    <div class="preview-list">
-                      <div class="preview-item border-bottom">
-                        <div class="preview-thumbnail">
-                          <img src="/assets/images/faces/face6.jpg" alt="image" class="rounded-circle" />
-                        </div>
-                          
-                          
-                          
-                        <div class="preview-item-content d-flex flex-grow">
-                          <div class="flex-grow">
-                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                              <h6 class="preview-subject">Athlete #1</h6>
-                              
-                            </div>
-                            
-                          </div>
-                        </div>
-                      </div>
-                      <div class="preview-item border-bottom">
-                        <div class="preview-thumbnail">
-                          <img src="/assets/images/faces/face8.jpg" alt="image" class="rounded-circle" />
-                        </div>
-                        <div class="preview-item-content d-flex flex-grow">
-                          <div class="flex-grow">
-                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                              <h6 class="preview-subject">Athlete #2</h6>
-                              
-                            </div>
-                            
-                          </div>
-                        </div>
-                      </div>
-                      <div class="preview-item border-bottom">
-                        <div class="preview-thumbnail">
-                          <img src="/assets/images/faces/face9.jpg" alt="image" class="rounded-circle" />
-                        </div>
-                        <div class="preview-item-content d-flex flex-grow">
-                          <div class="flex-grow">
-                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                              <h6 class="preview-subject">Athlete #3</h6>
-                             
-                            </div>
-                       
-                          </div>
-                        </div>
-                      </div>
-                      <div class="preview-item border-bottom">
-                        <div class="preview-thumbnail">
-                          <img src="/assets/images/faces/face11.jpg" alt="image" class="rounded-circle" />
-                        </div>
-                        <div class="preview-item-content d-flex flex-grow">
-                          <div class="flex-grow">
-                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                              <h6 class="preview-subject">Athlete #4</h6>
-                            
-                            </div>
-                        
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
--->
-              <div class="col-md-6 col-xl-4 grid-margin stretch-card">
-                  <form method = "POST">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="d-flex flex-row justify-content-between">
-                      <h4 class="card-title">Naser Al Madi</name></h4>
+                      <h4 class="card-title">Naser Al Madi</h4>
                       
                     </div>
                       
@@ -438,7 +361,7 @@
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
                               
   
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Team: </button>
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="team" name = "team" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Team: </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                                   <a class="dropdown-item" href="#">Basketball</a>
                                   <a class="dropdown-item" href="#">Baseball</a>
@@ -461,7 +384,7 @@
                           <div class="flex-grow">
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
                               <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Switch Role: </button>
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="role" name = "role" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Switch Role: </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                           <a class="dropdown-item" href="#">Coach</a>
                           <a class="dropdown-item" href="#">Athlete</a>
@@ -480,75 +403,30 @@
                         
       
                         
+
+
+                      <div class="preview-item border-bottom">
+                        
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+
+                              <button id = "deleteaccount" name = "deleteaccount" class='btn-danger btn btn-fw'>Delete Account</button>
+                              
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                        
                         <div class="preview-item border-bottom">
                         
                         <div class="preview-item-content d-flex flex-grow">
                           <div class="flex-grow">
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
 
-                              <!-- Rounded switch -->
-                              <label class="switch">
-                                <input type="checkbox" id="vehicle1" name ="vehicle1" value="Bike">
-                                <span class="slider round"></span>
-                              </label>
-                           
-                              <label for="vehicle1"> Disable Access to Athlete Info</label><br>
-                              
-
-                              <div class="dropdown">
-                        
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                  
-                          <div class="dropdown-divider"></div>
-                          
-                        </div>
-                      </div>
+                              <button id = "save" name = "save" class='btn-primary btn btn-fw'>SAVE</button>
                                 
-                              
-                            </div>
-                            
-                          </div>
-                        </div>
-                      </div>
-<!--
-                      <div class="preview-item border-bottom">
-                        <div class="preview-thumbnail">
-                          
-                        </div>
-                        <div class="preview-item-content d-flex flex-grow">
-                          <div class="flex-grow">
-                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                              <h6 class="preview-subject">Team:</h6>
-                              
-                            </div>
-                            
-                          </div>
-                        </div>
-                      </div>
--->
-<!--
-                      <div class="preview-item border-bottom">
-                        <div class="preview-thumbnail">
-                          <img src="/assets/images/faces/face9.jpg" alt="image" class="rounded-circle" />
-                        </div>
-                        <div class="preview-item-content d-flex flex-grow">
-                          <div class="flex-grow">
-                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                              <h6 class="preview-subject">Coach #3</h6>
-                             
-                            </div>
-                       
-                          </div>
-                        </div>
-                      </div>
--->
-                      <div class="preview-item border-bottom">
-                        
-                        <div class="preview-item-content d-flex flex-grow">
-                          <div class="flex-grow">
-                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
-
-                              <button class='btn-danger btn btn-fw'>Delete Account</button>
                               
                             </div>
                             
@@ -560,9 +438,143 @@
                         
                     </div>
                   </div>
+<!--                      </form>-->
+                </div>
+<!--                  </form>-->
+                
+                
+                
+                
+                <div class="col-md-6 col-xl-11 grid-margin stretch-card">
+<!--                  <form method = "POST">-->
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex flex-row justify-content-between">
+                      <h4 class="card-title">PERMISSIONS</h4>
+                      
+                    </div>
+                      
+                      
+                      
+<!--                    <div class="preview-list">-->
+                        
+                      <div class="preview-item border-bottom">
+                        
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                              
+  
+                                <label class="switch">
+                                <input type="checkbox" id="viewteamsentries" name ="viewteamsentries" value="Bike">
+                                <span class="slider round"></span>
+                              </label>
+                           
+                              <label for="vehicle1"> Can view own team's entries </label><br>
+                                  
+                                </div>
+                                
+                              
+                            </div>
+                            
+                          </div>
+                        </div>
+<!--                      </div>-->
+                        
+                        
+                        <div class="preview-item border-bottom">
+                        
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                           
+                              <label class="switch">
+                                <input type="checkbox" id="editteamsentries" name ="editteamsentries" value="Bike">
+                                <span class="slider round"></span>
+                              </label>
+                           
+                              <label for="vehicle1"> Can edit own team's entries</label><br>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                        
+      
+                        
+                        <div class="preview-item border-bottom">
+                        
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+
+                              <!-- Rounded switch -->
+                              <label class="switch">
+                                <input type="checkbox" id="outofseason" name ="outofseason" value="Bike">
+                                <span class="slider round"></span>
+                              </label>
+                           
+                              <label for="vehicle1"> Can view team out of season </label><br>
+                              
+
+                                
+                              
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+
+<!--
+                      <div class="preview-item border-bottom">
+                        
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+
+                              <label class="switch">
+                                <input type="checkbox" id="vehicle1" name ="vehicle1" value="Bike">
+                                <span class="slider round"></span>
+                              </label>
+                           
+                              <label for="vehicle1"> Disable Access to Athlete Info</label><br>
+                              
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+
+                        <div class="preview-item border-bottom">
+                        
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+
+                              <label class="switch">
+                                <input type="checkbox" id="vehicle1" name ="vehicle1" value="Bike">
+                                <span class="slider round"></span>
+                              </label>
+                           
+                              <label for="vehicle1"> Disable Access to Athlete Info</label><br>
+                                
+                              
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+-->
+                        
+                        
+                        
+                    </div>
+<!--                    </form>-->
+                  </div>
                       </form>
                 </div>
-                  
+<!--                      
+                
               </div>
               
             </div>
@@ -647,7 +659,7 @@
         <!-- main-panel ends -->
       </div>
       <!-- page-body-wrapper ends -->
-    </div>
+<!--    </div>-->
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="/assets/vendors/js/vendor.bundle.base.js"></script>
