@@ -9,7 +9,7 @@ from website import views
 athletepermissions = Blueprint('athletepermissions', __name__)
 
 @athletepermissions.route('/superadmin/athletepermissions.html', methods= ['POST'])
-def athlete_permissions_form_submission(id = current_user.id):
+def athlete_permissions_form_submission():
 
     if request.method == 'POST':
 
@@ -19,14 +19,14 @@ def athlete_permissions_form_submission(id = current_user.id):
         print(deleteaccount, team, switchrole)
 
 
-        current_user.permissions = Permission(users = current_user, restricted_to_season = False, can_view_self_entries = True, can_edit_self_entries = False, can_view_own_teams_entries = False, can_edit_own_teams_entries = False, can_view_all_entries = False, can_edit_all_entries = False)
+        current_user.Permission = Permission(users = current_user, restricted_to_season = False, can_view_self_entries = True, can_edit_self_entries = False, can_view_own_teams_entries = False, can_edit_own_teams_entries = False, can_view_all_entries = False, can_edit_all_entries = False)
 
-        user = User.query.get(id)
-        user.team = team
-        user.role = switchrole
+        # user = User.query.get(id)
+        # user.team = team
+        # user.role = switchrole
 
-        if deleteaccount:
-            remove(id)
+        # if deleteaccount:
+        #     remove(id)
         
         return redirect("/superadmin/index.html")
 

@@ -16,6 +16,7 @@ def add_admin_form_submission():
         firstname = request.form.get('firstname')
         lastname = request.form.get('lastname')
         createuser = request.form.get('createuser')
+        role = 'admin'
         print(email, password, firstname, lastname, createuser, id)
 
         user = User.query.filter_by(email=email).first()
@@ -23,7 +24,7 @@ def add_admin_form_submission():
             flash('Username already exists.', category='error')
         else:
             # add user to database
-            new_user = User(id = id, email = email, first_name = firstname, last_name = lastname, password=generate_password_hash(password, method='sha256'), team_id = None, permissions_id = permissions, entries = entries)
+            new_user = User(id = id, email = email, first_name = firstname, last_name = lastname, password=generate_password_hash(password, method='sha256'), team_id = None)
             db.session.add(new_user)
             db.session.commit()
             login_user(user, remember=True)

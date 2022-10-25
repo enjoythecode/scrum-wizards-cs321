@@ -42,16 +42,16 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(150))
     password = db.Column(db.String(150))
     team_id = db.Column(db.Integer, db.ForeignKey('team.id'))
-    # permissions_id = db.Column(db.Integer, db.ForeignKey('permission.id'))
-    permissions = db.relationship('Permission')
+    permissions_id = db.Column(db.Integer, db.ForeignKey('permission.id'))
+    # permissions = db.relationship('Permission')
     entries = db.relationship('Entry')
 
 
 
 class Permission(db.Model):
-    # id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     users = db.relationship('User')
-    # permission_name = db.Column(db.String(150), unique=True)
+    permission_name = db.Column(db.String(150), unique=True)
     restricted_to_season = db.Column(db.String(150))
     can_view_self_entries = db.Column(db.Boolean, default = False)
     can_edit_self_entries = db.Column(db.Boolean)

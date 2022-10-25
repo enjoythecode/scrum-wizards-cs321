@@ -17,6 +17,7 @@ def add_athlete_form_submission():
         lastname = request.form.get('lastname')
         id = request.form.get('id')
         createuser = request.form.get('createuser')
+        role = 'coach'
         # below could be wrong since it's a dropdown menu
         # also need to make sure team2 and team3 can be emtpy
         team1 = request.form.get('team1')
@@ -38,7 +39,8 @@ def add_athlete_form_submission():
             flash('Username already exists.', category='error')
         else:
             # add user to database
-            new_user = User(id = id, email = email, first_name = firstname, last_name = lastname, password=generate_password_hash(password, method='sha256'), team_id = team_ids, permissions_id = permissions, entries = entries)
+            new_user = User(id = id, email = email, first_name = firstname, last_name = lastname, password=generate_password_hash(password, method='sha256'))
+            # new_user = User(id = id, email = email, first_name = firstname, last_name = lastname, password=generate_password_hash(password, method='sha256'), team_id = team_ids, permissions_id = permissions, entries = entries)
             db.session.add(new_user)
             db.session.commit()
             login_user(user, remember=True)
