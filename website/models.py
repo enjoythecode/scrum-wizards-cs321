@@ -43,6 +43,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150))
     team_id = db.Column(db.Integer, db.ForeignKey('team.id'))
     permissions_id = db.Column(db.Integer, db.ForeignKey('permission.id'))
+    role = db.Column(db.String(150))
     # permissions = db.relationship('Permission')
     entries = db.relationship('Entry')
 
