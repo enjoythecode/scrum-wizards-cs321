@@ -124,7 +124,7 @@
                     <script>   
                     if ($("#transaction-history1").length) {
                       var areaData = {
-                        labels: ["Sleeo"],
+                        labels: ["Sleep"],
                         datasets: [{
                             data: [{{ sleep_circle}},(100-{{sleep_circle}})],
                             backgroundColor: [
@@ -324,7 +324,7 @@
                           ctx.textBaseline = "middle";
                           ctx.fillStyle = "#ffffff";
                       
-                          var text = "55", 
+                          var text = {{calorie_circle}}, 
                               textX = Math.round((width - ctx.measureText(text).width) / 2),
                               textY = height / 2.4;
                       

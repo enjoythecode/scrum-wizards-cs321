@@ -77,10 +77,14 @@ def send_team():
     Calorie = [2,2,2,2]
     Recovery = [6,6,6,6]
 
+    sleep_circle = 80
+    readyness_circle = 90
+    calorie_circle = 55
+
     return render_template("team_dashboard.html", 
     team_list = Teams, 
     num_teams = len(Teams),
     sleep_data = Sleep, 
     quality_data = Quality, 
     calorie_intake = Calorie, 
-    recovery_rate = Recovery)
+    recovery_rate = Recovery, sleep_circle = sleep_circle, readyness_circle=readyness_circle, calorie_circle=calorie_circle)

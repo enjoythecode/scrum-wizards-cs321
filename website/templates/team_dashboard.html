@@ -8,6 +8,7 @@
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <script src="assets/vendors/chart.js/Chart.min.js"></script>
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">
@@ -19,6 +20,7 @@
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/favicon.png" />
   </head>
@@ -130,7 +132,80 @@
               <!-- Mini card 1 -->
               <div class = "row-md-12 grid-margin ">
                 <div class = "card-title">Sleep</div>
-                <img class="rounded-circle" src="assets/images/rings/sleep.png" alt="" width="250" height="">
+                <canvas id="transaction-history4" class="transaction-chart"></canvas>
+                    <script>   
+                    if ($("#transaction-history4").length) {
+                      var areaData = {
+                        labels: ["Sleep"],
+                        datasets: [{
+                            data: [{{ sleep_circle}},(100-{{sleep_circle}})],
+                            backgroundColor: [
+                              "#00d25b", "#111111"
+                            ]
+                          }
+                        ]
+                      };
+                      var areaOptions = {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        segmentShowStroke: false,
+                        cutoutPercentage: 70,
+                        elements: {
+                          arc: {
+                              borderWidth: 0
+                          }
+                        },      
+                        legend: {
+                          display: false
+                        },
+                        tooltips: {
+                          enabled: true
+                        }
+                      }
+                      var transactionhistoryChartPlugins = {
+                        beforeDraw: function(chart) {
+                          var width = chart.chart.width,
+                              height = chart.chart.height,
+                              ctx = chart.chart.ctx;
+                      
+                          ctx.restore();
+                          var fontSize = 1;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#ffffff";
+                      
+                          var text = {{sleep_circle}}, 
+                              textX = Math.round((width - ctx.measureText(text).width) / 2),
+                              textY = height / 2.4;
+                      
+                          ctx.fillText(text, textX, textY);
+                    
+                          ctx.restore();
+                          var fontSize = 0.75;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#6c7293";
+                    
+                          var texts = "", 
+                              textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
+                              textsY = height / 1.7;
+                      
+                          ctx.fillText(texts, textsX, textsY);
+                          ctx.save();
+                        }
+                      }
+                      var transactionhistoryChartCanvas = $("#transaction-history4").get(0).getContext("2d");
+                      var transactionhistoryChart = new Chart(transactionhistoryChartCanvas, {
+                        type: 'doughnut',
+                        data: areaData,
+                        options: areaOptions,
+                        plugins: transactionhistoryChartPlugins
+                      });}
+                    
+                    </script>
+                
               </div>
 
 
@@ -139,14 +214,161 @@
                
                   <!-- Mini card 2 -->
                   <div class = "row-md-12 grid-margin ">
-                    <div class = "card-title">Recovery</div>
-                  <img class="rounded-circle" src="assets/images/rings/recovery.png" alt="" width="250" height="">
+                    <div class = "card-title">Readyness</div>
+                    <canvas id="transaction-history2" class="transaction-chart"></canvas>
+                    <script>   
+                    if ($("#transaction-history2").length) {
+                      var areaData = {
+                        labels: ["Readyness"],
+                        datasets: [{
+                            data: [{{readyness_circle}},(100-{{readyness_circle}})],
+                            backgroundColor: [
+                              "#00d25b", "#111111"
+                            ]
+                          }
+                        ]
+                      };
+                      var areaOptions = {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        segmentShowStroke: false,
+                        cutoutPercentage: 70,
+                        elements: {
+                          arc: {
+                              borderWidth: 0
+                          }
+                        },      
+                        legend: {
+                          display: false
+                        },
+                        tooltips: {
+                          enabled: true
+                        }
+                      }
+                      var transactionhistoryChartPlugins = {
+                        beforeDraw: function(chart) {
+                          var width = chart.chart.width,
+                              height = chart.chart.height,
+                              ctx = chart.chart.ctx;
+                      
+                          ctx.restore();
+                          var fontSize = 1;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#ffffff";
+                      
+                          var text = {{readyness_circle}}, 
+                              textX = Math.round((width - ctx.measureText(text).width) / 2),
+                              textY = height / 2.4;
+                      
+                          ctx.fillText(text, textX, textY);
+                    
+                          ctx.restore();
+                          var fontSize = 0.75;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#6c7293";
+                    
+                          var texts = "", 
+                              textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
+                              textsY = height / 1.7;
+                      
+                          ctx.fillText(texts, textsX, textsY);
+                          ctx.save();
+                        }
+                      }
+                      var transactionhistoryChartCanvas = $("#transaction-history2").get(0).getContext("2d");
+                      var transactionhistoryChart = new Chart(transactionhistoryChartCanvas, {
+                        type: 'doughnut',
+                        data: areaData,
+                        options: areaOptions,
+                        plugins: transactionhistoryChartPlugins
+                      });}
+                    
+                    </script>
+                    
+                 
                   </div>
                
              
                   <div class = "row-md-12 grid-margin ">
                     <div class = "card-title">Calorie</div>
-                  <img class="rounded-circle" src="assets/images/rings/calorie.png" alt="" width="250" height="">
+                    <canvas id="transaction-history6" class="transaction-chart"></canvas>
+                    <script>   
+                    if ($("#transaction-history6").length) {
+                      var areaData = {
+                        labels: ["Calorie"],
+                        datasets: [{
+                            data: [{{calorie_circle}}, (100-{{calorie_circle}})],
+                            backgroundColor: [
+                              "#00d25b", "#111111",
+                            ]
+                          }
+                        ]
+                      };
+                      var areaOptions = {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        segmentShowStroke: false,
+                        cutoutPercentage: 70,
+                        elements: {
+                          arc: {
+                              borderWidth: 0
+                          }
+                        },      
+                        legend: {
+                          display: false
+                        },
+                        tooltips: {
+                          enabled: true
+                        }
+                      }
+                      var transactionhistoryChartPlugins = {
+                        beforeDraw: function(chart) {
+                          var width = chart.chart.width,
+                              height = chart.chart.height,
+                              ctx = chart.chart.ctx;
+                      
+                          ctx.restore();
+                          var fontSize = 1;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#ffffff";
+                      
+                          var text = {{calorie_circle}}, 
+                              textX = Math.round((width - ctx.measureText(text).width) / 2),
+                              textY = height / 2.4;
+                      
+                          ctx.fillText(text, textX, textY);
+                    
+                          ctx.restore();
+                          var fontSize = 0.75;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#6c7293";
+                    
+                          var texts = "", 
+                              textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
+                              textsY = height / 1.7;
+                      
+                          ctx.fillText(texts, textsX, textsY);
+                          ctx.save();
+                        }
+                      }
+                      var transactionhistoryChartCanvas = $("#transaction-history6").get(0).getContext("2d");
+                      var transactionhistoryChart = new Chart(transactionhistoryChartCanvas, {
+                        type: 'doughnut',
+                        data: areaData,
+                        options: areaOptions,
+                        plugins: transactionhistoryChartPlugins
+                      });}
+                    
+                    </script>
+                  
 
                 </div>
           
