@@ -24,11 +24,15 @@ def send_admin():
 def send_individual():
     sleep = [4,-4,4,-4,4,-4,4,-4]
     readyness = [8, -8, 8, -8, 8, -8, 8, -8, 8, -8]
-    calorie = [2,2,2,2,2,2,2,2,2,2,2]
+    calorie = [2,2,2,2,2,2,2,2,2,2,200]
 
     sportsNotes = "Can only take part in 50% of practice and cannot exceed a heart-rate of 120bpm."
     performanceNotes= "Consistent"
     nutritionNotes = "Extra emphasis on vitamin E"
+
+    sleep_circle = 80
+    readyness_circle = 90
+    calorie_circle = 55
 
     return render_template("individual_dashboard.html", 
     sleep_data = sleep,
@@ -36,7 +40,7 @@ def send_individual():
     calorie_data = calorie,
     sports = sportsNotes,
     performance = performanceNotes,
-    nutrition = nutritionNotes )
+    nutrition = nutritionNotes, sleep_circle = sleep_circle, readyness_circle = readyness_circle, calorie_circle = calorie_circle )
 
 
 

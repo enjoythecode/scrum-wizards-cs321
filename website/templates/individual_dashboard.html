@@ -120,15 +120,15 @@
                   <!-- Mini card 1 -->
                   <div class = "col-md-4 grid-margin" id="mini-card" > 
                     <div class = "card-title">Sleep</div>
-                    <canvas id="transaction-history" class="transaction-chart"></canvas>
+                    <canvas id="transaction-history1" class="transaction-chart"></canvas>
                     <script>   
-                    if ($("#transaction-history").length) {
+                    if ($("#transaction-history1").length) {
                       var areaData = {
-                        labels: ["Paypal", "Stripe","Cash"],
+                        labels: ["Sleeo"],
                         datasets: [{
-                            data: [55, 300, 20],
+                            data: [{{ sleep_circle}},(100-{{sleep_circle}})],
                             backgroundColor: [
-                              "#111111","#00d25b","#ffab00"
+                              "#00d25b", "#111111"
                             ]
                           }
                         ]
@@ -163,7 +163,7 @@
                           ctx.textBaseline = "middle";
                           ctx.fillStyle = "#ffffff";
                       
-                          var text = "$1200", 
+                          var text = {{sleep_circle}}, 
                               textX = Math.round((width - ctx.measureText(text).width) / 2),
                               textY = height / 2.4;
                       
@@ -176,7 +176,7 @@
                           ctx.textBaseline = "middle";
                           ctx.fillStyle = "#6c7293";
                     
-                          var texts = "Total", 
+                          var texts = "", 
                               textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
                               textsY = height / 1.7;
                       
@@ -184,7 +184,7 @@
                           ctx.save();
                         }
                       }
-                      var transactionhistoryChartCanvas = $("#transaction-history").get(0).getContext("2d");
+                      var transactionhistoryChartCanvas = $("#transaction-history1").get(0).getContext("2d");
                       var transactionhistoryChart = new Chart(transactionhistoryChartCanvas, {
                         type: 'doughnut',
                         data: areaData,
@@ -193,20 +193,24 @@
                       });}
                     
                     </script>
+                    
+                    
+  
+                   
                   </div>
 
                   <!-- Mini card 2 -->
                   <div class = "col-md-4 grid-margin" id="mini-card" >
-                    <div class = "card-title">Recovery</div>
+                    <div class = "card-title">Readyness</div>
                     <canvas id="transaction-history2" class="transaction-chart"></canvas>
                     <script>   
                     if ($("#transaction-history2").length) {
                       var areaData = {
-                        labels: ["Paypal", "Stripe","Cash"],
+                        labels: ["Readyness"],
                         datasets: [{
-                            data: [55, 25, 20],
+                            data: [{{readyness_circle}},(100-{{readyness_circle}})],
                             backgroundColor: [
-                              "#111111","#00d25b","#ffab00"
+                              "#00d25b", "#111111"
                             ]
                           }
                         ]
@@ -241,7 +245,7 @@
                           ctx.textBaseline = "middle";
                           ctx.fillStyle = "#ffffff";
                       
-                          var text = "$1200", 
+                          var text = {{readyness_circle}}, 
                               textX = Math.round((width - ctx.measureText(text).width) / 2),
                               textY = height / 2.4;
                       
@@ -254,7 +258,7 @@
                           ctx.textBaseline = "middle";
                           ctx.fillStyle = "#6c7293";
                     
-                          var texts = "Total", 
+                          var texts = "", 
                               textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
                               textsY = height / 1.7;
                       
@@ -281,11 +285,11 @@
                     <script>   
                     if ($("#transaction-history3").length) {
                       var areaData = {
-                        labels: ["Paypal", "Stripe","Cash"],
+                        labels: ["Calorie"],
                         datasets: [{
-                            data: [55, 25, 300],
+                            data: [{{calorie_circle}}, (100-{{calorie_circle}})],
                             backgroundColor: [
-                              "#111111","#00d25b","#ffab00"
+                              "#00d25b", "#111111",
                             ]
                           }
                         ]
@@ -320,7 +324,7 @@
                           ctx.textBaseline = "middle";
                           ctx.fillStyle = "#ffffff";
                       
-                          var text = "$1200", 
+                          var text = "55", 
                               textX = Math.round((width - ctx.measureText(text).width) / 2),
                               textY = height / 2.4;
                       
@@ -333,7 +337,7 @@
                           ctx.textBaseline = "middle";
                           ctx.fillStyle = "#6c7293";
                     
-                          var texts = "Total", 
+                          var texts = "", 
                               textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
                               textsY = height / 1.7;
                       
