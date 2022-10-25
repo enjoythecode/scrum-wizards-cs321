@@ -35,15 +35,42 @@ teamlist = ["soccer", "tennis", "football", "track"]
 # - content
 # on 2022-10-18, Sinan jumped 75 (/100)
 
-class Note(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    data = db.Column(db.String(10000))
-    date = db.Column(db.DateTime(timezone=True), default=func.now())
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True)
     first_name = db.Column(db.String(150))
+    last_name = db.Column(db.String(150))
     password = db.Column(db.String(150))
-    notes = db.relationship('Note')
+    team_id = db.Column(db.Integer, db.ForeignKey('team.id'))
+    permission = db.Column(db.Integer, db.ForeignKey('permission.id'))
+    # permission = db.Column(db.Integer, deb.ForeighK) #super-admin = 0, coach = 1, coach = 1, athlete = 2
+    # role = db.Column(db.String(150))
+    # permission = db.relationship('Permission')
+    entries = db.relationship('Entry')
+
+
+
+class Permission(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    users = db.relationship('User')
+    permission_name = db.Column(db.String(150), unique=True)
+    restricted_to_season = db.Column(db.String(150))
+    can_view_self_entries = db.Column(db.Boolean, default = False)
+    can_edit_self_entries = db.Column(db.Boolean)
+    can_view_own_teams_entries = db.Column(db.Boolean)
+    can_edit_own_teams_entries = db.Column(db.Boolean)
+    can_view_all_entries = db.Column(db.Boolean)
+    can_edit_all_entries = db.Column(db.Boolean)
+
+class Team(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    team_name = db.Column(db.String(150), unique=True)
+    seasons = db.Column(db.String(150))
+    users = db.relationship('User')
+
+class Entry(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    time = db.Column(db.DateTime(timezone=True), default=func.now())
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    kind = db.Column(db.String(150))
+    content = db.Column(db.String(150))
