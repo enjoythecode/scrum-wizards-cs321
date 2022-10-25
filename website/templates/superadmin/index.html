@@ -763,26 +763,36 @@
                       <button class="add btn btn-primary todo-list-add-btn">Go</button>
                     </div>
                       
+                      
+<!--
+                      {% for user in athletelist %}
+                        <li class="list-group-item">{{ user.first_name + user.last_name }}
+                        <a href="/remove/{{ note.id }}">Finished</a>
+                        </li>
+                      {% endfor %}
+-->
+                      
+                      <div class="preview-list">
+                          
+                          
+                          <div class="preview-item border-bottom">
+                          
+                          </div>
+                      
+                      </div>
+                      
                     <div class="preview-list">
                       <div class="preview-item border-bottom">
                         <div class="preview-thumbnail">
                           <img src="/assets/images/faces/face6.jpg" alt="image" class="rounded-circle" />
                         </div>
-                          
-                          
-                          
+                             
                         <div class="preview-item-content d-flex flex-grow">
                           <div class="flex-grow">
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
 
                                 <a class="nav-link" href="athletepermissions.html"> Athlete #1 </a>
                                 
-                                
-<!--
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
--->
-              </ul>
                               
                             </div>
                             
@@ -850,6 +860,14 @@
                     </div>
                       
                     <div class="preview-list">
+                        
+                        <!--
+                      {% for user in coachlist %}
+                        <li class="list-group-item">{{ user.first_name + user.last_name }}
+                        <a href="/remove/{{ note.id }}">Finished</a>
+                        </li>
+                      {% endfor %}
+-->
                       <div class="preview-item border-bottom">
                         <div class="preview-thumbnail">
                           <img src="/assets/images/faces/face6.jpg" alt="image" class="rounded-circle" />
