@@ -60,11 +60,15 @@ def addDummyUser():
     team1 = Team.query.filter_by(team_name = "Basketball").first()
     team2 = Team.query.filter_by(team_name = "Football").first().id
 
-    user1 = User(first_name = "Chandra", last_name = "Gowda", email = "chandra@gmail.com", password = generate_password_hash("1234", method='sha256'), team_id = team1.id)
-    user2 = User(first_name = "Sinan", last_name = "Yumurtaci", email = "sinan@gmail.com", password = generate_password_hash("1234", method='sha256'), team_id = team2)
+    user1 = User(first_name = "Chandra", last_name = "Gowda", email = "chandra@gmail.com", password = generate_password_hash("1234", method='sha256'), team_id = team1.id, permissions_id=0)
+    user2 = User(first_name = "Sinan", last_name = "Yumurtaci", email = "sinan@gmail.com", password = generate_password_hash("1234", method='sha256'), team_id = team2, permissions_id=1)
+    user3 = User(first_name = "Kelly", last_name = "Putnam", email = "kelly@gmail.com", password = generate_password_hash("1234", method='sha256'), team_id = team2, permissions_id=2)
+    user4 = User(first_name = "Jasper", last_name = "Loverude", email = "jasper@gmail.com", password = generate_password_hash("1234", method='sha256'), team_id = team2, permissions_id=3)
 
     db.session.add(user1)
     db.session.add(user2)
+    db.session.add(user3)
+    db.session.add(user4)
     db.session.commit()
     print("DB User added")
 
@@ -72,10 +76,10 @@ def addDummyUser():
 
 def addPermissionList():
     from .models import Permission
-    superAdminPermission = Permission(permission_name = "SuperAdmin", restricted_to_season = "", can_view_self_entries = True, can_edit_self_entries = True, can_view_own_teams_entries = True, can_edit_own_teams_entries = True, can_view_all_entries = True, can_edit_all_entries = True)
-    adminPermission = Permission(permission_name = "Admin", restricted_to_season = "", can_view_self_entries = True, can_edit_self_entries = True, can_view_own_teams_entries = True, can_edit_own_teams_entries = True, can_view_all_entries = True, can_edit_all_entries = True)
-    coachPermission = Permission(permission_name = "Coach", restricted_to_season = "2020-2021", can_view_self_entries = True, can_edit_self_entries = True, can_view_own_teams_entries = True, can_edit_own_teams_entries = True, can_view_all_entries = False, can_edit_all_entries = False)
-    playerPermission = Permission(permission_name = "Player", restricted_to_season = "", can_view_self_entries = True, can_edit_self_entries = False, can_view_own_teams_entries = False, can_edit_own_teams_entries = False, can_view_all_entries = False, can_edit_all_entries = False)
+    superAdminPermission = Permission(id = 0, permission_name = "SuperAdmin", restricted_to_season = "", can_view_self_entries = True, can_edit_self_entries = True, can_view_own_teams_entries = True, can_edit_own_teams_entries = True, can_view_all_entries = True, can_edit_all_entries = True)
+    adminPermission = Permission(id = 1, permission_name = "Admin", restricted_to_season = "", can_view_self_entries = True, can_edit_self_entries = True, can_view_own_teams_entries = True, can_edit_own_teams_entries = True, can_view_all_entries = True, can_edit_all_entries = True)
+    coachPermission = Permission(id = 2, permission_name = "Coach", restricted_to_season = "2020-2021", can_view_self_entries = True, can_edit_self_entries = True, can_view_own_teams_entries = True, can_edit_own_teams_entries = True, can_view_all_entries = False, can_edit_all_entries = False)
+    playerPermission = Permission(id = 3, permission_name = "Player", restricted_to_season = "", can_view_self_entries = True, can_edit_self_entries = False, can_view_own_teams_entries = False, can_edit_own_teams_entries = False, can_view_all_entries = False, can_edit_all_entries = False)
     db.session.add(superAdminPermission)
     db.session.add(adminPermission)
     db.session.add(coachPermission)
