@@ -18,7 +18,32 @@ def send_asset(path):
 
 @views.route('/superadmin/index.html')
 def send_admin():
-    return render_template("superadmin/index.html")
+
+
+    names1 = ["Robert Reyes", "Casey Brown", "Jenna Carter", "Jennifer Smith"]
+    images1 = ["/assets/images/faces/face6.jpg",
+    "/assets/images/faces/face8.jpg",
+    "/assets/images/faces/face9.jpg",
+    "/assets/images/faces/face11.jpg"]
+
+    names2 = ["Todd Mckee", "Emily Stephenson", "Keith Freeman", "Jeffrey Abbott"]
+    images2 = ["/assets/images/faces/face2.jpg",
+    "/assets/images/faces/face3.jpg",
+    "/assets/images/faces/face7.jpg",
+    "/assets/images/faces/face5.jpg"]
+
+    out_season = ["Lacrosse", "Nordic Ski", "Basketball", "Swimming", "Indoor Track", "Hockey"]
+
+    return render_template("superadmin/index.html", 
+    athlete_names = names1, 
+    athlete_images = images1,
+    coach_names = names2,
+    coach_images = images2,
+    teams_out = out_season,
+    num_athletes= len(names1),
+    num_coaches = len(names2),
+    num_out_teams = len(out_season)
+    )
 
 @views.route('/individual_dashboard')
 def send_individual():
@@ -52,4 +77,10 @@ def send_team():
     Calorie = [2,2,2,2]
     Recovery = [6,6,6,6]
 
-    return render_template("team_dashboard.html", team_list = Teams, sleep_data = Sleep, quality_data = Quality, calorie_intake = Calorie, recovery_rate = Recovery)
+    return render_template("team_dashboard.html", 
+    team_list = Teams, 
+    num_teams = len(Teams),
+    sleep_data = Sleep, 
+    quality_data = Quality, 
+    calorie_intake = Calorie, 
+    recovery_rate = Recovery)
