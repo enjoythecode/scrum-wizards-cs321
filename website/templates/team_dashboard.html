@@ -4,10 +4,11 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
+    <title>Team Averages</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <script src="assets/vendors/chart.js/Chart.min.js"></script>
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">
@@ -19,6 +20,7 @@
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/favicon.png" />
   </head>
@@ -57,73 +59,23 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-
-                              <td>
- 
-                                <span class="pl-2">Baseball (W)</span>
-                              </td>
-                              <td> 9.0 Hr </td>
-                              <td> 90% </td>
-                              <td> 88% </td>
-                              <td> 2800 cal </td>
-                          
-                        
-                            </tr>
-                            <tr>
-                              
-      
-                
-                              <td>
-
-                                <span class="pl-2">Ice Hockey (M)</span>
-                              </td>
-                              <td> 5.5 Hr </td>
-                              <td> 40% </td>
-                              <td> 35% </td>
-                              <td> 1800 cal </td>
-                   
-                              
-                            </tr>
-                            <tr>
-
-                              <td>
- 
-                                <span class="pl-2">Track and Field (W)</span>
-                              </td>
-                              <td> 8.5 Hr </td>
-                              <td> 95% </td>
-                              <td> 85% </td>
-                              <td> 2300 cal </td>
-
-                              
-                            </tr>
-                            <tr>
-
-                              <td>
-      
-                                <span class="pl-2">Basketball (M)</span>
-                              </td>
-                              <td> 7.5 Hr </td>
-                              <td> 70% </td>
-                              <td> 80%</td>
-                              <td> 2700 cal </td>
-               
+                            {% for n in range(4) %}
+                              <tr>
+                                <td>{{ team_list[n] }}</td>
+                                <td>{{ sleep_data[n] }}</td>
+                                <td>{{ quality_data[n] }}</td>
+                                <td>{{ recovery_rate[n] }}</td>
+                                <td>{{ calorie_intake[n] }}</td>
+                              </tr>
+        
+                           {% endfor %}
                            
-                            </tr>
-                            <tr>
-     
-                              <td>
-                        
-                                <span class="pl-2">Tennis (W)</span>
-                              </td>
-                              <td> 7.0 Hr </td>
-                              <td> 65% </td>
-                              <td> 60% </td>
-                              <td> 2500 cal </td>
+                          
+                          
+                      
        
                              
-                            </tr>
+                       
                           </tbody>
                         </table>
                       </div>
@@ -149,56 +101,13 @@
        
                             </thead>
                             <tbody>
+                              {% for i in range (num_teams)%}
                               <tr>
-  
                                 <td>
-   
-                                  <span class="pl-2">Baseball (W)</span>
+                                  <span class="pl-2">{{ team_list[i] }}</span>
                                 </td>
-                        
-                          
                               </tr>
-                              <tr>
-                                
-        
-                  
-                                <td>
-  
-                                  <span class="pl-2">Ice Hockey (M)</span>
-                                </td>
-                        
-                     
-                                
-                              </tr>
-                              <tr>
-  
-                                <td>
-   
-                                  <span class="pl-2">Track and Field (W)</span>
-                                </td>
-                         
-  
-                                
-                              </tr>
-                              <tr>
-  
-                                <td>
-        
-                                  <span class="pl-2">Basketball (M)</span>
-                                </td>
-                     
-                             
-                              </tr>
-                              <tr>
-       
-                                <td>
-                          
-                                  <span class="pl-2">Tennis (W)</span>
-                                </td>
-                      
-         
-                               
-                              </tr>
+                              {% endfor %}
                             </tbody>
                           </table>
                         </div>
@@ -223,7 +132,80 @@
               <!-- Mini card 1 -->
               <div class = "row-md-12 grid-margin ">
                 <div class = "card-title">Sleep</div>
-                <img class="rounded-circle" src="assets/images/rings/sleep.png" alt="" width="250" height="">
+                <canvas id="transaction-history4" class="transaction-chart"></canvas>
+                    <script>   
+                    if ($("#transaction-history4").length) {
+                      var areaData = {
+                        labels: ["Sleep"],
+                        datasets: [{
+                            data: [{{ sleep_circle}},(100-{{sleep_circle}})],
+                            backgroundColor: [
+                            {% if sleep_circle < 70 %} "#FD9901" {% else %} "#00d25b" {% endif %}, "#111111"
+                            ]
+                          }
+                        ]
+                      };
+                      var areaOptions = {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        segmentShowStroke: false,
+                        cutoutPercentage: 70,
+                        elements: {
+                          arc: {
+                              borderWidth: 0
+                          }
+                        },      
+                        legend: {
+                          display: false
+                        },
+                        tooltips: {
+                          enabled: true
+                        }
+                      }
+                      var transactionhistoryChartPlugins = {
+                        beforeDraw: function(chart) {
+                          var width = chart.chart.width,
+                              height = chart.chart.height,
+                              ctx = chart.chart.ctx;
+                      
+                          ctx.restore();
+                          var fontSize = 1;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#ffffff";
+                      
+                          var text = {{sleep_circle}}, 
+                              textX = Math.round((width - ctx.measureText(text).width) / 2),
+                              textY = height / 2.4;
+                      
+                          ctx.fillText(text, textX, textY);
+                    
+                          ctx.restore();
+                          var fontSize = 0.75;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#6c7293";
+                    
+                          var texts = "", 
+                              textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
+                              textsY = height / 1.7;
+                      
+                          ctx.fillText(texts, textsX, textsY);
+                          ctx.save();
+                        }
+                      }
+                      var transactionhistoryChartCanvas = $("#transaction-history4").get(0).getContext("2d");
+                      var transactionhistoryChart = new Chart(transactionhistoryChartCanvas, {
+                        type: 'doughnut',
+                        data: areaData,
+                        options: areaOptions,
+                        plugins: transactionhistoryChartPlugins
+                      });}
+                    
+                    </script>
+                
               </div>
 
 
@@ -232,14 +214,161 @@
                
                   <!-- Mini card 2 -->
                   <div class = "row-md-12 grid-margin ">
-                    <div class = "card-title">Recovery</div>
-                  <img class="rounded-circle" src="assets/images/rings/recovery.png" alt="" width="250" height="">
+                    <div class = "card-title">Readyness</div>
+                    <canvas id="transaction-history2" class="transaction-chart"></canvas>
+                    <script>   
+                    if ($("#transaction-history2").length) {
+                      var areaData = {
+                        labels: ["Readyness"],
+                        datasets: [{
+                            data: [{{readyness_circle}},(100-{{readyness_circle}})],
+                            backgroundColor: [
+                            {% if readyness_circle < 70 %} "#FD9901" {% else %} "#00d25b" {% endif %}, "#111111"
+                            ]
+                          }
+                        ]
+                      };
+                      var areaOptions = {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        segmentShowStroke: false,
+                        cutoutPercentage: 70,
+                        elements: {
+                          arc: {
+                              borderWidth: 0
+                          }
+                        },      
+                        legend: {
+                          display: false
+                        },
+                        tooltips: {
+                          enabled: true
+                        }
+                      }
+                      var transactionhistoryChartPlugins = {
+                        beforeDraw: function(chart) {
+                          var width = chart.chart.width,
+                              height = chart.chart.height,
+                              ctx = chart.chart.ctx;
+                      
+                          ctx.restore();
+                          var fontSize = 1;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#ffffff";
+                      
+                          var text = {{readyness_circle}}, 
+                              textX = Math.round((width - ctx.measureText(text).width) / 2),
+                              textY = height / 2.4;
+                      
+                          ctx.fillText(text, textX, textY);
+                    
+                          ctx.restore();
+                          var fontSize = 0.75;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#6c7293";
+                    
+                          var texts = "", 
+                              textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
+                              textsY = height / 1.7;
+                      
+                          ctx.fillText(texts, textsX, textsY);
+                          ctx.save();
+                        }
+                      }
+                      var transactionhistoryChartCanvas = $("#transaction-history2").get(0).getContext("2d");
+                      var transactionhistoryChart = new Chart(transactionhistoryChartCanvas, {
+                        type: 'doughnut',
+                        data: areaData,
+                        options: areaOptions,
+                        plugins: transactionhistoryChartPlugins
+                      });}
+                    
+                    </script>
+                    
+                 
                   </div>
                
              
                   <div class = "row-md-12 grid-margin ">
                     <div class = "card-title">Calorie</div>
-                  <img class="rounded-circle" src="assets/images/rings/calorie.png" alt="" width="250" height="">
+                    <canvas id="transaction-history6" class="transaction-chart"></canvas>
+                    <script>   
+                    if ($("#transaction-history6").length) {
+                      var areaData = {
+                        labels: ["Calorie"],
+                        datasets: [{
+                            data: [{{calorie_circle}}, (100-{{calorie_circle}})],
+                            backgroundColor: [
+                            {% if calorie_circle < 70 %} "#FD9901" {% else %} "#00d25b" {% endif %}, "#111111",
+                            ]
+                          }
+                        ]
+                      };
+                      var areaOptions = {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        segmentShowStroke: false,
+                        cutoutPercentage: 70,
+                        elements: {
+                          arc: {
+                              borderWidth: 0
+                          }
+                        },      
+                        legend: {
+                          display: false
+                        },
+                        tooltips: {
+                          enabled: true
+                        }
+                      }
+                      var transactionhistoryChartPlugins = {
+                        beforeDraw: function(chart) {
+                          var width = chart.chart.width,
+                              height = chart.chart.height,
+                              ctx = chart.chart.ctx;
+                      
+                          ctx.restore();
+                          var fontSize = 1;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#ffffff";
+                      
+                          var text = {{calorie_circle}}, 
+                              textX = Math.round((width - ctx.measureText(text).width) / 2),
+                              textY = height / 2.4;
+                      
+                          ctx.fillText(text, textX, textY);
+                    
+                          ctx.restore();
+                          var fontSize = 0.75;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#6c7293";
+                    
+                          var texts = "", 
+                              textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
+                              textsY = height / 1.7;
+                      
+                          ctx.fillText(texts, textsX, textsY);
+                          ctx.save();
+                        }
+                      }
+                      var transactionhistoryChartCanvas = $("#transaction-history6").get(0).getContext("2d");
+                      var transactionhistoryChart = new Chart(transactionhistoryChartCanvas, {
+                        type: 'doughnut',
+                        data: areaData,
+                        options: areaOptions,
+                        plugins: transactionhistoryChartPlugins
+                      });}
+                    
+                    </script>
+                  
 
                 </div>
           

@@ -33,14 +33,26 @@
 			   {% endif %}
 			{% endwith %}
                 <h3 class="card-title text-left mb-3">Login</h3>
-                <form>
+                <form method="POST">
                   <div class="form-group">
-                    <label>Username or email *</label>
-                    <input type="text" name="username" class="form-control p_input">
+                    <label for="email">Email *</label>
+                    <input 
+                    type="email" 
+                    class="form-control p_input" 
+                    id="email" 
+                    name="email" 
+                    placeholder="Enter username or email"
+                    />
                   </div>
                   <div class="form-group">
-                    <label>Password *</label>
-                    <input type="text" name="password" class="form-control p_input">
+                    <label for="password">Password *</label>
+                    <input 
+                    type="password" 
+                    class="form-control p_input"
+                    id="password" 
+                    name="password" 
+                    placeholder="Enter password"
+                    />
                   </div>
                   <div class="form-group d-flex align-items-center justify-content-between">
                     <div class="form-check">
@@ -48,10 +60,14 @@
                         <input type="checkbox" class="form-check-input"> Remember me </label>
                     </div>
                   </div>
+
                   <div class="text-center">
-		  <input type="submit" class="btn btn-primary btn-block enter-btn" value="Login"></input>
+					        
+                    <button type="submit" class="btn btn-primary btn-block enter-btn">Login</button>
 
                   </div>
+
+                  
                 </form>
               </div>
             </div>
