@@ -140,7 +140,7 @@
                         datasets: [{
                             data: [{{ sleep_circle}},(100-{{sleep_circle}})],
                             backgroundColor: [
-                              "#00d25b", "#111111"
+                            {% if sleep_circle < 70 %} "#FD9901" {% else %} "#00d25b" {% endif %}, "#111111"
                             ]
                           }
                         ]
@@ -223,7 +223,7 @@
                         datasets: [{
                             data: [{{readyness_circle}},(100-{{readyness_circle}})],
                             backgroundColor: [
-                              "#00d25b", "#111111"
+                            {% if readyness_circle < 70 %} "#FD9901" {% else %} "#00d25b" {% endif %}, "#111111"
                             ]
                           }
                         ]
@@ -303,7 +303,7 @@
                         datasets: [{
                             data: [{{calorie_circle}}, (100-{{calorie_circle}})],
                             backgroundColor: [
-                              "#00d25b", "#111111",
+                            {% if calorie_circle < 70 %} "#FD9901" {% else %} "#00d25b" {% endif %}, "#111111",
                             ]
                           }
                         ]
