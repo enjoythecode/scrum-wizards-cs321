@@ -26,10 +26,10 @@ def login():
                 login_user(user, remember=True)
                 return redirect(url_for('views.home'))
             else:
-                return "password is incorrect"
+                flash('Password is incorrect') 
         else:
-            return "User does not exist"
-    flash("Please login")
+            flash( "User does not exist")
+
 
     return render_template("login.html")
 
