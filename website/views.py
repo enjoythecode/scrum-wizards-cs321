@@ -22,10 +22,16 @@ def mock_database(user_id):
 def hello(): 
     return redirect(url_for('auth.login'))
 
+# @views.route('/home', methods=['GET'])
+# @login_required
+# def home():     
+#     return render_template("home.html", user=current_user)
+
+
 @views.route('/home', methods=['GET'])
 @login_required
 def home():     
-    return render_template("home.html", user=current_user)
+    return render_template("/superadmin/home.html", user=current_user)
 
 @views.route('/login', methods=['GET'])
 def login():
@@ -36,7 +42,7 @@ def login():
 def send_asset(path):
     return send_from_directory('assets', path)
     
-@views.route('/superadmin/index.html')
+@views.route('/superadmin/home.html')
 def send_admin():
     users1 = [mock_database(1), mock_database(2), mock_database(3), mock_database(4)]
     images1 = ["/assets/images/faces/face6.jpg",
@@ -52,7 +58,7 @@ def send_admin():
 
     out_season = ["Lacrosse", "Nordic Ski", "Basketball", "Swimming", "Indoor Track", "Hockey"]
 
-    return render_template("superadmin/index.html", 
+    return render_template("superadmin/home.html", 
     athletes = users1, 
     athlete_images = images1,
     coach_names = names2,
@@ -115,9 +121,9 @@ def goto_athlete_permissions(userid):
     user = mock_database(userid)
     return render_template('superadmin/athletepermissions.html', user = user)
 
-@views.route("/superadmin/index.html", methods = ["GET"])
+@views.route("/superadmin/home.html", methods = ["GET"])
 def backto_home():
-    return render_template('superadmin/index.html')
+    return render_template('superadmin/home.html')
 
 @views.route("/superadmin/coachpermissions.html", methods = ["GET"])
 def goto_coach_permissions():

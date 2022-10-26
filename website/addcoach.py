@@ -42,6 +42,6 @@ def add_coach_form_submission():
             flash('Account created!', category='success')
         
 
-            return redirect('/superadmin/index.html')
+            return redirect('/superadmin/home.html')
 
     

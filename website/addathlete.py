@@ -52,9 +52,9 @@ def add_athlete_form_submission():
             # for user in User.query.all():
             #     if user.role == 'athlete':
             #         userlist.append(user)
-            # return render_template("/superadmin/index.html", athletelist = userlist)
+            # return render_template("/superadmin/home.html", athletelist = userlist)
 
 
-            return redirect('/superadmin/index.html')
+            return redirect('/superadmin/home.html')
 
-    # return redirect("/superadmin/index.html")
+    # return redirect("/superadmin/home.html")

@@ -34,7 +34,7 @@ def athlete_permissions_form_submission():
         # if deleteaccount:
         #     remove(id)
         
-        return redirect("/superadmin/index.html")
+        return redirect("/superadmin/home.html")
 
 
 
@@ -52,5 +52,5 @@ def remove(id):
             db.session.commit()
             flash('User deleted!', category='success')
 
-    return redirect("/superadmin/index.html")
+    return redirect("/superadmin/home.html")
 

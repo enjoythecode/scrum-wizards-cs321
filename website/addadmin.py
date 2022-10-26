@@ -33,6 +33,6 @@ def add_admin_form_submission():
             login_user(user, remember=True)
             flash('Account created!', category='success')
 
-            return redirect('/superadmin/index.html')
+            return redirect('/superadmin/home.html')
 
     # return render_template("signup.html", user=current_user)
