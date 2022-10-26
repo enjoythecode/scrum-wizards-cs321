@@ -30,8 +30,15 @@ def hello():
 
 @views.route('/home', methods=['GET'])
 @login_required
-def home():     
-    return render_template("/superadmin/home.html", user=current_user)
+def home():    
+    if current_user.permission_id == 0: 
+        return render_template("/superadmin/home.html", user=current_user)
+    elif current_user.permission_id == 1:
+        return render_template("/superadmin/home.html")
+    elif current_user.permission_id == 2:
+        return redirect("/team_dashboard")
+    else:
+        return redirect("/individual_dashboard")
 
 @views.route('/login', methods=['GET'])
 def login():
@@ -94,6 +101,7 @@ def send_individual():
 
 @views.route('/team_dashboard')
 def send_team():
+    # print('reached the method')
     Teams = ["Soccer (M)", "Football (M)", "Track (W) ", "Basketball (W)"]
     Sleep = [4,4,4,4,]
     Quality = [60,80,20,-4,]
@@ -104,7 +112,7 @@ def send_team():
     readyness_circle = 90
     calorie_circle = 55
 
-    return render_template("team_dashboard.html", 
+    return render_template("/team_dashboard.html", 
     team_list = Teams, 
     num_teams = len(Teams),
     sleep_data = Sleep, 
