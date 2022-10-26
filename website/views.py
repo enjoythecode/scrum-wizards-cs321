@@ -55,7 +55,7 @@ def send_admin():
 def send_individual():
     sleep = [4,-4,4,-4,4,-4,4,-4]
     readyness = [8, -8, 8, -8, 8, -8, 8, -8, 8, -8]
-    calorie = [2,2,2,2,2,2,2,2,2,2,200]
+    calorie = [2,2,2,2,2,2,2,2,2,2,2]
 
     sportsNotes = "Can only take part in 50% of practice and cannot exceed a heart-rate of 120bpm."
     performanceNotes= "Consistent"
