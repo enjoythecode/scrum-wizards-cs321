@@ -103,7 +103,7 @@ def send_superadmin(path):
 def goto_athlete_permissions():
     return render_template('superadmin/athletepermissions.html')
 
-@views.route("/superadmin/permissions.html", methods = ["GET"])
+@views.route("/superadmin/index.html", methods = ["GET"])
 def backto_home():
     return render_template('superadmin/index.html')
 
