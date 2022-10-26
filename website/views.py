@@ -1,3 +1,4 @@
+from flask import flash
 from flask import Blueprint
 from flask import render_template
 from flask import send_from_directory, redirect, url_for
