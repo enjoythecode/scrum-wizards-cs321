@@ -33,7 +33,7 @@ def hello():
 @login_required
 def home():    
     if current_user.permission_id == 0: 
-        return render_template("/superadmin/home.html", user=current_user)
+        return redirect("/superadmin/home.html")
     elif current_user.permission_id == 1:
         return render_template("/superadmin/home.html")
     elif current_user.permission_id == 2:
