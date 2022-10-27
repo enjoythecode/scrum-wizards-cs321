@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Team Averages</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <script src="assets/vendors/chart.js/Chart.min.js"></script>
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="assets/images/favicon.png" />
+  </head>
+  <body>
+
+    <div class="container-scroller">
+      <!-- partial:partials/_sidebar.html -->
+      
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_navbar.html -->
+       
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+
+
+            <div class = "row">
+              <div class = "col-md-6 grid-margin stretch-card">
+                <div class="col-12 grid-margin">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Teams</h4>
+           
+                      <div class="table-responsive">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                 
+                              <th> Team Name </th>
+                              <th> Sleep </th>
+                              <th> Quality </th>
+                              <th> Recovery </th>
+                              <th> Calorie Intake </th>
+                
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for n in range(4) %}
+                              <tr>
+                                <td>{{ team_list[n] }}</td>
+                                <td>{{ sleep_data[n] }}</td>
+                                <td>{{ quality_data[n] }}</td>
+                                <td>{{ recovery_rate[n] }}</td>
+                                <td>{{ calorie_intake[n] }}</td>
+                              </tr>
+        
+                           {% endfor %}
+                           
+                          
+                          
+                      
+       
+                             
+                       
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Search Board -->
+              <div class = "col-md-6 grid-margin stretch-card align-items-center">
+                <div class = "col-md-6 grid-margin stretch-card">
+                  <div class="col-12 grid-margin">
+                    <div class="card">
+                      <div class="card-body">
+                        <h4 class="card-title">Team Search </h4>
+                        <div class="add-items d-flex">
+                          <input type="text" class="form-control todo-list-input" placeholder="Search...">
+                          <button class="add btn btn-primary todo-list-add-btn">🔍</button>
+                        </div>
+                        <div class="table-responsive">
+                          <table class="table">
+                            <thead>
+       
+                            </thead>
+                            <tbody>
+                              {% for i in range (num_teams)%}
+                              <tr>
+                                <td>
+                                  <span class="pl-2">{{ team_list[i] }}</span>
+                                </td>
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>  
+              </div>
+              <!-- SEARCH BOARD END-->
+              <!-- Card 1 -->
+
+                
+
+             
+          </div>
+
+          <!--GRAPHS-->
+          <div class = "col-md-3 grid-margin stretch-card align-items-center">
+          <!-- Card 1 -->
+          <div class = "col-md-3 grid-margin stretch-card align-items-center">
+
+              <!-- Mini card 1 -->
+              <div class = "row-md-12 grid-margin ">
+                <div class = "card-title">Sleep</div>
+                <canvas id="transaction-history4" class="transaction-chart"></canvas>
+                    <script>   
+                    if ($("#transaction-history4").length) {
+                      var areaData = {
+                        labels: ["Sleep"],
+                        datasets: [{
+                            data: [{{ sleep_circle}},(100-{{sleep_circle}})],
+                            backgroundColor: [
+                            {% if sleep_circle < 70 %} "#FD9901" {% else %} "#00d25b" {% endif %}, "#111111"
+                            ]
+                          }
+                        ]
+                      };
+                      var areaOptions = {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        segmentShowStroke: false,
+                        cutoutPercentage: 70,
+                        elements: {
+                          arc: {
+                              borderWidth: 0
+                          }
+                        },      
+                        legend: {
+                          display: false
+                        },
+                        tooltips: {
+                          enabled: true
+                        }
+                      }
+                      var transactionhistoryChartPlugins = {
+                        beforeDraw: function(chart) {
+                          var width = chart.chart.width,
+                              height = chart.chart.height,
+                              ctx = chart.chart.ctx;
+                      
+                          ctx.restore();
+                          var fontSize = 1;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#ffffff";
+                      
+                          var text = {{sleep_circle}}, 
+                              textX = Math.round((width - ctx.measureText(text).width) / 2),
+                              textY = height / 2.4;
+                      
+                          ctx.fillText(text, textX, textY);
+                    
+                          ctx.restore();
+                          var fontSize = 0.75;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#6c7293";
+                    
+                          var texts = "", 
+                              textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
+                              textsY = height / 1.7;
+                      
+                          ctx.fillText(texts, textsX, textsY);
+                          ctx.save();
+                        }
+                      }
+                      var transactionhistoryChartCanvas = $("#transaction-history4").get(0).getContext("2d");
+                      var transactionhistoryChart = new Chart(transactionhistoryChartCanvas, {
+                        type: 'doughnut',
+                        data: areaData,
+                        options: areaOptions,
+                        plugins: transactionhistoryChartPlugins
+                      });}
+                    
+                    </script>
+                
+              </div>
+
+
+              
+                
+               
+                  <!-- Mini card 2 -->
+                  <div class = "row-md-12 grid-margin ">
+                    <div class = "card-title">Readyness</div>
+                    <canvas id="transaction-history2" class="transaction-chart"></canvas>
+                    <script>   
+                    if ($("#transaction-history2").length) {
+                      var areaData = {
+                        labels: ["Readyness"],
+                        datasets: [{
+                            data: [{{readyness_circle}},(100-{{readyness_circle}})],
+                            backgroundColor: [
+                            {% if readyness_circle < 70 %} "#FD9901" {% else %} "#00d25b" {% endif %}, "#111111"
+                            ]
+                          }
+                        ]
+                      };
+                      var areaOptions = {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        segmentShowStroke: false,
+                        cutoutPercentage: 70,
+                        elements: {
+                          arc: {
+                              borderWidth: 0
+                          }
+                        },      
+                        legend: {
+                          display: false
+                        },
+                        tooltips: {
+                          enabled: true
+                        }
+                      }
+                      var transactionhistoryChartPlugins = {
+                        beforeDraw: function(chart) {
+                          var width = chart.chart.width,
+                              height = chart.chart.height,
+                              ctx = chart.chart.ctx;
+                      
+                          ctx.restore();
+                          var fontSize = 1;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#ffffff";
+                      
+                          var text = {{readyness_circle}}, 
+                              textX = Math.round((width - ctx.measureText(text).width) / 2),
+                              textY = height / 2.4;
+                      
+                          ctx.fillText(text, textX, textY);
+                    
+                          ctx.restore();
+                          var fontSize = 0.75;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#6c7293";
+                    
+                          var texts = "", 
+                              textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
+                              textsY = height / 1.7;
+                      
+                          ctx.fillText(texts, textsX, textsY);
+                          ctx.save();
+                        }
+                      }
+                      var transactionhistoryChartCanvas = $("#transaction-history2").get(0).getContext("2d");
+                      var transactionhistoryChart = new Chart(transactionhistoryChartCanvas, {
+                        type: 'doughnut',
+                        data: areaData,
+                        options: areaOptions,
+                        plugins: transactionhistoryChartPlugins
+                      });}
+                    
+                    </script>
+                    
+                 
+                  </div>
+               
+             
+                  <div class = "row-md-12 grid-margin ">
+                    <div class = "card-title">Calorie</div>
+                    <canvas id="transaction-history6" class="transaction-chart"></canvas>
+                    <script>   
+                    if ($("#transaction-history6").length) {
+                      var areaData = {
+                        labels: ["Calorie"],
+                        datasets: [{
+                            data: [{{calorie_circle}}, (100-{{calorie_circle}})],
+                            backgroundColor: [
+                            {% if calorie_circle < 70 %} "#FD9901" {% else %} "#00d25b" {% endif %}, "#111111",
+                            ]
+                          }
+                        ]
+                      };
+                      var areaOptions = {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        segmentShowStroke: false,
+                        cutoutPercentage: 70,
+                        elements: {
+                          arc: {
+                              borderWidth: 0
+                          }
+                        },      
+                        legend: {
+                          display: false
+                        },
+                        tooltips: {
+                          enabled: true
+                        }
+                      }
+                      var transactionhistoryChartPlugins = {
+                        beforeDraw: function(chart) {
+                          var width = chart.chart.width,
+                              height = chart.chart.height,
+                              ctx = chart.chart.ctx;
+                      
+                          ctx.restore();
+                          var fontSize = 1;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#ffffff";
+                      
+                          var text = {{calorie_circle}}, 
+                              textX = Math.round((width - ctx.measureText(text).width) / 2),
+                              textY = height / 2.4;
+                      
+                          ctx.fillText(text, textX, textY);
+                    
+                          ctx.restore();
+                          var fontSize = 0.75;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#6c7293";
+                    
+                          var texts = "", 
+                              textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
+                              textsY = height / 1.7;
+                      
+                          ctx.fillText(texts, textsX, textsY);
+                          ctx.save();
+                        }
+                      }
+                      var transactionhistoryChartCanvas = $("#transaction-history6").get(0).getContext("2d");
+                      var transactionhistoryChart = new Chart(transactionhistoryChartCanvas, {
+                        type: 'doughnut',
+                        data: areaData,
+                        options: areaOptions,
+                        plugins: transactionhistoryChartPlugins
+                      });}
+                    
+                    </script>
+                  
+
+                </div>
+          
+           
+            </div>
+
+            
+          </div>
+                     <!--PERMISSIONS BUTTONS-->
+                     <div class = "col-md-12 grid-margin stretch-card align-items-center">
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="preview-list">
+                            <div class="preview-item border-bottom">
+                              <div class="preview-thumbnail">
+                                <div class="preview-icon bg-primary">
+                                  <i class="mdi mdi-file-document"></i>
+                                </div>
+                              </div>
+                              <div class="preview-item-content d-sm-flex flex-grow">
+                                <div class="flex-grow">
+                                  <h6 class="preview-subject">Reports</h6>
+                  
+                                </div>
+          
+                              </div>
+                            </div>
+                            <div class="preview-item border-bottom">
+                              <div class="preview-thumbnail">
+                                <div class="preview-icon bg-success">
+                                  <i class="mdi mdi-cloud-download"></i>
+                                </div>
+                              </div>
+                              <div class="preview-item-content d-sm-flex flex-grow">
+                                <div class="flex-grow">
+                                  <h6 class="preview-subject">Edit Permissions</h6>
+                     
+                                </div>
+          
+                              </div>
+                            </div>
+                            
+                            
+                           
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+          
+                    </div>
+
+         
+
+
+         
+  
+  
+        
+
+        
+            
+
+    
+            
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+  
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="assets/vendors/progressbar.js/progressbar.min.js"></script>
+    <script src="assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+    <script src="assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <script src="assets/js/settings.js"></script>
+    <script src="assets/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="assets/js/dashboard.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>
