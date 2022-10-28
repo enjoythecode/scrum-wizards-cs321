@@ -72,7 +72,8 @@ Our GitHub Repository</a> </div>
 
 
 
-
+#Backend Logic
+		<p>The Backend, built in Flask, drove the functionality, connectivity, and security that tied the front end together. For this sprint, we made a database, described it in models.py with 4 different tables, and used some supporting objects to smooth out the database logic. Below is a wireframe mockup to visualize our relational database.</p>
 
 
 
