@@ -79,3 +79,7 @@ Our GitHub Repository</a> </div>
 
 <div align="center"><img width="985" alt="Screen Shot 2022-10-28 at 1 33 38 AM" src="https://user-images.githubusercontent.com/92835209/198510893-ee86a8ee-b0d2-408b-9f70-84f021f6de82.png"></div>
 
+<p>The four tables of our database, which we settled on after several iterations- ‘User’, ‘Entry’, ‘Team’, and ‘Permission’. We initially had more than four tables, but found it difficult to work with and realized we were duplicating some logic- our team agreed that four tables would remove complexity for our project going forward, even if the logic took more work upfront. 
+Also seen here is the ‘Category’ enum and an association table between ‘User’ and ‘Team’. Because ‘User’ and ‘Team’ is a many-to-many relationship, an association table was needed to facilitate this using left and right keys for the user and team id.
+Also unique about our backend logic was the implementation for ‘Entry’ which represents an individual data entry into the system about an athlete. 
+</p<
