@@ -108,60 +108,73 @@ Worked on the backend for the Flask app:
 Extensions:
 * Did the README.md extension in the GitHub develop repository.
 
-
-
-
 _Zehra_ 
 
-* Adapted the HTML from the Corona template to create the following pages / features:
-	- Created the Athlete Breakdown board on the PEAK/ Coach dashboard index.html.
-	- Created the main admin dashboard index.html, added:
-	- The charts presenting team results
-	- A list of users and a search bar for users.
-	- Buttons to download reports / edit user permissions.
-* Participated in pair-programming with Sinan.
-* Practiced the GitHub workflow, created and reviewed pull requests, merged branches
+* Developed the front-end of the project by working on views.py, individual_dashboard, team_dashboard, athlete_permissions.html, and the index.html of the super admin for creating the following elements:
+* Created the dynamic notes section of the individual dashboard used for the athlete dashboard
+* Created the dynamic team search list on the coach / admin dashboard
+* Created the dynamic lists displaying the names and profile pictures of the coaches and athletes on the super admin home page.
+* Pair-programmed a mock database for athlete names and ids with Sinan.
+* Edited the super admin athlete permissions html file and used the mock database for displaying the specific athlete names on the edit athlete permissions page.  
+* Worked on resolving merge conflicts when merging the front-end branches to develop.
+
+
 
 _Sinan_
 
-* Served the team as the Scrum Master
-* Lead pair programming to teach all teammates about Git and HTML, oversaw branching strategy, helped debug various issues to unblock individual work
-* Created GitHub repository, configured Netlify with automated deploys of all branches (Previews for PRs and production deploys on the main branch)
-* Created GitHub issues
-* Polished folder structure after teammates pushed their commits
-* Created Login HTML mock with links to individual mocks for superadmin, admin, and athlete
+As the Scrum leader for this sprint, I was responsible for;
+* Teaching teammates about HTML, CSS, Flask
+* I organized two meetings in the beginning of the sprint with interactive exercises where we built the barebones version of the website
+* Organizing GitHub repository; issues, PRs, milestones
+* I upheld proper practice of Git flow; coordinating branches and advising teammates on correct git branching.
+* Deciding on an architecture for the website
+* Unblocking teammates
+
+In addition to all of these duties, I also had the following contributions:
+* Created and educated teammates about Makefiles to streamline development on the project
+* Created and educated teammates about Python virtual environments to explicitly document dependencies and prevent productivity-killing environment-specific issues
+* Modified the login page from our static template to be fitting, including “flashing” messages in Python
+
 
 _Jasper Loverude_
 
-* Pair programmed with Kelly on Athletepermissions.html and Coachpermissions.html
-* Added custom HTML element (toggle) for disabling coach view out-of-season
-* Added appropriate CSS to core css file for animation, styling of out-of-season toggle
-* Helped resolved Git problems related to branching and managing remote/local branches
-* Helped team navigate commits and merging
-	- Connected PRs to issues on Github project so that work is tracked and efficiency can be recorded
-* Added Anne Beethe profile photo
-* Worked on Extension 3: Worked on adding milestone 3 report to markdown on the README.md file on the github repository.
+* Worked on backend for the application, using Flask to create the database schema and authentication logic
+* Worked on User, Entry, Permission, and Teams tables for describing the database schema in models.py
+* Created Python enum representing 5 possible types for ‘Entry’, ensuring that an entry can be one of only 5 types (as opposed to a string)
+* Created bi-directional association table for the many-to-many relationship of users and teams (multiple users per team, multiple teams per user), using left and right ids to keep track of the users and entries
+* Helped manage teams Git workflow; assisted teammates with getting unblocked with Git (usually branch related issues, or remote related)
+* Implemented backend authentication on auth.py
+* Created visual mockup of database schema
+* Made Google slides presentation with Chandra
+* Added a make command ‘make rmdb’ to remove the database in instance
+* Added a make command ‘make new’ to remove the database, run make dev, open a new terminal window, instruct it to sleep for one second, and then open a tab with the website,
+	- Had to open a new terminal tab because you cannot run ‘make open’ after ‘make dev’ as make dev will freeze that terminal instance, so I had to open a new tab and give it a command to run on delay. The goal was to improve productivity and reduce terminal keystrokes (combine ‘make’ commands)
+	- I used osascript in the make command to open a new terminal tab and make it run commands
+
 
 _Kelly Putnam_
 
-* Adapted the HTML from the Corona template to create the following pages: 
-	-Permissions.html, which is essentially where PEAK admin can choose a team, coach, or athlete and choose to adjust their permissions. They can also choose to add a user here.
-	- Athletepermissions.html, which adjusts athlete permissions
-	- Coachpermissions.html, which adjusts coach permissions
-	- Addcoach.html, which adds a coach
-	- Addathlete.html which adds an athlete and adds personal information about the athlete
-	- Addpeak.html, which adds an admin
-* Focused on design elements for the above pages and created a baseline for the rest of the group to approve, improve, and adapt
-* Extension 1: adding a bit of functionality so that the navigation buttons on the side of the permissions website actually leads to add a user, and clicking on a user leads to their permissions
+* Created the SuperAdmin permissions dashboard
+* Created the Add Coach, Add Athlete, and Add PEAK Admin pages and made sure they redirected from their respective sidebar buttons correctly
+* Redirected clicking on a certain athlete or coach to the Edit Permissions for the specific role
+* Added permissions toggles to the Edit Coach Permissions file so that the super admin can control their viewing permissions
+* Created Python Flask files for Add Coach, Add Athlete, and Add Admin that added the users to the database with their respective attributes, including role and permissions
+* Added forms and inputs to html code to connect the html to the flask tools
+* Created Python Flask files for Coach and Athlete Permissions that changed the role and permissions based off of how the super admin edited it
+* Added forms and inputs to html code to connect the html to the flask tools
 
 _Ghailan Fadah_
 
-* Used the Corona template to create part of the coaches dashboard
-* Created the bar graph in the coaches view
-* Created the dropdown bottom on the coaches team selection
-* Created the download and time selection buttons
-* Took part in pair programming sessions with Sinan
-* Used the github flow  to push and pull template with teammates
+* Worked on the front-end of the project:
+* Made the Sleep circle graph dynamic 
+* Made the Calorie circle graph dynamic
+* Made the Readiness graph dynamic
+* Made the progression graph over time dynamic. 
+* Helped with making the tables dynamic
+* Coordinated with the back-end to make sure our vision aligns in terms of how data will be stream-lined to the front-end.
+* Made sure the page was visually pleasing but simple  
+* Made sure Jasper got his sleep!
+
 
 
 
