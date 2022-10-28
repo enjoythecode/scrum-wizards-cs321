@@ -185,5 +185,27 @@ The Burndown Chart that we generated offers us the ability to reflect on how we 
 
 <div align="center"><img width="638" alt="Screen Shot 2022-10-28 at 1 35 18 AM" src="https://user-images.githubusercontent.com/92835209/198514024-17d83fae-96c7-4ad5-a50b-a0de076be41e.png"></div>
 
+<h3 align="left">Extension 2: Write your report in Markdown as a readme file in your repository, including table images and appropriate tags and content..</h4> 
+
+	We recreated this exact interactive report on the GitHub repository in the README.md file. The link to the README.md file (i.e. on the main repository) is this.
+
+<h3 align="left">Extension 3: Use a makefile to streamline development.</h4> 
+	
+	We employed a Makefile (see on GitHub) to encode common development tasks with easy-to-understand aliases. This allowed us to get team members up to speed on how to get productive with the codebase fast. 
+
+<h3 align="left">Extension 4: Using the python virtual environment.</h4> 
+
+	We used the venv package that comes with Python to manage and document our dependencies for this project. Virtual environments allow us to standardize computing environments across developers and help prevent issues from mismatching library versions. By committing the versions of Python libraries we used in requirements.txt (see on GitHub), we made sure that our software is easier to reproduce. This extension goes along with Extension 3; for example, make dependencies will automatically install Python dependencies from the requirements.txt file in the currently checked out branch.
+
+References/Acknowledgements
+
+
+Burndown Chart: http://radekstepan.com/burnchart/#!/enjoythecode/scrum-wizards-cs321
+
+Database Block-Diagram Creator: https://nulab.com/cacoo/examples/database-diagrams-er-diagram-tool/
+
+Osascript open new Terminal tab (Shell): https://stackoverflow.com/questions/7171725/open-new-terminal-tab-from-command-line-mac-os-x
+
+
 
 
