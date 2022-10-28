@@ -83,5 +83,5 @@ Our GitHub Repository</a> </div>
 Also seen here is the ‘Category’ enum and an association table between ‘User’ and ‘Team’. Because ‘User’ and ‘Team’ is a many-to-many relationship, an association table was needed to facilitate this using left and right keys for the user and team id.
 Also unique about our backend logic was the implementation for ‘Entry’ which represents an individual data entry into the system about an athlete. 
 </p
-<img width="166" alt="Screen Shot 2022-10-28 at 1 34 22 AM" src="https://user-images.githubusercontent.com/92835209/198511249-ae7bd3d4-5e9c-4dd5-86cd-7025dd45d557.png">
-
+<div align="center">
+<img width="166" alt="Screen Shot 2022-10-28 at 1 34 22 AM" src="https://user-images.githubusercontent.com/92835209/198511298-c23d4dd8-1acd-4be9-933a-f7f286a4df09.png"></div>
