@@ -14,6 +14,12 @@ Athlete Data Management System for CS321 (Fall 2022) at Colby College, ME
 <p>In Milestone 4, we came together as a team to create a Flask web application that used the highest priority issues that we had created on GitHub. We used our static website from the previous milestone as a starting point, then edited the HTML in order to add more of what our application required. We also created Python files that implemented flask, and connected them to our HTML files with inputs. We split the work into backend (authorization, database) and frontend (superadmin, team, and individual athlete dashboards), which really immersed us in github remote programming and merging the two groups together at the end. We also split up the backend work, and the front end work, so that we could form smaller groups and practice pair programming. This functional web application showed us how to work as a team, even when we are not physically together, using GitHub, as well as showing us how to use Flask. 
 </p>
 
+<h2 align="left">Sprint backlog</h3>
+
+Visit the 'stories' tab at https://github.com/enjoythecode/scrum-wizards-cs321/issues to see our stories.
+
+
+
 <br><br>
 
 <h2 align="left">Results</h2>
