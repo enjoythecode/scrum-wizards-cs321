@@ -16,7 +16,7 @@ Athlete Data Management System for CS321 (Fall 2022) at Colby College, ME
 
 <h2 align="left">Sprint backlog</h3>
 
-Visit the 'stories' tab at https://github.com/enjoythecode/scrum-wizards-cs321/issues to see our stories.
+See our stories [here!]([https://link-url-here.or](https://github.com/enjoythecode/scrum-wizards-cs321/issues)
 
 
 
