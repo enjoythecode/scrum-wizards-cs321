@@ -88,8 +88,12 @@ Also unique about our backend logic was the implementation for ‘Entry’ which
 </div>
 <p>Above are two examples of a possible entry of type ‘Entry’. An entry contains a category, which can only be one of 5 types. Depending on the type, it might be null for the notes field (in the case of category sleep) or null in the value field (in the case of the psychology category). Every entry, of course, is attached to a time/date and a user id.</p>
 
+<br><br>
+
 <h2 align="left">Team Reflection:</h2>
 <p>This milestone was definitely the most complicated yet, as it forced us to work with tools that we had, for the most part, never used before (Flask and its many capabilities, GitHub and working remotely as a group) and other tools, such as implementing HTML with Python files. Working remotely was definitely challenging, and we had to practice a lot with GitHub in order to combine all our ideas effectively. We made many mistakes with GitHub, but facing these challenges with the help of our Scrum Master, and fixing merge conflicts all together definitely made us stronger as a team. Code reviews were done extremely effectively and respectfully, and we all learned so much from this incredibly immersive milestone. We are now definitely much more prepared for the remote group work that is ahead of us, and are all the more ready for more learning challenges. </p>
+
+<br><br>
 
 <h2 align="left">Contributions</h3>	
 
@@ -174,6 +178,7 @@ _Ghailan Fadah_
 * Made sure the page was visually pleasing but simple  
 * Made sure Jasper got his sleep!
 
+<br><br>
 
 <h2 align="left">Extensions</h3>
 
