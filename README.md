@@ -175,13 +175,11 @@ _Ghailan Fadah_
 * Made sure Jasper got his sleep!
 
 
-
-
 <h2 align="left">Extensions</h3>
 
 <h3 align="left">Extension 1: Burndown chart to reflect on our efficiency.</h4>
 	
-The Burndown Chart that we generated offers us the ability to reflect on how we worked. While it doesn’t reflect exactly how we worked over time, since we made very big pull requests at the very end and merged it all instead of doing smaller pull requests over time. Therefore, we can definitely look at this graph and see that we need to do smaller pull requests for our next sprint. 
+<p>The Burndown Chart that we generated offers us the ability to reflect on how we worked. While it doesn’t reflect exactly how we worked over time, since we made very big pull requests at the very end and merged it all instead of doing smaller pull requests over time. Therefore, we can definitely look at this graph and see that we need to do smaller pull requests for our next sprint. </p>
 
 <div align="center"><img width="638" alt="Screen Shot 2022-10-28 at 1 35 18 AM" src="https://user-images.githubusercontent.com/92835209/198514024-17d83fae-96c7-4ad5-a50b-a0de076be41e.png"></div>
 
@@ -197,7 +195,8 @@ The Burndown Chart that we generated offers us the ability to reflect on how we 
 
 <p>We used the venv package that comes with Python to manage and document our dependencies for this project. Virtual environments allow us to standardize computing environments across developers and help prevent issues from mismatching library versions. By committing the versions of Python libraries we used in requirements.txt (see on GitHub), we made sure that our software is easier to reproduce. This extension goes along with Extension 3; for example, make dependencies will automatically install Python dependencies from the requirements.txt file in the currently checked out branch.</p>
 
-References/Acknowledgements
+
+<h2 align="left">References/Acknowledgements</h3>
 
 
 Burndown Chart: http://radekstepan.com/burnchart/#!/enjoythecode/scrum-wizards-cs321
