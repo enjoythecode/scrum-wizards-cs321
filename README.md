@@ -179,5 +179,10 @@ _Ghailan Fadah_
 
 <h2 align="left">Extensions</h3>
 
+<h3 align="left">Extension 1: Burndown chart to reflect on our efficiency.</h4>
+	
+The Burndown Chart that we generated offers us the ability to reflect on how we worked. While it doesn’t reflect exactly how we worked over time, since we made very big pull requests at the very end and merged it all instead of doing smaller pull requests over time. Therefore, we can definitely look at this graph and see that we need to do smaller pull requests for our next sprint. 
+
+
 
 
