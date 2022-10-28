@@ -97,15 +97,18 @@ Also unique about our backend logic was the implementation for ‘Entry’ which
 
 _Chandra Gowda_
 
+
 Worked on the backend for the Flask app:
-*Created the User, Entry, Permission, and Teams models and schema in the models.py
-*Created helper_db.py file with database access and query functions for all possible query options for the 4 model classes. 
-*Created a demo database in the __init__.py file, and wrote test functions for the database additions/queries/listing/deletion and validated the tests through the sqlliteviewer.app file. 
-*Created GitHub issues labeled under “BACKEND” for Milestone 1.
-*Worked with the frontend team regarding implementing the database data to input sample data in fields in the Flask App UI. 
-*Assisted in handling merge conflicts in the models.py, auth.py, and __init__.py backend files while merging the db-and-auth and frontend branches into our streamlined develop branch.
+* Created the User, Entry, Permission, and Teams models and schema in the models.py
+* Created helper_db.py file with database access and query functions for all possible query options for the 4 model classes. 
+* Created a demo database in the __init__.py file, and wrote test functions for the database additions/queries/listing/deletion and validated the tests through the sqlliteviewer.app file. 
+* Created GitHub issues labeled under “BACKEND” for Milestone 1.
+* Worked with the frontend team regarding implementing the database data to input sample data in fields in the Flask App UI. 
+* Assisted in handling merge conflicts in the models.py, auth.py, and __init__.py backend files while merging the db-and-auth and frontend branches into our streamlined develop branch.
 Extensions:
-*Did the README.md extension in the GitHub develop repository.
+* Did the README.md extension in the GitHub develop repository.
+
+
 
 
 _Zehra_ 
