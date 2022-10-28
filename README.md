@@ -70,11 +70,10 @@ Our GitHub Repository</a> </div>
 <div align="center">Fig 8, 9, 10: Add Athlete, Admin, and Coach (in order)
 </div>
 
+<br><br>
 
-
-#Backend Logic
-		<p>The Backend, built in Flask, drove the functionality, connectivity, and security that tied the front end together. For this sprint, we made a database, described it in models.py with 4 different tables, and used some supporting objects to smooth out the database logic. Below is a wireframe mockup to visualize our relational database.</p>
-
+<h2 align="left">Backend Logic</h3>
+<p>The Backend, built in Flask, drove the functionality, connectivity, and security that tied the front end together. For this sprint, we made a database, described it in models.py with 4 different tables, and used some supporting objects to smooth out the database logic. Below is a wireframe mockup to visualize our relational database.</p>
 
 
 
