@@ -84,4 +84,5 @@ Also seen here is the ‘Category’ enum and an association table between ‘Us
 Also unique about our backend logic was the implementation for ‘Entry’ which represents an individual data entry into the system about an athlete. 
 </p>
     
-<div align="center"><img width="166" alt="Screen Shot 2022-10-28 at 1 34 22 AM" src="https://user-images.githubusercontent.com/92835209/198511298-c23d4dd8-1acd-4be9-933a-f7f286a4df09.png"></div>
+<div align="center"><img width="166" alt="Screen Shot 2022-10-28 at 1 34 22 AM" src="https://user-images.githubusercontent.com/92835209/198511298-c23d4dd8-1acd-4be9-933a-f7f286a4df09.png"><img width="166" alt="Screen Shot 2022-10-28 at 1 34 22 AM" src="https://user-images.githubusercontent.com/92835209/198511467-2ba727b0-895e-47df-9369-2da5e48da77d.png">
+</div>
