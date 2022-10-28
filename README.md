@@ -140,16 +140,15 @@ _Jasper Loverude_
 
 * Worked on backend for the application, using Flask to create the database schema and authentication logic
 * Worked on User, Entry, Permission, and Teams tables for describing the database schema in models.py
-* Created Python enum representing 5 possible types for ‘Entry’, ensuring that an entry can be one of only 5 types (as opposed to a string)
-* Created bi-directional association table for the many-to-many relationship of users and teams (multiple users per team, multiple teams per user), using left and right ids to keep track of the users and entries
-* Helped manage teams Git workflow; assisted teammates with getting unblocked with Git (usually branch related issues, or remote related)
+* Created Python enum representing 5 possible types for ‘Entry’, to standardize data better than a 'string' field
+* Created bi-directional association table for the many-to-many relationship of users and teams
+* Helped manage teams Git workflow; assisted teammates with getting unblocked with Git
 * Implemented backend authentication on auth.py
 * Created visual mockup of database schema
 * Made Google slides presentation with Chandra
 * Added a make command ‘make rmdb’ to remove the database in instance
-* Added a make command ‘make new’ to remove the database, run make dev, open a new terminal window, instruct it to sleep for one second, and then open a tab with the website,
-	- Had to open a new terminal tab because you cannot run ‘make open’ after ‘make dev’ as make dev will freeze that terminal instance, so I had to open a new tab and give it a command to run on delay. The goal was to improve productivity and reduce terminal keystrokes (combine ‘make’ commands)
-	- I used osascript in the make command to open a new terminal tab and make it run commands
+* Added a make command ‘make new’ that ran a series of other 'make' commands.
+	- I used osascript in the make command to open a new terminal tab and make it run commands when the 'python3.10...' terminal hung
 
 
 _Kelly Putnam_
