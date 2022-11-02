@@ -35,7 +35,7 @@ def home():
     if current_user.permission_id == 0: 
         return redirect("/superadmin/home.html")
     elif current_user.permission_id == 1:
-        return render_template("/superadmin/home.html")
+        return redirect("/superadmin/home.html")
     elif current_user.permission_id == 2:
         return redirect("/team_dashboard")
     else:
