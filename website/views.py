@@ -33,9 +33,10 @@ def hello():
 @login_required
 def home():    
     if current_user.permission_id == 0: 
-        return render_template("/superadmin/home.html", user=current_user)
+        # return render_template("/superadmin/home.html", user=current_user)
+        return redirect("/superadmin/home.html")
     elif current_user.permission_id == 1:
-        return render_template("/superadmin/home.html")
+        return redirect("/superadmin/home.html")
     elif current_user.permission_id == 2:
         return redirect("/team_dashboard")
     else:
@@ -65,6 +66,7 @@ def send_admin():
     "/assets/images/faces/face5.jpg"]
 
     out_season = ["Lacrosse", "Nordic Ski", "Basketball", "Swimming", "Indoor Track", "Hockey"]
+
 
     return render_template("superadmin/home.html", 
     athletes = users1, 
