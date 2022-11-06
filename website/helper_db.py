@@ -1,6 +1,7 @@
 from . import db
 from sqlalchemy.sql import func
 
+# Get Functions for models.py
 
 def getUsers():
     ''' Get a list of all users in the DB
@@ -193,3 +194,143 @@ def getEntriesByCategory(category):
     from .models import Entry
     entries = Entry.query.filter_by(category=category).all()
     return entries
+
+# Update functions for models.py
+
+def updateUserFullName(user_id, first_name, last_name):
+    ''' Updates a user's first and last name
+    ---------------------------------------
+    Returns: 
+    ---------------------------------------
+    Python List. len = total_entries_of_category
+    '''
+
+    from .models import User
+    user = User.query.filter_by(id=user_id).first()
+    user.first_name = first_name
+    user.last_name = last_name
+    db.session.commit()
+    return user
+
+def updateUserPermission(user_id, permission_id):
+    ''' Updates a user's permission id
+    ---------------------------------------
+    Returns: 
+    ---------------------------------------
+    Python List. len = total_entries_of_category
+    '''
+
+    from .models import User
+    user = User.query.filter_by(id=user_id).first()
+    user.permissions_id = permission_id
+    db.session.commit()
+    return user
+
+def addUserToTeam(user_id, team_id):
+    ''' Adds a user to a team
+    ---------------------------------------
+    Returns: 
+    ---------------------------------------
+    Python List. len = total_entries_of_category
+    '''
+
+    from .models import User
+    user = User.query.filter_by(id=user_id).first()
+    user.teams.append(team_id)
+    db.session.commit()
+    return user
+
+def removeUserFromTeam(user_id, team_id):
+    ''' Removes a user from a team
+    ---------------------------------------
+    Returns: 
+    ---------------------------------------
+    Python List. len = total_entries_of_category
+    '''
+
+    from .models import User
+    user = User.query.filter_by(id=user_id).first()
+    user.teams.remove(team_id)
+    db.session.commit()
+    return user
+
+def updateTeamName(team_id, team_name):
+    ''' Updates a team's name
+    ---------------------------------------
+    Returns: 
+    ---------------------------------------
+    Python List. len = total_entries_of_category
+    '''
+
+    from .models import Team
+    team = Team.query.filter_by(id=team_id).first()
+    team.team_name = team_name
+    db.session.commit()
+    return team
+
+def updateTeamSeason(team_id, season_start, season_end):
+    ''' Updates a team's season start and end
+    ---------------------------------------
+    Returns: 
+    ---------------------------------------
+    Python List. len = total_entries_of_category
+    '''
+
+    from .models import Team
+    team = Team.query.filter_by(id=team_id).first()
+    team.season_start = season_start
+    team.season_end = season_end
+    db.session.commit()
+    return team
+
+def updateEntryValues(entry_id, time, category, value, notes, user_id):
+    ''' Updates an entry's title, content, and category
+    ---------------------------------------
+    Returns: 
+    ---------------------------------------
+    Python List. len = total_entries_of_category
+    '''
+
+    from .models import Entry
+    entry = Entry.query.filter_by(id=entry_id).first()
+    entry.time = time
+    entry.category = category
+    entry.value = value
+    entry.notes = notes
+    entry.user_id = user_id
+    db.session.commit()
+    return entry
+
+# Delete functions for models.py
+
+def deleteUser(user_id):
+    ''' Deletes a user
+    ---------------------------------------
+    Returns: 
+    ---------------------------------------
+    Python List. len = total_entries_of_category
+    '''
+
+    from .models import User
+    user = User.query.filter_by(id=user_id).first()
+    db.session.delete(user)
+    db.session.commit()
+    return user
+
+def deleteEntry(entry_id):
+    ''' Deletes an entry
+    ---------------------------------------
+    Returns: 
+    ---------------------------------------
+    Python List. len = total_entries_of_category
+    '''
+
+    from .models import Entry
+    entry = Entry.query.filter_by(id=entry_id).first()
+    db.session.delete(entry)
+    db.session.commit()
+    return entry
+    
+
+
+
