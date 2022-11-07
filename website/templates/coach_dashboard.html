@@ -497,6 +497,10 @@ var multiLineData = {
                       {% for i in range (num_athletes) %}
 
                       <div class="preview-item border-bottom">
+                        <td>
+                            <div class="badge badge-outline-success"> {{status[i]}} </div>
+                        </td>
+
                         <div class="preview-thumbnail">
                           <img src= {{ athlete_images[i] }} alt="image" class="rounded-circle" />
                         </div>

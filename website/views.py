@@ -106,6 +106,7 @@ def send_coach():
     "/assets/images/faces/face8.jpg",
     "/assets/images/faces/face9.jpg",
     "/assets/images/faces/face11.jpg"]
+    playerStatus = ["Cleared", "Not Cleared", "Partially Cleared", "Cleared"]
 
     sleep = [4,-4,4,-4,4,-4,4,-4]
     readyness = [8, -8, 8, -8, 8, -8, 8, -8, 8, -8]
@@ -117,6 +118,7 @@ def send_coach():
 
     return render_template("coach_dashboard.html", 
     sleep_data = sleep,
+    status = playerStatus,
     athletes = users1, 
     num_athletes= len(users1),
     athlete_images = images1,
