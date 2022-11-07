@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>CAMS Dashboard</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="assets/images/favicon.png" />
+    <style>
+     #mini-card {
+      padding-right: 70px;
+     }
+     #sports-medicine {
+      color: yellow;
+     }
+
+     
+      </style>
+          <script src="assets/vendors/chart.js/Chart.min.js"></script>
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_sidebar.html -->
+      
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_navbar.html -->
+       
+          <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+          </div>
+          <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+              <span class="mdi mdi-menu"></span>
+            </button>
+          
+            <ul class="navbar-nav navbar-nav-right">
+              <li class="nav-item dropdown d-none d-lg-block">
+             
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
+                  <h6 class="p-3 mb-0">Projects</h6>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-file-outline text-primary"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject ellipsis mb-1">Software Development</p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-web text-info"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject ellipsis mb-1">UI Development</p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-layers text-danger"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject ellipsis mb-1">Software Testing</p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <p class="p-3 mb-0 text-center">See all projects</p>
+                </div>
+              </li>
+              <li class="nav-item nav-settings d-none d-lg-block">
+                
+              
+            </ul>
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+              <span class="mdi mdi-format-line-spacing"></span>
+            </button>
+          </div>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+
+          <div class="content-wrapper">
+            
+
+
+            <div class = "row align-items-center">
+
+
+              <!-- Card 1 -->
+              <div class = "col-md-12 grid-margin align-items-center">
+
+
+                <div class = "row align-items-center">
+
+                  <!-- Mini card 1 -->
+                  <div class = "col-md-4 grid-margin" id="mini-card" > <!-- Mini sdfgdsfg 1 -->
+                    <div class = "card-title">Sleep</div>
+                    <canvas id="transaction-history1" class="transaction-chart"></canvas>
+                    <script>   
+                    if ($("#transaction-history1").length) {
+                      var areaData = {
+                        labels: ["Sleep"],
+                        datasets: [{
+                            data: [{{ sleep_circle}},(100-{{sleep_circle}})],
+                            backgroundColor: [
+                            {% if sleep_circle < 70 %} "#FD9901" {% else %} "#00d25b" {% endif %}, "#111111"
+                            ]
+                          }
+                        ]
+                      };
+                      var areaOptions = {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        segmentShowStroke: false,
+                        cutoutPercentage: 70,
+                        elements: {
+                          arc: {
+                              borderWidth: 0
+                          }
+                        },      
+                        legend: {
+                          display: false
+                        },
+                        tooltips: {
+                          enabled: true
+                        }
+                      }
+                      var transactionhistoryChartPlugins = {
+                        beforeDraw: function(chart) {
+                          var width = chart.chart.width,
+                              height = chart.chart.height,
+                              ctx = chart.chart.ctx;
+                      
+                          ctx.restore();
+                          var fontSize = 1;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#ffffff";
+                      
+                          var text = {{sleep_circle}}, 
+                              textX = Math.round((width - ctx.measureText(text).width) / 2),
+                              textY = height / 2.4;
+                      
+                          ctx.fillText(text, textX, textY);
+                    
+                          ctx.restore();
+                          var fontSize = 0.75;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#6c7293";
+                    
+                          var texts = "", 
+                              textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
+                              textsY = height / 1.7;
+                      
+                          ctx.fillText(texts, textsX, textsY);
+                          ctx.save();
+                        }
+                      }
+                      var transactionhistoryChartCanvas = $("#transaction-history1").get(0).getContext("2d");
+                      var transactionhistoryChart = new Chart(transactionhistoryChartCanvas, {
+                        type: 'doughnut',
+                        data: areaData,
+                        options: areaOptions,
+                        plugins: transactionhistoryChartPlugins
+                      });}
+                    
+                    </script>
+                    
+                    
+  
+                   
+                  </div>
+
+                  <!-- Mini card 2 -->
+                  <div class = "col-md-4 grid-margin" id="mini-card" >
+                    <div class = "card-title">Readyness</div>
+                    <canvas id="transaction-history2" class="transaction-chart"></canvas>
+                    <script>   
+                    if ($("#transaction-history2").length) {
+                      var areaData = {
+                        labels: ["Readyness"],
+                        datasets: [{
+                            data: [{{readyness_circle}},(100-{{readyness_circle}})],
+                            backgroundColor: [
+                            {% if readyness_circle < 70 %} "#FD9901" {% else %} "#00d25b" {% endif %}, "#111111"
+                            ]
+                          }
+                        ]
+                      };
+                      var areaOptions = {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        segmentShowStroke: false,
+                        cutoutPercentage: 70,
+                        elements: {
+                          arc: {
+                              borderWidth: 0
+                          }
+                        },      
+                        legend: {
+                          display: false
+                        },
+                        tooltips: {
+                          enabled: true
+                        }
+                      }
+                      var transactionhistoryChartPlugins = {
+                        beforeDraw: function(chart) {
+                          var width = chart.chart.width,
+                              height = chart.chart.height,
+                              ctx = chart.chart.ctx;
+                      
+                          ctx.restore();
+                          var fontSize = 1;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#ffffff";
+                      
+                          var text = {{readyness_circle}}, 
+                              textX = Math.round((width - ctx.measureText(text).width) / 2),
+                              textY = height / 2.4;
+                      
+                          ctx.fillText(text, textX, textY);
+                    
+                          ctx.restore();
+                          var fontSize = 0.75;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#6c7293";
+                    
+                          var texts = "", 
+                              textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
+                              textsY = height / 1.7;
+                      
+                          ctx.fillText(texts, textsX, textsY);
+                          ctx.save();
+                        }
+                      }
+                      var transactionhistoryChartCanvas = $("#transaction-history2").get(0).getContext("2d");
+                      var transactionhistoryChart = new Chart(transactionhistoryChartCanvas, {
+                        type: 'doughnut',
+                        data: areaData,
+                        options: areaOptions,
+                        plugins: transactionhistoryChartPlugins
+                      });}
+                    
+                    </script>
+                    
+                  </div>
+
+                  <!-- Mini card 3 -->
+                  <div class = "col-md-4 grid-margin"  id="mini-card">
+                    <div class = "card-title">Calorie</div>
+                    <canvas id="transaction-history3" class="transaction-chart"></canvas>
+                   
+                    <script>   
+                    if ($("#transaction-history3").length) {
+                      var areaData = {
+                        labels: ["Calorie"],
+                        datasets: [{
+                            data: [{{calorie_circle}}, (100-{{calorie_circle}})],
+                            backgroundColor: [
+                            {% if calorie_circle < 70 %} "#FD9901" {% else %} "#00d25b" {% endif %}, "#111111",
+                            ]
+                          }
+                        ]
+                      };
+                      var areaOptions = {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        segmentShowStroke: false,
+                        cutoutPercentage: 70,
+                        elements: {
+                          arc: {
+                              borderWidth: 0
+                          }
+                        },      
+                        legend: {
+                          display: false
+                        },
+                        tooltips: {
+                          enabled: true
+                        }
+                      }
+                      var transactionhistoryChartPlugins = {
+                        beforeDraw: function(chart) {
+                          var width = chart.chart.width,
+                              height = chart.chart.height,
+                              ctx = chart.chart.ctx;
+                      
+                          ctx.restore();
+                          var fontSize = 1;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#ffffff";
+                      
+                          var text = {{calorie_circle}}, 
+                              textX = Math.round((width - ctx.measureText(text).width) / 2),
+                              textY = height / 2.4;
+                      
+                          ctx.fillText(text, textX, textY);
+                    
+                          ctx.restore();
+                          var fontSize = 0.75;
+                          ctx.font = fontSize + "rem sans-serif";
+                          ctx.textAlign = 'left';
+                          ctx.textBaseline = "middle";
+                          ctx.fillStyle = "#6c7293";
+                    
+                          var texts = "", 
+                              textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
+                              textsY = height / 1.7;
+                      
+                          ctx.fillText(texts, textsX, textsY);
+                          ctx.save();
+                        }
+                      }
+                      var transactionhistoryChartCanvas = $("#transaction-history3").get(0).getContext("2d");
+                      var transactionhistoryChart = new Chart(transactionhistoryChartCanvas, {
+                        type: 'doughnut',
+                        data: areaData,
+                        options: areaOptions,
+                        plugins: transactionhistoryChartPlugins
+                      });}
+                    
+                    </script>
+                  </div>
+                </div>
+              </div>
+  
+              
+  
+          <div class = "row">
+              <div class = "col-md-7 grid-margin stretch-card">
+                   <div class="card-body">
+                    <h3 class="card-title">Team Overview</h3>
+
+                    <button type="button" style="float:right;" class="btn btn-light btn-fw">Last 10 Days ▼ </button>
+                    <button type="button" style="float:right;" class="btn btn-inverse-light btn-fw">Download CSV</button>
+          
+                    <canvas id="linechart-multi" style="height:250px"></canvas>
+                
+                       <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+                       <!-- <script src="assets/js/chart.js"></script> -->
+                       <script>
+
+var options = {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        },
+        gridLines: {
+          color: "rgba(204, 204, 204,0.1)"
+        }
+      }],
+      xAxes: [{
+        gridLines: {
+          color: "rgba(204, 204, 204,0.1)"
+        }
+      }]
+    },
+    legend: {
+      display: false
+    },
+    elements: {
+      point: {
+        radius: 0
+      }
+    }
+  };
+
+var multiLineData = {
+    labels: ["0", "2", "4", "6", "8", "10"],
+    datasets: [{
+        label: 'Dataset 1',
+        data: [
+          {% for datum in sleep_data %}
+            {{ datum }}, 
+          {% endfor %}
+        ],
+        borderColor: [
+          '#587ce4'
+        ],
+        borderWidth: 2,
+        fill: false
+      },
+      {
+        label: 'Dataset 2',
+        data: [{% for l in readyness_data %}
+            {{l}},
+            {% endfor %}
+        ],
+        borderColor: [
+          '#ede190'
+        ],
+        borderWidth: 2,
+        fill: false
+      },
+      {
+        label: 'Dataset 3',
+        data: [{% for l in calorie_data %}
+            {{l}},
+            {% endfor %}
+        ],
+        borderColor: [
+          '#f44252'
+        ],
+        borderWidth: 2,
+        fill: false
+      }
+    ]
+  };
+
+  if ($("#linechart-multi").length) {
+    var multiLineCanvas = $("#linechart-multi").get(0).getContext("2d");
+    var lineChart = new Chart(multiLineCanvas, {
+      type: 'line',
+      data: multiLineData,
+      options: options
+    });
+  }
+
+                       </script>
+                  </div>
+                                
+                  
+              </div>
+  
+              <div class = "col-md-5 grid-margin stretch-card">
+            
+              </div>
+          </div>
+            
+         
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+
+    <script src="assets/vendors/progressbar.js/progressbar.min.js"></script>
+    <script src="assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+    <script src="assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <script src="assets/js/settings.js"></script>
+    <script src="assets/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="assets/js/dashboard.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>
