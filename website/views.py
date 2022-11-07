@@ -148,7 +148,7 @@ def send_team():
 
 @views.route('/superadmin/<path:path>', methods=["GET"])
 def send_superadmin(path):
-    return send_from_directory('templates/superadmin', path)
+    return render_template('superadmin/' + path)
 
 @views.route("/superadmin/athletepermissions.html/<int:userid>", methods = ["GET"])
 def goto_athlete_permissions(userid):
