@@ -101,6 +101,12 @@ def send_individual():
 
 @views.route('/coach_dashboard')
 def send_coach():
+    users1 = [mock_database(1), mock_database(2), mock_database(3), mock_database(4)]
+    images1 = ["/assets/images/faces/face6.jpg",
+    "/assets/images/faces/face8.jpg",
+    "/assets/images/faces/face9.jpg",
+    "/assets/images/faces/face11.jpg"]
+
     sleep = [4,-4,4,-4,4,-4,4,-4]
     readyness = [8, -8, 8, -8, 8, -8, 8, -8, 8, -8]
     calorie = [2,2,2,2,2,2,2,2,2,2,2]
@@ -111,6 +117,9 @@ def send_coach():
 
     return render_template("coach_dashboard.html", 
     sleep_data = sleep,
+    athletes = users1, 
+    num_athletes= len(users1),
+    athlete_images = images1,
     readyness_data = readyness,
     calorie_data = calorie,
     sleep_circle = sleep_circle, readyness_circle = readyness_circle, calorie_circle = calorie_circle )

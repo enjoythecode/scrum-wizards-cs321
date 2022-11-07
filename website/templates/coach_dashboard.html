@@ -457,7 +457,66 @@ var multiLineData = {
                                 
                   
               </div>
-  
+              <div class="col-md-6 col-xl-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex flex-row justify-content-between">
+                      <h4 class="card-title">Athletes</h4>
+                      <p class="text-muted mb-1 small">View all</p>
+                    </div>
+                      
+                      <div class="add-items d-flex">
+                      <input type="text" class="form-control todo-list-input" placeholder="Search Athlete">
+                      <button class="add btn btn-primary todo-list-add-btn">Go</button>
+                    </div>
+                      
+                      
+<!--
+                      {% for user in athletelist %}
+                        <li class="list-group-item">{{ user.first_name + user.last_name }}
+                        <a href="/remove/{{ note.id }}">Finished</a>
+                        </li>
+                      {% endfor %}
+-->
+                      
+                      <div class="preview-list">
+                          
+                          
+                          <div class="preview-item border-bottom">
+                          
+                          </div>
+                      
+                      </div>
+                      
+                    <div class="preview-list">                      
+<!--
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+-->
+        
+                      {% for i in range (num_athletes) %}
+
+                      <div class="preview-item border-bottom">
+                        <div class="preview-thumbnail">
+                          <img src= {{ athlete_images[i] }} alt="image" class="rounded-circle" />
+                        </div>
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                              <a class="nav-link" href="athletepermissions.html/{{ athletes[i].user_id }}"> {{ athletes[i].Name}} </a>
+                              
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+ {% endfor %}
+                      
+      
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class = "col-md-5 grid-margin stretch-card">
             
               </div>
