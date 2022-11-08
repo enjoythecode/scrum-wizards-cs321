@@ -497,6 +497,20 @@ var multiLineData = {
                       {% for i in range (num_athletes) %}
 
                       <div class="preview-item border-bottom">
+                        {% if status[i] == "Cleared" %}
+                        <td>
+                            <div class= "badge badge-outline-success" > {{status[i]}} </div>
+                        </td>
+                        {% elif status[i] == "Partially Cleared" %}
+                        <td>
+                            <div class= "badge badge-outline-warning" > {{status[i]}} </div>
+                        </td>
+                        {% else %}
+                        <td>
+                            <div class= "badge badge-outline-danger" > {{status[i]}} </div>
+                        </td>
+                        {% endif %}
+
                         <div class="preview-thumbnail">
                           <img src= {{ athlete_images[i] }} alt="image" class="rounded-circle" />
                         </div>
