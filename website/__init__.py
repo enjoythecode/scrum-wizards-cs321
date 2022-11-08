@@ -6,6 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
+dummyEmailList = []
 
 def create_app():
     ''' Initalizes the flask application and creates a database.db file if it does not currently exist.
@@ -40,14 +41,14 @@ def create_app():
 
     from .models import User
 
-    # with app.app_context():
-    #     if path.exists('instance/' + DB_NAME):
-    #         # delete the database if it exists
-    #         remove("instance/" + DB_NAME)
+    with app.app_context():
+        if not path.exists('instance/' + DB_NAME):
+            # # delete the database if it exists
+            # remove("instance/" + DB_NAME)
             
-    #     db.create_all()
-    #     print('Created Database!')
-    #     addDummyDB()
+            db.create_all()
+            print('Created Database!')
+            addDummyDB()
 
 
 
@@ -100,12 +101,13 @@ def addDummyDB():
         void
     '''
 
-    addDummyTeam()
-    addDummyUser()
+    addDummyTeams()
     addPermissionList()
+    addDummyUser()
+    addDummyUserList
     addDummyEntry()
 
-def addDummyTeam():
+def addDummyTeams():
     ''' Calls database hydration functions.
     Parameters:
     ---------------------------------------
@@ -115,12 +117,61 @@ def addDummyTeam():
     '''
 
     from .models import Team
-    team1 = Team(name = "Basketball")
-    team2 = Team(name = "Football")
-    db.session.add(team1)
-    db.session.add(team2)
+    db.session.add(Team(name = "Men's Alpine Skiing"))
+    db.session.add(Team(name = "Men's Baseball"))
+    db.session.add(Team(name = "Men's Basketball"))
+    db.session.add(Team(name = "Men's Crew"))
+    db.session.add(Team(name = "Men's Cross Country"))
+    db.session.add(Team(name = "Men's Football"))
+    db.session.add(Team(name = "Men's Golf"))
+    db.session.add(Team(name = "Men's Ice Hockey"))
+    db.session.add(Team(name = "Men's Lacrosse"))
+    db.session.add(Team(name = "Men's Nordic Skiing"))
+    db.session.add(Team(name = "Men's Soccer"))
+    db.session.add(Team(name = "Men's Squash"))
+    db.session.add(Team(name = "Men's Swimming & Diving"))
+    db.session.add(Team(name = "Men's Tennis"))
+    db.session.add(Team(name = "Men's Track & Field"))
+    db.session.add(Team(name = "Women's Alpine Skiing"))
+    db.session.add(Team(name = "Women's Basketball"))
+    db.session.add(Team(name = "Women's Crew"))
+    db.session.add(Team(name = "Women's Cross Country"))
+    db.session.add(Team(name = "Women's Field Hockey"))
+    db.session.add(Team(name = "Women's Ice Hockey"))
+    db.session.add(Team(name = "Women's Lacrosse"))
+    db.session.add(Team(name = "Women's Nordic Skiing"))
+    db.session.add(Team(name = "Women's Soccer"))
+    db.session.add(Team(name = "Women's Softball"))
+    db.session.add(Team(name = "Women's Squash"))
+    db.session.add(Team(name = "Women's Swimming & Diving"))
+    db.session.add(Team(name = "Women's Tennis"))
+    db.session.add(Team(name = "Women's Track & Field"))
+    db.session.add(Team(name = "Women's Volleyball"))
+
     db.session.commit()
-    print("DB Team added")
+    print("All Teams added")
+
+# Adding 100 random users to the database
+def addDummyUserList():
+    ''' Adds 100 random users to the database.
+    Parameters:
+    ---------------------------------------
+    Returns:
+    ---------------------------------------
+        void
+    '''
+
+    from .models import User
+    from random import randint
+    from faker import Faker
+    fake = Faker()
+
+    for i in range(100):
+        fakeUser = User(email = fake.email(), password = generate_password_hash("password", method='sha256'), first_name = fake.first_name(), last_name = fake.last_name(), team_id = randint(1, 30), permission_id = randint(1, 3))
+        db.session.add(fakeUser)
+        dummyEmailList.append(fakeUser.email)
+    db.session.commit()
+    print("100 Users added")
 
 def addDummyUser():
     ''' Calls database hydration functions.
@@ -134,18 +185,17 @@ def addDummyUser():
     team1 = Team.query.filter_by(name = "Basketball").first()
     team2 = Team.query.filter_by(name = "Football").first()
 
-    user1 = User(first_name = "Chandra", last_name = "Gowda", email = "chandra@gmail.com", password = generate_password_hash("1234", method='sha256'), permission_id=0)
-    user2 = User(first_name = "Sinan", last_name = "Yumurtaci", email = "sinan@gmail.com", password = generate_password_hash("1234", method='sha256'), permission_id=1)
-    user3 = User(first_name = "Kelly", last_name = "Putnam", email = "kelly@gmail.com", password = generate_password_hash("1234", method='sha256'), permission_id=2)
-    user4 = User(first_name = "Jasper", last_name = "Loverude", email = "jasper@gmail.com", password = generate_password_hash("1234", method='sha256'), permission_id=3)
+    chandra = User(first_name = "Chandra", last_name = "Gowda", email = "chandra@gmail.com", password = generate_password_hash("1234", method='sha256'), permission_id=0)
+    sinan = User(first_name = "Sinan", last_name = "Yumurtaci", email = "sinan@gmail.com", password = generate_password_hash("1234", method='sha256'), permission_id=1)
+    kelly = User(first_name = "Kelly", last_name = "Putnam", email = "kelly@gmail.com", password = generate_password_hash("1234", method='sha256'), permission_id=2)
+    jasper = User(first_name = "Jasper", last_name = "Loverude", email = "jasper@gmail.com", password = generate_password_hash("1234", method='sha256'), permission_id=3)
 
-    db.session.add(user1)
-    db.session.add(user2)
-    db.session.add(user3)
-    db.session.add(user4)
+    db.session.add(chandra)
+    db.session.add(sinan)
+    db.session.add(kelly)
+    db.session.add(jasper)
     db.session.commit()
     print("DB User added")
-
 
 def addPermissionList():
     ''' Calls database hydration functions.
@@ -202,7 +252,6 @@ def addPermissionList():
     db.session.add(playerPermission)
     db.session.commit()
     print("DB Permissions added")
-
 
 def addDummyEntry():
     ''' Calls database hydration functions.
