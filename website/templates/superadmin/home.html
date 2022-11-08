@@ -339,24 +339,37 @@
                 <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
                 <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
 -->
-        
-                      {% for i in range (num_athletes) %}
+{% for i in range (num_athletes) %}
 
-                      <div class="preview-item border-bottom">
-                        <div class="preview-thumbnail">
-                          <img src= {{ athlete_images[i] }} alt="image" class="rounded-circle" />
-                        </div>
-                        <div class="preview-item-content d-flex flex-grow">
-                          <div class="flex-grow">
-                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                              <a class="nav-link" href="athletepermissions.html/{{ athletes[i].user_id }}"> {{ athletes[i].Name}} </a>
-                              
-                            </div>
-                            
-                          </div>
-                        </div>
-                      </div>
- {% endfor %}
+<div class="preview-item border-bottom">
+  {% if status[i] == "Cleared" %}
+  <td>
+      <div class= "badge badge-outline-success" > {{status[i]}} </div>
+  </td>
+  {% elif status[i] == "Partially Cleared" %}
+  <td>
+      <div class= "badge badge-outline-warning" > {{status[i]}} </div>
+  </td>
+  {% else %}
+  <td>
+      <div class= "badge badge-outline-danger" > {{status[i]}} </div>
+  </td>
+  {% endif %}
+
+  <div class="preview-thumbnail">
+    <img src= {{ athlete_images[i] }} alt="image" class="rounded-circle" />
+  </div>
+  <div class="preview-item-content d-flex flex-grow">
+    <div class="flex-grow">
+      <div class="d-flex d-md-block d-xl-flex justify-content-between">
+        <a class="nav-link" href="athletepermissions.html/{{ athletes[i].user_id }}"> {{ athletes[i].Name}} </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+{% endfor %}
                       
       
                     </div>
