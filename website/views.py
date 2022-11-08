@@ -16,6 +16,15 @@ def mock_database(user_id):
         return{"user_id": 3, "Name" : "Jenna Carter"}
     if user_id == 4:
         return{"user_id": 4, "Name" : "Jennifer Smith"}
+    # coaches
+    if user_id == 5:
+        return {"user_id": 5, "Name" : "Thomas Mckee"}
+    if user_id == 6:
+        return{"user_id": 6, "Name" : "Emily Stephenson"}
+    if user_id == 7:
+        return{"user_id": 7, "Name" : "Keith Freeman"}
+    if user_id == 8:
+        return{"user_id": 8, "Name" : "Jeffrey Abbott"}
     
 
 @views.route('/', methods=['GET', 'POST'])
@@ -58,7 +67,7 @@ def send_admin():
     "/assets/images/faces/face9.jpg",
     "/assets/images/faces/face11.jpg"]
 
-    names2 = ["Todd Mckee", "Emily Stephenson", "Keith Freeman", "Jeffrey Abbott"]
+    names2 = [mock_database(5), mock_database(6), mock_database(7), mock_database(8)]
     images2 = ["/assets/images/faces/face2.jpg",
     "/assets/images/faces/face3.jpg",
     "/assets/images/faces/face7.jpg",
@@ -159,9 +168,10 @@ def goto_athlete_permissions(userid):
 def backto_home():
     return render_template('superadmin/home.html')
 
-@views.route("/superadmin/coachpermissions.html", methods = ["GET"])
-def goto_coach_permissions():
-    return render_template('superadmin/coachpermissions.html')
+@views.route("/superadmin/coachpermissions.html/<int:userid>", methods = ["GET"])
+def goto_coach_permissions(userid):
+    user = mock_database(userid)
+    return render_template('superadmin/coachpermissions.html', user = user)
 
 
 @views.route('/admin/index.html', methods=['GET'])
