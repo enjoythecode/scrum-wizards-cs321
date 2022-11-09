@@ -42,13 +42,13 @@ def create_app():
     from .models import User
 
     with app.app_context():
-        if not path.exists('instance/' + DB_NAME):
+        if path.exists('instance/' + DB_NAME):
             # # delete the database if it exists
-            # remove("instance/" + DB_NAME)
+            remove("instance/" + DB_NAME)
             
-            db.create_all()
-            print('Created Database!')
-            addDummyDB()
+        db.create_all()
+        print('Created Database!')
+        addDummyDB()    
 
 
 
@@ -104,8 +104,8 @@ def addDummyDB():
     addDummyTeams()
     addPermissionList()
     addDummyUser()
-    addDummyUserList
-    addDummyEntry()
+    addDummyUserList()
+    addDummyEntriesList()
 
 def addDummyTeams():
     ''' Calls database hydration functions.
@@ -117,36 +117,39 @@ def addDummyTeams():
     '''
 
     from .models import Team
-    db.session.add(Team(name = "Men's Alpine Skiing"))
-    db.session.add(Team(name = "Men's Baseball"))
-    db.session.add(Team(name = "Men's Basketball"))
-    db.session.add(Team(name = "Men's Crew"))
-    db.session.add(Team(name = "Men's Cross Country"))
-    db.session.add(Team(name = "Men's Football"))
-    db.session.add(Team(name = "Men's Golf"))
-    db.session.add(Team(name = "Men's Ice Hockey"))
-    db.session.add(Team(name = "Men's Lacrosse"))
-    db.session.add(Team(name = "Men's Nordic Skiing"))
-    db.session.add(Team(name = "Men's Soccer"))
-    db.session.add(Team(name = "Men's Squash"))
-    db.session.add(Team(name = "Men's Swimming & Diving"))
-    db.session.add(Team(name = "Men's Tennis"))
-    db.session.add(Team(name = "Men's Track & Field"))
-    db.session.add(Team(name = "Women's Alpine Skiing"))
-    db.session.add(Team(name = "Women's Basketball"))
-    db.session.add(Team(name = "Women's Crew"))
-    db.session.add(Team(name = "Women's Cross Country"))
-    db.session.add(Team(name = "Women's Field Hockey"))
-    db.session.add(Team(name = "Women's Ice Hockey"))
-    db.session.add(Team(name = "Women's Lacrosse"))
-    db.session.add(Team(name = "Women's Nordic Skiing"))
-    db.session.add(Team(name = "Women's Soccer"))
-    db.session.add(Team(name = "Women's Softball"))
-    db.session.add(Team(name = "Women's Squash"))
-    db.session.add(Team(name = "Women's Swimming & Diving"))
-    db.session.add(Team(name = "Women's Tennis"))
-    db.session.add(Team(name = "Women's Track & Field"))
-    db.session.add(Team(name = "Women's Volleyball"))
+    from faker import Faker
+    import datetime
+    fake = Faker()
+    db.session.add(Team(name = "Men's Alpine Skiing", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Baseball", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Basketball", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Crew", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Cross Country", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Football", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Golf", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Ice Hockey", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Lacrosse", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Nordic Skiing", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Soccer", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Squash", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Swimming & Diving", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Tennis", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Track & Field", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Alpine Skiing", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Basketball", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Crew", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Cross Country", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Field Hockey", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Ice Hockey", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Lacrosse", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Nordic Skiing", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Soccer", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Softball", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Squash", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Swimming & Diving", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Tennis", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Track & Field", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Volleyball", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
 
     db.session.commit()
     print("All Teams added")
@@ -167,7 +170,7 @@ def addDummyUserList():
     fake = Faker()
 
     for i in range(100):
-        fakeUser = User(email = fake.email(), password = generate_password_hash("password", method='sha256'), first_name = fake.first_name(), last_name = fake.last_name(), team_id = randint(1, 30), permission_id = randint(1, 3))
+        fakeUser = User(email = fake.email(), password = generate_password_hash("password", method='sha256'), first_name = fake.first_name(), last_name = fake.last_name(), permission_id = randint(1, 3))
         db.session.add(fakeUser)
         dummyEmailList.append(fakeUser.email)
     db.session.commit()
@@ -252,6 +255,41 @@ def addPermissionList():
     db.session.add(playerPermission)
     db.session.commit()
     print("DB Permissions added")
+
+# Adding 100 dummy entries to random atheletes in the database
+def addDummyEntriesList():
+    ''' Calls database hydration functions.
+    Parameters:
+    ---------------------------------------
+    Returns:
+    ---------------------------------------
+        void
+    '''
+    from .models import Entry, User
+    from random import randint
+    from faker import Faker
+    import datetime
+    fake = Faker()
+    # creating a loop that runs 100 times
+    for i in range(100):
+        # creating a random user from the database
+        # Getting a random email from the dummyEmailList
+        randomEmail = dummyEmailList[randint(0, len(dummyEmailList) - 1)]
+        randomUser = User.query.filter_by(email = randomEmail).first()
+        cat = randint(1, 4)
+        
+        # creating a random entry
+        fakeEntry = Entry(
+            time = datetime.datetime.now(),
+            # setting category to a random number between 0 and 4
+            category = 'psychology',
+            value = 0,
+            notes = fake.text(max_nb_chars=200),
+            user_id = randomUser.id,
+        )
+        # adding the random entry to the database
+        db.session.add(fakeEntry)
+    db.session.commit()
 
 def addDummyEntry():
     ''' Calls database hydration functions.
