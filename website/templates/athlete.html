@@ -110,10 +110,17 @@
                     </div>
                     <div class="preview-item-content">
                       <p class="preview-subject mb-1">Log out</p>
+        
                     </div>
                   </a>
                   <div class="dropdown-divider"></div>
  
+            <div class = "row align-items-center">
+
+          <div class="content-wrapper">
+            
+
+
             <div class = "row align-items-center">
 
 
@@ -370,7 +377,7 @@
           <div class = "row">
               <div class = "col-md-7 grid-margin stretch-card">
                    <div class="card-body">
-                    <h3 class="card-title">Team Overview</h3>
+                    <h3 class="card-title">Weekly Overview</h3>
 
                     <button type="button" style="float:right;" class="btn btn-light btn-fw">Last 10 Days ▼ </button>
                     <button type="button" style="float:right;" class="btn btn-inverse-light btn-fw">Download CSV</button>
@@ -463,83 +470,7 @@ var multiLineData = {
                                 
                   
               </div>
-              <div class="col-md-6 col-xl-4 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="d-flex flex-row justify-content-between">
-                      <h4 class="card-title">Athletes</h4>
-                      <p class="text-muted mb-1 small">View all</p>
-                    </div>
-                      
-                      <div class="add-items d-flex">
-                      <input type="text" class="form-control todo-list-input" placeholder="Search Athlete">
-                      <button class="add btn btn-primary todo-list-add-btn">Go</button>
-                    </div>
-                      
-                      
-<!--
-                      {% for user in athletelist %}
-                        <li class="list-group-item">{{ user.first_name + user.last_name }}
-                        <a href="/remove/{{ note.id }}">Finished</a>
-                        </li>
-                      {% endfor %}
--->
-                      
-                      <div class="preview-list">
-                          
-                          
-                          <div class="preview-item border-bottom">
-                          
-                          </div>
-                      
-                      </div>
-                      
-                    <div class="preview-list">                      
-<!--
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
--->
-        
-                      {% for i in range (num_athletes) %}
-
-                      <div class="preview-item border-bottom">
-                        {% if status[i] == "Cleared" %}
-                        <td>
-                            <div class= "badge badge-outline-success" > {{status[i]}} </div>
-                        </td>
-                        {% elif status[i] == "Partially Cleared" %}
-                        <td>
-                            <div class= "badge badge-outline-warning" > {{status[i]}} </div>
-                        </td>
-                        {% else %}
-                        <td>
-                            <div class= "badge badge-outline-danger" > {{status[i]}} </div>
-                        </td>
-                        {% endif %}
-
-                        <div class="preview-thumbnail">
-                          
-                        </div>
-                        <div class="preview-item-content d-flex flex-grow">
-                          <div class="flex-grow">
-                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                              <a class="nav-link" href="/athlete"> {{ athletes[i].Name}} </a>
-                              
-                            </div>
-                            
-                          </div>
-                        </div>
-                      </div>
- {% endfor %}
-                      
-      
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class = "col-md-5 grid-margin stretch-card">
-            
-              </div>
+  
           </div>
             
          

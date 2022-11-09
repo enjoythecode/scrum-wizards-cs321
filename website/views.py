@@ -110,6 +110,24 @@ def send_individual():
     performance = performanceNotes,
     nutrition = nutritionNotes, sleep_circle = sleep_circle, readyness_circle = readyness_circle, calorie_circle = calorie_circle )
 
+@views.route('/athlete')
+def send_athlete():
+    sleep = [4,-4,4,-4,4,-4,4,-4]
+    readyness = [8, -8, 8, -8, 8, -8, 8, -8, 8, -8]
+    calorie = [2,2,2,2,2,2,2,2,2,2,2]
+
+    sleep_circle = 80
+    readyness_circle = 90
+    calorie_circle = 55
+
+    return render_template("athlete.html", 
+    sleep_data = sleep,
+    readyness_data = readyness,
+    calorie_data = calorie,
+    sleep_circle = sleep_circle, readyness_circle = readyness_circle, calorie_circle = calorie_circle )
+
+
+
 @views.route('/coach_dashboard')
 def send_coach():
     users1 = [mock_database(1), mock_database(2), mock_database(3), mock_database(4)]
