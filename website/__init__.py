@@ -90,7 +90,8 @@ def create_database(app):
             print("Database hydration complete!")
         else:
             print("Existing database detected!")
-
+    from .writecsv import writeUsersCSV
+    writeUsersCSV()
     
 def addDummyDB():
     ''' Calls database hydration functions.
@@ -106,6 +107,10 @@ def addDummyDB():
     addDummyUser()
     addDummyUserList()
     addDummyEntriesList()
+
+def createCSVFiles():
+    from writecsv import writeUsersCSV
+    writeUsersCSV()
 
 def addDummyTeams():
     ''' Calls database hydration functions.
