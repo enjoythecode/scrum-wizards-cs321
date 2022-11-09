@@ -1,4 +1,4 @@
-.PHONY: dev, open, dependencies, rmdb, new
+.PHONY: dev, open, dependencies, rmdb, new, docker-build, docker-run
 
 dependencies:
 	pip install -r requirements.txt
@@ -20,3 +20,8 @@ new:
   -e 'tell application "Terminal" to do script "make open" in selected tab of the front window'
 	make dev
 
+docker-build:
+	docker image build -t flask-docker .
+
+docker-run:
+	docker run -p 5000:5000 -d flask-docker
