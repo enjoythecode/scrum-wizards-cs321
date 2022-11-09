@@ -162,6 +162,8 @@ def send_team():
 def send_superadmin(path):
     return render_template('superadmin/' + path)
 
+
+
 @views.route("/superadmin/athletepermissions.html/<int:userid>", methods = ["GET"])
 def goto_athlete_permissions(userid):
     user = mock_database(userid)
@@ -176,6 +178,9 @@ def goto_coach_permissions(userid):
     user = mock_database(userid)
     return render_template('superadmin/coachpermissions.html', user = user)
 
+@views.route('/coach_dashboard', methods=['GET'])
+def goto_superadmin_teamview():
+    return render_template('coach_dashboard')
 
 @views.route('/admin/index.html', methods=['GET'])
 def goto_admin_dash():
