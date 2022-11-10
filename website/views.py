@@ -16,6 +16,15 @@ def mock_database(user_id):
         return{"user_id": 3, "Name" : "Jenna Carter"}
     if user_id == 4:
         return{"user_id": 4, "Name" : "Jennifer Smith"}
+    # coaches
+    if user_id == 5:
+        return {"user_id": 5, "Name" : "Thomas Mckee"}
+    if user_id == 6:
+        return{"user_id": 6, "Name" : "Emily Stephenson"}
+    if user_id == 7:
+        return{"user_id": 7, "Name" : "Keith Freeman"}
+    if user_id == 8:
+        return{"user_id": 8, "Name" : "Jeffrey Abbott"}
     
 
 @views.route('/', methods=['GET', 'POST'])
@@ -35,7 +44,7 @@ def home():
     if current_user.permission_id == 0: 
         return redirect("/superadmin/home.html")
     elif current_user.permission_id == 1:
-        return render_template("/superadmin/home.html")
+        return redirect("/superadmin/home.html")
     elif current_user.permission_id == 2:
         return redirect("/team_dashboard")
     else:
@@ -57,8 +66,9 @@ def send_admin():
     "/assets/images/faces/face8.jpg",
     "/assets/images/faces/face9.jpg",
     "/assets/images/faces/face11.jpg"]
+    playerStatus = ["Cleared", "Not Cleared", "Partially Cleared", "Cleared"]
 
-    names2 = ["Todd Mckee", "Emily Stephenson", "Keith Freeman", "Jeffrey Abbott"]
+    names2 = [mock_database(5), mock_database(6), mock_database(7), mock_database(8)]
     images2 = ["/assets/images/faces/face2.jpg",
     "/assets/images/faces/face3.jpg",
     "/assets/images/faces/face7.jpg",
@@ -69,6 +79,7 @@ def send_admin():
     return render_template("superadmin/home.html", 
     athletes = users1, 
     athlete_images = images1,
+    status = playerStatus,
     coach_names = names2,
     coach_images = images2,
     teams_out = out_season,
@@ -99,6 +110,50 @@ def send_individual():
     performance = performanceNotes,
     nutrition = nutritionNotes, sleep_circle = sleep_circle, readyness_circle = readyness_circle, calorie_circle = calorie_circle )
 
+@views.route('/athlete')
+def send_athlete():
+    sleep = [4,-4,4,-4,4,-4,4,-4]
+    readyness = [8, -8, 8, -8, 8, -8, 8, -8, 8, -8]
+    calorie = [2,2,2,2,2,2,2,2,2,2,2]
+
+    sleep_circle = 80
+    readyness_circle = 90
+    calorie_circle = 55
+
+    return render_template("athlete.html", 
+    sleep_data = sleep,
+    readyness_data = readyness,
+    calorie_data = calorie,
+    sleep_circle = sleep_circle, readyness_circle = readyness_circle, calorie_circle = calorie_circle )
+
+
+
+@views.route('/coach_dashboard')
+def send_coach():
+    users1 = [mock_database(1), mock_database(2), mock_database(3), mock_database(4)]
+    images1 = ["/assets/images/faces/face6.jpg",
+    "/assets/images/faces/face8.jpg",
+    "/assets/images/faces/face9.jpg",
+    "/assets/images/faces/face11.jpg"]
+    playerStatus = ["Cleared", "Not Cleared", "Partially Cleared", "Cleared"]
+    sleep = [4,-4,4,-4,4,-4,4,-4]
+    readyness = [8, -8, 8, -8, 8, -8, 8, -8, 8, -8]
+    calorie = [2,2,2,2,2,2,2,2,2,2,2]
+
+    sleep_circle = 80
+    readyness_circle = 90
+    calorie_circle = 55
+
+    return render_template("coach_dashboard.html", 
+    sleep_data = sleep,
+    status = playerStatus,
+    athletes = users1, 
+    num_athletes= len(users1),
+    athlete_images = images1,
+    readyness_data = readyness,
+    calorie_data = calorie,
+    sleep_circle = sleep_circle, readyness_circle = readyness_circle, calorie_circle = calorie_circle )
+
 
 @views.route('/team_dashboard')
 def send_team():
@@ -123,7 +178,9 @@ def send_team():
 
 @views.route('/superadmin/<path:path>', methods=["GET"])
 def send_superadmin(path):
-    return send_from_directory('templates/superadmin', path)
+    return render_template('superadmin/' + path)
+
+
 
 @views.route("/superadmin/athletepermissions.html/<int:userid>", methods = ["GET"])
 def goto_athlete_permissions(userid):
@@ -134,10 +191,14 @@ def goto_athlete_permissions(userid):
 def backto_home():
     return render_template('superadmin/home.html')
 
-@views.route("/superadmin/coachpermissions.html", methods = ["GET"])
-def goto_coach_permissions():
-    return render_template('superadmin/coachpermissions.html')
+@views.route("/superadmin/coachpermissions.html/<int:userid>", methods = ["GET"])
+def goto_coach_permissions(userid):
+    user = mock_database(userid)
+    return render_template('superadmin/coachpermissions.html', user = user)
 
+@views.route('/coach_dashboard', methods=['GET'])
+def goto_superadmin_teamview():
+    return render_template('coach_dashboard')
 
 @views.route('/admin/index.html', methods=['GET'])
 def goto_admin_dash():

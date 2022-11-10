@@ -6,6 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
+dummyEmailList = []
 
 def create_app():
     ''' Initalizes the flask application and creates a database.db file if it does not currently exist.
@@ -40,14 +41,14 @@ def create_app():
 
     from .models import User
 
-    # with app.app_context():
-    #     if path.exists('instance/' + DB_NAME):
-    #         # delete the database if it exists
-    #         remove("instance/" + DB_NAME)
+    with app.app_context():
+        if path.exists('instance/' + DB_NAME):
+            # # delete the database if it exists
+            remove("instance/" + DB_NAME)
             
-    #     db.create_all()
-    #     print('Created Database!')
-    #     addDummyDB()
+        db.create_all()
+        print('Created Database!')
+        addDummyDB()    
 
 
 
@@ -89,7 +90,8 @@ def create_database(app):
             print("Database hydration complete!")
         else:
             print("Existing database detected!")
-
+    from .writecsv import writeUsersCSV
+    writeUsersCSV()
     
 def addDummyDB():
     ''' Calls database hydration functions.
@@ -100,12 +102,17 @@ def addDummyDB():
         void
     '''
 
-    addDummyTeam()
-    addDummyUser()
+    addDummyTeams()
     addPermissionList()
-    addDummyEntry()
+    addDummyUser()
+    addDummyUserList()
+    addDummyEntriesList()
 
-def addDummyTeam():
+def createCSVFiles():
+    from writecsv import writeUsersCSV
+    writeUsersCSV()
+
+def addDummyTeams():
     ''' Calls database hydration functions.
     Parameters:
     ---------------------------------------
@@ -115,12 +122,64 @@ def addDummyTeam():
     '''
 
     from .models import Team
-    team1 = Team(name = "Basketball")
-    team2 = Team(name = "Football")
-    db.session.add(team1)
-    db.session.add(team2)
+    from faker import Faker
+    import datetime
+    fake = Faker()
+    db.session.add(Team(name = "Men's Alpine Skiing", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Baseball", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Basketball", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Crew", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Cross Country", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Football", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Golf", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Ice Hockey", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Lacrosse", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Nordic Skiing", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Soccer", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Squash", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Swimming & Diving", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Tennis", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Men's Track & Field", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Alpine Skiing", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Basketball", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Crew", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Cross Country", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Field Hockey", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Ice Hockey", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Lacrosse", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Nordic Skiing", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Soccer", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Softball", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Squash", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Swimming & Diving", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Tennis", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Track & Field", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+    db.session.add(Team(name = "Women's Volleyball", season_start_date = datetime.datetime(2022, 11, 1), season_end_date = datetime.datetime(2023, 3, 1)))
+
     db.session.commit()
-    print("DB Team added")
+    print("All Teams added")
+
+# Adding 100 random users to the database
+def addDummyUserList():
+    ''' Adds 100 random users to the database.
+    Parameters:
+    ---------------------------------------
+    Returns:
+    ---------------------------------------
+        void
+    '''
+
+    from .models import User
+    from random import randint
+    from faker import Faker
+    fake = Faker()
+
+    for i in range(100):
+        fakeUser = User(email = fake.email(), password = generate_password_hash("password", method='sha256'), first_name = fake.first_name(), last_name = fake.last_name(), permission_id = randint(1, 3))
+        db.session.add(fakeUser)
+        dummyEmailList.append(fakeUser.email)
+    db.session.commit()
+    print("100 Users added")
 
 def addDummyUser():
     ''' Calls database hydration functions.
@@ -134,18 +193,17 @@ def addDummyUser():
     team1 = Team.query.filter_by(name = "Basketball").first()
     team2 = Team.query.filter_by(name = "Football").first()
 
-    user1 = User(first_name = "Chandra", last_name = "Gowda", email = "chandra@gmail.com", password = generate_password_hash("1234", method='sha256'), permission_id=0)
-    user2 = User(first_name = "Sinan", last_name = "Yumurtaci", email = "sinan@gmail.com", password = generate_password_hash("1234", method='sha256'), permission_id=1)
-    user3 = User(first_name = "Kelly", last_name = "Putnam", email = "kelly@gmail.com", password = generate_password_hash("1234", method='sha256'), permission_id=2)
-    user4 = User(first_name = "Jasper", last_name = "Loverude", email = "jasper@gmail.com", password = generate_password_hash("1234", method='sha256'), permission_id=3)
+    chandra = User(first_name = "Chandra", last_name = "Gowda", email = "chandra@gmail.com", password = generate_password_hash("1234", method='sha256'), permission_id=0)
+    sinan = User(first_name = "Sinan", last_name = "Yumurtaci", email = "sinan@gmail.com", password = generate_password_hash("1234", method='sha256'), permission_id=1)
+    kelly = User(first_name = "Kelly", last_name = "Putnam", email = "kelly@gmail.com", password = generate_password_hash("1234", method='sha256'), permission_id=2)
+    jasper = User(first_name = "Jasper", last_name = "Loverude", email = "jasper@gmail.com", password = generate_password_hash("1234", method='sha256'), permission_id=3)
 
-    db.session.add(user1)
-    db.session.add(user2)
-    db.session.add(user3)
-    db.session.add(user4)
+    db.session.add(chandra)
+    db.session.add(sinan)
+    db.session.add(kelly)
+    db.session.add(jasper)
     db.session.commit()
     print("DB User added")
-
 
 def addPermissionList():
     ''' Calls database hydration functions.
@@ -203,6 +261,40 @@ def addPermissionList():
     db.session.commit()
     print("DB Permissions added")
 
+# Adding 100 dummy entries to random atheletes in the database
+def addDummyEntriesList():
+    ''' Calls database hydration functions.
+    Parameters:
+    ---------------------------------------
+    Returns:
+    ---------------------------------------
+        void
+    '''
+    from .models import Entry, User
+    from random import randint
+    from faker import Faker
+    import datetime
+    fake = Faker()
+    # creating a loop that runs 100 times
+    for i in range(100):
+        # creating a random user from the database
+        # Getting a random email from the dummyEmailList
+        randomEmail = dummyEmailList[randint(0, len(dummyEmailList) - 1)]
+        randomUser = User.query.filter_by(email = randomEmail).first()
+        cat = randint(1, 4)
+        
+        # creating a random entry
+        fakeEntry = Entry(
+            time = datetime.datetime.now(),
+            # setting category to a random number between 0 and 4
+            category = 'psychology',
+            value = 0,
+            notes = fake.text(max_nb_chars=200),
+            user_id = randomUser.id,
+        )
+        # adding the random entry to the database
+        db.session.add(fakeEntry)
+    db.session.commit()
 
 def addDummyEntry():
     ''' Calls database hydration functions.
