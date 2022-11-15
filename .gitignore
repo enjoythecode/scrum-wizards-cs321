@@ -4,4 +4,4 @@ database.db
 **.DS_Store
 **.vscode
 **.csv
-.coverage
+*.coverage
