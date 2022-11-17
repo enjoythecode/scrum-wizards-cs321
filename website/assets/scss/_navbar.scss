@@ -61,7 +61,7 @@
     -ms-transition: width $action-transition-duration $action-transition-timing-function;
     box-shadow: $navbar-box-shadow;
     -webkit-box-shadow: $navbar-box-shadow;
-    -moz-box-shadow: $navbar-box-shadow;  
+    -moz-box-shadow: $navbar-box-shadow;
     color: $navbar-menu-color;
     padding-left: 15px;
     padding-right: 15px;
@@ -70,7 +70,7 @@
     .rtl & {
       box-shadow: $navbar-box-shadow-rtl;
     -webkit-box-shadow: $navbar-box-shadow-rtl;
-    -moz-box-shadow: $navbar-box-shadow-rtl;  
+    -moz-box-shadow: $navbar-box-shadow-rtl;
     }
     @media (max-width: 991px) {
       width: auto;
@@ -208,7 +208,7 @@
             border: none;
             @include border-radius(4px);
             &.navbar-dropdown {
-              position: absolute;            
+              position: absolute;
               font-size: 0.9rem;
               margin-top: 0;
               top: 48px;

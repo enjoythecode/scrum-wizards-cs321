@@ -34,19 +34,19 @@ def coach_permissions_form_submission():
 
         # if deleteaccount:
         #     remove(id)
-        
+
         return redirect("/superadmin/home.html")
 
 
 
-        
 
-# deleting a user 
+
+# deleting a user
 @coachpermissions.route("/remove/<string:id>", methods=['GET', "POST"])
 @login_required
 def remove(id):
     user = User.query.get(id)
-    
+
     if user:
         if user.user_id == current_user.id:
             db.session.delete(user)
@@ -54,4 +54,3 @@ def remove(id):
             flash('User deleted!', category='success')
 
     return redirect("/superadmin/home.html")
-

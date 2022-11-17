@@ -32,7 +32,7 @@ def add_athlete_form_submission():
         #     if team is not None:
         #         team_ids.append(team.team_id())
         # return team_ids
-                
+
 
 
         user = User.query.filter_by(email=email).first()
@@ -47,7 +47,7 @@ def add_athlete_form_submission():
             login_user(user, remember=True)
             flash('Account created!', category='success')
 
-            
+
             # userlist = []
             # for user in User.query.all():
             #     if user.role == 'athlete':
