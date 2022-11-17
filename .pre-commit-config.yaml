@@ -4,6 +4,10 @@ repos:
     hooks:
       - id: black
 
+-   repo: https://github.com/PyCQA/pylint
+    rev: v2.15.5
+    hooks:
+      - id: pylint
 
 -   repo: local
     hooks:
