@@ -74,7 +74,7 @@ def send_admin():
     "/assets/images/faces/face7.jpg",
     "/assets/images/faces/face5.jpg"]
 
-    out_season = ["Lacrosse", "Nordic Ski", "Basketball", "Swimming", "Indoor Track", "Hockey"]
+    # out_season = ["Lacrosse", "Nordic Ski", "Basketball", "Swimming", "Indoor Track", "Hockey"]
 
     return render_template("superadmin/home.html", 
     athletes = users1, 
@@ -82,10 +82,10 @@ def send_admin():
     status = playerStatus,
     coach_names = names2,
     coach_images = images2,
-    teams_out = out_season,
+    # teams_out = out_season,
     num_athletes= len(users1),
     num_coaches = len(names2),
-    num_out_teams = len(out_season)
+    # num_out_teams = len(out_season)
     )
 
 @views.route('/individual_dashboard')
