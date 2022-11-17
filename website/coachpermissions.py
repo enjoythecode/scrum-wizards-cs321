@@ -11,7 +11,7 @@ coachpermissions = Blueprint('coachpermissions', __name__)
 @coachpermissions.route('/superadmin/coachpermissions.html', methods= ['POST'])
 def coach_permissions_form_submission():
 
-    if request.method == 'POST':
+    if request.method == 'POST' and request.action == 'save':
 
         deleteaccount = request.form.get('deleteaccount')
         team = request.form.get('team')

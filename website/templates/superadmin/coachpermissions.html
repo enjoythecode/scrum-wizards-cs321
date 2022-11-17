@@ -199,7 +199,7 @@
                       
                       
                     <div class="preview-list">
-                        
+                        <form method = 'POST' action = 'save'>
                       <div class="preview-item border-bottom">
                         
                         <div class="preview-item-content d-flex flex-grow">
@@ -246,25 +246,6 @@
                           </div>
                         </div>
                       </div>
-                        
-      
-                        
-
-
-                      <div class="preview-item border-bottom">
-                        
-                        <div class="preview-item-content d-flex flex-grow">
-                          <div class="flex-grow">
-                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
-
-                              <button id = "deleteaccount" name = "deleteaccount" class='btn-danger btn btn-fw'>Delete Account</button>
-                              
-                            </div>
-                            
-                          </div>
-                        </div>
-                      </div>
-                        
                         <div class="preview-item border-bottom">
                         
                         <div class="preview-item-content d-flex flex-grow">
@@ -279,9 +260,22 @@
                           </div>
                         </div>
                       </div>
+                    </form>
+                    <form method = 'POST' action = 'delete'>
+                      <div class="preview-item border-bottom">
                         
-                        
-                        
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+
+                              <button id = "deleteaccount" name = "deleteaccount" class='btn-danger btn btn-fw'>Delete Account</button>
+                              
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </form>
                     </div>
                   </div>
 <!--                      </form>-->

@@ -1,8 +1,9 @@
-from flask import flash
+from flask import flash, request
 from flask import Blueprint
 from flask import render_template
 from flask import send_from_directory, redirect, url_for
 from flask_login import login_required, current_user
+from . import db
 
 views = Blueprint('views', __name__)
 auth = Blueprint('auth', __name__)
@@ -182,10 +183,19 @@ def send_superadmin(path):
 
 
 
-@views.route("/superadmin/athletepermissions.html/<int:userid>", methods = ["GET"])
+@views.route("/superadmin/athletepermissions.html/<int:userid>", methods = ["GET", "POST"])
 def goto_athlete_permissions(userid):
     user = mock_database(userid)
+
+    # to delete user
+    if request.method == 'POST' and request.action == 'delete':
+        db.session.delete(user)
+        db.session.commit()
+        flash('User deleted!', category='success')
+
     return render_template('superadmin/athletepermissions.html', user = user)
+        
+
 
 @views.route("/superadmin/home.html", methods = ["GET"])
 def backto_home():

@@ -11,7 +11,7 @@ athletepermissions = Blueprint('athletepermissions', __name__)
 @athletepermissions.route('/superadmin/athletepermissions.html', methods= ['POST'])
 def athlete_permissions_form_submission():
 
-    if request.method == 'POST':
+    if request.method == 'POST' and request.action == 'delete':
 
         deleteaccount = request.form.get('deleteaccount')
         team = request.form.get('team')
@@ -40,17 +40,17 @@ def athlete_permissions_form_submission():
 
         
 
-# deleting a user 
-@athletepermissions.route("/remove/<string:id>", methods=['GET', "POST"])
-@login_required
-def remove(id):
-    user = User.query.get(id)
+# # deleting a user 
+# @athletepermissions.route("/remove/<string:id>", methods=['GET', "POST"])
+# @login_required
+# def remove(id):
+#     user = User.query.get(id)
     
-    if user:
-        if user.user_id == current_user.id:
-            db.session.delete(user)
-            db.session.commit()
-            flash('User deleted!', category='success')
+#     if user:
+#         if user.user_id == current_user.id:
+#             db.session.delete(user)
+#             db.session.commit()
+#             flash('User deleted!', category='success')
 
-    return redirect("/superadmin/home.html")
+#     return redirect("/superadmin/home.html")
 
