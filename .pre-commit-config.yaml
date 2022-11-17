@@ -1,0 +1,15 @@
+repos:
+-   repo: https://github.com/psf/black
+    rev: 22.10.0
+    hooks:
+      - id: black
+
+
+-   repo: local
+    hooks:
+      - id: pytest-check
+        name: run pytest
+        entry: make test
+        language: system
+        pass_filenames: false
+        always_run: true
