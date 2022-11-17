@@ -1,4 +1,7 @@
 import pytest
+import sys
+
+sys.path.append('/Users/kellyputnam/Desktop/scrum-wizards-cs321/website')
 from website import models
 
 
