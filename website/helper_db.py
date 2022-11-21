@@ -1,6 +1,64 @@
 from . import db
 from sqlalchemy.sql import func
 
+# Add Functions for models.py
+
+def addUser(email, first_name, last_name, password, permission_id):
+    ''' Adds a user to the database
+    ---------------------------------------
+    Returns: 
+    ---------------------------------------
+    Python List. len = total_entries_of_category
+    '''
+
+    from .models import User
+    user = User(email = email, first_name = first_name, last_name = last_name, password = password, permissions_id = permission_id)
+    db.session.add(user)
+    db.session.commit()
+    return user
+
+def addEntry(time, category, value, notes, user_id):
+    ''' Adds an entry to the database
+    ---------------------------------------
+    Returns: 
+    ---------------------------------------
+    Python List. len = total_entries_of_category
+    '''
+
+    from .models import Entry
+    entry = Entry(time = time, category = category, value = value, notes = notes, user_id = user_id)
+    db.session.add(entry)
+    db.session.commit()
+    return entry
+
+def addTeam(name, start_date, end_date):
+    ''' Adds a team to the database
+    ---------------------------------------
+    Returns: 
+    ---------------------------------------
+    Python List. len = total_entries_of_category
+    '''
+
+    from .models import Team
+    team = Team(team_name = name, season_start = start_date, season_end = end_date)
+    db.session.add(team)
+    db.session.commit()
+    return team
+
+def addPermission(id, name, can_view_self_entries, can_edit_self_entries, can_view_own_teams_entries, can_edit_own_teams_entries, can_view_all_entries, can_edit_all_entries):
+    ''' Adds a permission to the database
+    ---------------------------------------
+    Returns: 
+    ---------------------------------------
+    Python List. len = total_entries_of_category
+    '''
+
+    from .models import Permission
+    permission = Permission(id = id, name = name, can_view_self_entries = can_view_self_entries, can_edit_self_entries = can_edit_self_entries, can_view_own_teams_entries = can_view_own_teams_entries, can_edit_own_teams_entries = can_edit_own_teams_entries, can_view_all_entries = can_view_all_entries, can_edit_all_entries = can_edit_all_entries)
+    db.session.add(permission)
+    db.session.commit()
+    return permission
+
 # Get Functions for models.py
 
 def getUsers():
@@ -141,6 +199,18 @@ def getPermissionByName(permission_name):
 
     from .models import Permission
     permission = Permission.query.filter_by(name=permission_name).first()
+    return permission
+
+def getPermissionById(permission_id):
+    ''' Gets all permissions of a specific id
+    ---------------------------------------
+    Returns: 
+    ---------------------------------------
+    Python List. len = total_permissions_by_id
+    '''
+
+    from .models import Permission
+    permission = Permission.query.filter_by(id=permission_id).first()
     return permission
 
 

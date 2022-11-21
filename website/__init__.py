@@ -8,6 +8,32 @@ db = SQLAlchemy()
 DB_NAME = "database.db"
 dummyEmailList = []
 
+def create_test_app():
+
+    from .models import User, Team, Entry, Permission
+
+    app = Flask(__name__)
+    app.config['SECRET_KEY'] = 'secret'
+    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///test.db"
+    db.init_app(app)
+
+    create_test_database(app)
+
+    from .views import views
+    from .auth import auth
+    app.register_blueprint(views, url_prefix='/')
+    app.register_blueprint(auth, url_prefix='/')
+
+    login_manager = LoginManager()
+    login_manager.login_view = 'auth.login'
+    login_manager.init_app(app)
+
+    @login_manager.user_loader
+    def load_user(id):
+        return User.query.get(int(id))
+
+    return app
+
 def create_app():
     ''' Initalizes the flask application and creates a database.db file if it does not currently exist.
     ---------------------------------------
@@ -92,6 +118,25 @@ def create_database(app):
             print("Existing database detected!")
     from .writecsv import writeUsersCSV
     writeUsersCSV()
+
+def create_test_database(app):
+    ''' If database.db does not exist, creates the file, and populates it with data
+    Parameters:
+    ---------------------------------------
+    app: Flask(). Flask application object.
+
+    Returns:
+    ---------------------------------------
+        void
+    '''
+    
+    with app.app_context():
+        # Creates database if it does not exist
+        if path.exists('instance/' + DB_NAME):
+            remove("instance/" + DB_NAME)
+
+        print("Creating new database...")
+        db.create_all()
     
 def addDummyDB():
     ''' Calls database hydration functions.
