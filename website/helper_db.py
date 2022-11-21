@@ -12,7 +12,7 @@ def addUser(email, first_name, last_name, password, permission_id):
     '''
 
     from .models import User
-    user = User(email = email, first_name = first_name, last_name = last_name, password = password, permissions_id = permission_id)
+    user = User(email = email, first_name = first_name, last_name = last_name, password = password, permission_id = permission_id)
     db.session.add(user)
     db.session.commit()
     return user
