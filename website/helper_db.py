@@ -40,7 +40,7 @@ def addTeam(name, start_date, end_date):
     '''
 
     from .models import Team
-    team = Team(team_name = name, season_start = start_date, season_end = end_date)
+    team = Team(name = name, season_start_date = start_date, season_end_date = end_date)
     db.session.add(team)
     db.session.commit()
     return team
@@ -159,7 +159,7 @@ def getTeamByName(team_name):
         Team.
     '''
     from .models import Team
-    team = Team.query.filter_by(team_name=team_name).first()
+    team = Team.query.filter_by(name=team_name).first()
     return team
 
 
@@ -184,8 +184,8 @@ def getUsersInTeam(team_id):
     Python List. len = total_users_in_team
     '''
 
-    from .models import User
-    users = User.query.filter_by(teams=team_id).all()
+    from .models import User, Team
+    users = Team.query.filter_by(id=team_id).first().users
     return users
 
 
@@ -214,7 +214,7 @@ def getPermissionById(permission_id):
     return permission
 
 
-def getUsersByPermission(permission_name):
+def getUsersByPermission(permission_id):
     ''' Gets all users of a specific permission
     ---------------------------------------
     Returns: 
@@ -223,7 +223,7 @@ def getUsersByPermission(permission_name):
     '''
 
     from .models import User
-    users = User.query.filter_by(permissions_id=permission_name).all()
+    users = User.query.filter_by(permission_id=permission_id).all()
     return users
 
 
@@ -304,9 +304,9 @@ def addUserToTeam(user_id, team_id):
     Python List. len = total_entries_of_category
     '''
 
-    from .models import User
+    from .models import User, Team
     user = User.query.filter_by(id=user_id).first()
-    user.teams.append(team_id)
+    user.teams.append(Team.query.filter_by(id=team_id).first())
     db.session.commit()
     return user
 

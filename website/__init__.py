@@ -14,7 +14,7 @@ def create_test_app():
 
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'secret'
-    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///test.db"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.db"
     db.init_app(app)
 
     create_test_database(app)
@@ -64,8 +64,6 @@ def create_app():
     app.register_blueprint(addathlete, url_prefix='/')
     app.register_blueprint(athletepermissions, url_prefix='/')
     app.register_blueprint(coachpermissions, url_prefix='/')
-
-    from .models import User
 
     with app.app_context():
         if path.exists('instance/' + DB_NAME):
