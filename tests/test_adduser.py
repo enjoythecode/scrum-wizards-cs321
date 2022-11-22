@@ -13,10 +13,16 @@ def test_addathlete(client):
 
     text_data = response.get_data(as_text = True)
 
+    print(response.data)
+
     assert 'kelly@gmail.com' in text_data
     assert 'Kelly' in text_data
     assert 'Putnam' in text_data
     assert 'abcd' in text_data
+
+    # user = User.query.filter_by(username='bob').first()
+    # assert user is not None
+    # assert user.email == 'bob@example.com'
 
 
 def test_addcoach(client):
@@ -26,6 +32,8 @@ def test_addcoach(client):
         , 'lastname':'Putnam','id':1234})
 
     text_data = response.get_data(as_text = True)
+
+    print(response.data)
 
     assert 'kelly@gmail.com' in text_data
     assert 'Kelly' in text_data
@@ -39,6 +47,8 @@ def test_addadmin(client):
         , 'lastname':'Putnam','id':1234})
 
     text_data = response.get_data(as_text = True)
+
+    print(response.data)
 
     assert 'kelly@gmail.com' in text_data
     assert 'Kelly' in text_data
