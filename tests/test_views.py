@@ -3,6 +3,21 @@ from website import create_test_app
 from website import models
 from website import views
 
+def test_mock_database():
+
+    #testing the mock database used
+
+    #mock data for athletes
+    assert views.mock_database(1) == {"user_id": 1, "Name" : "Robert Reyes"}
+    assert views.mock_database(2) == {"user_id": 2, "Name" : "Casey Brown"}
+    assert views.mock_database(3) == {"user_id": 3, "Name" : "Jenna Carter"}
+    assert views.mock_database(4) == {"user_id": 4, "Name" : "Jennifer Smith"}
+
+    # mock data for coaches
+    assert views.mock_database(5) == {"user_id": 5, "Name" : "Thomas Mckee"}
+    assert views.mock_database(6) == {"user_id": 6, "Name" : "Emily Stephenson"}
+    assert views.mock_database(7) == {"user_id": 7, "Name" : "Keith Freeman"}
+    assert views.mock_database(8) == {"user_id": 8, "Name" : "Jeffrey Abbott"}
 
 def test_send_admin(client):
 
