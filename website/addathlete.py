@@ -13,7 +13,7 @@ def add_athlete_form_submission():
     if request.method == 'POST':
         # left hand side
         email = request.form.get('email')
-        user,password = request.form.get('password')
+        password = request.form.get('password')
         firstname = request.form.get('firstname')
         lastname = request.form.get('lastname')
         id = request.form.get('id')
