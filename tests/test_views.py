@@ -52,3 +52,42 @@ def test_goto_coach_permissions(client):
     print(response2.data)
     assert response2.status_code == 200
     assert b'Team' in response2.data
+
+def test_send_athlete(client):
+    # testing the redirecting to the athlete page 
+    response = client.get('/athlete')
+    print(response.data)
+    assert response.status_code == 200
+    assert b'Sleep' in response.data
+    assert b'Readyness' in response.data
+    assert b'Calorie' in response.data
+    assert b'Weekly Overview' in response.data
+
+def test_send_individual(client):
+    # testing the redirecting to the individual dashboard for athlete
+    response = client.get('/individual_dashboard')
+    print(response.data)
+    assert response.status_code == 200
+    assert b'Sleep' in response.data
+    assert b'Readyness' in response.data
+    assert b'Calorie' in response.data
+    assert b'Overview' in response.data
+    assert b'Notes' in response.data
+
+def test_send_coach(client):
+    # testing the redirecting to the coach home page 
+    response = client.get('/coach_dashboard')
+    print(response.data)
+    assert response.status_code == 200
+    assert b'Team Overview' in response.data
+    assert b'Athletes' in response.data
+
+def test_send_team(client):
+    # testing the redirecting to the team dashboards
+    response = client.get('/team_dashboard')
+    print(response.data)
+    assert response.status_code == 200
+    assert b'Team Averages' in response.data
+
+
+
