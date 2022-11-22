@@ -176,7 +176,7 @@ def send_team():
     calorie_intake = Calorie, 
     recovery_rate = Recovery, sleep_circle = sleep_circle, readyness_circle=readyness_circle, calorie_circle=calorie_circle)
 
-@views.route('/superadmin/<path:path>', methods=["GET"])
+#@views.route('/superadmin/<path:path>', methods=["GET"])
 def send_superadmin(path):
     return render_template('superadmin/' + path)
 
