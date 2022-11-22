@@ -3,6 +3,7 @@ from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
+import auth
 
 addathlete = Blueprint('addathlete', __name__)
 
@@ -18,7 +19,7 @@ def add_athlete_form_submission():
         id = request.form.get('id')
         createuser = request.form.get('createuser')
         role = 'coach'
-        permission = 0
+        permission_id = 0
         # below could be wrong since it's a dropdown menu
         # also need to make sure team2 and team3 can be emtpy
         team1 = request.form.get('team1')
@@ -39,20 +40,7 @@ def add_athlete_form_submission():
         if user:
             flash('Username already exists.', category='error')
         else:
-            # add user to database
-            new_user = User(id = id, email = email, first_name = firstname, last_name = lastname, permission = permission, password=generate_password_hash(password, method='sha256'), role = role)
-            # new_user = User(id = id, email = email, first_name = firstname, last_name = lastname, password=generate_password_hash(password, method='sha256'), team_id = team_ids, permissions_id = permissions, entries = entries)
-            db.session.add(new_user)
-            db.session.commit()
-            login_user(user, remember=True)
-            flash('Account created!', category='success')
-
-            
-            # userlist = []
-            # for user in User.query.all():
-            #     if user.role == 'athlete':
-            #         userlist.append(user)
-            # return render_template("/superadmin/home.html", athletelist = userlist)
+            auth.signup_user(id, email, firstname, lastname, password, permission_id)
 
 
             return redirect('/superadmin/home.html')
