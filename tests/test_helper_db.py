@@ -265,7 +265,7 @@ def test_get_entries_by_user(client):
     helper_db.addUserToTeam(user_id=1, team_id=1)
     current_time = datetime.datetime.now()
     helper_db.addEntry(user_id=1, time = current_time, category = Category.psychology, value = 0, notes = "test notes")
-    entry_list = helper_db.getEntriesForUser(1)
+    entry_list = helper_db.getEntriesByUser(1)
     assert len(entry_list) == 1
     assert entry_list[0].user_id == 1
     assert entry_list[0].time.year == current_time.year
@@ -372,36 +372,49 @@ def test_update_team_start_end(client):
     assert new_team_start == final_start_date
     assert new_team_end == final_end_date
 
-
-# def updateEntryValues(entry_id, time, category, value, notes, user_id):
-
 # Test update entry values (notes, time, value, category, etc...)
-# def test_update_team_start_end(client):
-#     from website.models import Category
-#     import datetime
+def test_update_entry_values(client):
+    from website.models import Category
+    import datetime
+    helper_db.addUser("email@email.com", "init_1", "init_2", "1234", permission_id=0)
+    user_id = helper_db.getUserByName("init_1", "init_2").id
+    init_time = datetime.datetime.now()
+    helper_db.addEntry(init_time, Category.sleep, 5, "Take a break on saturday.", user_id)
+    
+    entry = helper_db.getEntriesByUser(user_id)[0]
 
+    new_time = datetime.datetime(init_time.year + 1, init_time.month, init_time.day, 0, 0)
+    helper_db.updateEntryValues(entry.id, new_time, Category.force_plate, 10, "Cleared to play on Saturday.", user_id)
 
+    entry = helper_db.getEntryById(entry.id)
 
-#     helper_db.addUser("email@email.com", "init_1", "init_2", "1234", permission_id=0)
-#     user_id = helper_db.getPermissionByName("init_1").id
-#     time = datetime.datetime.now()
-#     helper_db.addEntry(time, Category.sleep, 5, "Take a break on saturday.", user_id)
-#     new_time = datetime.date( time.year + 1, time.month, time.day)
+    assert entry.time == new_time
+    assert entry.category == Category.force_plate
+    assert entry.value == 10
+    assert entry.notes == "Cleared to play on Saturday."
+    assert entry.user_id == user_id
 
-#     assert init_start_date != final_start_date
-#     assert init_end_date != final_end_date
-#     team_id = helper_db.getTeamByName("init_name").id
-#     helper_db.updateTeamSeason(team_id, final_start_date, final_end_date)
-#     new_team_start = helper_db.getTeamById(team_id).season_start_date
-#     new_team_end = helper_db.getTeamById(team_id).season_end_date
-#     assert new_team_start == final_start_date
-#     assert new_team_end == final_end_date
-
-
-
-# # Delete functions for models.py
-
+# Test Delete functions for models.py
 # def deleteUser(user_id):
 
+def test_delete_user(client):
+    helper_db.addUser("email@email.com", "init_1", "init_2", "1234", permission_id=0)
+    user_id = helper_db.getUserByEmail("email@email.com").id
+    helper_db.deleteUser(user_id)
+    assert helper_db.getUserByEmail("email@email.com") == None
 
 # def deleteEntry(entry_id):
+
+def test_delete_entry(client):
+    from website.models import Category
+    import datetime
+    helper_db.addUser("email@email.com", "init_1", "init_2", "1234", permission_id=0)
+    user_id = helper_db.getUserByName("init_1", "init_2").id
+    init_time = datetime.datetime.now()
+    helper_db.addEntry(init_time, Category.sleep, 5, "Take a break on saturday.", user_id)
+    
+    entry_id = helper_db.getEntriesByUser(user_id)[0].id
+
+    helper_db.deleteEntry(entry_id)
+
+    assert helper_db.getEntryById(entry_id)== None

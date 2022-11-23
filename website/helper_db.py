@@ -240,8 +240,8 @@ def getEntryById(entry_id):
     return entry
 
 
-def getEntriesForUser(user_id):
-    ''' Handles login logic on /login path:
+def getEntriesByUser(user_id):
+    ''' Returns all entries for a specific user
     ---------------------------------------
     Returns: 
     ---------------------------------------
@@ -337,6 +337,10 @@ def updateTeamName(team_id, team_name):
     team = Team.query.filter_by(id=team_id).first()
     team.name = team_name
     db.session.commit()
+
+
+
+
     return team
 
 def updateTeamSeason(team_id, season_start, season_end):
