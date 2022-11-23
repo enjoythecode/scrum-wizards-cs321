@@ -6,13 +6,26 @@ from website import helper_db
 from conftest import app, client
 from website.models import User, Team, Entry, Category, Permission
 
-# Unit tests for addUser()
+
+#################################
+#                               #
+#   UNIT TESTS FOR ADD METHODS  #
+#                               #
+#################################
+
 def test_add_user(client):
     '''
-    GIVEN a User model 
-    WHEN a new User is created
-    THEN check the email, first_name, last_name, password, permission_id
+    Unit test for addUser() 
+
+    GIVEN: 
+        There is no user in the database
+    WHEN: 
+        A new user is added to the database
+    THEN: 
+        Check that the database contains the user with proper email, 
+        first_name, last_name, password, permission_id are 
     '''
+
     helper_db.addUser(email="test@gmail.com", first_name="first", last_name="last", password="test", permission_id=1)
     test_user = helper_db.getUserByEmail("test@gmail.com")
     assert test_user.email == "test@gmail.com" 
@@ -21,9 +34,19 @@ def test_add_user(client):
     assert test_user.password == "test"
     assert test_user.permission_id == 1
 
-
-# # Unit tests for addTeam()
 def test_add_team(client):
+    '''
+    Unit test for addTeam()
+
+    GIVEN: 
+        There is no team in the database
+    WHEN: 
+        A new team is added to the database
+    THEN: 
+        Check that the database contains the team with proper start date, 
+        end date, and name
+    '''
+
     import datetime
     start_date = datetime.datetime.now()
     end_date = datetime.datetime.now()
@@ -37,9 +60,19 @@ def test_add_team(client):
     assert test_team.season_end_date.month == end_date.month
     assert test_team.season_end_date.day == end_date.day
 
-
-# # Unit tests for addEntry()
 def test_add_entry(client):
+    '''
+    Unit test for addEntry()
+
+    GIVEN: 
+        There is no entry in the database
+    WHEN: 
+        A new entry is added to the database
+    THEN: 
+        Check that the database contains the entry with proper user_id, 
+        category, time, value, and notes 
+    '''
+
     import datetime
     test_time = datetime.datetime.now()
     helper_db.addEntry(user_id=1, time=test_time, category=Category.psychology, value=0, notes="test")
@@ -52,8 +85,19 @@ def test_add_entry(client):
     assert test_entry.value == 0
     assert test_entry.notes == "test"
 
-# # Unit tests for addPermission()
 def test_add_permission(client):
+    '''
+    Unit test for addPermission()
+
+    GIVEN: 
+        There is no permission in the database
+    WHEN: 
+        A new permission is added to the database
+    THEN: 
+        Check that the database contains the permission with proper boolean
+        values for permissions
+    '''
+
     helper_db.addPermission(id = 0, name="test", can_view_self_entries=True, can_edit_self_entries=True, can_view_own_teams_entries=True, can_edit_own_teams_entries=True, can_view_all_entries=True, can_edit_all_entries=True)
     test_permission = helper_db.getPermissionByName("test")
     assert test_permission.name == "test"
@@ -65,10 +109,25 @@ def test_add_permission(client):
     assert test_permission.can_view_all_entries == True
     assert test_permission.can_edit_all_entries == True
 
-# # Unit tests for Get Functions
 
-# # Unit tests for getUsers()
+#################################
+#                               #
+#   UNIT TESTS FOR GET METHODS  #
+#                               #
+#################################
+
 def test_get_users(client):
+    '''
+    Unit test for getUsers()
+
+    GIVEN: 
+        There exists a user(s) in the database
+    WHEN: 
+        Calling the getUsers() method
+    THEN: 
+        Check that the returns all users in the database
+    '''
+
     helper_db.addUser(email="cmgowd25@colby.edu", first_name="Chandra", last_name="Gowda", password="12345", permission_id=1)
     user_list = helper_db.getUsers()
     assert len(user_list) == 1
@@ -78,8 +137,19 @@ def test_get_users(client):
     assert user_list[0].password == "12345"
     assert user_list[0].permission_id == 1
 
-# # Unit tests for getTeams()
 def test_get_teams(client):
+    '''
+    Unit test for getTeams()
+
+    GIVEN: 
+        There exist a team(s) in the database
+    WHEN: 
+        Calling the getTeams() method
+    THEN: 
+        Check that the method returns all teams, with proper start/end time,
+        and team name
+    '''
+
     import datetime
     start_date = datetime.datetime.now()
     end_date = datetime.datetime.now()
@@ -94,8 +164,18 @@ def test_get_teams(client):
     assert team_list[0].season_end_date.month == end_date.month
     assert team_list[0].season_end_date.day == end_date.day
 
-# # Unit tests for getEntries()
 def test_get_entries(client):
+    '''
+    Unit test for getEntries()
+
+    GIVEN: 
+        There exists an entry in the database
+    WHEN: 
+        Calling the getEntries() method
+    THEN: 
+        Check that the method returnes all entries in the database
+    '''
+
     import datetime
     current_time = datetime.datetime.now()
     helper_db.addEntry(user_id=1, time = current_time, category = Category.psychology, value = 0, notes = "test notes")
@@ -107,8 +187,19 @@ def test_get_entries(client):
     assert entry_list[0].value == 0
     assert entry_list[0].notes == "test notes"
 
-# # Unit tests for getPermissions()
 def test_get_permissions(client):
+    '''
+    Unit test for getPermissions()
+
+    GIVEN: 
+        There exists a permission(s) in the database
+    WHEN: 
+        The getPermissions() method is invoked
+    THEN: 
+        Check that the method returns all permissions in the database
+        with proper boolean values 
+    '''
+
     helper_db.addPermission(id = 1, name="test", can_view_self_entries=True, can_edit_self_entries=True, can_view_own_teams_entries=True, can_edit_own_teams_entries=True, can_view_all_entries=True, can_edit_all_entries=True)
     permission_list = helper_db.getPermissions()
     assert len(permission_list) == 1
@@ -121,8 +212,18 @@ def test_get_permissions(client):
     assert permission_list[0].can_view_all_entries == True
     assert permission_list[0].can_edit_all_entries == True
 
-# # Unit tests for getUserByEmail() 
 def test_get_user_by_email(client):
+    '''
+    Unit test for getUserByEmail()
+
+    GIVEN: 
+        There exists a user in the database
+    WHEN: 
+        Calling the getUserByEmail() method
+    THEN: 
+        Check that the method returns the proper user associated with that email
+    '''
+
     helper_db.addUser(email="cmgowd25@colby.edu", first_name="Chandra", last_name="Gowda", password="12345", permission_id=1)
     test_user = helper_db.getUserByEmail("cmgowd25@colby.edu")
     assert test_user.email == "cmgowd25@colby.edu"
@@ -131,8 +232,18 @@ def test_get_user_by_email(client):
     assert test_user.password == "12345"
     assert test_user.permission_id == 1
 
-# # Unit tests for getUserByName()
 def test_get_user_by_name(client):
+    '''
+    Unit test for getUserByName()
+
+    GIVEN: 
+        There exists a user in the database
+    WHEN: 
+        Calling the getUserByName() method
+    THEN: 
+        Check that the method returns the user with the proper first and lastname 
+    '''
+
     helper_db.addUser(email="cmgowd25@colby.edu", first_name="Chandra", last_name="Gowda", password="12345", permission_id=1)
     test_user = helper_db.getUserByName("Chandra", "Gowda")
     assert test_user.email == "cmgowd25@colby.edu"
@@ -141,8 +252,20 @@ def test_get_user_by_name(client):
     assert test_user.password == "12345"
     assert test_user.permission_id == 1
 
-# # Unit tests for getUserByID()
+
 def test_get_user_by_id(client):
+    '''
+    Unit test for getUserById()
+
+    GIVEN: 
+        There exists a user in the database
+    WHEN: 
+        Calling the getUserById() method
+    THEN: 
+        Check that the method returns the user with associated with said ID, and has 
+        the proper email, name, and password
+    '''
+
     helper_db.addUser(email="cmgowd25@colby.edu", first_name="Chandra", last_name="Gowda", password="12345", permission_id=1)
     test_user = helper_db.getUserById(1)
     assert test_user.email == "cmgowd25@colby.edu"
@@ -151,8 +274,19 @@ def test_get_user_by_id(client):
     assert test_user.password == "12345"
     assert test_user.permission_id == 1
 
-# # Unit tests for getTeamByName()
 def test_get_team_by_name(client):
+    '''
+    Unit test for getTeamByName()
+
+    GIVEN: 
+        There exists a team in the database
+    WHEN: 
+        Invoking the getTeamByName() method
+    THEN: 
+        Check that the database returns the team with input name and that team has proper
+        start, and end dates
+    '''
+
     import datetime
     start_date = datetime.datetime.now()
     end_date = datetime.datetime.now()
@@ -166,8 +300,19 @@ def test_get_team_by_name(client):
     assert test_team.season_end_date.month == end_date.month
     assert test_team.season_end_date.day == end_date.day
 
-# # Unit tests for getTeamByID()
 def test_get_team_by_id(client):
+    '''
+    Unit test for getTeamById()
+
+    GIVEN: 
+        There exists a team in the database
+    WHEN: 
+        Invoking the getTeamById() method
+    THEN: 
+        Check that the method returns the team associated with said ID, and
+        that team contains the proper start date and enddate
+    '''
+
     import datetime
     start_date = datetime.datetime.now()
     end_date = datetime.datetime.now()
@@ -182,8 +327,19 @@ def test_get_team_by_id(client):
     assert test_team.season_end_date.month == end_date.month
     assert test_team.season_end_date.day == end_date.day
 
-# # Unit tests for getUsersInTeam()
 def test_get_users_in_team(client):
+    '''
+    Unit test for getUsersInTeam()
+
+    GIVEN: 
+        There exists a team in the database with user(s) associated with it
+    WHEN: 
+        Invoking the getUsersInTeam() method
+    THEN: 
+        Check that the method returns all users associated with that team,
+        and that the users have the proper name, email, password, etc.
+    '''
+
     import datetime
     start_date = datetime.datetime.now()
     end_date = datetime.datetime.now()
@@ -198,8 +354,19 @@ def test_get_users_in_team(client):
     assert user_list[0].password == "12345"
     assert user_list[0].permission_id == 1
 
-# # Unit tests for getPermissionsByName()
-def test_get_permissions_by_name(client):
+def test_get_permission_by_name(client):
+    '''
+    Unit test for getPermissionByName()
+
+    GIVEN: 
+        There exists a permission in the database
+    WHEN: 
+        Invoking the getPermissionsByName() method
+    THEN: 
+        Check that the method returns the permission of the stated name,
+        and it contains all proper boolean values 
+    '''
+
     helper_db.addPermission(id = 1, name="test", can_view_self_entries=False, can_edit_self_entries=True, can_view_own_teams_entries=False, can_edit_own_teams_entries=True, can_view_all_entries=False, can_edit_all_entries=True)
     permission = helper_db.getPermissionByName("test")
     assert permission.name == "test"
@@ -211,8 +378,18 @@ def test_get_permissions_by_name(client):
     assert permission.can_view_all_entries == False
     assert permission.can_edit_all_entries == True
 
-# # Unit tests for getPermissionsByID()
-def test_get_permissions_by_id(client):
+def test_get_permission_by_id(client):
+    '''
+    Unit test for getPermissionById()
+
+    GIVEN: 
+        There exists a permission in the database
+    WHEN: 
+        Invoking the getPermissionById() method
+    THEN: 
+        Check that the method returns the permission with the proper boolean values
+    '''
+
     helper_db.addPermission(id = 1, name="test", can_view_self_entries=False, can_edit_self_entries=True, can_view_own_teams_entries=False, can_edit_own_teams_entries=True, can_view_all_entries=False, can_edit_all_entries=True)
     permission = helper_db.getPermissionById(1)
     assert permission.name == "test"
@@ -224,8 +401,18 @@ def test_get_permissions_by_id(client):
     assert permission.can_view_all_entries == False
     assert permission.can_edit_all_entries == True
 
-# # Unit tests for getUsersByPermission()
 def test_get_users_by_permission(client):
+    '''
+    Unit test for getUsersByPermission()
+
+    GIVEN: 
+        There exists a user and permission in the database, and they are associated
+    WHEN: 
+        Invoking the getUsersByPermission() method
+    THEN: 
+        Check that the method returns the proper users associated that that permission
+    '''
+
     helper_db.addPermission(id = 1, name="test", can_view_self_entries=False, can_edit_self_entries=True, can_view_own_teams_entries=False, can_edit_own_teams_entries=True, can_view_all_entries=False, can_edit_all_entries=True)
     helper_db.addUser(email="cmgowd25@colby.edu", first_name="Chandra", last_name="Gowda", password="12345", permission_id=1)
     user_list = helper_db.getUsersByPermission(1)
@@ -236,8 +423,18 @@ def test_get_users_by_permission(client):
     assert user_list[0].password == "12345"
     assert user_list[0].permission_id == 1
 
-# # Unit tests for getEntriesById()
-def test_get_entries_by_id(client):
+def test_get_entry_by_id(client):
+    '''
+    Unit test for getEntryById()
+
+    GIVEN: 
+        There exist an entry in the database
+    WHEN: 
+        Invoking the getEntryById() method
+    THEN: 
+        Check that the method returns the proper entry associated with that Id
+    '''
+
     import datetime
     start_date = datetime.datetime.now()
     end_date = datetime.datetime.now()
@@ -255,8 +452,18 @@ def test_get_entries_by_id(client):
     assert entry.value == 0
     assert entry.notes == "test notes"
 
-# # Unit tests for getEntriesByUser()
 def test_get_entries_by_user(client):
+    '''
+    Unit test for getEntriesByUser()
+
+    GIVEN: 
+        There exists a user in the DB, with entries associated with them
+    WHEN: 
+        Invoking the getEntriesByUser() method
+    THEN: 
+        Check that the method returns the proper entries associated with said user
+    '''
+
     import datetime
     start_date = datetime.datetime.now()
     end_date = datetime.datetime.now()
@@ -275,8 +482,18 @@ def test_get_entries_by_user(client):
     assert entry_list[0].value == 0
     assert entry_list[0].notes == "test notes"
 
-# Unit tests for getEntriesByCategory()
 def test_get_entries_by_category(client):
+    '''
+    Unit test for getEntiesByCategory()
+
+    GIVEN: 
+        There exists entries of a specific category in the database
+    WHEN: 
+        Invoking the getEntriesByCategory() method with specific category
+    THEN: 
+        Check that the method returns the proper entries of said category
+    '''
+
     import datetime
     start_date = datetime.datetime.now()
     end_date = datetime.datetime.now()
@@ -295,9 +512,24 @@ def test_get_entries_by_category(client):
     assert entry_list[0].value == 0
     assert entry_list[0].notes == "test notes"
 
+####################################
+#                                  #
+#   UNIT TESTS FOR UPDATE METHODS  #
+#                                  #
+####################################
 
-# Tests update username method
 def test_update_full_username(client):
+    '''
+    Unit test for updateUserFullName()
+
+    GIVEN: 
+        There exists a user in the database
+    WHEN: 
+        Invoking the updateUserFullName() method
+    THEN: 
+        Check that the user in the database is updated with the new first name, last name
+    '''
+
     helper_db.addUser("email@email.com", "init_1", "init_2", "1234", permission_id=1)
     user_id = helper_db.getUserByEmail("email@email.com").id
     helper_db.updateUserFullName(user_id, "final_1", "final_2")
@@ -305,16 +537,36 @@ def test_update_full_username(client):
     assert updated_user.first_name == "final_1"
     assert updated_user.last_name == "final_2"
 
-# Tests update username method
 def test_update_user_permission(client):
+    '''
+    Unit test for updateUserPermission()
+
+    GIVEN: 
+        There exists a user, permission the database such that the user and permission are associated
+    WHEN: 
+        Invoking the updateUserPermission() method
+    THEN: 
+        Check that the user in the database is updated with the correct permission
+    '''
+
     helper_db.addUser("email@email.com", "init_1", "init_2", "1234", permission_id=0)
     user_id = helper_db.getUserByEmail("email@email.com").id
     helper_db.updateUserPermission(user_id, 2)
     updated_user_permission_id = helper_db.getUserByEmail("email@email.com").permission_id
     assert updated_user_permission_id == 2
 
-# Tests add user to team method
 def test_add_user_to_team(client):
+    '''
+    Unit test for addUserToTeam()
+
+    GIVEN: 
+        There exists a user, team in the database
+    WHEN: 
+        Invoking the addUserToTeam() method with said user and team
+    THEN: 
+        Check that the user in the database is associated with the correct team
+    '''
+
     import datetime
     start_date = datetime.datetime.now()
     end_date = datetime.datetime.now()
@@ -326,8 +578,18 @@ def test_add_user_to_team(client):
     user_list = helper_db.getUsersInTeam(team_id)
     assert user_list[0].id == user_id
 
-# Tests remove user from team method
 def test_remove_user_from_team(client):
+    '''
+    Unit test for removeUserFromTeam()
+
+    GIVEN: 
+        There exists a user in the database, associated with a team
+    WHEN: 
+        Invoking the removeUserFromTeam() method
+    THEN: 
+        Check that the user is no longer associated with a team entry in the DB
+    '''
+
     import datetime
     start_date = datetime.datetime.now()
     end_date = datetime.datetime.now()
@@ -342,8 +604,18 @@ def test_remove_user_from_team(client):
     user_list = helper_db.getUsersInTeam(team_id)
     assert len(user_list) == 0
 
-# Tests remove user from team method
 def test_update_team_name(client):
+    '''
+    Unit test for updateTeamName()
+
+    GIVEN: 
+        There exists a team in the database
+    WHEN: 
+        Invoking the updateTeamName() method
+    THEN: 
+        Check that the team in the database is updated with the new name
+    '''
+
     import datetime
     start_date = datetime.datetime.now()
     end_date = datetime.datetime.now()
@@ -353,8 +625,18 @@ def test_update_team_name(client):
     team_name = helper_db.getTeamById(team_id).name
     assert team_name == "new_name"
 
-# Tests update team season start/end
 def test_update_team_season_start_end(client):
+    '''
+    Unit test for updateTeamSeason()
+
+    GIVEN: 
+        There exists a team in the database
+    WHEN: 
+        Invoking the updateTeamSeason() method
+    THEN: 
+        Check that the team is associated with the newly set start and end date
+    '''
+
     import datetime
     init_start_date = datetime.datetime.now()
     init_end_date = datetime.datetime.now()
@@ -370,8 +652,18 @@ def test_update_team_season_start_end(client):
     assert new_team_start == final_start_date
     assert new_team_end == final_end_date
 
-# Test update entry values (notes, time, value, category, etc...)
 def test_update_entry_values(client):
+    '''
+    Unit test for updateEntryValues()
+
+    GIVEN: 
+        There exists an entry in the database
+    WHEN: 
+        Invoking the updateEntryValues() on the specified entry
+    THEN: 
+        Check that the specified entry is updated with the proper values
+    '''
+
     from website.models import Category
     import datetime
     helper_db.addUser("email@email.com", "init_1", "init_2", "1234", permission_id=0)
@@ -392,17 +684,42 @@ def test_update_entry_values(client):
     assert entry.notes == "Cleared to play on Saturday."
     assert entry.user_id == user_id
 
-# Test Delete functions for models.py
 
-# Test for delete user functinoality
+####################################
+#                                  #
+#   UNIT TESTS FOR DELETE METHODS  #
+#                                  #
+####################################
+
 def test_delete_user(client):
+    '''
+    Unit test for deleteUser()
+
+    GIVEN: 
+        There exists a user in the database
+    WHEN: 
+        Invoking the deleteUser() method
+    THEN: 
+        Check that the database no longer contains that user
+    '''
+
     helper_db.addUser("email@email.com", "init_1", "init_2", "1234", permission_id=0)
     user_id = helper_db.getUserByEmail("email@email.com").id
     helper_db.deleteUser(user_id)
     assert helper_db.getUserByEmail("email@email.com") == None
 
-# Test delete user functionality
 def test_delete_entry(client):
+    '''
+    Unit test for deleteEntry()
+
+    GIVEN: 
+        There exists a entry in the database
+    WHEN: 
+        Invoking the deleteEntry() method
+    THEN: 
+        Check that the database no longer contains that entry 
+    '''
+
     from website.models import Category
     import datetime
     helper_db.addUser("email@email.com", "init_1", "init_2", "1234", permission_id=0)
