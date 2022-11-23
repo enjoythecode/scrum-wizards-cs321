@@ -337,10 +337,6 @@ def updateTeamName(team_id, team_name):
     team = Team.query.filter_by(id=team_id).first()
     team.name = team_name
     db.session.commit()
-
-
-
-
     return team
 
 def updateTeamSeason(team_id, season_start, season_end):

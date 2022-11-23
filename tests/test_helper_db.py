@@ -167,13 +167,13 @@ def test_get_team_by_name(client):
     assert test_team.season_end_date.day == end_date.day
 
 # # Unit tests for getTeamByID()
-@pytest.fixture()
 def test_get_team_by_id(client):
     import datetime
     start_date = datetime.datetime.now()
     end_date = datetime.datetime.now()
     helper_db.addTeam(name="test", start_date=start_date, end_date=end_date)
-    test_team = helper_db.getTeamByID(1)
+    team_id = helper_db.getTeamByName("test").id
+    test_team = helper_db.getTeamById(team_id)
     assert test_team.name == "test"
     assert test_team.season_start_date.year == start_date.year
     assert test_team.season_start_date.month == start_date.month
@@ -353,10 +353,8 @@ def test_update_team_name(client):
     team_name = helper_db.getTeamById(team_id).name
     assert team_name == "new_name"
 
-# def updateTeamSeason(team_id, season_start, season_end):
-
 # Tests update team season start/end
-def test_update_team_start_end(client):
+def test_update_team_season_start_end(client):
     import datetime
     init_start_date = datetime.datetime.now()
     init_end_date = datetime.datetime.now()
@@ -395,16 +393,15 @@ def test_update_entry_values(client):
     assert entry.user_id == user_id
 
 # Test Delete functions for models.py
-# def deleteUser(user_id):
 
+# Test for delete user functinoality
 def test_delete_user(client):
     helper_db.addUser("email@email.com", "init_1", "init_2", "1234", permission_id=0)
     user_id = helper_db.getUserByEmail("email@email.com").id
     helper_db.deleteUser(user_id)
     assert helper_db.getUserByEmail("email@email.com") == None
 
-# def deleteEntry(entry_id):
-
+# Test delete user functionality
 def test_delete_entry(client):
     from website.models import Category
     import datetime
@@ -417,4 +414,4 @@ def test_delete_entry(client):
 
     helper_db.deleteEntry(entry_id)
 
-    assert helper_db.getEntryById(entry_id)== None
+    assert helper_db.getEntryById(entry_id) == None
