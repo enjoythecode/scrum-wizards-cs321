@@ -292,7 +292,7 @@ def updateUserPermission(user_id, permission_id):
 
     from .models import User
     user = User.query.filter_by(id=user_id).first()
-    user.permissions_id = permission_id
+    user.permission_id = permission_id
     db.session.commit()
     return user
 
@@ -318,9 +318,10 @@ def removeUserFromTeam(user_id, team_id):
     Python List. len = total_entries_of_category
     '''
 
-    from .models import User
+    from .models import User, Team
     user = User.query.filter_by(id=user_id).first()
-    user.teams.remove(team_id)
+    team = Team.query.filter_by(id=team_id).first()
+    user.teams.remove(team)
     db.session.commit()
     return user
 
@@ -334,7 +335,7 @@ def updateTeamName(team_id, team_name):
 
     from .models import Team
     team = Team.query.filter_by(id=team_id).first()
-    team.team_name = team_name
+    team.name = team_name
     db.session.commit()
     return team
 
@@ -348,8 +349,8 @@ def updateTeamSeason(team_id, season_start, season_end):
 
     from .models import Team
     team = Team.query.filter_by(id=team_id).first()
-    team.season_start = season_start
-    team.season_end = season_end
+    team.season_start_date = season_start
+    team.season_end_date = season_end
     db.session.commit()
     return team
 

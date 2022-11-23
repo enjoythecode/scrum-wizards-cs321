@@ -304,3 +304,104 @@ def test_update_full_username(client):
     updated_user = helper_db.getUserByName("final_1", "final_2")
     assert updated_user.first_name == "final_1"
     assert updated_user.last_name == "final_2"
+
+# Tests update username method
+def test_update_user_permission(client):
+    helper_db.addUser("email@email.com", "init_1", "init_2", "1234", permission_id=0)
+    user_id = helper_db.getUserByEmail("email@email.com").id
+    helper_db.updateUserPermission(user_id, 2)
+    updated_user_permission_id = helper_db.getUserByEmail("email@email.com").permission_id
+    assert updated_user_permission_id == 2
+
+# Tests add user to team method
+def test_add_user_to_team(client):
+    import datetime
+    start_date = datetime.datetime.now()
+    end_date = datetime.datetime.now()
+    helper_db.addUser("email@email.com", "init_1", "init_2", "1234", permission_id=0)
+    helper_db.addTeam(name="team", start_date=start_date, end_date=end_date)
+    user_id = helper_db.getUserByEmail("email@email.com").id
+    team_id = helper_db.getTeamByName("team").id
+    helper_db.addUserToTeam(user_id=user_id, team_id=team_id)
+    user_list = helper_db.getUsersInTeam(team_id)
+    assert user_list[0].id == user_id
+
+# Tests remove user from team method
+def test_remove_user_from_team(client):
+    import datetime
+    start_date = datetime.datetime.now()
+    end_date = datetime.datetime.now()
+    helper_db.addUser("email@email.com", "init_1", "init_2", "1234", permission_id=0)
+    helper_db.addTeam(name="team", start_date=start_date, end_date=end_date)
+    user_id = helper_db.getUserByEmail("email@email.com").id
+    team_id = helper_db.getTeamByName("team").id
+    helper_db.addUserToTeam(user_id=user_id, team_id=team_id)
+    user_list = helper_db.getUsersInTeam(team_id)
+    assert user_list[0].id == user_id
+    helper_db.removeUserFromTeam(user_id=user_id, team_id=team_id)
+    user_list = helper_db.getUsersInTeam(team_id)
+    assert len(user_list) == 0
+
+# Tests remove user from team method
+def test_update_team_name(client):
+    import datetime
+    start_date = datetime.datetime.now()
+    end_date = datetime.datetime.now()
+    helper_db.addTeam(name="init_name", start_date=start_date, end_date=end_date)
+    team_id = helper_db.getTeamByName("init_name").id
+    helper_db.updateTeamName(team_id, "new_name")
+    team_name = helper_db.getTeamById(team_id).name
+    assert team_name == "new_name"
+
+# def updateTeamSeason(team_id, season_start, season_end):
+
+# Tests update team season start/end
+def test_update_team_start_end(client):
+    import datetime
+    init_start_date = datetime.datetime.now()
+    init_end_date = datetime.datetime.now()
+    helper_db.addTeam(name="init_name", start_date=init_start_date, end_date=init_end_date)
+    final_start_date = datetime.date( init_start_date.year + 1, init_start_date.month, init_start_date.day)
+    final_end_date = datetime.date( init_end_date.year + 1, init_end_date.month, init_end_date.day)
+    assert init_start_date != final_start_date
+    assert init_end_date != final_end_date
+    team_id = helper_db.getTeamByName("init_name").id
+    helper_db.updateTeamSeason(team_id, final_start_date, final_end_date)
+    new_team_start = helper_db.getTeamById(team_id).season_start_date
+    new_team_end = helper_db.getTeamById(team_id).season_end_date
+    assert new_team_start == final_start_date
+    assert new_team_end == final_end_date
+
+
+# def updateEntryValues(entry_id, time, category, value, notes, user_id):
+
+# Test update entry values (notes, time, value, category, etc...)
+# def test_update_team_start_end(client):
+#     from website.models import Category
+#     import datetime
+
+
+
+#     helper_db.addUser("email@email.com", "init_1", "init_2", "1234", permission_id=0)
+#     user_id = helper_db.getPermissionByName("init_1").id
+#     time = datetime.datetime.now()
+#     helper_db.addEntry(time, Category.sleep, 5, "Take a break on saturday.", user_id)
+#     new_time = datetime.date( time.year + 1, time.month, time.day)
+
+#     assert init_start_date != final_start_date
+#     assert init_end_date != final_end_date
+#     team_id = helper_db.getTeamByName("init_name").id
+#     helper_db.updateTeamSeason(team_id, final_start_date, final_end_date)
+#     new_team_start = helper_db.getTeamById(team_id).season_start_date
+#     new_team_end = helper_db.getTeamById(team_id).season_end_date
+#     assert new_team_start == final_start_date
+#     assert new_team_end == final_end_date
+
+
+
+# # Delete functions for models.py
+
+# def deleteUser(user_id):
+
+
+# def deleteEntry(entry_id):
