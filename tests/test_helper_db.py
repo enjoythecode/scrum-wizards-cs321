@@ -6,27 +6,6 @@ from website import helper_db
 from conftest import app, client
 from website.models import User, Team, Entry, Category, Permission
 
-# # Function to create an empty database
-# @pytest.fixture()
-# def create_test_db(client):
-#     # Create a test database
-#     from website import db
-#     DB_NAME = "database.db"
-#     db = SQLAlchemy()
-#     if path.exists('instance/' + DB_NAME):
-#             # # delete the database if it exists
-#             remove("instance/" + DB_NAME)
-#     db.create_all()
-
-# Unit tests for helper_db.py
-
-# @pytest.fixture
-# def app_context():
-#     with app.app_context():
-#         yield
-
-# Unit tests for Add Functions
-
 # Unit tests for addUser()
 def test_add_user(client):
     '''
@@ -317,5 +296,11 @@ def test_get_entries_by_category(client):
     assert entry_list[0].notes == "test notes"
 
 
-
-    
+# Tests update username method
+def test_update_full_username(client):
+    helper_db.addUser("email@email.com", "init_1", "init_2", "1234", permission_id=1)
+    user_id = helper_db.getUserByEmail("email@email.com").id
+    helper_db.updateUserFullName(user_id, "final_1", "final_2")
+    updated_user = helper_db.getUserByName("final_1", "final_2")
+    assert updated_user.first_name == "final_1"
+    assert updated_user.last_name == "final_2"
