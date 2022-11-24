@@ -207,4 +207,3 @@ def goto_admin_dash():
 @views.route('/athlete/index.html', methods=['GET'])
 def goto_athlete_dash():
     return render_template('athlete/index.html')
-

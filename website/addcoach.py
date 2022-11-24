@@ -3,6 +3,7 @@ from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
+import auth
 
 addcoach = Blueprint('addcoach', __name__)
 
@@ -33,15 +34,7 @@ def add_coach_form_submission():
         if user:
             flash('User already exists.', category='error')
         else:
-            # add user to database
-            new_user = User(id = id, email = email, permission_id = permission_id, first_name = firstname, last_name = lastname, password=generate_password_hash(password, method='sha256'))
-            # new_user = User(id = id, email = email, first_name = firstname, last_name = lastname, password=generate_password_hash(password, method='sha256'), team_id = team_ids, permissions_id = permissions, entries = entries)
-            db.session.add(new_user)
-            db.session.commit()
-            login_user(user, remember=True)
-            flash('Account created!', category='success')
-        
-
+            auth.signup_user(id, email, firstname, lastname, password, permission_id)
             return redirect('/superadmin/home.html')
 
     
