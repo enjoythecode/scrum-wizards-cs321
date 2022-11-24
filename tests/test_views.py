@@ -135,4 +135,3 @@ def test_send_team(client):
     assert response.status_code == 200
     assert b'Team Averages' in response.data
 
-
