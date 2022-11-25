@@ -21,9 +21,8 @@ The backend database testing was by far the most involved, found in the test_hel
 
 <br>
 
-<h2 align ="left>Team Reflect</h2>
-<p>All in all, we are very grateful to this milestone because we learned about all the mistakes we had made in our code that we never would have otherwise run into. We went into this milestone thinking that our code was perfect because, whenever we ran the website through the server, everything was working perfectly and we thought that was a complete test of everything. However, when we wrote our own tests, we realized exactly how many things we needed to test in order to simulate everything a user might run into. For example, we had to make so many tests that redirected pages to other ones, and while most of them worked like we expected, some of them (that we had never tested before) resulted in errors and we were able to fix that so clicking on certain buttons led exactly to the page we wanted. We also practiced so much with functional v. unit testing that we definitely have a much better grasp on the differences between them, especially when it comes to testing with Flask. Without testing, we could have given faulty software to our clients.
-<p>
+<h2 align ="left>Team Reflection</h2>
+<p>All in all, we are very grateful to this milestone because we learned about all the mistakes we had made in our code that we never would have otherwise run into. We went into this milestone thinking that our code was perfect because, whenever we ran the website through the server, everything was working perfectly and we thought that was a complete test of everything. However, when we wrote our own tests, we realized exactly how many things we needed to test in order to simulate everything a user might run into. For example, we had to make so many tests that redirected pages to other ones, and while most of them worked like we expected, some of them (that we had never tested before) resulted in errors and we were able to fix that so clicking on certain buttons led exactly to the page we wanted. We also practiced so much with functional v. unit testing that we definitely have a much better grasp on the differences between them, especially when it comes to testing with Flask. Without testing, we could have given faulty software to our clients.</p>
 
 <br>
 
