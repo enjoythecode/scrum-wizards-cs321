@@ -85,7 +85,7 @@ _Ghailan Fadah_
 * Developed additional testing for athlete page
 * Made sure Jasper got his sleep!
 
-_Emmanuel Assumang	
+_Emmanuel Assumang_	
 	
 <br><br>
 
