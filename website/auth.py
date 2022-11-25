@@ -7,7 +7,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 auth = Blueprint('auth', __name__)
 
-@views.route('/<generic>', methods=['GET', 'POST'])
+@auth.route("/", defaults={"path": ""})
+@auth.route("/<string:path>")
+@auth.route("/<path:path>")
 @login_required
 def generic(): 
     return redirect(url_for('auth.login'))
