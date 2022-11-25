@@ -4,31 +4,20 @@ Athlete Data Management System for CS321 (Fall 2022) at Colby College, ME
 <br>
 
 
-<h1 align="center">Milestone 4 Report</h1>
+<h1 align="center">Milestone 6 Report</h1>
 <h3 align="center">Flask Web App</h3>
 
 
-
-
-
 <h2 align="left">Abstract</h3>
-<p>In Milestone 4, we came together as a team to create a Flask web application that used the highest priority issues that we had created on GitHub. We used our static website from the previous milestone as a starting point, then edited the HTML in order to add more of what our application required. We also created Python files that implemented flask, and connected them to our HTML files with inputs. We split the work into backend (authorization, database) and frontend (superadmin, team, and individual athlete dashboards), which really immersed us in github remote programming and merging the two groups together at the end. We also split up the backend work, and the front end work, so that we could form smaller groups and practice pair programming. This functional web application showed us how to work as a team, even when we are not physically together, using GitHub, as well as showing us how to use Flask. 
+<p>In Milestone 6, we used this sprint to implement a CI/CD pipeline to lint, test, and deploy a web app to the cloud using Azure. Essentially, this checked over our code for us so we didn’t have any errors that we might have missed. The goal of this task, using Pytest to improve code quality, was to simulate everything a potential user might run into, and making sure there are no errors in the code that would confuse the user or render the software unusable. We had to write our own tests, with the aim of full coverage (meaning we tested all of our functions used in the software), and then used Pytest to see what went wrong. We learned a lot about Flask testing as well in homework and quiz videos, as well as in lecture, and also had to do a lot of outside research to figure out how to test functions that are specific to our software. 
 </p>
-
-<h2 align="left">Sprint backlog</h3>
-
-See our stories [here!](https://github.com/enjoythecode/scrum-wizards-cs321/issues)
-
-<br><br><div align="center"><img width="638" alt="Screen Shot 2022-10-28 at 1 35 18 AM" src="https://user-images.githubusercontent.com/92835209/198515175-352e8848-407a-4982-a5ad-e2cfaca89159.png"></div>
-
-<p>Above is our burndown chart for this initial sprint. Clearly, it doesn't reflect exactly how we worked over time, since we made very big pull requests at the very end and merged it all instead of doing smaller pull requests over time. Therefore, one of our takeaways from this graph is that we need to make smaller branches, with individual collaborators on each and merge smaller chunks over time. This also was made clear when we merged our branches together at the end- while we had very few merge conflicts because of the distribution of work, developers would be unblocked far quicker if we were making smaller, more atomic PR’s.</p>
-
-
 
 <br><br>
 
 <h2 align="left">Results</h2>
-<p>After the group work and pair programming mentioned above, we basically had four branches: one for database and authorization, one for super admin adding and editing users, one for team and athlete dashboards, and another for login. Once we had all completed our individual branches, we came together and made pull requests to merge everything onto our develop remote branch. We used code reviews, and fixed merge conflicts together to avoid any important code being overwritten, in order to create the web application shown below.</p>
+<p>Our focus for this milestone was deploying our testing, with the aim of 100% coverage. While this was not realized, we went through the testing of the functions we deemed the most important. To test views.py, we implemented test_views.py, which essentially just tested all the redirecting of the urls that we implemented in that file, for athletes, coaches, and the superadmin. We also created a test app using create_test_app, which created a new test app to run our tests and made it a lot easier instead of manually creating a new app every time we created a new test function. For testing addathlete, addadmin, and addcoach, we made a test_adduser.py file that tested out the forms that we put in those html files, essentially all the info needed to create a new user. We did the same strategy for testing out the forms for test_userpermissions.py, which tested coachpermissions and athletepermissions, seeing if we could successfully switch a role or team of a user. We also created tests for the login and authorization functions, which can all be seen in the github repository. 
+The backend database testing was by far the most involved, found in the test_helper_db.py file. This file tested creating a new user, a new team, a new entry, a new permissions, and the get functions for all of the above as well. We also implemented tests for the helper functions, such as filtering users by their emails, names, IDs, etc. We also tested out filtering permissions, teams, entries, and users, by each other. 
+</p>
 
 <br>
 
