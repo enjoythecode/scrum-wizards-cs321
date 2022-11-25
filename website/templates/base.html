@@ -4,7 +4,11 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>{% block title %}{% endblock %} (CAMS)</title>
+        <title>
+            {% block title %}
+            {% endblock %} 
+            | CAMS
+        </title>
 
         <!-- plugins:css -->
         <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
@@ -19,11 +23,14 @@
         <!-- Layout styles -->
         <link rel="stylesheet" href="/assets/css/style.css">
 
-        <!-- End layout styles -->
+        <!-- Browser tab image -->
         <link rel="shortcut icon" href="/assets/images/favicon.png" />
     </head>
+
     <body>
-        {% block content %}{% endblock %}
+        {% block content %}
+
+        {% endblock %}
          
         <!-- plugins:js -->
         <script src="/assets/vendors/js/vendor.bundle.base.js"></script>

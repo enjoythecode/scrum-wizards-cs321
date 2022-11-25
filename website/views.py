@@ -16,6 +16,7 @@ def mock_database(user_id):
         return{"user_id": 3, "Name" : "Jenna Carter"}
     if user_id == 4:
         return{"user_id": 4, "Name" : "Jennifer Smith"}
+
     # coaches
     if user_id == 5:
         return {"user_id": 5, "Name" : "Thomas Mckee"}
@@ -25,18 +26,6 @@ def mock_database(user_id):
         return{"user_id": 7, "Name" : "Keith Freeman"}
     if user_id == 8:
         return{"user_id": 8, "Name" : "Jeffrey Abbott"}
-    
-
-@views.route('/', methods=['GET', 'POST'])
-@login_required
-def hello(): 
-    return redirect(url_for('auth.login'))
-
-# @views.route('/home', methods=['GET'])
-# @login_required
-# def home():     
-#     return render_template("home.html", user=current_user)
-
 
 @views.route('/home', methods=['GET'])
 @login_required
@@ -179,8 +168,6 @@ def send_team():
 @views.route('/superadmin/<path:path>', methods=["GET"])
 def send_superadmin(path):
     return render_template('superadmin/' + path)
-
-
 
 @views.route("/superadmin/athletepermissions.html/<int:userid>", methods = ["GET"])
 def goto_athlete_permissions(userid):

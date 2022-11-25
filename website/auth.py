@@ -7,6 +7,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 auth = Blueprint('auth', __name__)
 
+@views.route('/<generic>', methods=['GET', 'POST'])
+@login_required
+def generic(): 
+    return redirect(url_for('auth.login'))
+
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     ''' Handles login logic on /login path:
@@ -32,18 +37,6 @@ def login():
 
 
     return render_template("login.html")
-
-
-# @auth.route('/', methods=['GET'])
-# def home():
-#     ''' Redirects root path to /login page:
-#     ---------------------------------------
-#     Returns: 
-#     ---------------------------------------
-#         Response object.
-#     '''
-#     return redirect(url_for('auth.login'))
-
 
 @auth.route('/logout', methods=['GET'])
 @login_required
