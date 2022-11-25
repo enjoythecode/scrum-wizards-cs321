@@ -97,8 +97,6 @@ _Emmanuel Assumang_
 	
 <p>For this milestone, we chose to achieve CI capabilites with Precommit, a library that performs automatic testing on all commits before they can be made. Using precommit, we reduced the complexity and time required to ensure that all code is tested, because precommit runs tests before changes are committed, rather than during the PR process like most CI features. Additionally, pre-commit hooks allow for further linting and code quality standardization, which leaves room to expand upon our current CI capabilites.</p>
 
-<div align="center"><img width="638" alt="Screen Shot 2022-10-28 at 1 35 18 AM" src="https://user-images.githubusercontent.com/92835209/198514024-17d83fae-96c7-4ad5-a50b-a0de076be41e.png"></div>
-
 <h3 align="left">Extension 2: Write your report in Markdown as a readme file in your repository, including table images and appropriate tags and content..</h4> 
 
 <p>We recreated this exact interactive report on the GitHub repository in the README.md file. The link to the README.md file (i.e. on the main repository) is this.</p>
