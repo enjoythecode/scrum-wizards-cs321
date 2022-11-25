@@ -23,7 +23,7 @@ The backend database testing was by far the most involved, found in the test_hel
 <div align="center">Fig 1: A unit test, complete with proper GIVEN, WHEN, THEN documentation.
 </div>
 
-<div align="center"><img width="565" alt="Unit-test" src="https://user-images.githubusercontent.com/92835209/203896698-ae72eaf8-9b06-4f7a-aafd-2ac89a70a1a1.png"></div>
+<div align="center"><img width="825" alt="Screen Shot 2022-11-24 at 10 38 48 PM" src="https://user-images.githubusercontent.com/92835209/203896788-fcf8874a-530e-4cf6-8a26-0ca57b5fac39.png"></div>
 <div align="center">Fig 2: Test coverage report
 </div>
 
