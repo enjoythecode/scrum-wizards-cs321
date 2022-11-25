@@ -109,8 +109,9 @@ _Emmanuel Assumang_
 
 <p>We used the venv package that comes with Python to manage and document our dependencies for this project. Virtual environments allow us to standardize computing environments across developers and help prevent issues from mismatching library versions. By committing the versions of Python libraries we used in requirements.txt (see on GitHub), we made sure that our software is easier to reproduce. This extension goes along with Extension 3; for example, make dependencies will automatically install Python dependencies from the requirements.txt file in the currently checked out branch.</p>
 
-
 <h2 align="left">References/Acknowledgements</h3>
+	
+Burndown Chart: http://radekstepan.com/burnchart/#!/enjoythecode/scrum-wizards-cs321
 
 
 Burndown Chart: http://radekstepan.com/burnchart/#!/enjoythecode/scrum-wizards-cs321
