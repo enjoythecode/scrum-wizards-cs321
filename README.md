@@ -59,42 +59,34 @@ _Sinan_
 
 _Jasper Loverude_
 
-* Worked on backend for the application, using Flask to create the database schema and authentication logic
-* Worked on User, Entry, Permission, and Teams tables for describing the database schema in models.py
-* Created Python enum representing 5 possible types for ‘Entry’, to standardize data better than a 'string' field
-* Created bi-directional association table for the many-to-many relationship of users and teams
-* Helped manage teams Git workflow; assisted teammates with getting unblocked with Git
-* Implemented backend authentication on auth.py
-* Created visual mockup of database schema
-* Made Google slides presentation with Chandra
-* Added a make command ‘make rmdb’ to remove the database in instance
-* Added a make command ‘make new’ that ran a series of other 'make' commands.
-	- I used osascript in the make command to open a new terminal tab and make it run commands when the 'python3.10...' terminal hung
-
+* Added unit tests for “update” functions in helper_db.py
+* Utilized HTML inheritance to remove hundreds of lines of <head> html code, (did not get to all files)
+* Added documentation for all backend db-related tests in GIVEN, WHEN, THEN format
+* Added new background for login, and new browser tab image
+* Added generic rerouting so all uncaught paths go to /login
+* Helped resolve git-workflow related issues during pair-programming sessions
 
 _Kelly Putnam_
 
-* Created the SuperAdmin permissions dashboard
-* Created the Add Coach, Add Athlete, and Add PEAK Admin pages and made sure they redirected from their respective sidebar buttons correctly
-* Redirected clicking on a certain athlete or coach to the Edit Permissions for the specific role
-* Added permissions toggles to the Edit Coach Permissions file so that the super admin can control their viewing permissions
-* Created Python Flask files for Add Coach, Add Athlete, and Add Admin that added the users to the database with their respective attributes, including role and permissions
-* Added forms and inputs to html code to connect the html to the flask tools
-* Created Python Flask files for Coach and Athlete Permissions that changed the role and permissions based off of how the super admin edited it
-* Added forms and inputs to html code to connect the html to the flask tools
+* Fixed an issue with the delete and save forms for user permissions (on the super admin side) 
+ 	- Now, there is a different form for delete and another one for save, so they can do two different actions
+* Testing
+	- Wrote superadmin tests in views.py for test_views.py
+	- Wrote tests for addathlete, adduser, addadmin in test_adduser.py
+* Served as Scrum Master and organized meetings, assigned tasks
 
 _Ghailan Fadah_
 
-* Worked on the front-end of the project:
-* Made the Sleep circle graph dynamic 
-* Made the Calorie circle graph dynamic
-* Made the Readiness graph dynamic
-* Made the progression graph over time dynamic. 
-* Helped with making the tables dynamic
-* Coordinated with the back-end to make sure our vision aligns in terms of how data will be stream-lined to the front-end.
-* Made sure the page was visually pleasing but simple  
+* Developed testing for views.py
+* Helped with git-flow 
+* Did pair-programming with zehra
+* Developed testing for auth.py; in particular log in and log out structure. 
+* Developed additional testing for coach page 
+* Developed additional testing for athlete page
 * Made sure Jasper got his sleep!
 
+_Emmanuel Assumang	
+	
 <br><br>
 
 <h2 align="left">Extensions</h3>
