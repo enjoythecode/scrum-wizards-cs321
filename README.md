@@ -19,6 +19,14 @@ Athlete Data Management System for CS321 (Fall 2022) at Colby College, ME
 The backend database testing was by far the most involved, found in the test_helper_db.py file. This file tested creating a new user, a new team, a new entry, a new permissions, and the get functions for all of the above as well. We also implemented tests for the helper functions, such as filtering users by their emails, names, IDs, etc. We also tested out filtering permissions, teams, entries, and users, by each other. 
 </p>
 
+<div align="center"><img width="565" alt="Unit-test" src="https://user-images.githubusercontent.com/92835209/203896563-9f22d838-8fe2-4e6c-939e-68864aab523e.png"></div>
+<div align="center">Fig 1: A unit test, complete with proper GIVEN, WHEN, THEN documentation.
+</div>
+
+<div align="center"><img width="565" alt="Unit-test" src="https://user-images.githubusercontent.com/92835209/203896698-ae72eaf8-9b06-4f7a-aafd-2ac89a70a1a1.png"></div>
+<div align="center">Fig 2: Test coverage report
+</div>
+
 <br>
 
 <h2 align ="left">Team Reflection</h2>
@@ -26,17 +34,11 @@ The backend database testing was by far the most involved, found in the test_hel
 
 <br>
 
-<div align="center"><img width="614" alt="Screen Shot 2022-10-27 at 12 19 54 PM" src="https://user-images.githubusercontent.com/35567444/198344864-988d9ace-b171-4fdc-8cc7-d7996444a220.png"></div>
-<div align="center"><img width="322" alt="Screen Shot 2022-10-27 at 12 20 12 PM" src="https://user-images.githubusercontent.com/35567444/198344958-43cff1f0-297d-46e6-bf77-8c8110302760.png"></div>
-<div align="center">Fig 8, 9, 10: Add Athlete, Admin, and Coach (in order)
-</div>
-
 <h2 align="left">Contributions</h3>	
 
 **List of all group members contributions**
 
 _Chandra Gowda_
-
 
 * Setup the testing environments/functions in conftest.py and __init__.py
 * Added tests for “get” functions in helper_db.py
