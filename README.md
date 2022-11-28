@@ -1,4 +1,7 @@
 # scrum-wizards-cs321
+
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/enjoythecode/scrum-wizards-cs321/main.svg)](https://results.pre-commit.ci/latest/github/enjoythecode/scrum-wizards-cs321/main)
+
 Athlete Data Management System for CS321 (Fall 2022) at Colby College, ME
 
 <br>
