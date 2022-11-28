@@ -1,14 +1,16 @@
 import pytest
-from website import create_app
+from website import create_test_app
 
 @pytest.fixture()
 def app():
-    app = create_app()
-    app.config.update({
-        "TESTING": True,
-    })
 
-    yield app
+    app = create_test_app()
+    with app.app_context():
+        app.config.update({
+        "TESTING": True,
+        })
+
+        yield app
 
 
 @pytest.fixture()
