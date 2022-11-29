@@ -127,7 +127,7 @@ def create_test_database(app):
     ---------------------------------------
         void
     '''
-    
+
     with app.app_context():
         # Creates database if it does not exist
         if path.exists('instance/' + DB_NAME):
@@ -135,7 +135,7 @@ def create_test_database(app):
 
         print("Creating new database...")
         db.create_all()
-    
+
 def addDummyDB():
     ''' Calls database hydration functions.
     Parameters:
