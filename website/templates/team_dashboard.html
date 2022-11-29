@@ -28,11 +28,11 @@
 
     <div class="container-scroller">
       <!-- partial:partials/_sidebar.html -->
-      
+
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_navbar.html -->
-       
+
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
@@ -44,18 +44,18 @@
                   <div class="card">
                     <div class="card-body">
                       <h4 class="card-title">Teams</h4>
-           
+
                       <div class="table-responsive">
                         <table class="table">
                           <thead>
                             <tr>
-                 
+
                               <th> Team Name </th>
                               <th> Sleep </th>
                               <th> Quality </th>
                               <th> Recovery </th>
                               <th> Calorie Intake </th>
-                
+
                             </tr>
                           </thead>
                           <tbody>
@@ -67,15 +67,15 @@
                                 <td>{{ recovery_rate[n] }}</td>
                                 <td>{{ calorie_intake[n] }}</td>
                               </tr>
-        
+
                            {% endfor %}
-                           
-                          
-                          
-                      
-       
-                             
-                       
+
+
+
+
+
+
+
                           </tbody>
                         </table>
                       </div>
@@ -98,7 +98,7 @@
                         <div class="table-responsive">
                           <table class="table">
                             <thead>
-       
+
                             </thead>
                             <tbody>
                               {% for i in range (num_teams)%}
@@ -114,14 +114,14 @@
                       </div>
                     </div>
                   </div>
-                </div>  
+                </div>
               </div>
               <!-- SEARCH BOARD END-->
               <!-- Card 1 -->
 
-                
 
-             
+
+
           </div>
 
           <!--GRAPHS-->
@@ -133,7 +133,7 @@
               <div class = "row-md-12 grid-margin ">
                 <div class = "card-title">Sleep</div>
                 <canvas id="transaction-history4" class="transaction-chart"></canvas>
-                    <script>   
+                    <script>
                     if ($("#transaction-history4").length) {
                       var areaData = {
                         labels: ["Sleep"],
@@ -154,7 +154,7 @@
                           arc: {
                               borderWidth: 0
                           }
-                        },      
+                        },
                         legend: {
                           display: false
                         },
@@ -167,31 +167,31 @@
                           var width = chart.chart.width,
                               height = chart.chart.height,
                               ctx = chart.chart.ctx;
-                      
+
                           ctx.restore();
                           var fontSize = 1;
                           ctx.font = fontSize + "rem sans-serif";
                           ctx.textAlign = 'left';
                           ctx.textBaseline = "middle";
                           ctx.fillStyle = "#ffffff";
-                      
-                          var text = {{sleep_circle}}, 
+
+                          var text = {{sleep_circle}},
                               textX = Math.round((width - ctx.measureText(text).width) / 2),
                               textY = height / 2.4;
-                      
+
                           ctx.fillText(text, textX, textY);
-                    
+
                           ctx.restore();
                           var fontSize = 0.75;
                           ctx.font = fontSize + "rem sans-serif";
                           ctx.textAlign = 'left';
                           ctx.textBaseline = "middle";
                           ctx.fillStyle = "#6c7293";
-                    
-                          var texts = "", 
+
+                          var texts = "",
                               textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
                               textsY = height / 1.7;
-                      
+
                           ctx.fillText(texts, textsX, textsY);
                           ctx.save();
                         }
@@ -203,20 +203,20 @@
                         options: areaOptions,
                         plugins: transactionhistoryChartPlugins
                       });}
-                    
+
                     </script>
-                
+
               </div>
 
 
-              
-                
-               
+
+
+
                   <!-- Mini card 2 -->
                   <div class = "row-md-12 grid-margin ">
                     <div class = "card-title">Readyness</div>
                     <canvas id="transaction-history2" class="transaction-chart"></canvas>
-                    <script>   
+                    <script>
                     if ($("#transaction-history2").length) {
                       var areaData = {
                         labels: ["Readyness"],
@@ -237,7 +237,7 @@
                           arc: {
                               borderWidth: 0
                           }
-                        },      
+                        },
                         legend: {
                           display: false
                         },
@@ -250,31 +250,31 @@
                           var width = chart.chart.width,
                               height = chart.chart.height,
                               ctx = chart.chart.ctx;
-                      
+
                           ctx.restore();
                           var fontSize = 1;
                           ctx.font = fontSize + "rem sans-serif";
                           ctx.textAlign = 'left';
                           ctx.textBaseline = "middle";
                           ctx.fillStyle = "#ffffff";
-                      
-                          var text = {{readyness_circle}}, 
+
+                          var text = {{readyness_circle}},
                               textX = Math.round((width - ctx.measureText(text).width) / 2),
                               textY = height / 2.4;
-                      
+
                           ctx.fillText(text, textX, textY);
-                    
+
                           ctx.restore();
                           var fontSize = 0.75;
                           ctx.font = fontSize + "rem sans-serif";
                           ctx.textAlign = 'left';
                           ctx.textBaseline = "middle";
                           ctx.fillStyle = "#6c7293";
-                    
-                          var texts = "", 
+
+                          var texts = "",
                               textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
                               textsY = height / 1.7;
-                      
+
                           ctx.fillText(texts, textsX, textsY);
                           ctx.save();
                         }
@@ -286,17 +286,17 @@
                         options: areaOptions,
                         plugins: transactionhistoryChartPlugins
                       });}
-                    
+
                     </script>
-                    
-                 
+
+
                   </div>
-               
-             
+
+
                   <div class = "row-md-12 grid-margin ">
                     <div class = "card-title">Calorie</div>
                     <canvas id="transaction-history6" class="transaction-chart"></canvas>
-                    <script>   
+                    <script>
                     if ($("#transaction-history6").length) {
                       var areaData = {
                         labels: ["Calorie"],
@@ -317,7 +317,7 @@
                           arc: {
                               borderWidth: 0
                           }
-                        },      
+                        },
                         legend: {
                           display: false
                         },
@@ -330,31 +330,31 @@
                           var width = chart.chart.width,
                               height = chart.chart.height,
                               ctx = chart.chart.ctx;
-                      
+
                           ctx.restore();
                           var fontSize = 1;
                           ctx.font = fontSize + "rem sans-serif";
                           ctx.textAlign = 'left';
                           ctx.textBaseline = "middle";
                           ctx.fillStyle = "#ffffff";
-                      
-                          var text = {{calorie_circle}}, 
+
+                          var text = {{calorie_circle}},
                               textX = Math.round((width - ctx.measureText(text).width) / 2),
                               textY = height / 2.4;
-                      
+
                           ctx.fillText(text, textX, textY);
-                    
+
                           ctx.restore();
                           var fontSize = 0.75;
                           ctx.font = fontSize + "rem sans-serif";
                           ctx.textAlign = 'left';
                           ctx.textBaseline = "middle";
                           ctx.fillStyle = "#6c7293";
-                    
-                          var texts = "", 
+
+                          var texts = "",
                               textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
                               textsY = height / 1.7;
-                      
+
                           ctx.fillText(texts, textsX, textsY);
                           ctx.save();
                         }
@@ -366,16 +366,16 @@
                         options: areaOptions,
                         plugins: transactionhistoryChartPlugins
                       });}
-                    
+
                     </script>
-                  
+
 
                 </div>
-          
-           
+
+
             </div>
 
-            
+
           </div>
                      <!--PERMISSIONS BUTTONS-->
                      <div class = "col-md-12 grid-margin stretch-card align-items-center">
@@ -391,9 +391,9 @@
                               <div class="preview-item-content d-sm-flex flex-grow">
                                 <div class="flex-grow">
                                   <h6 class="preview-subject">Reports</h6>
-                  
+
                                 </div>
-          
+
                               </div>
                             </div>
                             <div class="preview-item border-bottom">
@@ -405,37 +405,37 @@
                               <div class="preview-item-content d-sm-flex flex-grow">
                                 <div class="flex-grow">
                                   <h6 class="preview-subject">Edit Permissions</h6>
-                     
+
                                 </div>
-          
+
                               </div>
                             </div>
-                            
-                            
-                           
+
+
+
                             </div>
                           </div>
                         </div>
                       </div>
-          
+
                     </div>
 
-         
 
 
-         
-  
-  
-        
 
-        
-            
 
-    
-            
+
+
+
+
+
+
+
+
+
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
-  
+
           <!-- partial -->
         </div>
         <!-- main-panel ends -->

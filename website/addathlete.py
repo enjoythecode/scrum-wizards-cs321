@@ -33,7 +33,7 @@ def add_athlete_form_submission():
         #     if team is not None:
         #         team_ids.append(team.team_id())
         # return team_ids
-                
+
 
 
         user = User.query.filter_by(email=email).first()
@@ -41,6 +41,7 @@ def add_athlete_form_submission():
             flash('Username already exists.', category='error')
         else:
             auth.signup_user(id, email, firstname, lastname, password, permission_id)
+
 
 
             return redirect('/superadmin/home.html')

@@ -1,4 +1,4 @@
-.PHONY: dev, open, dependencies, rmdb, new, test, coverage, coverage-open
+.PHONY: dev, open, dependencies, rmdb, new, test, coverage, coverage-open, pre-commit-install, checkall
 
 dependencies:
 	pip install -r requirements.txt
@@ -28,3 +28,12 @@ coverage:
 
 coverage-open:
 	coverage run -m pytest && coverage html && open htmlcov/index.html
+
+pre-commit-install:
+	pre-commit install
+
+check:
+	pre-commit run
+
+checkall:
+	pre-commit run --all-files

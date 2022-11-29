@@ -39,7 +39,7 @@ def create_app():
     ---------------------------------------
     Returns:
     ---------------------------------------
-    Flask app. 
+    Flask app.
         Initialized flask app object.
     '''
 
@@ -69,10 +69,10 @@ def create_app():
         if path.exists('instance/' + DB_NAME):
             # # delete the database if it exists
             remove("instance/" + DB_NAME)
-            
+
         db.create_all()
         print('Created Database!')
-        addDummyDB()    
+        addDummyDB()
 
 
 
@@ -102,7 +102,7 @@ def create_database(app):
     ---------------------------------------
         void
     '''
-    
+
     with app.app_context():
         # Creates database if it does not exist
         if not path.exists('instance/' + DB_NAME):
@@ -258,23 +258,23 @@ def addPermissionList():
     '''
     from .models import Permission
     superAdminPermission = Permission(
-        id = 0, 
-        name = "SuperAdmin", 
-        can_view_self_entries = True, 
-        can_edit_self_entries = True, 
-        can_view_own_teams_entries = True, 
-        can_edit_own_teams_entries = True, 
-        can_view_all_entries = True, 
+        id = 0,
+        name = "SuperAdmin",
+        can_view_self_entries = True,
+        can_edit_self_entries = True,
+        can_view_own_teams_entries = True,
+        can_edit_own_teams_entries = True,
+        can_view_all_entries = True,
         can_edit_all_entries = True
     )
     adminPermission = Permission(
         id = 1,
         name = "Admin",
-        can_view_self_entries = True, 
-        can_edit_self_entries = True, 
-        can_view_own_teams_entries = True, 
-        can_edit_own_teams_entries = True, 
-        can_view_all_entries = True, 
+        can_view_self_entries = True,
+        can_edit_self_entries = True,
+        can_view_own_teams_entries = True,
+        can_edit_own_teams_entries = True,
+        can_view_all_entries = True,
         can_edit_all_entries = True
     )
     coachPermission = Permission(
@@ -282,19 +282,19 @@ def addPermissionList():
         name = "Coach",
         can_view_self_entries = True,
         can_edit_self_entries = True,
-        can_view_own_teams_entries = True, 
-        can_edit_own_teams_entries = True, 
-        can_view_all_entries = False, 
+        can_view_own_teams_entries = True,
+        can_edit_own_teams_entries = True,
+        can_view_all_entries = False,
         can_edit_all_entries = False
     )
     playerPermission = Permission(
         id = 3,
-        name = "Player", 
-        can_view_self_entries = True, 
-        can_edit_self_entries = False, 
-        can_view_own_teams_entries = False, 
-        can_edit_own_teams_entries = False, 
-        can_view_all_entries = False, 
+        name = "Player",
+        can_view_self_entries = True,
+        can_edit_self_entries = False,
+        can_view_own_teams_entries = False,
+        can_edit_own_teams_entries = False,
+        can_view_all_entries = False,
         can_edit_all_entries = False
     )
     db.session.add(superAdminPermission)
@@ -325,7 +325,7 @@ def addDummyEntriesList():
         randomEmail = dummyEmailList[randint(0, len(dummyEmailList) - 1)]
         randomUser = User.query.filter_by(email = randomEmail).first()
         cat = randint(1, 4)
-        
+
         # creating a random entry
         fakeEntry = Entry(
             time = datetime.datetime.now(),
@@ -353,5 +353,3 @@ def addDummyEntry():
     db.session.add(entry)
     db.session.commit()
     print("DB Entry added")
-
-    

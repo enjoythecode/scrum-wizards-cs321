@@ -25,23 +25,23 @@ def mock_database(user_id):
         return{"user_id": 7, "Name" : "Keith Freeman"}
     if user_id == 8:
         return{"user_id": 8, "Name" : "Jeffrey Abbott"}
-    
+
 
 @views.route('/', methods=['GET', 'POST'])
 @login_required
-def hello(): 
+def hello():
     return redirect(url_for('auth.login'))
 
 # @views.route('/home', methods=['GET'])
 # @login_required
-# def home():     
+# def home():
 #     return render_template("home.html", user=current_user)
 
 
 @views.route('/home', methods=['GET'])
 @login_required
-def home():    
-    if current_user.permission_id == 0: 
+def home():
+    if current_user.permission_id == 0:
         return redirect("/superadmin/home.html")
     elif current_user.permission_id == 1:
         return redirect("/superadmin/home.html")
@@ -58,7 +58,7 @@ def login():
 
 def send_asset(path):
     return send_from_directory('assets', path)
-    
+
 @views.route('/superadmin/home.html')
 def send_admin():
     users1 = [mock_database(1), mock_database(2), mock_database(3), mock_database(4)]
@@ -76,8 +76,8 @@ def send_admin():
 
     out_season = ["Lacrosse", "Nordic Ski", "Basketball", "Swimming", "Indoor Track", "Hockey"]
 
-    return render_template("superadmin/home.html", 
-    athletes = users1, 
+    return render_template("superadmin/home.html",
+    athletes = users1,
     athlete_images = images1,
     status = playerStatus,
     coach_names = names2,
@@ -102,7 +102,7 @@ def send_individual():
     readyness_circle = 90
     calorie_circle = 55
 
-    return render_template("individual_dashboard.html", 
+    return render_template("individual_dashboard.html",
     sleep_data = sleep,
     readyness_data = readyness,
     calorie_data = calorie,
@@ -120,7 +120,7 @@ def send_athlete():
     readyness_circle = 90
     calorie_circle = 55
 
-    return render_template("athlete.html", 
+    return render_template("athlete.html",
     sleep_data = sleep,
     readyness_data = readyness,
     calorie_data = calorie,
@@ -144,10 +144,10 @@ def send_coach():
     readyness_circle = 90
     calorie_circle = 55
 
-    return render_template("coach_dashboard.html", 
+    return render_template("coach_dashboard.html",
     sleep_data = sleep,
     status = playerStatus,
-    athletes = users1, 
+    athletes = users1,
     num_athletes= len(users1),
     athlete_images = images1,
     readyness_data = readyness,
@@ -168,12 +168,12 @@ def send_team():
     readyness_circle = 90
     calorie_circle = 55
 
-    return render_template("/team_dashboard.html", 
-    team_list = Teams, 
+    return render_template("/team_dashboard.html",
+    team_list = Teams,
     num_teams = len(Teams),
-    sleep_data = Sleep, 
-    quality_data = Quality, 
-    calorie_intake = Calorie, 
+    sleep_data = Sleep,
+    quality_data = Quality,
+    calorie_intake = Calorie,
     recovery_rate = Recovery, sleep_circle = sleep_circle, readyness_circle=readyness_circle, calorie_circle=calorie_circle)
 
 @views.route('/superadmin/<path:path>', methods=["GET"])

@@ -24,7 +24,7 @@ class User(db.Model, UserMixin):
     teams = db.relationship(
         'Team', secondary=team_user_assoc_table, back_populates='users'
     )
-    
+
 class Permission(db.Model):
     id = db.Column(db.Integer, primary_key=True, unique=True)
     name = db.Column(db.String(150), unique=True)
@@ -70,10 +70,3 @@ class Entry(db.Model):
     value = db.Column(db.Integer, default=0)
     notes = db.Column(db.String, default='')
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
-
-
-
-
-
-

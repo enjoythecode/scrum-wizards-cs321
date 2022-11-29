@@ -18,7 +18,7 @@
         color: $fullcalendar-color;
         font: normal normal normal 20px/1 "Material Design Icons";
       }
-    }  
+    }
     .fc-icon-right-single-arrow {
       &:after {
         content: "\F142";
@@ -36,7 +36,7 @@
       background-color: $white;
       margin: 0;
       &.fc-state-active {
-        color: theme-color(danger);        
+        color: theme-color(danger);
       }
     }
   }
@@ -44,7 +44,7 @@
     margin-top: 2rem;
     .fc-center {
       h2 {
-        font-size: 1rem;        
+        font-size: 1rem;
       }
     }
   }
@@ -81,9 +81,9 @@
     color: $white;
     padding: .5rem;
     &.fc-start {
-      background: theme-color(primary); 
+      background: theme-color(primary);
       border-radius: 4px;
-      border-left: 4px solid theme-color(primary);        
+      border-left: 4px solid theme-color(primary);
     }
     &.fc-not-start,
     &.fc-not-end {
