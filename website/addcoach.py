@@ -27,7 +27,7 @@ def add_coach_form_submission():
         print(email, password, firstname, lastname, createuser, id, permission_id)
         print(team1, team2, team3)
         # need to find a way to convert teams to team_ids
-        
+
 
 
         user = User.query.filter_by(email=email).first()
@@ -37,4 +37,4 @@ def add_coach_form_submission():
             auth.signup_user(id, email, firstname, lastname, password, permission_id)
             return redirect('/superadmin/home.html')
 
-    
+            return redirect('/superadmin/home.html')

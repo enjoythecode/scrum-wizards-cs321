@@ -61,7 +61,7 @@
           left: 0;
 
         }
-  
+
         &:after {
           @include transition(all);
           transition-duration: 0s;
@@ -255,4 +255,3 @@
     }
   }
 }
-

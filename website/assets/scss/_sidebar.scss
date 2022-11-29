@@ -86,7 +86,7 @@
         -webkit-transition-property: color;
         height: 46px;
         border-radius: 0px 100px 100px 0px;
-        
+
         i {
           color: inherit;
           &.menu-icon {
@@ -147,7 +147,7 @@
             top: 0;
           }
           .menu-title {
-            color: $sidebar-dark-menu-active-color;        
+            color: $sidebar-dark-menu-active-color;
           }
           i {
             color: #ffffff;
@@ -226,7 +226,7 @@
             h5 {
               white-space: nowrap;
             }
-          } 
+          }
           .profile-pic {
             display: flex;
             align-items: center;
@@ -383,7 +383,7 @@
             }
           }
         }
-  
+
         &:nth-child(5n+2) {
           .nav-link {
             .menu-icon {
@@ -393,7 +393,7 @@
             }
           }
         }
-  
+
         &:nth-child(5n+3) {
           .nav-link {
             .menu-icon {
@@ -403,7 +403,7 @@
             }
           }
         }
-  
+
         &:nth-child(5n+4) {
           .nav-link {
             .menu-icon {
@@ -413,7 +413,7 @@
             }
           }
         }
-  
+
         &:nth-child(5n+5) {
           .nav-link {
             .menu-icon {
@@ -424,10 +424,10 @@
           }
         }
       }
-    
-      
-    
-    
+
+
+
+
   }
 }
 
@@ -475,7 +475,7 @@
             background: $sidebar-tinted-menu-active-bg;
           }
           &:before {
-            background: $sidebar-tinted-menu-color; 
+            background: $sidebar-tinted-menu-color;
           }
         }
         &.profile {
@@ -489,7 +489,7 @@
               color: $sidebar-tinted-menu-color;
             }
           }
-          
+
           .profile-pic {
             .count-indicator {
               .count {
