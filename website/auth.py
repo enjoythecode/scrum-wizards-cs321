@@ -11,7 +11,7 @@ auth = Blueprint('auth', __name__)
 @auth.route("/<string:path>")
 @auth.route("/<path:path>")
 @login_required
-def generic(): 
+def generic():
     return redirect(url_for('auth.login'))
 
 @auth.route('/login', methods=['GET', 'POST'])
