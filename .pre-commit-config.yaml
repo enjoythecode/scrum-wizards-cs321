@@ -9,12 +9,3 @@ repos:
 #    rev: v2.15.5
 #    hooks:
 #      - id: pylint
-
--   repo: local
-    hooks:
-      - id: pytest-check
-        name: run pytest
-        entry: make test
-        language: system
-        pass_filenames: false
-        always_run: true
