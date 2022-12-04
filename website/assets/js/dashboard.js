@@ -23,10 +23,10 @@
         step: function(state, circle) {
           circle.path.setAttribute('stroke', state.color);
           circle.path.setAttribute('stroke-width', state.width);
-      
+
           var value = Math.round(circle.value() * 100);
           circle.setText('');
-      
+
         }
       });
 
@@ -81,7 +81,7 @@
           arc: {
               borderWidth: 0
           }
-        },      
+        },
         legend: {
           display: false
         },
@@ -94,18 +94,18 @@
           var width = chart.chart.width,
               height = chart.chart.height,
               ctx = chart.chart.ctx;
-      
+
           ctx.restore();
           var fontSize = 1;
           ctx.font = fontSize + "rem sans-serif";
           ctx.textAlign = 'left';
           ctx.textBaseline = "middle";
           ctx.fillStyle = "#ffffff";
-      
-          var text = "$1200", 
+
+          var text = "$1200",
               textX = Math.round((width - ctx.measureText(text).width) / 2),
               textY = height / 2.4;
-      
+
           ctx.fillText(text, textX, textY);
 
           ctx.restore();
@@ -115,10 +115,10 @@
           ctx.textBaseline = "middle";
           ctx.fillStyle = "#6c7293";
 
-          var texts = "Total", 
+          var texts = "Total",
               textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
               textsY = height / 1.7;
-      
+
           ctx.fillText(texts, textsX, textsY);
           ctx.save();
         }
@@ -151,7 +151,7 @@
           arc: {
               borderWidth: 0
           }
-        },      
+        },
         legend: {
           display: false
         },
@@ -164,18 +164,18 @@
           var width = chart.chart.width,
               height = chart.chart.height,
               ctx = chart.chart.ctx;
-      
+
           ctx.restore();
           var fontSize = 1;
           ctx.font = fontSize + "rem sans-serif";
           ctx.textAlign = 'left';
           ctx.textBaseline = "middle";
           ctx.fillStyle = "#ffffff";
-      
-          var text = "$1200", 
+
+          var text = "$1200",
               textX = Math.round((width - ctx.measureText(text).width) / 2),
               textY = height / 2.4;
-      
+
           ctx.fillText(text, textX, textY);
 
           ctx.restore();
@@ -185,10 +185,10 @@
           ctx.textBaseline = "middle";
           ctx.fillStyle = "#6c7293";
 
-          var texts = "مجموع", 
+          var texts = "مجموع",
               textsX = Math.round((width - ctx.measureText(text).width) / 1.93),
               textsY = height / 1.7;
-      
+
           ctx.fillText(texts, textsX, textsY);
           ctx.save();
         }

@@ -14,7 +14,7 @@ team_user_assoc_table = db.Table(
 
 class User(db.Model, UserMixin):
     __tablename__ = "user"
-    id = db.Column(db.Integer, primary_key=True, unique=True)
+    id = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
     email = db.Column(db.String(150), unique=True)
     first_name = db.Column(db.String(150), default = '')
     last_name = db.Column(db.String(150), default = '')
@@ -24,7 +24,7 @@ class User(db.Model, UserMixin):
     teams = db.relationship(
         'Team', secondary=team_user_assoc_table, back_populates='users'
     )
-    
+
 class Permission(db.Model):
     id = db.Column(db.Integer, primary_key=True, unique=True)
     name = db.Column(db.String(150), unique=True)
@@ -40,7 +40,7 @@ class Permission(db.Model):
 
 class Team(db.Model):
     __tablename__ = "team"
-    id = db.Column(db.Integer, primary_key=True, unique=True)
+    id = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
     name = db.Column(db.String(150), unique=True)
     season_start_date = db.Column(db.Date(), default=func.now())
     season_end_date = db.Column(db.Date(), default=func.now())
@@ -64,16 +64,9 @@ class Category(enum.Enum):
 
 
 class Entry(db.Model):
-    id = db.Column(db.Integer, primary_key=True, unique=True)
+    id = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
     time = db.Column(db.DateTime(timezone=True), default=func.now())
     category = db.Column(db.Enum(Category, validate_strings=True))
     value = db.Column(db.Integer, default=0)
     notes = db.Column(db.String, default='')
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
-
-
-
-
-
-

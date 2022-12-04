@@ -8,12 +8,38 @@ db = SQLAlchemy()
 DB_NAME = "database.db"
 dummyEmailList = []
 
+def create_test_app():
+
+    from .models import User, Team, Entry, Permission
+
+    app = Flask(__name__)
+    app.config['SECRET_KEY'] = 'secret'
+    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.db"
+    db.init_app(app)
+
+    create_test_database(app)
+
+    from .views import views
+    from .auth import auth
+    app.register_blueprint(views, url_prefix='/')
+    app.register_blueprint(auth, url_prefix='/')
+
+    login_manager = LoginManager()
+    login_manager.login_view = 'auth.login'
+    login_manager.init_app(app)
+
+    @login_manager.user_loader
+    def load_user(id):
+        return User.query.get(int(id))
+
+    return app
+
 def create_app():
     ''' Initalizes the flask application and creates a database.db file if it does not currently exist.
     ---------------------------------------
     Returns:
     ---------------------------------------
-    Flask app. 
+    Flask app.
         Initialized flask app object.
     '''
 
@@ -39,16 +65,14 @@ def create_app():
     app.register_blueprint(athletepermissions, url_prefix='/')
     app.register_blueprint(coachpermissions, url_prefix='/')
 
-    from .models import User
-
     with app.app_context():
         if path.exists('instance/' + DB_NAME):
             # # delete the database if it exists
             remove("instance/" + DB_NAME)
-            
+
         db.create_all()
         print('Created Database!')
-        addDummyDB()    
+        addDummyDB()
 
 
 
@@ -78,7 +102,7 @@ def create_database(app):
     ---------------------------------------
         void
     '''
-    
+
     with app.app_context():
         # Creates database if it does not exist
         if not path.exists('instance/' + DB_NAME):
@@ -92,6 +116,25 @@ def create_database(app):
             print("Existing database detected!")
     from .writecsv import writeUsersCSV
     writeUsersCSV()
+
+def create_test_database(app):
+    ''' If database.db does not exist, creates the file, and populates it with data
+    Parameters:
+    ---------------------------------------
+    app: Flask(). Flask application object.
+
+    Returns:
+    ---------------------------------------
+        void
+    '''
+    
+    with app.app_context():
+        # Creates database if it does not exist
+        if path.exists('instance/' + DB_NAME):
+            remove("instance/" + DB_NAME)
+
+        print("Creating new database...")
+        db.create_all()
     
 def addDummyDB():
     ''' Calls database hydration functions.
@@ -215,23 +258,23 @@ def addPermissionList():
     '''
     from .models import Permission
     superAdminPermission = Permission(
-        id = 0, 
-        name = "SuperAdmin", 
-        can_view_self_entries = True, 
-        can_edit_self_entries = True, 
-        can_view_own_teams_entries = True, 
-        can_edit_own_teams_entries = True, 
-        can_view_all_entries = True, 
+        id = 0,
+        name = "SuperAdmin",
+        can_view_self_entries = True,
+        can_edit_self_entries = True,
+        can_view_own_teams_entries = True,
+        can_edit_own_teams_entries = True,
+        can_view_all_entries = True,
         can_edit_all_entries = True
     )
     adminPermission = Permission(
         id = 1,
         name = "Admin",
-        can_view_self_entries = True, 
-        can_edit_self_entries = True, 
-        can_view_own_teams_entries = True, 
-        can_edit_own_teams_entries = True, 
-        can_view_all_entries = True, 
+        can_view_self_entries = True,
+        can_edit_self_entries = True,
+        can_view_own_teams_entries = True,
+        can_edit_own_teams_entries = True,
+        can_view_all_entries = True,
         can_edit_all_entries = True
     )
     coachPermission = Permission(
@@ -239,19 +282,19 @@ def addPermissionList():
         name = "Coach",
         can_view_self_entries = True,
         can_edit_self_entries = True,
-        can_view_own_teams_entries = True, 
-        can_edit_own_teams_entries = True, 
-        can_view_all_entries = False, 
+        can_view_own_teams_entries = True,
+        can_edit_own_teams_entries = True,
+        can_view_all_entries = False,
         can_edit_all_entries = False
     )
     playerPermission = Permission(
         id = 3,
-        name = "Player", 
-        can_view_self_entries = True, 
-        can_edit_self_entries = False, 
-        can_view_own_teams_entries = False, 
-        can_edit_own_teams_entries = False, 
-        can_view_all_entries = False, 
+        name = "Player",
+        can_view_self_entries = True,
+        can_edit_self_entries = False,
+        can_view_own_teams_entries = False,
+        can_edit_own_teams_entries = False,
+        can_view_all_entries = False,
         can_edit_all_entries = False
     )
     db.session.add(superAdminPermission)
@@ -282,7 +325,7 @@ def addDummyEntriesList():
         randomEmail = dummyEmailList[randint(0, len(dummyEmailList) - 1)]
         randomUser = User.query.filter_by(email = randomEmail).first()
         cat = randint(1, 4)
-        
+
         # creating a random entry
         fakeEntry = Entry(
             time = datetime.datetime.now(),
@@ -310,5 +353,3 @@ def addDummyEntry():
     db.session.add(entry)
     db.session.commit()
     print("DB Entry added")
-
-    
