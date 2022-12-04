@@ -15,7 +15,7 @@
                   0 -15px 0 0;
     animation: anim 2s linear infinite;
   }
-  
+
   @keyframes anim {
     0% {
       -webkit-filter: hue-rotate(0deg);
@@ -30,7 +30,7 @@
                   -10px 0  0 0,
                   0 -10px 0 0;
     }
-    
+
     75% {
       box-shadow: 20px 20px  0 0,
                   -20px -20px  0 0,
@@ -41,10 +41,9 @@
                   -10px 0  0 0,
                   0 -10px 0 0;
     }
-    
+
     100% {
       transform: rotate(360deg);
       -webkit-filter: hue-rotate(360deg);
     }
   }
-  

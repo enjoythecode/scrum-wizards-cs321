@@ -6,7 +6,7 @@ from sqlalchemy.sql import func
 def addUser(email, first_name, last_name, password, permission_id):
     ''' Adds a user to the database
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_entries_of_category
     '''
@@ -20,7 +20,7 @@ def addUser(email, first_name, last_name, password, permission_id):
 def addEntry(time, category, value, notes, user_id):
     ''' Adds an entry to the database
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_entries_of_category
     '''
@@ -34,7 +34,7 @@ def addEntry(time, category, value, notes, user_id):
 def addTeam(name, start_date, end_date):
     ''' Adds a team to the database
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_entries_of_category
     '''
@@ -48,7 +48,7 @@ def addTeam(name, start_date, end_date):
 def addPermission(id, name, can_view_self_entries, can_edit_self_entries, can_view_own_teams_entries, can_edit_own_teams_entries, can_view_all_entries, can_edit_all_entries):
     ''' Adds a permission to the database
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_entries_of_category
     '''
@@ -64,7 +64,7 @@ def addPermission(id, name, can_view_self_entries, can_edit_self_entries, can_vi
 def getUsers():
     ''' Get a list of all users in the DB
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_users
     '''
@@ -77,7 +77,7 @@ def getUsers():
 def getTeams():
     ''' Get a list of all teams in the DB
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_teams
     '''
@@ -90,7 +90,7 @@ def getTeams():
 def getPermissions():
     ''' Get a list of all permissions in the DB
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_permissions
     '''
@@ -103,7 +103,7 @@ def getPermissions():
 def getEntries():
     ''' Get a list of all entries in the DB
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_entries
     '''
@@ -116,9 +116,9 @@ def getEntries():
 def getUserByEmail(email):
     ''' Queries the database for a specific user by email
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
-        User. 
+        User.
     '''
 
     from .models import User
@@ -129,7 +129,7 @@ def getUserByEmail(email):
 def getUserByName(first_name, last_name):
     ''' Gets user by first_name and last_name
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
         User.
     '''
@@ -142,19 +142,19 @@ def getUserByName(first_name, last_name):
 def getUserById(user_id):
     ''' Gets specific user by id
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
         User.
     '''
     from .models import User
     user = User.query.filter_by(id=user_id).first()
     return user
-    
+
 
 def getTeamByName(team_name):
     ''' Gets specific team by name
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
         Team.
     '''
@@ -166,7 +166,7 @@ def getTeamByName(team_name):
 def getTeamById(team_id):
     ''' Gets team of a specific id
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
         Team.
     '''
@@ -179,7 +179,7 @@ def getTeamById(team_id):
 def getUsersInTeam(team_id):
     ''' Gets all users of a specific team
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_users_in_team
     '''
@@ -192,7 +192,7 @@ def getUsersInTeam(team_id):
 def getPermissionByName(permission_name):
     ''' Gets all permissions of a specific name
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_permissions_by_name
     '''
@@ -204,7 +204,7 @@ def getPermissionByName(permission_name):
 def getPermissionById(permission_id):
     ''' Gets all permissions of a specific id
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_permissions_by_id
     '''
@@ -217,7 +217,7 @@ def getPermissionById(permission_id):
 def getUsersByPermission(permission_id):
     ''' Gets all users of a specific permission
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_users_by_permission
     '''
@@ -230,7 +230,7 @@ def getUsersByPermission(permission_id):
 def getEntryById(entry_id):
     ''' Gets all entries of a specific id
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_entries_for_id
     '''
@@ -243,7 +243,7 @@ def getEntryById(entry_id):
 def getEntriesByUser(user_id):
     ''' Returns all entries for a specific user
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_entries_for_user
     '''
@@ -256,7 +256,7 @@ def getEntriesByUser(user_id):
 def getEntriesByCategory(category):
     ''' Returns all entries of a specific category
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_entries_of_category
     '''
@@ -270,7 +270,7 @@ def getEntriesByCategory(category):
 def updateUserFullName(user_id, first_name, last_name):
     ''' Updates a user's first and last name
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_entries_of_category
     '''
@@ -285,7 +285,7 @@ def updateUserFullName(user_id, first_name, last_name):
 def updateUserPermission(user_id, permission_id):
     ''' Updates a user's permission id
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_entries_of_category
     '''
@@ -299,7 +299,7 @@ def updateUserPermission(user_id, permission_id):
 def addUserToTeam(user_id, team_id):
     ''' Adds a user to a team
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_entries_of_category
     '''
@@ -313,7 +313,7 @@ def addUserToTeam(user_id, team_id):
 def removeUserFromTeam(user_id, team_id):
     ''' Removes a user from a team
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_entries_of_category
     '''
@@ -328,7 +328,7 @@ def removeUserFromTeam(user_id, team_id):
 def updateTeamName(team_id, team_name):
     ''' Updates a team's name
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_entries_of_category
     '''
@@ -342,7 +342,7 @@ def updateTeamName(team_id, team_name):
 def updateTeamSeason(team_id, season_start, season_end):
     ''' Updates a team's season start and end
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_entries_of_category
     '''
@@ -357,7 +357,7 @@ def updateTeamSeason(team_id, season_start, season_end):
 def updateEntryValues(entry_id, time, category, value, notes, user_id):
     ''' Updates an entry's title, content, and category
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_entries_of_category
     '''
@@ -377,7 +377,7 @@ def updateEntryValues(entry_id, time, category, value, notes, user_id):
 def deleteUser(user_id):
     ''' Deletes a user
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_entries_of_category
     '''
@@ -391,7 +391,7 @@ def deleteUser(user_id):
 def deleteEntry(entry_id):
     ''' Deletes an entry
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_entries_of_category
     '''
@@ -401,7 +401,3 @@ def deleteEntry(entry_id):
     db.session.delete(entry)
     db.session.commit()
     return entry
-    
-
-
-

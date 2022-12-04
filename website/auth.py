@@ -18,7 +18,7 @@ def generic():
 def login():
     ''' Handles login logic on /login path:
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
         Response object.
     '''
@@ -33,19 +33,31 @@ def login():
                 login_user(user, remember=True)
                 return redirect(url_for('views.home'))
             else:
-                flash('Password is incorrect') 
+                flash('Password is incorrect')
         else:
             flash( "User does not exist")
 
 
     return render_template("login.html")
 
+
+# @auth.route('/', methods=['GET'])
+# def home():
+#     ''' Redirects root path to /login page:
+#     ---------------------------------------
+#     Returns:
+#     ---------------------------------------
+#         Response object.
+#     '''
+#     return redirect(url_for('auth.login'))
+
+
 @auth.route('/logout', methods=['GET'])
 @login_required
 def logout():
     ''' Logs user out:
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
         Response object.
     '''
@@ -54,7 +66,7 @@ def logout():
 
 
 def signup_user(id, email, first_name, last_name, password, permissions_id):
-    ''' Helper function to add user to database. All new users created MUST route through this function.  
+    ''' Helper function to add user to database. All new users created MUST route through this function.
     Parameters:
     ---------------------------------------
     email: string.
@@ -62,9 +74,9 @@ def signup_user(id, email, first_name, last_name, password, permissions_id):
     first_name: string.
     last_name: string.
     password: string.
-    permissions_id: string. 
+    permissions_id: string.
 
-    Returns: 
+    Returns:
     ---------------------------------------
         void
     '''
@@ -73,5 +85,3 @@ def signup_user(id, email, first_name, last_name, password, permissions_id):
     new_user = User(id = id, email=email, first_name=first_name, password=generate_password_hash(password1), method='sha256', permissions_id=permissions_id)
     db.session.add(new_user)
     db.session.commit()
-    
-    

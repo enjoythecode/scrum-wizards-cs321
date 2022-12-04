@@ -1,4 +1,7 @@
 # scrum-wizards-cs321
+
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/enjoythecode/scrum-wizards-cs321/main.svg)](https://results.pre-commit.ci/latest/github/enjoythecode/scrum-wizards-cs321/main)
+
 Athlete Data Management System for CS321 (Fall 2022) at Colby College, ME
 
 <br>
@@ -45,7 +48,7 @@ _Chandra Gowda_
 * Helped resolve git-workflow related issues during pair-programming sessions
 
 
-_Zehra_ 
+_Zehra_
 
 * Worked on testing views.py
 * Wrote test functions for redirecting to the athlete home page and the individual dashboards
@@ -97,7 +100,13 @@ _Emmanuel Assumang_
 	
 <p>For this milestone, we chose to achieve CI capabilites with Precommit, a library that performs automatic testing on all commits before they can be made. Using precommit, we reduced the complexity and time required to ensure that all code is tested, because precommit runs tests before changes are committed, rather than during the PR process like most CI features. Additionally, pre-commit hooks allow for further linting and code quality standardization, which leaves room to expand upon our current CI capabilites.</p>
 
-<h3 align="left">Extension 2: Write your report in Markdown as a readme file in your repository, including table images and appropriate tags and content..</h4> 
+<h3 align="left">Extension 1: Burndown chart to reflect on our efficiency.</h4>
+
+<p>The Burndown Chart that we generated offers us the ability to reflect on how we worked. While it doesn’t reflect exactly how we worked over time, since we made very big pull requests at the very end and merged it all instead of doing smaller pull requests over time. Therefore, we can definitely look at this graph and see that we need to do smaller pull requests for our next sprint. </p>
+
+<div align="center"><img width="638" alt="Screen Shot 2022-10-28 at 1 35 18 AM" src="https://user-images.githubusercontent.com/92835209/198514024-17d83fae-96c7-4ad5-a50b-a0de076be41e.png"></div>
+
+<h3 align="left">Extension 2: Write your report in Markdown as a readme file in your repository, including table images and appropriate tags and content..</h4>
 
 <p>We recreated this exact interactive report on the GitHub repository in the README.md file. The link to the README.md file (i.e. on the main repository) is this.</p>
 
@@ -110,3 +119,7 @@ _Emmanuel Assumang_
 Pre-commit: https://pre-commit.com/
 
 Burndown Chart: http://radekstepan.com/burnchart/#!/enjoythecode/scrum-wizards-cs321
+
+Database Block-Diagram Creator: https://nulab.com/cacoo/examples/database-diagrams-er-diagram-tool/
+
+Osascript open new Terminal tab (Shell): https://stackoverflow.com/questions/7171725/open-new-terminal-tab-from-command-line-mac-os-x
