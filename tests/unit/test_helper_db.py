@@ -15,20 +15,20 @@ from website.models import User, Team, Entry, Category, Permission
 
 def test_add_user(client):
     '''
-    Unit test for addUser() 
+    Unit test for addUser()
 
-    GIVEN: 
+    GIVEN:
         There is no user in the database
-    WHEN: 
+    WHEN:
         A new user is added to the database
-    THEN: 
-        Check that the database contains the user with proper email, 
-        first_name, last_name, password, permission_id are 
+    THEN:
+        Check that the database contains the user with proper email,
+        first_name, last_name, password, permission_id are
     '''
 
     helper_db.addUser(email="test@gmail.com", first_name="first", last_name="last", password="test", permission_id=1)
     test_user = helper_db.getUserByEmail("test@gmail.com")
-    assert test_user.email == "test@gmail.com" 
+    assert test_user.email == "test@gmail.com"
     assert test_user.first_name == "first"
     assert test_user.last_name == "last"
     assert test_user.password == "test"
@@ -38,12 +38,12 @@ def test_add_team(client):
     '''
     Unit test for addTeam()
 
-    GIVEN: 
+    GIVEN:
         There is no team in the database
-    WHEN: 
+    WHEN:
         A new team is added to the database
-    THEN: 
-        Check that the database contains the team with proper start date, 
+    THEN:
+        Check that the database contains the team with proper start date,
         end date, and name
     '''
 
@@ -64,13 +64,13 @@ def test_add_entry(client):
     '''
     Unit test for addEntry()
 
-    GIVEN: 
+    GIVEN:
         There is no entry in the database
-    WHEN: 
+    WHEN:
         A new entry is added to the database
-    THEN: 
-        Check that the database contains the entry with proper user_id, 
-        category, time, value, and notes 
+    THEN:
+        Check that the database contains the entry with proper user_id,
+        category, time, value, and notes
     '''
 
     import datetime
@@ -89,11 +89,11 @@ def test_add_permission(client):
     '''
     Unit test for addPermission()
 
-    GIVEN: 
+    GIVEN:
         There is no permission in the database
-    WHEN: 
+    WHEN:
         A new permission is added to the database
-    THEN: 
+    THEN:
         Check that the database contains the permission with proper boolean
         values for permissions
     '''
@@ -120,11 +120,11 @@ def test_get_users(client):
     '''
     Unit test for getUsers()
 
-    GIVEN: 
+    GIVEN:
         There exists a user(s) in the database
-    WHEN: 
+    WHEN:
         Calling the getUsers() method
-    THEN: 
+    THEN:
         Check that the returns all users in the database
     '''
 
@@ -141,11 +141,11 @@ def test_get_teams(client):
     '''
     Unit test for getTeams()
 
-    GIVEN: 
+    GIVEN:
         There exist a team(s) in the database
-    WHEN: 
+    WHEN:
         Calling the getTeams() method
-    THEN: 
+    THEN:
         Check that the method returns all teams, with proper start/end time,
         and team name
     '''
@@ -168,11 +168,11 @@ def test_get_entries(client):
     '''
     Unit test for getEntries()
 
-    GIVEN: 
+    GIVEN:
         There exists an entry in the database
-    WHEN: 
+    WHEN:
         Calling the getEntries() method
-    THEN: 
+    THEN:
         Check that the method returnes all entries in the database
     '''
 
@@ -191,13 +191,13 @@ def test_get_permissions(client):
     '''
     Unit test for getPermissions()
 
-    GIVEN: 
+    GIVEN:
         There exists a permission(s) in the database
-    WHEN: 
+    WHEN:
         The getPermissions() method is invoked
-    THEN: 
+    THEN:
         Check that the method returns all permissions in the database
-        with proper boolean values 
+        with proper boolean values
     '''
 
     helper_db.addPermission(id = 1, name="test", can_view_self_entries=True, can_edit_self_entries=True, can_view_own_teams_entries=True, can_edit_own_teams_entries=True, can_view_all_entries=True, can_edit_all_entries=True)
@@ -216,11 +216,11 @@ def test_get_user_by_email(client):
     '''
     Unit test for getUserByEmail()
 
-    GIVEN: 
+    GIVEN:
         There exists a user in the database
-    WHEN: 
+    WHEN:
         Calling the getUserByEmail() method
-    THEN: 
+    THEN:
         Check that the method returns the proper user associated with that email
     '''
 
@@ -236,12 +236,12 @@ def test_get_user_by_name(client):
     '''
     Unit test for getUserByName()
 
-    GIVEN: 
+    GIVEN:
         There exists a user in the database
-    WHEN: 
+    WHEN:
         Calling the getUserByName() method
-    THEN: 
-        Check that the method returns the user with the proper first and lastname 
+    THEN:
+        Check that the method returns the user with the proper first and lastname
     '''
 
     helper_db.addUser(email="cmgowd25@colby.edu", first_name="Chandra", last_name="Gowda", password="12345", permission_id=1)
@@ -257,12 +257,12 @@ def test_get_user_by_id(client):
     '''
     Unit test for getUserById()
 
-    GIVEN: 
+    GIVEN:
         There exists a user in the database
-    WHEN: 
+    WHEN:
         Calling the getUserById() method
-    THEN: 
-        Check that the method returns the user with associated with said ID, and has 
+    THEN:
+        Check that the method returns the user with associated with said ID, and has
         the proper email, name, and password
     '''
 
@@ -278,11 +278,11 @@ def test_get_team_by_name(client):
     '''
     Unit test for getTeamByName()
 
-    GIVEN: 
+    GIVEN:
         There exists a team in the database
-    WHEN: 
+    WHEN:
         Invoking the getTeamByName() method
-    THEN: 
+    THEN:
         Check that the database returns the team with input name and that team has proper
         start, and end dates
     '''
@@ -304,11 +304,11 @@ def test_get_team_by_id(client):
     '''
     Unit test for getTeamById()
 
-    GIVEN: 
+    GIVEN:
         There exists a team in the database
-    WHEN: 
+    WHEN:
         Invoking the getTeamById() method
-    THEN: 
+    THEN:
         Check that the method returns the team associated with said ID, and
         that team contains the proper start date and enddate
     '''
@@ -331,11 +331,11 @@ def test_get_users_in_team(client):
     '''
     Unit test for getUsersInTeam()
 
-    GIVEN: 
+    GIVEN:
         There exists a team in the database with user(s) associated with it
-    WHEN: 
+    WHEN:
         Invoking the getUsersInTeam() method
-    THEN: 
+    THEN:
         Check that the method returns all users associated with that team,
         and that the users have the proper name, email, password, etc.
     '''
@@ -358,13 +358,13 @@ def test_get_permission_by_name(client):
     '''
     Unit test for getPermissionByName()
 
-    GIVEN: 
+    GIVEN:
         There exists a permission in the database
-    WHEN: 
+    WHEN:
         Invoking the getPermissionsByName() method
-    THEN: 
+    THEN:
         Check that the method returns the permission of the stated name,
-        and it contains all proper boolean values 
+        and it contains all proper boolean values
     '''
 
     helper_db.addPermission(id = 1, name="test", can_view_self_entries=False, can_edit_self_entries=True, can_view_own_teams_entries=False, can_edit_own_teams_entries=True, can_view_all_entries=False, can_edit_all_entries=True)
@@ -382,11 +382,11 @@ def test_get_permission_by_id(client):
     '''
     Unit test for getPermissionById()
 
-    GIVEN: 
+    GIVEN:
         There exists a permission in the database
-    WHEN: 
+    WHEN:
         Invoking the getPermissionById() method
-    THEN: 
+    THEN:
         Check that the method returns the permission with the proper boolean values
     '''
 
@@ -405,11 +405,11 @@ def test_get_users_by_permission(client):
     '''
     Unit test for getUsersByPermission()
 
-    GIVEN: 
+    GIVEN:
         There exists a user and permission in the database, and they are associated
-    WHEN: 
+    WHEN:
         Invoking the getUsersByPermission() method
-    THEN: 
+    THEN:
         Check that the method returns the proper users associated that that permission
     '''
 
@@ -427,11 +427,11 @@ def test_get_entry_by_id(client):
     '''
     Unit test for getEntryById()
 
-    GIVEN: 
+    GIVEN:
         There exist an entry in the database
-    WHEN: 
+    WHEN:
         Invoking the getEntryById() method
-    THEN: 
+    THEN:
         Check that the method returns the proper entry associated with that Id
     '''
 
@@ -456,11 +456,11 @@ def test_get_entries_by_user(client):
     '''
     Unit test for getEntriesByUser()
 
-    GIVEN: 
+    GIVEN:
         There exists a user in the DB, with entries associated with them
-    WHEN: 
+    WHEN:
         Invoking the getEntriesByUser() method
-    THEN: 
+    THEN:
         Check that the method returns the proper entries associated with said user
     '''
 
@@ -486,11 +486,11 @@ def test_get_entries_by_category(client):
     '''
     Unit test for getEntiesByCategory()
 
-    GIVEN: 
+    GIVEN:
         There exists entries of a specific category in the database
-    WHEN: 
+    WHEN:
         Invoking the getEntriesByCategory() method with specific category
-    THEN: 
+    THEN:
         Check that the method returns the proper entries of said category
     '''
 
@@ -522,11 +522,11 @@ def test_update_full_username(client):
     '''
     Unit test for updateUserFullName()
 
-    GIVEN: 
+    GIVEN:
         There exists a user in the database
-    WHEN: 
+    WHEN:
         Invoking the updateUserFullName() method
-    THEN: 
+    THEN:
         Check that the user in the database is updated with the new first name, last name
     '''
 
@@ -541,11 +541,11 @@ def test_update_user_permission(client):
     '''
     Unit test for updateUserPermission()
 
-    GIVEN: 
+    GIVEN:
         There exists a user, permission the database such that the user and permission are associated
-    WHEN: 
+    WHEN:
         Invoking the updateUserPermission() method
-    THEN: 
+    THEN:
         Check that the user in the database is updated with the correct permission
     '''
 
@@ -559,11 +559,11 @@ def test_add_user_to_team(client):
     '''
     Unit test for addUserToTeam()
 
-    GIVEN: 
+    GIVEN:
         There exists a user, team in the database
-    WHEN: 
+    WHEN:
         Invoking the addUserToTeam() method with said user and team
-    THEN: 
+    THEN:
         Check that the user in the database is associated with the correct team
     '''
 
@@ -582,11 +582,11 @@ def test_remove_user_from_team(client):
     '''
     Unit test for removeUserFromTeam()
 
-    GIVEN: 
+    GIVEN:
         There exists a user in the database, associated with a team
-    WHEN: 
+    WHEN:
         Invoking the removeUserFromTeam() method
-    THEN: 
+    THEN:
         Check that the user is no longer associated with a team entry in the DB
     '''
 
@@ -608,11 +608,11 @@ def test_update_team_name(client):
     '''
     Unit test for updateTeamName()
 
-    GIVEN: 
+    GIVEN:
         There exists a team in the database
-    WHEN: 
+    WHEN:
         Invoking the updateTeamName() method
-    THEN: 
+    THEN:
         Check that the team in the database is updated with the new name
     '''
 
@@ -629,11 +629,11 @@ def test_update_team_season_start_end(client):
     '''
     Unit test for updateTeamSeason()
 
-    GIVEN: 
+    GIVEN:
         There exists a team in the database
-    WHEN: 
+    WHEN:
         Invoking the updateTeamSeason() method
-    THEN: 
+    THEN:
         Check that the team is associated with the newly set start and end date
     '''
 
@@ -656,11 +656,11 @@ def test_update_entry_values(client):
     '''
     Unit test for updateEntryValues()
 
-    GIVEN: 
+    GIVEN:
         There exists an entry in the database
-    WHEN: 
+    WHEN:
         Invoking the updateEntryValues() on the specified entry
-    THEN: 
+    THEN:
         Check that the specified entry is updated with the proper values
     '''
 
@@ -670,7 +670,7 @@ def test_update_entry_values(client):
     user_id = helper_db.getUserByName("init_1", "init_2").id
     init_time = datetime.datetime.now()
     helper_db.addEntry(init_time, Category.sleep, 5, "Take a break on saturday.", user_id)
-    
+
     entry = helper_db.getEntriesByUser(user_id)[0]
 
     new_time = datetime.datetime(init_time.year + 1, init_time.month, init_time.day, 0, 0)
@@ -695,11 +695,11 @@ def test_delete_user(client):
     '''
     Unit test for deleteUser()
 
-    GIVEN: 
+    GIVEN:
         There exists a user in the database
-    WHEN: 
+    WHEN:
         Invoking the deleteUser() method
-    THEN: 
+    THEN:
         Check that the database no longer contains that user
     '''
 
@@ -712,12 +712,12 @@ def test_delete_entry(client):
     '''
     Unit test for deleteEntry()
 
-    GIVEN: 
+    GIVEN:
         There exists a entry in the database
-    WHEN: 
+    WHEN:
         Invoking the deleteEntry() method
-    THEN: 
-        Check that the database no longer contains that entry 
+    THEN:
+        Check that the database no longer contains that entry
     '''
 
     from website.models import Category
@@ -726,7 +726,7 @@ def test_delete_entry(client):
     user_id = helper_db.getUserByName("init_1", "init_2").id
     init_time = datetime.datetime.now()
     helper_db.addEntry(init_time, Category.sleep, 5, "Take a break on saturday.", user_id)
-    
+
     entry_id = helper_db.getEntriesByUser(user_id)[0].id
 
     helper_db.deleteEntry(entry_id)

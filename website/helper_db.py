@@ -6,7 +6,7 @@ from sqlalchemy.sql import func
 def addUser(email, first_name, last_name, password, permission_id):
     ''' Adds a user to the database
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_entries_of_category
     '''
@@ -20,7 +20,7 @@ def addUser(email, first_name, last_name, password, permission_id):
 def addEntry(time, category, value, notes, user_id):
     ''' Adds an entry to the database
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_entries_of_category
     '''
@@ -34,7 +34,7 @@ def addEntry(time, category, value, notes, user_id):
 def addTeam(name, start_date, end_date):
     ''' Adds a team to the database
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_entries_of_category
     '''
@@ -48,7 +48,7 @@ def addTeam(name, start_date, end_date):
 def addPermission(id, name, can_view_self_entries, can_edit_self_entries, can_view_own_teams_entries, can_edit_own_teams_entries, can_view_all_entries, can_edit_all_entries):
     ''' Adds a permission to the database
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_entries_of_category
     '''
@@ -204,7 +204,7 @@ def getPermissionByName(permission_name):
 def getPermissionById(permission_id):
     ''' Gets all permissions of a specific id
     ---------------------------------------
-    Returns: 
+    Returns:
     ---------------------------------------
     Python List. len = total_permissions_by_id
     '''
