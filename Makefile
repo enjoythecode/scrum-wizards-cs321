@@ -21,7 +21,7 @@ new:
 	make dev
 
 test:
-	python3 -m pytest
+	(. venv/bin/activate && venv/bin/python -m pytest)
 
 coverage:
 	coverage run -m pytest && coverage report --sort cover
