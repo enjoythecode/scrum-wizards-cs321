@@ -27,7 +27,9 @@ def add_admin_form_submission():
         if user:
             flash('Username already exists.', category='error')
         else:
-            auth.signup_user(id, email, firstname, lastname, password, permission_id)
+            new_user = User(id = id, email=email, first_name=firstname, password=generate_password_hash(password), permission_id = 2)
+            db.session.add(new_user)
+            db.session.commit()
             return redirect('/superadmin/home.html')
 
     # return render_template("signup.html", user=current_user)
