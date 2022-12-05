@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-{% block title %} Super-Admin Home{% endblock %}
+
+{% block title %} Super-Admin Home {% endblock %}
 
 {% block content %}
 
@@ -147,13 +148,13 @@
                       <h4 class="card-title">Edit Athlete Permissions</h4>
                       <p class="text-muted mb-1 small">View all</p>
                     </div>
-                      
+
                       <div class="add-items d-flex">
                       <input type="text" class="form-control todo-list-input" placeholder="Search Athlete">
                       <button class="add btn btn-primary todo-list-add-btn">Go</button>
                     </div>
-                      
-                      
+
+
 <!--
                       {% for user in athletelist %}
                         <li class="list-group-item">{{ user.first_name + user.last_name }}
@@ -161,17 +162,17 @@
                         </li>
                       {% endfor %}
 -->
-                      
+
                       <div class="preview-list">
-                          
-                          
+
+
                           <div class="preview-item border-bottom">
-                          
+
                           </div>
-                      
+
                       </div>
-                      
-                    <div class="preview-list">                      
+
+                    <div class="preview-list">
 <!--
                 <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
                 <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
@@ -200,15 +201,15 @@
     <div class="flex-grow">
       <div class="d-flex d-md-block d-xl-flex justify-content-between">
         <a class="nav-link" href="athletepermissions.html/{{ athletes[i].user_id }}"> {{ athletes[i].Name}} </a>
-        
+
       </div>
-      
+
     </div>
   </div>
 </div>
 {% endfor %}
-                      
-      
+
+
                     </div>
                   </div>
                 </div>
@@ -220,12 +221,12 @@
                       <h4 class="card-title">Edit Coach Permissions</h4>
                       <p class="text-muted mb-1 small">View all</p>
                     </div>
-                      
+
                       <div class="add-items d-flex">
                       <input type="text" class="form-control todo-list-input" placeholder="Search Coach">
                       <button class="add btn btn-primary todo-list-add-btn">Go</button>
                     </div>
-                      
+
                     <div class="preview-list">
 
                       {% for i in range (num_coaches) %}
@@ -238,9 +239,9 @@
                           <div class="flex-grow">
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
                               <a class="nav-link" href="coachpermissions.html/{{ coach_names[i].user_id }}"> {{ coach_names[i].Name}} </a>
-                              
+
                             </div>
-                            
+
                           </div>
                         </div>
                       </div>
@@ -259,7 +260,7 @@
           <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
               <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-              
+
             </div>
           </footer>
 

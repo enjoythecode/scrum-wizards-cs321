@@ -4,7 +4,11 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>{% block title %}{% endblock %} (CAMS)</title>
+        <title>
+            {% block title %}
+            {% endblock %}
+            | CAMS
+        </title>
 
         <!-- plugins:css -->
         <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
@@ -19,22 +23,25 @@
         <!-- Layout styles -->
         <link rel="stylesheet" href="/assets/css/style.css">
 
-        <!-- End layout styles -->
+        <!-- Browser tab image -->
         <link rel="shortcut icon" href="/assets/images/favicon.png" />
     </head>
+
     <body>
-        {% block content %}{% endblock %}
-         
+        {% block content %}
+
+        {% endblock %}
+
         <!-- plugins:js -->
         <script src="/assets/vendors/js/vendor.bundle.base.js"></script>
-        
+
         <!-- Plugin js for this page -->
         <script src="/assets/vendors/chart.js/Chart.min.js"></script>
         <script src="/assets/vendors/progressbar.js/progressbar.min.js"></script>
         <script src="/assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
         <script src="/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
         <script src="/assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
-        
+
         <!-- inject:js -->
         <script src="/assets/js/off-canvas.js"></script>
         <script src="/assets/js/hoverable-collapse.js"></script>

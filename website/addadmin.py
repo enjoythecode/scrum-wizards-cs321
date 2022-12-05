@@ -4,6 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
 
+
 addadmin = Blueprint('addadmin', __name__)
 
 @addadmin.route('/superadmin/addpeak.html', methods= ['POST'])
@@ -26,13 +27,7 @@ def add_admin_form_submission():
         if user:
             flash('Username already exists.', category='error')
         else:
-            # add user to database
-            new_user = User(id = id, email = email, permission_id = permission_id, first_name = firstname, last_name = lastname, password=generate_password_hash(password, method='sha256'), team_id = None)
-            db.session.add(new_user)
-            db.session.commit()
-            login_user(user, remember=True)
-            flash('Account created!', category='success')
-
+            auth.signup_user(id, email, firstname, lastname, password, permission_id)
             return redirect('/superadmin/home.html')
 
     # return render_template("signup.html", user=current_user)

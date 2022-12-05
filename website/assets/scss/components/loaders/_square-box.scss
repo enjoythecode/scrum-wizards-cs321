@@ -11,8 +11,8 @@
 		transform: rotate(-90deg)
 	}
 }
-  
-  
+
+
 .square-box-loader {
 position: absolute;
   left: 50%;
@@ -20,7 +20,7 @@ position: absolute;
   transform: translate(-50%, -50%);
   display: inline-block;
 }
-  
+
 
 .square-box-loader-square {
   display: block;
@@ -28,7 +28,7 @@ position: absolute;
   height: $square-size;
   background: theme-color(primary);
 }
-  
+
 
 .square-box-loader-container {
 position: absolute;
@@ -40,7 +40,7 @@ position: absolute;
   animation: dyinglight 1s ease infinite;
   backface-visibility: hidden;
 }
-  
+
 
 .square-box-loader-corner-top:before,
 .square-box-loader-corner-top:after,
@@ -52,7 +52,7 @@ position: absolute;
   color: theme-color(primary);
   content: '';
 }
-  
+
 
 .square-box-loader-corner-top {
 	&:before {
@@ -61,16 +61,16 @@ position: absolute;
 		top: -$square-corner-position;
 		left: -$square-corner-position;
 	}
-	
+
 	&:after {
 		border-right: 1px solid;
 		border-top: 1px solid;
 		top: -$square-corner-position;
 		right: -$square-corner-position;
 	}
-	
+
 }
-  
+
 
 .square-box-loader-corner-bottom {
 	&:before {
@@ -79,12 +79,12 @@ position: absolute;
 		bottom: -$square-corner-position;
 		left: -$square-corner-position;
 	}
-	
+
 	&:after {
 		border-right: 1px solid;
 		border-bottom: 1px solid;
 		bottom: -$square-corner-position;
 		right: -$square-corner-position;
 	}
-	
+
 }

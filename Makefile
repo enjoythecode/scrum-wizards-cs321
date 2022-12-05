@@ -1,4 +1,4 @@
-.PHONY: dev, open, dependencies, rmdb, new
+.PHONY: dev, open, dependencies, rmdb, new, test, coverage, coverage-open, pre-commit-install, checkall
 
 dependencies:
 	pip install -r requirements.txt
@@ -20,3 +20,20 @@ new:
   -e 'tell application "Terminal" to do script "make open" in selected tab of the front window'
 	make dev
 
+test:
+	(. venv/bin/activate && venv/bin/python -m pytest)
+
+coverage:
+	coverage run -m pytest && coverage report --sort cover
+
+coverage-open:
+	coverage run -m pytest && coverage html && open htmlcov/index.html
+
+pre-commit-install:
+	pre-commit install
+
+check:
+	pre-commit run
+
+checkall:
+	pre-commit run --all-files
