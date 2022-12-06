@@ -23,7 +23,7 @@ def coach_permissions_form_submission(user):
 
     # deleting user
     elif request.method == 'POST' and request.id == 'delete':
-        
+
         user = User.query.get(user.id) # how to know which id to get
 
         if user:

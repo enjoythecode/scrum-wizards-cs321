@@ -26,7 +26,7 @@ def add_coach_form_submission():
         team3 = request.form.get('team3')
 
         # need to find a way to convert teams to team_ids
-        
+
 
 
         user = User.query.filter_by(email=email).first()
@@ -39,5 +39,3 @@ def add_coach_form_submission():
             db.session.add(new_user)
             db.session.commit()
             return redirect('/superadmin/home.html')
-
-    
