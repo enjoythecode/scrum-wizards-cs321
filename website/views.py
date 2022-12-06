@@ -3,29 +3,15 @@ from flask import Blueprint
 from flask import render_template
 from flask import send_from_directory, redirect, url_for
 from flask_login import login_required, current_user
+from . import helper_db
+from random import *
 
 views = Blueprint('views', __name__)
 auth = Blueprint('auth', __name__)
 
-def mock_database(user_id):
-    if user_id == 1:
-        return {"user_id": 1, "Name" : "Robert Reyes"}
-    if user_id == 2:
-        return{"user_id": 2, "Name" : "Casey Brown"}
-    if user_id == 3:
-        return{"user_id": 3, "Name" : "Jenna Carter"}
-    if user_id == 4:
-        return{"user_id": 4, "Name" : "Jennifer Smith"}
+def make_database(user_id):
 
-    # coaches
-    if user_id == 5:
-        return {"user_id": 5, "Name" : "Thomas Mckee"}
-    if user_id == 6:
-        return{"user_id": 6, "Name" : "Emily Stephenson"}
-    if user_id == 7:
-        return{"user_id": 7, "Name" : "Keith Freeman"}
-    if user_id == 8:
-        return{"user_id": 8, "Name" : "Jeffrey Abbott"}
+    return {'user_id' : user_id, 'Name':helper_db.getUserById(user_id).first_name + ' ' + helper_db.getUserById(user_id).last_name}
 
 
 @views.route('/', methods=['GET', 'POST'])
@@ -63,30 +49,46 @@ def send_asset(path):
 @views.route('/superadmin/home.html')
 def send_admin():
     # need to fix this so it filters the user by permission id
-    users1 = [mock_database(1), mock_database(2), mock_database(3), mock_database(4)]
-    images1 = ["/assets/images/faces/face6.jpg",
-    "/assets/images/faces/face8.jpg",
-    "/assets/images/faces/face9.jpg",
-    "/assets/images/faces/face11.jpg"]
-    playerStatus = ["Cleared", "Not Cleared", "Partially Cleared", "Cleared"]
+    users = helper_db.getUsers()
+    ids = []
+    for user in users:
+        ids.append(user.id)
 
-    names2 = [mock_database(5), mock_database(6), mock_database(7), mock_database(8)]
-    images2 = ["/assets/images/faces/face2.jpg",
-    "/assets/images/faces/face3.jpg",
-    "/assets/images/faces/face7.jpg",
-    "/assets/images/faces/face5.jpg"]
+    allusers = []
+    coaches = []
+    athletes = []
+    admin = []
+    for id in ids:
+        allusers.append(make_database(id))
+
+        permission_id = helper_db.getUserById(id).permission_id
+
+        if permission_id == 3:
+            athletes.append(make_database(id))
+        elif permission_id == 2:
+            coaches.append(make_database(id))
+        else:
+            admin.append(make_database(id))
+
+    playerStatus = []
+    for i in range(len(allusers)):
+        randnum = random()
+        if randnum < 0.7:
+            playerStatus.append('Cleared')
+        elif randnum < 0.9:
+            playerStatus.append('Partially Cleared')
+        else:
+            playerStatus.append('Not Cleared')
 
     out_season = ["Lacrosse", "Nordic Ski", "Basketball", "Swimming", "Indoor Track", "Hockey"]
 
     return render_template("superadmin/home.html",
-    athletes = users1,
-    athlete_images = images1,
+    athletes = athletes,
     status = playerStatus,
-    coach_names = names2,
-    coach_images = images2,
+    coach_names = coaches,
     teams_out = out_season,
-    num_athletes= len(users1),
-    num_coaches = len(names2),
+    num_athletes= len(athletes),
+    num_coaches = len(coaches),
     num_out_teams = len(out_season)
     )
 
@@ -132,7 +134,34 @@ def send_athlete():
 
 @views.route('/coach_dashboard')
 def send_coach():
-    users1 = [mock_database(1), mock_database(2), mock_database(3), mock_database(4)]
+
+    users = helper_db.getUsers()
+    ids = []
+    for user in users:
+        ids.append(user.id)
+
+    # allusers = []
+
+    athletes = []
+
+    for id in ids:
+        # allusers.append(make_database(id))
+
+        permission_id = helper_db.getUserById(id).permission_id
+
+        if permission_id == 3:
+            athletes.append(make_database(id))
+        # elif permission_id == 2:
+        #     coaches.append(make_database(id))
+        # else:
+        #     admin.append(make_database(id))
+
+
+
+
+
+
+    users1 = athletes
     images1 = ["/assets/images/faces/face6.jpg",
     "/assets/images/faces/face8.jpg",
     "/assets/images/faces/face9.jpg",
@@ -159,7 +188,7 @@ def send_coach():
 
 @views.route('/team_dashboard')
 def send_team():
-    # print('reached the method')
+
     Teams = ["Soccer (M)", "Football (M)", "Track (W) ", "Basketball (W)"]
     Sleep = [4,4,4,4,]
     Quality = [60,80,20,-4,]
@@ -184,7 +213,7 @@ def send_superadmin(path):
 
 @views.route("/superadmin/athletepermissions.html/<int:userid>", methods = ["GET"])
 def goto_athlete_permissions(userid):
-    user = mock_database(userid)
+    user = make_database(userid)
     return render_template('superadmin/athletepermissions.html', user = user)
 
 @views.route("/superadmin/home.html", methods = ["GET"])
@@ -193,7 +222,7 @@ def backto_home():
 
 @views.route("/superadmin/coachpermissions.html/<int:userid>", methods = ["GET"])
 def goto_coach_permissions(userid):
-    user = mock_database(userid)
+    user = make_database(userid)
     return render_template('superadmin/coachpermissions.html', user = user)
 
 @views.route('/coach_dashboard', methods=['GET'])
