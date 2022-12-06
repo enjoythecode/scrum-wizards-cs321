@@ -39,7 +39,7 @@ def add_athlete_form_submission():
         if user:
             flash('Username already exists.', category='error')
         else:
-            new_user = User(first_name = firstname, last_name = lastname, email = email, password = generate_password_hash(password, method='sha256'), permission_id=2)
+            new_user = User(first_name = firstname, last_name = lastname, email = email, password = generate_password_hash(password, method='sha256'), permission_id=3)
             db.session.add(new_user)
             db.session.commit()
             return redirect('/superadmin/home.html')
