@@ -62,6 +62,7 @@ def send_asset(path):
 
 @views.route('/superadmin/home.html')
 def send_admin():
+    # need to fix this so it filters the user by permission id
     users1 = [mock_database(1), mock_database(2), mock_database(3), mock_database(4)]
     images1 = ["/assets/images/faces/face6.jpg",
     "/assets/images/faces/face8.jpg",
