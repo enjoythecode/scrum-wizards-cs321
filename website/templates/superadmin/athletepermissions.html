@@ -134,9 +134,8 @@
 
 
             <div class="row">
-<form method = "POST">
+<!-- <form method = "POST"> -->
               <div class="col-md-6 col-xl-12 grid-margin stretch-card">
-<!--                  <form method = "POST">-->
                 <div class="card">
                   <div class="card-body">
                     <div class="d-flex flex-row justify-content-between">
@@ -144,7 +143,7 @@
 
                     </div>
 
-
+                    <form method = "POST" id = 'changeandsave'>
 
                     <div class="preview-list">
 
@@ -154,7 +153,7 @@
                           <div class="flex-grow">
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
                               <div class="dropdown">
-                                <button id = "team" name = "team" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Team: </button>
+                                <input for = 'changeandsave'id = "team" name = "team" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value = 'Team'> 
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                                   <a id = "team1" class="dropdown-item" href="#">Basketball</a>
                                   <a id = "team2" class="dropdown-item" href="#">Baseball</a>
@@ -174,7 +173,7 @@
                           <div class="flex-grow">
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
                               <div class="dropdown">
-                        <button id = "switchrole" name = "switchrole" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Switch Role: </button>
+                        <input for = 'changeandsave'id = "switchrole" name = "switchrole" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value = 'Switch Role'>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                           <a id = 'coach' class="dropdown-item" href="#">Coach</a>
                           <a id = 'athlete' class="dropdown-item" href="#">Athlete</a>
@@ -186,24 +185,30 @@
                           </div>
                         </div>
                       </div>
+                        
                         <div class="preview-item border-bottom">
                         <div class="preview-item-content d-flex flex-grow">
                           <div class="flex-grow">
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                              <button id = "deleteaccount" name = "deleteaccount" class='btn-danger btn btn-fw'>Delete Account</button>
+                              <input for = 'changeandsave'value = 'Save' type = 'submit' id = "save" name = "save" class='btn-primary btn btn-fw'>
                             </div>
                           </div>
                         </div>
                       </div>
-                        <div class="preview-item border-bottom">
+                    </form>
+
+
+<form method = 'POST' id = 'delete'>
+                      <div class="preview-item border-bottom">
                         <div class="preview-item-content d-flex flex-grow">
                           <div class="flex-grow">
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                              <button id = "save" name = "save" class='btn-primary btn btn-fw'>SAVE</button>
+                              <input for = 'delete' type = 'submit' id = "deleteaccount" name = "deleteaccount" class='btn-danger btn btn-fw'value = 'Delete Account'>
                             </div>
                           </div>
                         </div>
                       </div>
+                    </form>
                     </div>
                   </div>
                 </div>
