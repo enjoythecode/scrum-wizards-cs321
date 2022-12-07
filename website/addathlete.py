@@ -3,7 +3,6 @@ from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
-import auth
 
 addathlete = Blueprint('addathlete', __name__)
 
@@ -18,10 +17,9 @@ def add_athlete_form_submission():
         lastname = request.form.get('lastname')
         id = request.form.get('id')
         createuser = request.form.get('createuser')
-        role = 'coach'
-        permission_id = 0
         # below could be wrong since it's a dropdown menu
         # also need to make sure team2 and team3 can be emtpy
+        # what to do about teams????
         team1 = request.form.get('team1')
         team2 = request.form.get('team2')
         team3 = request.form.get('team3')
@@ -40,10 +38,9 @@ def add_athlete_form_submission():
         if user:
             flash('Username already exists.', category='error')
         else:
-            auth.signup_user(id, email, firstname, lastname, password, permission_id)
-
-
-
+            new_user = User(first_name = firstname, last_name = lastname, email = email, password = generate_password_hash(password, method='sha256'), permission_id=3)
+            db.session.add(new_user)
+            db.session.commit()
             return redirect('/superadmin/home.html')
 
     # return redirect("/superadmin/home.html")

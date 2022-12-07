@@ -56,6 +56,7 @@ def create_app():
     from .addadmin import addadmin
     from .athletepermissions import athletepermissions
     from .coachpermissions import coachpermissions
+    from .hawkins import hawkins
 
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
@@ -64,6 +65,7 @@ def create_app():
     app.register_blueprint(addathlete, url_prefix='/')
     app.register_blueprint(athletepermissions, url_prefix='/')
     app.register_blueprint(coachpermissions, url_prefix='/')
+    app.register_blueprint(hawkins, url_prefix='/')
 
     with app.app_context():
         if path.exists('instance/' + DB_NAME):
