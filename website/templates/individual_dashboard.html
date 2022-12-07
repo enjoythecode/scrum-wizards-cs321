@@ -154,7 +154,7 @@
 
                   <!-- Mini card 1 -->
                   <div class = "col-md-4 grid-margin" id="mini-card" > <!-- Mini sdfgdsfg 1 -->
-                    
+
                     <div class = "card-title">Sleep</div>
                     <canvas id="transaction-history1" class="transaction-chart"></canvas>
                     <script>
@@ -404,7 +404,7 @@
 
                     <button type="button" style="float:right;" class="btn btn-light btn-fw">Last 10 Days ▼ </button>
                     <button type="button" style="float:right;" class="btn btn-inverse-light btn-fw">Download CSV</button>
-          
+
 
                     <canvas id="linechart-multi" style="height:250px"></canvas>cr
 
@@ -550,33 +550,33 @@ var multiLineData = {
       /* exported gisLoaded */
       /* exported handleAuthClick */
       /* exported handleSignoutClick */
-    
+
       // Authorization scopes required by the API; multiple scopes can be
       // included, separated by spaces.
       const SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly';
-    
+
       // TODO(developer): Set to client ID and API key from the Developer Console
       const CLIENT_ID = '418133534880-o9kfvgfem47f4o1dn28gfvba89scj7dg.apps.googleusercontent.com';
       const API_KEY = 'AIzaSyBd1CcNgzMhY86u4kCU7NzbUAZfnNcKdEM';
-    
+
       // TODO(developer): Replace with your own project number from console.developers.google.com.
       const APP_ID = 'cams-2022';
-    
+
       let tokenClient;
       let accessToken = null;
       let pickerInited = false;
       let gisInited = false;
-    
-    
-      
-    
+
+
+
+
       /**
        * Callback after api.js is loaded.
        */
       function gapiLoaded() {
         gapi.load('client:picker', intializePicker);
       }
-    
+
       /**
        * Callback after the API client is loaded. Loads the
        * discovery doc to initialize the API.
@@ -585,7 +585,7 @@ var multiLineData = {
         await gapi.client.load('https://www.googleapis.com/discovery/v1/apis/drive/v3/rest');
         pickerInited = true;
       }
-    
+
       /**
        * Callback after Google Identity Services are loaded.
        */
@@ -597,9 +597,9 @@ var multiLineData = {
         });
         gisInited = true;
       }
-    
 
-    
+
+
       /**
        *  Sign in the user upon button click.
        */
@@ -611,7 +611,7 @@ var multiLineData = {
           accessToken = response.access_token;
           await createPicker();
         };
-    
+
         if (accessToken === null) {
           // Prompt the user to select a Google Account and ask for consent to share their data
           // when establishing a new session.
@@ -621,7 +621,7 @@ var multiLineData = {
           tokenClient.requestAccessToken({prompt: ''});
         }
       }
-    
+
       /**
        *  Sign out the user upon button click.
        */
@@ -631,7 +631,7 @@ var multiLineData = {
           google.accounts.oauth2.revoke(accessToken);
         }
       }
-    
+
       /**
        *  Create and render a Picker object for searching images.
        */
@@ -649,7 +649,7 @@ var multiLineData = {
             .build();
         picker.setVisible(true);
       }
-    
+
       /**
        * Displays the file details of the user's selection.
        * @param {object} data - Containers the user selection from the picker
