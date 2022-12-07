@@ -6,7 +6,7 @@ from flask_login import login_required, current_user
 from . import helper_db
 from random import *
 # from data import *
-import csv
+import pandas as pd
 import os
 
 views = Blueprint('views', __name__)
@@ -151,6 +151,8 @@ def send_coach():
     # creating table from csv file 
     cwd = os.getcwd() + '/data/tennis_hawkins_anonymized.csv'  
     file =  open(cwd)
+    dataframe = pd.read_csv(file)
+    html_df = dataframe.to_html()
 
 
 
@@ -168,7 +170,7 @@ def send_coach():
     readyness_circle = 90
     calorie_circle = 55
 
-    return render_template("coach_dashboard.html", file = file,
+    return render_template("coach_dashboard.html", file = file, html_df = html_df,
     sleep_data = sleep,
     status = playerStatus,
     athletes = users1,
