@@ -1,4 +1,4 @@
-.PHONY: dev, open, dependencies, rmdb, new, test, coverage, coverage-open, pre-commit-install, checkall, fetch-hawkins
+.PHONY: dev, open, dependencies, rmdb, new, test, coverage, coverage-open, pre-commit-install, checkall
 
 dependencies:
 	pip install -r requirements.txt
@@ -37,6 +37,3 @@ check:
 
 checkall:
 	pre-commit run --all-files
-
-fetch-hawkins:
-	flask --app website hawkins fetch api
