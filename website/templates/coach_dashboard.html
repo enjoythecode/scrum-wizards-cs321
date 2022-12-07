@@ -470,7 +470,7 @@ var multiLineData = {
 
               <!-- this is the row that holds the hawkins dynamic table -->
                 <div class = row>
-                  
+
                   <div class = "col-md-7 grid-margin stretch-card">
                     <div class="card-body">
                      <h3 class="card-title">Team Hawkins Dynamics Data</h3>
@@ -478,14 +478,14 @@ var multiLineData = {
                      <script type="text/javascript"charset="utf-8">
                       d3.text(file, function(file) {
                           var parsedCSV = d3.csv.parseRows(file);
-          
+
                           var container = d3.select("body")
                               .append("table")
-          
+
                               .selectAll("tr")
                                   .data(parsedCSV).enter()
                                   .append("tr")
-          
+
                               .selectAll("td")
                                   .data(function(d) { return d; }).enter()
                                   .append("td")
