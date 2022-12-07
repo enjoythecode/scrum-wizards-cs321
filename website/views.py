@@ -148,8 +148,8 @@ def send_coach():
         if permission_id == 3:
             athletes.append(make_database(id))
 
-    # creating table from csv file 
-    cwd = os.getcwd() + '/data/tennis_hawkins_anonymized.csv'  
+    # creating table from csv file
+    cwd = os.getcwd() + '/data/tennis_hawkins_anonymized.csv'
     file =  open(cwd)
     dataframe = pd.read_csv(file)
     html_df = dataframe.to_html()
