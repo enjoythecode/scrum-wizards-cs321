@@ -547,8 +547,7 @@ var multiLineData = {
       let gisInited = false;
     
     
-      document.getElementById('authorize_button').style.visibility = 'hidden';
-      document.getElementById('signout_button').style.visibility = 'hidden';
+      
     
       /**
        * Callback after api.js is loaded.
@@ -564,7 +563,6 @@ var multiLineData = {
       async function intializePicker() {
         await gapi.client.load('https://www.googleapis.com/discovery/v1/apis/drive/v3/rest');
         pickerInited = true;
-        maybeEnableButtons();
       }
     
       /**
@@ -577,17 +575,9 @@ var multiLineData = {
           callback: '', // defined later
         });
         gisInited = true;
-        maybeEnableButtons();
       }
     
-      /**
-       * Enables user interaction after all libraries are loaded.
-       */
-      function maybeEnableButtons() {
-        if (pickerInited && gisInited) {
-          document.getElementById('authorize_button').style.visibility = 'visible';
-        }
-      }
+
     
       /**
        *  Sign in the user upon button click.
@@ -598,8 +588,6 @@ var multiLineData = {
             throw (response);
           }
           accessToken = response.access_token;
-          document.getElementById('signout_button').style.visibility = 'visible';
-          document.getElementById('authorize_button').innerText = 'Refresh';
           await createPicker();
         };
     
@@ -620,9 +608,6 @@ var multiLineData = {
         if (accessToken) {
           accessToken = null;
           google.accounts.oauth2.revoke(accessToken);
-          document.getElementById('content').innerText = '';
-          document.getElementById('authorize_button').innerText = 'Authorize';
-          document.getElementById('signout_button').style.visibility = 'hidden';
         }
       }
     
@@ -631,7 +616,6 @@ var multiLineData = {
        */
       function createPicker() {
         const view = new google.picker.View(google.picker.ViewId.DOCS);
-        view.setMimeTypes('image/png,image/jpeg,image/jpg');
         const picker = new google.picker.PickerBuilder()
             .enableFeature(google.picker.Feature.NAV_HIDDEN)
             .enableFeature(google.picker.Feature.MULTISELECT_ENABLED)
@@ -660,7 +644,6 @@ var multiLineData = {
             'fields': '*',
           });
           text += `Drive API response for first document: \n${JSON.stringify(res.result, null, 2)}\n`;
-          window.document.getElementById('content').innerText = text;
         }
       }
     </script>
