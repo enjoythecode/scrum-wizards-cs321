@@ -639,7 +639,7 @@ var multiLineData = {
           let text = `Picker response: \n${JSON.stringify(data, null, 2)}\n`;
           const document = data[google.picker.Response.DOCUMENTS][0];
           const fileId = document[google.picker.Document.ID];
-          console.log(fileId);
+          console.log("fileId", fileId);
           const res = await gapi.client.drive.files.get({
             'fileId': fileId,
             'fields': '*',
