@@ -151,6 +151,7 @@ def addDummyDB():
     addPermissionList()
     addDummyUser()
     addDummyEntriesList()
+    # readUsersCSV('users.csv')
 
 
 def createCSVFiles():
@@ -163,7 +164,6 @@ def readUsersCSV(filepath):
 
     import csv
     from .models import User, Entry, Team
-    db = SQLAlchemy()
 
     with open(filepath, 'r') as file:
         reader = csv.reader(file)
