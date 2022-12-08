@@ -4,7 +4,7 @@ function fetchathletes(name='') {
   fetch(`http://127.0.0.1:5000/athletes?name=${name}`)
     .then(response => response.json())
     .then(data => {
-      
+
       document.getElementById("list_athletes").innerHTML = "";
       if (data.length === 0) {
         document.getElementById("list_athletes").innerHTML = "No athletes found";
@@ -18,13 +18,13 @@ function fetchathletes(name='') {
         <div class="flex-grow">
             <div class="d-flex d-md-block d-xl-flex justify-content-between">
                 <a class="nav-link" href="athletepermissions.html/${player.user_id}"> ${player.Name} </a>
-    
+
             </div>
-    
+
         </div>
     </div>
 </div>`
-   
+
 })
     });
 }
@@ -35,7 +35,7 @@ function fetchacoaches(name='') {
   fetch(`http://127.0.0.1:5000/coaches?name=${name}`)
     .then(response => response.json())
     .then(data => {
-      
+
       document.getElementById("list_coaches").innerHTML = "";
       if (data.length === 0) {
         document.getElementById("list_coaches").innerHTML = "No coaches found";
@@ -52,14 +52,14 @@ function fetchacoaches(name='') {
   </div>
 </div>
 </div>`
-   
+
 })
     });
 }
 
 
   window.addEventListener('DOMContentLoaded', () => {
-   
+
     fetchathletes();
      document.getElementById('search-athlete-button').addEventListener('click', () => {
       const name = document.getElementById('search-athlete-input').value;
@@ -73,5 +73,3 @@ function fetchacoaches(name='') {
 
 
     });
-    
-  

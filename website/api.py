@@ -37,8 +37,8 @@ def list_athletes():
             print(user, user['Name'])
             if name.lower() in user['Name'].lower():
                 athletes.append(user)
-   
-    
+
+
     return Response(json.dumps(athletes), mimetype='application/json', status=200)
 
 
@@ -62,6 +62,6 @@ def list_coaches():
             print(user, user['Name'])
             if name.lower() in user['Name'].lower():
                 athletes.append(user)
-   
-    
+
+
     return Response(json.dumps(athletes), mimetype='application/json', status=200)
