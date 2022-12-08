@@ -150,8 +150,8 @@
                     </div>
 
                       <div class="add-items d-flex">
-                      <input type="text" class="form-control todo-list-input" placeholder="Search Athlete">
-                      <button class="add btn btn-primary todo-list-add-btn">Go</button>
+                      <input id='search-athlete-input' type="text" class="form-control" placeholder="Search Athlete">
+                      <button id='search-athlete-button' class="add btn btn-primary">Go</button>
                     </div>
 
 
@@ -177,7 +177,14 @@
                 <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
                 <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
 -->
-{% for i in range (num_athletes) %}
+<div id="list_athletes">
+
+
+
+</div>
+
+
+<!-- {% for i in range (num_athletes) %}
 
 <div class="preview-item border-bottom">
   {% if status[i] == "Cleared" %}
@@ -204,7 +211,7 @@
     </div>
   </div>
 </div>
-{% endfor %}
+{% endfor %} -->
 
 
                     </div>
@@ -220,13 +227,13 @@
                     </div>
 
                       <div class="add-items d-flex">
-                      <input type="text" class="form-control todo-list-input" placeholder="Search Coach">
-                      <button class="add btn btn-primary todo-list-add-btn">Go</button>
+                      <input id='search-coach-input' type="text" class="form-control" placeholder="Search Coach">
+                      <button id='search-coach-button' class="add btn btn-primary">Go</button>
                     </div>
 
                     <div class="preview-list">
 
-                      {% for i in range (num_coaches) %}
+                      <!-- {% for i in range (num_coaches) %}
 
                       <div class="preview-item border-bottom">
                         <div class="preview-item-content d-flex flex-grow">
@@ -239,7 +246,10 @@
                           </div>
                         </div>
                       </div>
- {% endfor %}
+ {% endfor %} -->
+ <div id="list_coaches">
+
+ </div>
 
                     </div>
                   </div>
@@ -265,4 +275,7 @@
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
+
+
+
 {% endblock %}
