@@ -151,13 +151,13 @@ def addDummyDB():
     addPermissionList()
     addDummyUser()
     addDummyEntriesList()
+    addDummyUserList()
     # readUsersCSV('users.csv')
 
 
 def createCSVFiles():
     from .writecsv import writeUsersCSV
     writeUsersCSV()
-
 
 # Function to read user csv file and populate database
 def readUsersCSV(filepath):
