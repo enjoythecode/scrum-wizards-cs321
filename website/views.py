@@ -5,6 +5,9 @@ from flask import send_from_directory, redirect, url_for
 from flask_login import login_required, current_user
 from . import helper_db
 from random import *
+# from data import *
+import pandas as pd
+import os
 
 views = Blueprint('views', __name__)
 auth = Blueprint('auth', __name__)
@@ -18,11 +21,6 @@ def make_database(user_id):
 @login_required
 def hello():
     return redirect(url_for('auth.login'))
-
-# @views.route('/home', methods=['GET'])
-# @login_required
-# def home():
-#     return render_template("home.html", user=current_user)
 
 
 @views.route('/home', methods=['GET'])
@@ -140,8 +138,6 @@ def send_coach():
     for user in users:
         ids.append(user.id)
 
-    # allusers = []
-
     athletes = []
 
     for id in ids:
@@ -151,13 +147,12 @@ def send_coach():
 
         if permission_id == 3:
             athletes.append(make_database(id))
-        # elif permission_id == 2:
-        #     coaches.append(make_database(id))
-        # else:
-        #     admin.append(make_database(id))
 
-
-
+    # creating table from csv file
+    cwd = os.getcwd() + '/data/tennis_hawkins_anonymized.csv'
+    file =  open(cwd)
+    dataframe = pd.read_csv(file)
+    html_df = dataframe.to_html()
 
 
 
@@ -175,7 +170,7 @@ def send_coach():
     readyness_circle = 90
     calorie_circle = 55
 
-    return render_template("coach_dashboard.html",
+    return render_template("coach_dashboard.html", file = file, html_df = html_df,
     sleep_data = sleep,
     status = playerStatus,
     athletes = users1,
