@@ -60,6 +60,15 @@
             </div>
           </li>
           <li class="nav-item nav-category">
+            <li class="nav-item menu-items">
+              <div style="width: 100%;">
+                <div style="width: 50%; height: 75px;">
+                    Left Div
+                </div>
+                <div style="margin-left: 50%">
+                </div>
+            </div>
+              <img class="img-xs rounded-circle" src="/assets/images/favicon.png" alt="">
             <span class="nav-link">Navigation</span>
           </li>
           <li class="nav-item menu-items">
@@ -114,6 +123,7 @@
               </li>
             </ul>
             <ul class="navbar-nav navbar-nav-right">
+                <button class="add btn btn-primary todo-list-add-btn" onclick="handleAuthClick()"> Import </button>
               <li class="nav-item dropdown d-none d-lg-block">
                 <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" href="/coach_dashboard">Go to Team Dashboard</a>
               </li>
@@ -146,9 +156,8 @@
                   <div class="card-body">
                     <div class="d-flex flex-row justify-content-between">
                       <h4 class="card-title">Edit Athlete Permissions</h4>
-                      <p class="text-muted mb-1 small">View all</p>
+                      <a href=><input type=”button” value=Update></a>
                     </div>
-
                       <div class="add-items d-flex">
                       <input id='search-athlete-input' type="text" class="form-control" placeholder="Search Athlete">
                       <button id='search-athlete-button' class="add btn btn-primary">Go</button>
@@ -275,7 +284,177 @@
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
+    <script type="text/javascript">
+      /* exported gapiLoaded */
+      /* exported gisLoaded */
+      /* exported handleAuthClick */
+      /* exported handleSignoutClick */
 
+      // Authorization scopes required by the API; multiple scopes can be
+      // included, separated by spaces.
+      const SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly https://www.googleapis.com/auth/drive';
+
+      // TODO(developer): Set to client ID and API key from the Developer Console
+      const CLIENT_ID = '418133534880-o9kfvgfem47f4o1dn28gfvba89scj7dg.apps.googleusercontent.com';
+      const API_KEY = 'AIzaSyBd1CcNgzMhY86u4kCU7NzbUAZfnNcKdEM';
+
+      // TODO(developer): Replace with your own project number from console.developers.google.com.
+      const APP_ID = 'cams-2022';
+
+      let tokenClient;
+      let accessToken = null;
+      let pickerInited = false;
+      let gisInited = false;
+
+      /**
+       * Callback after api.js is loaded.
+       */
+      function gapiLoaded() {
+        gapi.load('client:picker', intializePicker);
+      }
+
+      /**
+       * Callback after the API client is loaded. Loads the
+       * discovery doc to initialize the API.
+       */
+      async function intializePicker() {
+        await gapi.client.load('https://www.googleapis.com/discovery/v1/apis/drive/v3/rest');
+        pickerInited = true;
+      }
+
+      /**
+       * Callback after Google Identity Services are loaded.
+       */
+      function gisLoaded() {
+        tokenClient = google.accounts.oauth2.initTokenClient({
+          client_id: CLIENT_ID,
+          scope: SCOPES,
+          callback: '', // defined later
+        });
+        gisInited = true;
+      }
+
+
+
+      /**
+       *  Sign in the user upon button click.
+       */
+      function handleAuthClick() {
+        tokenClient.callback = async (response) => {
+          if (response.error !== undefined) {
+            throw (response);
+          }
+          accessToken = response.access_token;
+          await createPicker();
+        };
+
+        if (accessToken === null) {
+          // Prompt the user to select a Google Account and ask for consent to share their data
+          // when establishing a new session.
+          tokenClient.requestAccessToken({prompt: 'consent'});
+        } else {
+          // Skip display of account chooser and consent dialog for an existing session.
+          tokenClient.requestAccessToken({prompt: ''});
+        }
+      }
+
+      /**
+       *  Sign out the user upon button click.
+       */
+      function handleSignoutClick() {
+        if (accessToken) {
+          accessToken = null;
+          google.accounts.oauth2.revoke(accessToken);
+        }
+      }
+
+      /**
+       *  Create and render a Picker object for searching images.
+       */
+      function createPicker() {
+        const view = new google.picker.View(google.picker.ViewId.DOCS);
+
+        let picker = new google.picker.PickerBuilder()
+        .addViewGroup(
+          new google.picker.ViewGroup(google.picker.ViewId.DOCS)
+              .addView(google.picker.ViewId.DOCUMENTS)
+              .addView(google.picker.ViewId.PRESENTATIONS))
+        .setOAuthToken(oauthToken)
+        .setDeveloperKey(developerKey)
+        .setCallback(pickerCallback)
+        .build();
+
+
+        const picker = new google.picker.PickerBuilder()
+              .addView(google.picker.ViewId.DOCUMENTS)
+              .addView(google.picker.ViewId.PRESENTATIONS))
+            .enableFeature(google.picker.Feature.NAV_HIDDEN)
+            .enableFeature(google.picker.Feature.MULTISELECT_ENABLED)
+            .setDeveloperKey(API_KEY)
+            .setAppId(APP_ID)
+            .setOAuthToken(accessToken)
+            .addView(view)
+            .addView(new google.picker.DocsUploadView())
+            .setCallback(pickerCallback)
+            .build();
+        picker.setVisible(true);
+      }
+
+      /**
+       * Displays the file details of the user's selection.
+       * @param {object} data - Containers the user selection from the picker
+       */
+      async function pickerCallback(data) {
+        if (data.action === google.picker.Action.PICKED) {
+          let text = `Picker response: \n${JSON.stringify(data, null, 2)}\n`;
+          const document = data[google.picker.Response.DOCUMENTS][0];
+          const fileId = document[google.picker.Document.ID];
+          console.log("fileId", fileId);
+          const res = await gapi.client.drive.files.get({
+            'fileId': fileId,
+            'fields': '*',
+          });
+          text += `Drive API response for first document: \n${JSON.stringify(res.result, null, 2)}\n`;
+          // getting the webview link from res
+          const webViewLink = res.result.webViewLink;
+          console.log("webViewLink", webViewLink);
+          window.open(webViewLink, '_blank');
+        }
+      }
+
+      /**
+ * Downloads a file
+ * @param{string} realFileId file ID
+ * @return{obj} file status
+ * */
+async function downloadFile(realFileId) {
+  // Get credentials and build service
+  // TODO (developer) - Use appropriate auth mechanism for your app
+
+  const {GoogleAuth} = require('google-auth-library');
+  const {google} = require('googleapis');
+
+  const auth = new GoogleAuth({
+    scopes: 'https://www.googleapis.com/auth/drive',
+  });
+  const service = google.drive({version: 'v3', auth});
+
+  fileId = realFileId;
+  try {
+    const file = await service.files.get({
+      fileId: fileId,
+      alt: 'media',
+    });
+    console.log(file.status);
+    return file.status;
+  } catch (err) {
+    // TODO(developer) - Handle error
+    throw err;
+  }
+}
+    </script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
 
 
 {% endblock %}
