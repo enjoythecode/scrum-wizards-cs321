@@ -21,7 +21,9 @@ def create_test_app():
 
     from .views import views
     from .auth import auth
+    from .api import api
     app.register_blueprint(views, url_prefix='/')
+    app.register_blueprint(api, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
 
     login_manager = LoginManager()
@@ -51,6 +53,7 @@ def create_app():
     # Imports all blueprints for routing urls to .html files
     from .views import views
     from .auth import auth
+    from .api import api
     from .addcoach import addcoach
     from .addathlete import addathlete
     from .addadmin import addadmin
@@ -58,13 +61,14 @@ def create_app():
     from .coachpermissions import coachpermissions
 
     app.register_blueprint(views, url_prefix='/')
+    app.register_blueprint(api, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(addcoach, url_prefix='/')
     app.register_blueprint(addadmin, url_prefix='/')
     app.register_blueprint(addathlete, url_prefix='/')
     app.register_blueprint(athletepermissions, url_prefix='/')
     app.register_blueprint(coachpermissions, url_prefix='/')
-
+  
     with app.app_context():
         if path.exists('instance/' + DB_NAME):
             # # delete the database if it exists
