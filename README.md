@@ -52,6 +52,8 @@ This task was very difficult and was probably the most enlightening as to the re
 	
 <h2 align ="left">Burndown Chart</h2>
 <div align="center"><img width="593" alt="Screen Shot 2022-12-09 at 9 32 57 PM" src="https://user-images.githubusercontent.com/92835209/206824537-de445135-a3f5-4d87-b69d-436433426969.png">
+	
+As you can see, the burndown chart was not a straight line down with perfectly distributed pull requests throughout time. However, the nature of this milestone was basically a lot of work beforehand (getting the API tokens, formatting the data), so it was very frontloaded. We also couldn’t make the table and display the data until we had achieved it, so the frontend work was also forced to the end after the bigger issues. However, it is still important to note that we need to work on having smaller pull requests, and much more of them, so we can distribute our work over time. 
 
 
 <h2 align="left">Contributions</h3>
@@ -60,54 +62,60 @@ This task was very difficult and was probably the most enlightening as to the re
 
 _Chandra Gowda_
 
-* Setup the testing environments/functions in conftest.py and __init__.py
-* Added tests for “get” functions in helper_db.py
-* Helped resolve git-workflow related issues during pair-programming sessions
-
+* Added user-interface integration between Google Drive API and our application
+* Setup Google Fit API implementation on the backend
+* Created the readcsv.py file for interpreting csv files for reading in data into the users database
+* Connected my Apple Watch to Google Fit and setup test data to be imported and integrated with the Google Drive
 
 _Zehra_
 
-* Worked on testing views.py
-* Wrote test functions for redirecting to the athlete home page and the individual dashboards
-* Wrote test functions for redirecting to the coach home page and the team dashboards
-* Wrote a test function for the mock database function in views.py that we used in the earlier stages of development
+* Created the use-case diagram for our current version of the Colby Athlete Data Management system.
+* Worked on the redirectings of buttons on the super admin edit permissions page.
+
 
 _Sinan_
 
-* Set up pytest for automated testing
-* Set up the "coverage" tool for automated code coverage reporting on top of pytest, including Makefile aliases
-* Set up pre-commit configuration for automated testing and code quality checking.
-* Assisted teammates with resolving git branching situations such that it fit proper git flow branching structure.
+* Worked with Ghailan on understanding and attempting to connect to the MyFitnessPal API
+* Wrote data download automation from the Hawkins API from scratch under time pressure
+* Unblocked teammates by debugging git and Flask issues
+
 
 _Jasper Loverude_
 
-* Added unit tests for “update” functions in helper_db.py
-* Utilized HTML inheritance to remove hundreds of lines of <head> html code, (did not get to all files)
-* Added documentation for all backend db-related tests in GIVEN, WHEN, THEN format
-* Added new background for login, and new browser tab image
-* Added generic rerouting so all uncaught paths go to /login
-* Helped resolve git-workflow related issues during pair-programming sessions
+* Pair programmed with Kelly to give admin page a real-time and accurate display of users, with links to their permissions pages
+* Worked with Chandra to add user-interface integration between the Google Drive API and our application
+* Served as scrum master for Milestone 7
+	- Provided assistance unblocking people with git/merge issues
+
 
 _Kelly Putnam_
 
-* Fixed an issue with the delete and save forms for user permissions (on the super admin side)
- 	- Now, there is a different form for delete and another one for save, so they can do two different actions
-* Testing
-	- Wrote superadmin tests in views.py for test_views.py
-	- Wrote tests for addathlete, adduser, addadmin in test_adduser.py
-* Served as Scrum Master and organized meetings, assigned tasks
+* Helped on the front end for users to be able to have access to their API data as well as for the athletes to be able to import it
+	- Created the buttons to access the data
+	- Helped with displaying the data in a readable way
+* Fine-tuned adding real users to the database
+* Connected the database of athletes and coaches to a real list of Colby athletes and coaches
+	- To display them on the Super Admin page, so they can be accessed
+	- To display the athletes of a single team on the coach page, so that the coach can access real Colby athletes
+* Worked on report 
+* Connected the .csv file we created from Hawkins Dynamics data and used Flask, Python, and HTML to display it as a table on the website
+
 
 _Ghailan Fadah_
 
-* Developed testing for views.py
-* Helped with git-flow
-* Did pair-programming with zehra
-* Developed testing for auth.py; in particular log in and log out structure.
-* Developed additional testing for coach page
-* Developed additional testing for athlete page
-* Made sure Jasper got his sleep!
+* Worked on understanding and adding the myfitnesspal API to our application with sinan 
+* Worked on implanting and understanding the hawking dynamics with sinan
+* Peer programming with Sinan, Kelly, and Jasper
+* Looked at and tried to understand the documentation for Flask dance.
 
 _Emmanuel Assumang_
+	
+* Made the search bars active in the super admin page. 
+* Enables the super admin search for athlete names and coach names in the search bars easily.
+* Made a new file named api.py to handle the backend side and the logic to fetch the athletes/coaches database based on the search query. I updated home.html with a search input and search button id for both coaches and athletes.
+* Created a searchathletecoach.js file which contained the fetch coach and athlete functions that handled the on-click events on the button. Added this in the assets/js folder.
+* Partially worked with Chandra and Jasper to add user-interface integration between the Google Drive API and the application.
+
 
 <br><br>
 
