@@ -122,15 +122,15 @@ _Emmanuel Assumang_
 
 <h2 align="left">Extensions</h3>
 
-<h3 align="left">Extension 1: Use Precommit for CI</h4>
+<h3 align="left">Extension 1: Accessing Hawkins Dynamics API and Importing Colby Athlete Data </h4>
 
-<p>For this milestone, we chose to achieve CI capabilites with Precommit, a library that performs automatic testing on all commits before they can be made. Using precommit, we reduced the complexity and time required to ensure that all code is tested, because precommit runs tests before changes are committed, rather than during the PR process like most CI features. Additionally, pre-commit hooks allow for further linting and code quality standardization, which leaves room to expand upon our current CI capabilites.</p>
+We reached out to Dr. Anne and Drake in order to gain access to the Hawkin’s API for this sprint, in order to complete the API-trifecta of Google Drive, Google Fit, and Hawkins. (the API key for which went on to be shared with the entire class.) As seen in the file hawkins.py, we made an API request, and cleaned the data into a format that it can be displayed succinctly on the admin teams dashboard, as visualized by a pandas dataframe.
 
-<h3 align="left">Extension 1: Burndown chart to reflect on our efficiency.</h4>
+<h3 align="left">Extension 2:  Create a use-case diagram for your project.</h4>
 
-<p>The Burndown Chart that we generated offers us the ability to reflect on how we worked. While it doesn’t reflect exactly how we worked over time, since we made very big pull requests at the very end and merged it all instead of doing smaller pull requests over time. Therefore, we can definitely look at this graph and see that we need to do smaller pull requests for our next sprint. </p>
-
-<div align="center"><img width="638" alt="Screen Shot 2022-10-28 at 1 35 18 AM" src="https://user-images.githubusercontent.com/92835209/198514024-17d83fae-96c7-4ad5-a50b-a0de076be41e.png"></div>
+Figure below displays the use-case diagram for our version of the Colby Athlete Data Management System:
+	<div align="center"><img width="471" alt="Screen Shot 2022-12-09 at 9 42 05 PM" src="https://user-images.githubusercontent.com/92835209/206824803-9ddb5222-0eee-4a08-8c74-48ebbf4e51fc.png">
+<div align="left">
 
 <h3 align="left">Extension 2: Write your report in Markdown as a readme file in your repository, including table images and appropriate tags and content..</h4>
 
