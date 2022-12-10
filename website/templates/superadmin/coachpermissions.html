@@ -11,6 +11,17 @@
           <a class="sidebar-brand brand-logo-mini" href="home.html"><img src="/assets/images/logo-mini.svg" alt="logo" /></a>
         </div>
 -->
+<div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+  <div style="width: 100%;">
+    <div style="width: 25%; height: 25px;">
+
+    </div>
+    <div style="margin-left: 7%">
+      <img class="img-xs rounded-circle" src="/assets/images/favicon.png" alt="">
+    </div>
+</div>
+
+</div>
         <ul class="nav">
           <li class="nav-item profile">
             <div class="profile-desc">
@@ -185,10 +196,10 @@
 
 
             <div class="row">
-<form method = "POST">
+
               <div class="col-md-10 col-xl-12 grid-margin stretch-card">
 
-<!--                  <form method = "POST">-->
+
                 <div class="card">
                   <div class="card-body">
                     <div class="d-flex flex-row justify-content-between">
@@ -196,7 +207,7 @@
 
                     </div>
 
-
+                    <form method = "POST" id = 'changeandsave'>
 
                     <div class="preview-list">
 
@@ -207,7 +218,7 @@
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
 
 
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="team" name = "team" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Team: </button>
+                                <input type = 'submit' for = 'changeandsave' class="btn btn-secondary dropdown-toggle" type="button" id="team" name = "team" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value = 'Team'>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                                   <a id = "team1" class="dropdown-item" href="#">Basketball</a>
                                   <a id = "team2" class="dropdown-item" href="#">Baseball</a>
@@ -230,7 +241,7 @@
                           <div class="flex-grow">
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
                               <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="role" name = "role" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Switch Role: </button>
+                        <input type = 'submit' for = 'changeandsave' value = 'Change Role' class="btn btn-secondary dropdown-toggle" type="button" id="role" name = "role" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                           <a class="dropdown-item" href="#">Coach</a>
                           <a class="dropdown-item" href="#">Athlete</a>
@@ -247,32 +258,28 @@
                         </div>
                       </div>
 
-
-
-
-
-                      <div class="preview-item border-bottom">
-
-                        <div class="preview-item-content d-flex flex-grow">
-                          <div class="flex-grow">
-                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
-
-                              <button id = "deleteaccount" name = "deleteaccount" class='btn-danger btn btn-fw'>Delete Account</button>
-
-                            </div>
-
-                          </div>
-                        </div>
-                      </div>
-
                         <div class="preview-item border-bottom">
 
                         <div class="preview-item-content d-flex flex-grow">
                           <div class="flex-grow">
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
 
-                              <button id = "save" name = "save" class='btn-primary btn btn-fw'>SAVE</button>
+                              <input href="/superadmin/home.html" for = 'changeandsave' type = 'submit' value = 'Save' id = "save" name = "save" class='btn-primary btn btn-fw'>
 
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+<form method = 'POST' id = 'delete'>
+                      <div class="preview-item border-bottom">
+
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+
+                              <input href="/superadmin/home.html" type = 'submit' for = 'delete' value = 'Delete Account' id = "deleteaccount" name = "deleteaccount" class='btn-danger btn btn-fw'>
 
                             </div>
 
@@ -281,7 +288,7 @@
                       </div>
 
 
-
+                    </form>
                     </div>
                   </div>
 <!--                      </form>-->

@@ -21,7 +21,9 @@ def create_test_app():
 
     from .views import views
     from .auth import auth
+    from .api import api
     app.register_blueprint(views, url_prefix='/')
+    app.register_blueprint(api, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
 
     login_manager = LoginManager()
@@ -51,19 +53,23 @@ def create_app():
     # Imports all blueprints for routing urls to .html files
     from .views import views
     from .auth import auth
+    from .api import api
     from .addcoach import addcoach
     from .addathlete import addathlete
     from .addadmin import addadmin
     from .athletepermissions import athletepermissions
     from .coachpermissions import coachpermissions
+    from .hawkins import hawkins
 
     app.register_blueprint(views, url_prefix='/')
+    app.register_blueprint(api, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(addcoach, url_prefix='/')
     app.register_blueprint(addadmin, url_prefix='/')
     app.register_blueprint(addathlete, url_prefix='/')
     app.register_blueprint(athletepermissions, url_prefix='/')
     app.register_blueprint(coachpermissions, url_prefix='/')
+    app.register_blueprint(hawkins, url_prefix='/')
 
     with app.app_context():
         if path.exists('instance/' + DB_NAME):
@@ -148,12 +154,31 @@ def addDummyDB():
     addDummyTeams()
     addPermissionList()
     addDummyUser()
-    addDummyUserList()
     addDummyEntriesList()
+    addDummyUserList()
+    # readUsersCSV('users.csv')
+
 
 def createCSVFiles():
-    from writecsv import writeUsersCSV
+    from .writecsv import writeUsersCSV
     writeUsersCSV()
+
+# Function to read user csv file and populate database
+def readUsersCSV(filepath):
+
+    import csv
+    from .models import User, Entry, Team
+
+    with open(filepath, 'r') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            # Create a new user object
+            user = User(email=row[0], first_name=row[1], last_name=row[2], password=row[3], permission_id=row[4])
+            # Add the new User to the database
+            db.session.add(user)
+        # Commit all the changes
+        db.session.commit()
+        print('Read User CSV files and added to the database')
 
 def addDummyTeams():
     ''' Calls database hydration functions.
@@ -240,11 +265,21 @@ def addDummyUser():
     sinan = User(first_name = "Sinan", last_name = "Yumurtaci", email = "sinan@gmail.com", password = generate_password_hash("1234", method='sha256'), permission_id=1)
     kelly = User(first_name = "Kelly", last_name = "Putnam", email = "kelly@gmail.com", password = generate_password_hash("1234", method='sha256'), permission_id=2)
     jasper = User(first_name = "Jasper", last_name = "Loverude", email = "jasper@gmail.com", password = generate_password_hash("1234", method='sha256'), permission_id=3)
+    zehra = User(first_name = "Zehra", last_name = "", email = "zehra@gmail.com", password = generate_password_hash("1234", method='sha256'), permission_id=3)
+    ghailan = User(first_name = "Ghailan", last_name = "", email = "ghailan@gmail.com", password = generate_password_hash("1234", method='sha256'), permission_id=3)
+    dummyEmailList.append(chandra.email)
+    dummyEmailList.append(sinan.email)
+    dummyEmailList.append(kelly.email)
+    dummyEmailList.append(jasper.email)
+    dummyEmailList.append(zehra.email)
+    dummyEmailList.append(ghailan.email)
 
     db.session.add(chandra)
     db.session.add(sinan)
     db.session.add(kelly)
     db.session.add(jasper)
+    db.session.add(zehra)
+    db.session.add(ghailan)
     db.session.commit()
     print("DB User added")
 
