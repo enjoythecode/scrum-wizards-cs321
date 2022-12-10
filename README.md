@@ -60,7 +60,8 @@ As you can see, the burndown chart was not a straight line down with perfectly d
 
 **List of all group members contributions**
 <div align="left">
-_Chandra Gowda_
+	
+_Chandra_ _Gowda_
 
 * Added user-interface integration between Google Drive API and our application
 * Setup Google Fit API implementation on the backend
