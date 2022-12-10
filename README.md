@@ -24,20 +24,27 @@ As for cleaning up the website other than the APIs, there was quite a lot of wor
 <div align="center"><img width="622" alt="Screen Shot 2022-12-09 at 9 22 26 PM" src="https://user-images.githubusercontent.com/92835209/206824124-62e81020-7699-4872-a523-36a85924930a.png">
 <div align="center">Fig 1: Data entries received from the Hawkins Dynamics API. First 10 out of 100+ Hawkins Dynamics stats for the tennis team, displayed on the coach and admin view of the Tennis team (scrambled data for anonymity). 
 </div>
-<div align="center"<img width="625" alt="Screen Shot 2022-12-09 at 9 24 53 PM" src="https://user-images.githubusercontent.com/92835209/206824221-797302c2-f8e8-4237-bf3d-095d2bfb3482.png">
-</div>
+<div align="center"><img width="625" alt="Screen Shot 2022-12-09 at 9 24 53 PM" src="https://user-images.githubusercontent.com/92835209/206824221-797302c2-f8e8-4237-bf3d-095d2bfb3482.png"></div>
+
 <div align="center">Fig. 2: All users we have entered in the database displayed (with randomized clearance for now) on the super-admin dashboard.
 
 <div align="center"><img width="626" alt="Screen Shot 2022-12-09 at 9 26 04 PM" src="https://user-images.githubusercontent.com/92835209/206824268-baa017e4-456d-49f5-9714-33ba409e2dab.png"></div>
 	<div align="center">Fig. 3: The same page as above after using the search bar, to demonstrate functionality
 
+		
 
 
+<div align="center"><img width="623" alt="Screen Shot 2022-12-09 at 9 28 55 PM" src="https://user-images.githubusercontent.com/92835209/206824356-3f7ca3c1-3113-45a3-8f57-231127e27532.png"></div>
+		<div align="center">Fig. 4: The athlete dashboard, showing the button we added to sync with Google Drive in the case we end up using Google Fit
+			
+<div align="center"><img width="626" alt="Screen Shot 2022-12-09 at 9 29 39 PM" src="https://user-images.githubusercontent.com/92835209/206824384-42191894-b6e7-4734-b485-9b7bee7025c4.png"></div>
+			<div align="center">Fig 5: Fig. 5: After pressing the Sync with Google Drive button, the window that pops up (obviously if I was the current athlete, the accounts would match up and I could log in)
 
 <br>
 
 <h2 align ="left">Team Reflection</h2>
 <p>All in all, we are very grateful to this milestone because we learned about all the mistakes we had made in our code that we never would have otherwise run into. We went into this milestone thinking that our code was perfect because, whenever we ran the website through the server, everything was working perfectly and we thought that was a complete test of everything. However, when we wrote our own tests, we realized exactly how many things we needed to test in order to simulate everything a user might run into. For example, we had to make so many tests that redirected pages to other ones, and while most of them worked like we expected, some of them (that we had never tested before) resulted in errors and we were able to fix that so clicking on certain buttons led exactly to the page we wanted. We also practiced so much with functional v. unit testing that we definitely have a much better grasp on the differences between them, especially when it comes to testing with Flask. Without testing, we could have given faulty software to our clients.</p>
+
 
 <br>
 
