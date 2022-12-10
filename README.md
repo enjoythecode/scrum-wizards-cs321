@@ -132,10 +132,6 @@ Figure below displays the use-case diagram for our version of the Colby Athlete 
 	<div align="center"><img width="471" alt="Screen Shot 2022-12-09 at 9 42 05 PM" src="https://user-images.githubusercontent.com/92835209/206824803-9ddb5222-0eee-4a08-8c74-48ebbf4e51fc.png">
 <div align="left">
 
-<h3 align="left">Extension 2: Write your report in Markdown as a readme file in your repository, including table images and appropriate tags and content..</h4>
-
-<p>We recreated this exact interactive report on the GitHub repository in the README.md file. The link to the README.md file (i.e. on the main repository) is this.</p>
-
 <h3 align="left"> Extension 3: Write your report in Markdown as a readme file in your repository, including table images and appropriate tags and content.</h4>
 
 We wrote our report into a markdown file, (which you are looking at now) in addition to our original report on drive.
