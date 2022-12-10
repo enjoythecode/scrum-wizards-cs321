@@ -7,13 +7,12 @@ Athlete Data Management System for CS321 (Fall 2022) at Colby College, ME
 <br>
 
 
-<h1 align="center">Milestone 6 Report</h1>
+<h1 align="center">Milestone 7 Report</h1>
 <h3 align="center">Flask Web App</h3>
 
 
 <h2 align="left">Abstract</h3>
-<p>In Milestone 6, we used this sprint to implement a CI/CD pipeline to lint, test, and deploy a web app to the cloud using Azure. Essentially, this checked over our code for us so we didn’t have any errors that we might have missed. The goal of this task, using Pytest to improve code quality, was to simulate everything a potential user might run into, and making sure there are no errors in the code that would confuse the user or render the software unusable. We had to write our own tests, with the aim of full coverage (meaning we tested all of our functions used in the software), and then used Pytest to see what went wrong. We learned a lot about Flask testing as well in homework and quiz videos, as well as in lecture, and also had to do a lot of outside research to figure out how to test functions that are specific to our software.
-</p>
+In Milestone 7, we were tasked with implementing APIs, such as MyFitnessPal, Hawkins Dynamics, and wearable devices such as Apple Watch. We also needed to use these to display the information on each athlete to our website. Since the API tokens were very difficult to access, we finally decided to stick to Hawkins Dynamics, something that the Colby College Athletic Department uses all the time and has a good understanding of. We also knew that, since all Colby students are familiar with Google Drive, we would be able to use Google Fit (which the Athletic Department may or may not use now or in the future) by connecting the accounts of the users of our websites (the athletes, specifically) to their Google drive account. We also used this time to finetune our website, such as fully integrating our database into 
 
 <br><br>
 
