@@ -39,7 +39,7 @@ As for cleaning up the website other than the APIs, there was quite a lot of wor
 			
 <div align="center"><img width="626" alt="Screen Shot 2022-12-09 at 9 29 39 PM" src="https://user-images.githubusercontent.com/92835209/206824384-42191894-b6e7-4734-b485-9b7bee7025c4.png"></div>
 			<div align="center">Fig. 5: After pressing the Sync with Google Drive button, the window that pops up (obviously if I was the current athlete, the accounts would match up and I could log in)
-<div align="center><img width="619" alt="Screen Shot 2022-12-09 at 9 30 50 PM" src="https://user-images.githubusercontent.com/92835209/206824436-7de2c25b-8a5c-4b42-800b-cfe4da6b88bf.png"></div>
+<div align="center"><img width="619" alt="Screen Shot 2022-12-09 at 9 30 50 PM" src="https://user-images.githubusercontent.com/92835209/206824436-7de2c25b-8a5c-4b42-800b-cfe4da6b88bf.png"></div>
 <div align="center">Fig. 6: Issues closed in this milestone.
 
 <br>
