@@ -19,13 +19,14 @@ In Milestone 7, we were tasked with implementing APIs, such as MyFitnessPal, Haw
 <h2 align="left">Results</h2>
 Connecting Google Drive accounts to the CAMS accounts (our software), as well as implementing the Hawkins API, proved to be very difficult. The official API for pulling nutrition data from MyFitnessPal turned out to be falsely-advertised as available freely to developers, which was a misunderstanding that wasted a few days of effort. However, we’ve had better luck with the Hawkins API thanks to access information that we were provided two days before the deadline. Thanks to our efforts with the MyFitnessPal API, we had the code scaffolding to quickly take advantage of the API and successfully import and display Hawkins data for the Tennis team. 
 As for cleaning up the website other than the APIs, there was quite a lot of work to be done. Adding a user technically created one, but never added one to the database, so we worked on that and eventually created a lot of users of different roles and added them to the database. Using this expanded database, we made use of the extremely helpful helper_db.py file, which essentially had a bunch of different functions which could query users by all of their attributes. These were helpful, as we also spent this milestone replacing the mock database that we had created and were displaying as the athletes/coaches for the admin, with the real database that we created. This was further expanded when we successfully implemented the Hawkins API, since we were able to add real Colby athletes to the database with their real data (scrambled, as to keep their anonymity). Therefore, real athletes from a team were really displayed on our website, which made all the hard work worth it, since this felt like something the client could really use. 
+
+
 <div align="center"><img width="565" alt="Unit-test" src="https://user-images.githubusercontent.com/92835209/203896563-9f22d838-8fe2-4e6c-939e-68864aab523e.png"></div>
+
+</div><img width="622" alt="Screen Shot 2022-12-09 at 9 22 26 PM" src="https://user-images.githubusercontent.com/92835209/206824124-62e81020-7699-4872-a523-36a85924930a.png">
 <div align="center">Fig 1: A unit test, complete with proper GIVEN, WHEN, THEN documentation.
 </div>
 
-<div align="center"><img width="825" alt="Screen Shot 2022-11-24 at 10 38 48 PM" src="https://user-images.githubusercontent.com/92835209/203896788-fcf8874a-530e-4cf6-8a26-0ca57b5fac39.png"></div>
-<div align="center">Fig 2: Test coverage report
-</div>
 
 <br>
 
