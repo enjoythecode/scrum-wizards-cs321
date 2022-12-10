@@ -59,7 +59,7 @@ As you can see, the burndown chart was not a straight line down with perfectly d
 <h2 align="left">Contributions</h3>
 
 **List of all group members contributions**
-
+<div align="left>
 _Chandra Gowda_
 
 * Added user-interface integration between Google Drive API and our application
