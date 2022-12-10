@@ -21,11 +21,17 @@ Connecting Google Drive accounts to the CAMS accounts (our software), as well as
 As for cleaning up the website other than the APIs, there was quite a lot of work to be done. Adding a user technically created one, but never added one to the database, so we worked on that and eventually created a lot of users of different roles and added them to the database. Using this expanded database, we made use of the extremely helpful helper_db.py file, which essentially had a bunch of different functions which could query users by all of their attributes. These were helpful, as we also spent this milestone replacing the mock database that we had created and were displaying as the athletes/coaches for the admin, with the real database that we created. This was further expanded when we successfully implemented the Hawkins API, since we were able to add real Colby athletes to the database with their real data (scrambled, as to keep their anonymity). Therefore, real athletes from a team were really displayed on our website, which made all the hard work worth it, since this felt like something the client could really use. 
 
 
-<div align="center"><img width="565" alt="Unit-test" src="https://user-images.githubusercontent.com/92835209/203896563-9f22d838-8fe2-4e6c-939e-68864aab523e.png"></div>
-
 <div align="center"><img width="622" alt="Screen Shot 2022-12-09 at 9 22 26 PM" src="https://user-images.githubusercontent.com/92835209/206824124-62e81020-7699-4872-a523-36a85924930a.png">
-<div align="center">Fig 1: A unit test, complete with proper GIVEN, WHEN, THEN documentation.
+<div align="center">Fig 1: Data entries received from the Hawkins Dynamics API. First 10 out of 100+ Hawkins Dynamics stats for the tennis team, displayed on the coach and admin view of the Tennis team (scrambled data for anonymity). 
 </div>
+<div align="center"<img width="625" alt="Screen Shot 2022-12-09 at 9 24 53 PM" src="https://user-images.githubusercontent.com/92835209/206824221-797302c2-f8e8-4237-bf3d-095d2bfb3482.png">
+</div>
+<div align="center">Fig. 2: All users we have entered in the database displayed (with randomized clearance for now) on the super-admin dashboard.
+
+<div align="center"><img width="626" alt="Screen Shot 2022-12-09 at 9 26 04 PM" src="https://user-images.githubusercontent.com/92835209/206824268-baa017e4-456d-49f5-9714-33ba409e2dab.png"></div>
+	<div align="center">Fig. 3: The same page as above after using the search bar, to demonstrate functionality
+
+
 
 
 <br>
