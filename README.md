@@ -136,16 +136,12 @@ Figure below displays the use-case diagram for our version of the Colby Athlete 
 
 <p>We recreated this exact interactive report on the GitHub repository in the README.md file. The link to the README.md file (i.e. on the main repository) is this.</p>
 
-<h3 align="left">Extension 3: Use a makefile to streamline development.</h4>
+<h3 align="left">Extension 3: Write your report in Markdown as a readme file in your repository, including table images and appropriate tags and content..</h4>
 
-<p>We employed a Makefile (see 'Makefile') to encode common development tasks with easy-to-understand aliases. This allowed us to get team members up to speed on how to get productive with the codebase fast. Several of our Makefile aliases included 'make test', to run pytest, 'make coverage', to run pytest with coverage, and 'make coverage-open', to make run test coverage and open the test-coverage report in a browser. </p>
+	We wrote our report into a markdown file, (which you are looking at now) in addition to our original report on drive.
 
 <h2 align="left">References/Acknowledgements</h3>
 
-Pre-commit: https://pre-commit.com/
+We made extensive usage of the Google Drive and Google Picker API, which are two exceptionally well documented APIs, using documentation found on Google's developer page.
 
-Burndown Chart: http://radekstepan.com/burnchart/#!/enjoythecode/scrum-wizards-cs321
-
-Database Block-Diagram Creator: https://nulab.com/cacoo/examples/database-diagrams-er-diagram-tool/
-
-Osascript open new Terminal tab (Shell): https://stackoverflow.com/questions/7171725/open-new-terminal-tab-from-command-line-mac-os-x
+Additionally, we would like to thank Professor Naser Al Madi, Dr. Anne, and Drake Berberet for their help in providing documentation and an API key for the Hawkin’s dynamics force-plate API.
