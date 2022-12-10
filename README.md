@@ -23,7 +23,7 @@ As for cleaning up the website other than the APIs, there was quite a lot of wor
 
 <div align="center"><img width="565" alt="Unit-test" src="https://user-images.githubusercontent.com/92835209/203896563-9f22d838-8fe2-4e6c-939e-68864aab523e.png"></div>
 
-</div><img width="622" alt="Screen Shot 2022-12-09 at 9 22 26 PM" src="https://user-images.githubusercontent.com/92835209/206824124-62e81020-7699-4872-a523-36a85924930a.png">
+<div align="center"><img width="622" alt="Screen Shot 2022-12-09 at 9 22 26 PM" src="https://user-images.githubusercontent.com/92835209/206824124-62e81020-7699-4872-a523-36a85924930a.png">
 <div align="center">Fig 1: A unit test, complete with proper GIVEN, WHEN, THEN documentation.
 </div>
 
