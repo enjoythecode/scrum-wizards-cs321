@@ -45,6 +45,7 @@ As for cleaning up the website other than the APIs, there was quite a lot of wor
 <br>
 
 <h2 align ="left">Team Reflection</h2>
+<div align="left">
 This task was very difficult and was probably the most enlightening as to the real Software Engineering process. Accessing the API tokens was near impossible for many of the APIs, connecting to Google Drive was difficult, and going through documentation for each API especially could be very confusing. However, going through difficult documentation in order to implement what is arguably the most crucial part of this software (the athlete/team information and data) is what being a software engineer is all about. We also had to have a lot of conversations as a team about how best to display the data, which we didn’t even think about when we were busy focusing on connecting the data and actually getting it. Furthermore, going through the entire website also showed us how many other issues needed to be resolved; it was very hard to focus on one thing when we realized that our website also needed other functions that were less crucial than APIs, but still important to the client. However difficult this milestone was, it was easily the most rewarding when we finally received the Colby athlete data from Hawkins Dynamics after a lot of hard work from the back end team. 
 
 <br>
