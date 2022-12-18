@@ -37,3 +37,11 @@ check:
 
 checkall:
 	pre-commit run --all-files
+
+# uses radon [https://pypi.org/project/radon/] to analyze codebase and write results to
+# a folder.
+# make sure radon is installed, documentation mentions it supports *up to* python 3.8
+analyze:
+	./radon_analyze.sh
+
+
