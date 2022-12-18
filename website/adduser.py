@@ -5,10 +5,10 @@ from . import db
 
 adduser = Blueprint('adduser', __name__)
 
-@adduser.route('/superadmin/<path:addcoach.html>', methods= ['POST'])
-@adduser.route('/superadmin/<path:addpeak.html>', methods= ['POST'])
-@adduser.route('/superadmin/<path:addathlete.html>', methods= ['POST'])
-def add_user_form_submission(path):
+@adduser.route('/superadmin/add<user>.html', methods= ['POST'])
+# @adduser.route('/superadmin/addpeak.html', methods= ['POST'])
+# @adduser.route('/superadmin/addathlete.html', methods= ['POST'])
+def add_user_form_submission(user):
 
     if request.method == 'POST':
 
@@ -23,11 +23,11 @@ def add_user_form_submission(path):
         if user:
             flash('User already exists.', category='error')
         else:
-            if path == 'addcoach.html':
+            if user == 'coach':
                 new_user = User(first_name = firstname, last_name = lastname, email = email, password = generate_password_hash(password, method='sha256'), permission_id=2)
-            elif path == 'addathlete.html':
+            elif user == 'athlete':
                 new_user = User(first_name = firstname, last_name = lastname, email = email, password = generate_password_hash(password, method='sha256'), permission_id=3)
-            elif path == 'addpeak.html':
+            elif user == 'peak':
                 new_user = User(first_name = firstname, last_name = lastname, email = email, password = generate_password_hash(password, method='sha256'), permission_id=0)
             db.session.add(new_user)
             db.session.commit()

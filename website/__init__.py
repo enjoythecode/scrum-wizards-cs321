@@ -60,7 +60,7 @@ def create_app():
     from .adduser import adduser
     from .athletepermissions import athletepermissions
     from .coachpermissions import coachpermissions
-    from .userpermissions import userpermisisons
+    from .userpermissions import userpermissions
     from .hawkins import hawkins
 
     app.register_blueprint(views, url_prefix='/')
