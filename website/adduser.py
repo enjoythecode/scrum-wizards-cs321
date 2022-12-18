@@ -2,13 +2,12 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
-from flask_login import login_user, login_required, logout_user, current_user
 
-addcoach = Blueprint('addcoach', __name__)
+adduser = Blueprint('adduser', __name__)
 
-@addcoach.route('/superadmin/<path:addcoach.html>', methods= ['POST'])
-@addcoach.route('/superadmin/<path:addpeak.html>', methods= ['POST'])
-@addcoach.route('/superadmin/<path:addathlete.html>', methods= ['POST'])
+@adduser.route('/superadmin/<path:addcoach.html>', methods= ['POST'])
+@adduser.route('/superadmin/<path:addpeak.html>', methods= ['POST'])
+@adduser.route('/superadmin/<path:addathlete.html>', methods= ['POST'])
 def add_user_form_submission(path):
 
     if request.method == 'POST':
