@@ -6,7 +6,7 @@ from website import create_test_app
 # Creating a fixture for the app
 @pytest.fixture()
 def app():
-    # Creating a test app
+    # Creating a test application
     app = create_test_app()
     # Configuring the app
     with app.app_context():
