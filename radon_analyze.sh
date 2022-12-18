@@ -19,5 +19,3 @@ fi
 radon cc -a website/ > "$dir/cyclomatic_complexity.txt"
 radon mi website/ > "$dir/maintainability_index.txt"
 radon hal website/ > "$dir/halstead_complexity.txt"
-
-

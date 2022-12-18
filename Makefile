@@ -43,5 +43,3 @@ checkall:
 # make sure radon is installed, documentation mentions it supports *up to* python 3.8
 analyze:
 	./radon_analyze.sh
-
-
