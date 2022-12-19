@@ -13,10 +13,24 @@ import os
 views = Blueprint('views', __name__)
 auth = Blueprint('auth', __name__)
 
-def make_database(user_id):
+def getStatus():
+    randnum = randrange(1, 11)
+    status = "Not Cleared"
+    if randnum < 8:
+        status = ('Cleared')
+    elif randnum < 10:
+        status = ('Partially Cleared')
 
+    return status
+
+
+def make_database(user_id):
+    
     return {'user_id' : user_id, 'Name':helper_db.getUserById(user_id).first_name + ' ' + helper_db.getUserById(user_id).last_name}
 
+def restructure_user_data(user):
+    return {'user_id' : user.id, 'Name':user.first_name + ' ' + user.last_name}
+    
 
 @views.route('/', methods=['GET', 'POST'])
 @login_required
@@ -48,35 +62,27 @@ def send_asset(path):
 def send_admin():
     # need to fix this so it filters the user by permission id
     users = helper_db.getUsers()
-    ids = []
-    for user in users:
-        ids.append(user.id)
+    
 
     allusers = []
     coaches = []
     athletes = []
     admin = []
-    for id in ids:
-        allusers.append(make_database(id))
+    for user in users:
+        allusers.append(restructure_user_data(user))
 
-        permission_id = helper_db.getUserById(id).permission_id
+        permission_id = user.permission_id
 
         if permission_id == 3:
-            athletes.append(make_database(id))
+            athletes.append(restructure_user_data(user))
         elif permission_id == 2:
-            coaches.append(make_database(id))
+            coaches.append(restructure_user_data(user))
         else:
-            admin.append(make_database(id))
+            admin.append(restructure_user_data(user))
 
     playerStatus = []
     for i in range(len(allusers)):
-        randnum = random()
-        if randnum < 0.7:
-            playerStatus.append('Cleared')
-        elif randnum < 0.9:
-            playerStatus.append('Partially Cleared')
-        else:
-            playerStatus.append('Not Cleared')
+        playerStatus.append(getStatus())
 
     out_season = ["Lacrosse", "Nordic Ski", "Basketball", "Swimming", "Indoor Track", "Hockey"]
 
@@ -134,19 +140,16 @@ def send_athlete():
 def send_coach():
 
     users = helper_db.getUsers()
-    ids = []
-    for user in users:
-        ids.append(user.id)
+    
 
     athletes = []
 
-    for id in ids:
-        # allusers.append(make_database(id))
-
-        permission_id = helper_db.getUserById(id).permission_id
+    for user in users:
+       
+        permission_id = user.permission_id
 
         if permission_id == 3:
-            athletes.append(make_database(id))
+            athletes.append(restructure_user_data(user))
 
     # creating table from csv file
     cwd = os.getcwd() + '/data/tennis_hawkins_anonymized.csv'
