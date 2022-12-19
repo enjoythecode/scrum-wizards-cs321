@@ -1,0 +1,104 @@
+website/addadmin.py
+    F 11:0 add_admin_form_submission - A
+website/addathlete.py
+    F 10:0 add_athlete_form_submission - A
+website/addcoach.py
+    F 10:0 add_coach_form_submission - A
+website/api.py
+    F 21:0 list_athletes - B
+    F 46:0 list_coaches - B
+    F 9:0 make_database - A
+website/athletepermissions.py
+    F 12:0 athlete_permissions_form_submission - B
+website/auth.py
+    F 18:0 login - A
+    F 14:0 generic - A
+    F 57:0 logout - A
+    F 68:0 signup_user - A
+website/coachpermissions.py
+    F 12:0 coach_permissions_form_submission - B
+website/hawkins.py
+    F 64:0 get_team_id_by_name - A
+    F 42:0 get_access_token - A
+    F 53:0 get_tests_of_team - A
+    F 72:0 get_teams - A
+    F 11:0 fetch_data - A
+website/helper_db.py
+    F 6:0 addUser - A
+    F 20:0 addEntry - A
+    F 34:0 addTeam - A
+    F 48:0 addPermission - A
+    F 64:0 getUsers - A
+    F 77:0 getTeams - A
+    F 90:0 getPermissions - A
+    F 103:0 getEntries - A
+    F 116:0 getUserByEmail - A
+    F 129:0 getUserByName - A
+    F 142:0 getUserById - A
+    F 154:0 getTeamByName - A
+    F 166:0 getTeamById - A
+    F 179:0 getUsersInTeam - A
+    F 192:0 getPermissionByName - A
+    F 204:0 getPermissionById - A
+    F 217:0 getUsersByPermission - A
+    F 230:0 getEntryById - A
+    F 243:0 getEntriesByUser - A
+    F 256:0 getEntriesByCategory - A
+    F 270:0 updateUserFullName - A
+    F 285:0 updateUserPermission - A
+    F 299:0 addUserToTeam - A
+    F 313:0 removeUserFromTeam - A
+    F 328:0 updateTeamName - A
+    F 342:0 updateTeamSeason - A
+    F 357:0 updateEntryValues - A
+    F 377:0 deleteUser - A
+    F 391:0 deleteEntry - A
+website/models.py
+    C 15:0 User - A
+    C 28:0 Permission - A
+    C 41:0 Team - A
+    C 52:0 Category - A
+    C 66:0 Entry - A
+website/readcsv.py
+    F 7:0 readUsersCSV - A
+    F 22:0 readTeamsCSV - A
+    F 37:0 readEntriesCSV - A
+website/views.py
+    F 48:0 send_admin - B
+    F 28:0 home - A
+    F 134:0 send_coach - A
+    F 206:0 send_superadmin - A
+    F 239:0 readUsersCSV - A
+    F 256:0 addDummyUserList - A
+    F 16:0 make_database - A
+    F 23:0 hello - A
+    F 39:0 login - A
+    F 44:0 send_asset - A
+    F 94:0 send_individual - A
+    F 116:0 send_athlete - A
+    F 185:0 send_team - A
+    F 214:0 goto_athlete_permissions - A
+    F 219:0 backto_home - A
+    F 223:0 goto_coach_permissions - A
+    F 228:0 goto_superadmin_teamview - A
+    F 232:0 goto_admin_dash - A
+    F 236:0 goto_athlete_dash - A
+website/writecsv.py
+    F 10:0 writeUsersCSV - A
+website/__init__.py
+    F 39:0 create_app - A
+    F 101:0 create_database - A
+    F 126:0 create_test_database - A
+    F 167:0 readUsersCSV - A
+    F 231:0 addDummyUserList - A
+    F 343:0 addDummyEntriesList - A
+    F 11:0 create_test_app - A
+    F 145:0 addDummyDB - A
+    F 162:0 createCSVFiles - A
+    F 183:0 addDummyTeams - A
+    F 252:0 addDummyUser - A
+    F 286:0 addPermissionList - A
+    F 377:0 addDummyEntry - A
+
+87 blocks (classes, functions, methods) analyzed.
+Average complexity: A (1.7241379310344827)
