@@ -1,7 +1,7 @@
 import csv
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from models import User, Entry, Team
+from .models import User, Entry, Team
 
 # Function to read user csv file and populate database
 def readUsersCSV(filepath):

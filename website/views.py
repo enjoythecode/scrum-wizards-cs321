@@ -6,6 +6,7 @@ from flask_login import login_required, current_user
 from . import helper_db
 from random import *
 # from data import *
+from . import db
 import pandas as pd
 import os
 
@@ -23,8 +24,11 @@ def make_database(user_id):
 def hello():
     return redirect(url_for('auth.login'))
 
+<<<<<<< HEAD
 
 #redirects to the right home page depending on user id
+=======
+>>>>>>> a2b4ca3525ad85c949f2ed2d1f8b6c92c8cea26a
 @views.route('/home', methods=['GET'])
 @login_required
 def home():
@@ -216,6 +220,10 @@ def send_team():
 
 @views.route('/superadmin/<path:path>', methods=["GET"])
 def send_superadmin(path):
+    if path == '':
+        addDummyUserList()
+        readUsersCSV("/Users/jasperloverude/Desktop/CS-321/scrum-wizards-cs321/users.csv")
+        return send_admin()
     return render_template('superadmin/' + path)
 
 @views.route("/superadmin/athletepermissions.html/<int:userid>", methods = ["GET"])
@@ -243,3 +251,41 @@ def goto_admin_dash():
 @views.route('/athlete/index.html', methods=['GET'])
 def goto_athlete_dash():
     return render_template('athlete/index.html')
+
+def readUsersCSV(filepath):
+
+    import csv
+    from .models import User, Entry, Team
+
+    with open(filepath, 'r') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            # Create a new user object
+            user = User(email=row[0], first_name=row[1], last_name=row[2], password=row[3], permission_id=row[4])
+            # Add the new User to the database
+            db.session.add(user)
+        # Commit all the changes
+        db.session.commit()
+        print('Read User CSV files and added to the database')
+
+# Adding 100 random users to the database
+def addDummyUserList():
+    ''' Adds 100 random users to the database.
+    Parameters:
+    ---------------------------------------
+    Returns:
+    ---------------------------------------
+        void
+    '''
+
+    from .models import User
+    from random import randint
+    from faker import Faker
+    fake = Faker()
+
+    for i in range(100):
+        fakeUser = User(email = fake.email(), password = generate_password_hash("password", method='sha256'), first_name = fake.first_name(), last_name = fake.last_name(), permission_id = randint(1, 3))
+        db.session.add(fakeUser)
+        dummyEmailList.append(fakeUser.email)
+    db.session.commit()
+    print("100 Users added")
