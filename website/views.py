@@ -25,12 +25,12 @@ def getStatus():
 
 
 def make_database(user_id):
-    
+
     return {'user_id' : user_id, 'Name':helper_db.getUserById(user_id).first_name + ' ' + helper_db.getUserById(user_id).last_name}
 
 def restructure_user_data(user):
     return {'user_id' : user.id, 'Name':user.first_name + ' ' + user.last_name}
-    
+
 
 @views.route('/', methods=['GET', 'POST'])
 @login_required
@@ -62,7 +62,7 @@ def send_asset(path):
 def send_admin():
     # need to fix this so it filters the user by permission id
     users = helper_db.getUsers()
-    
+
 
     allusers = []
     coaches = []
@@ -140,12 +140,12 @@ def send_athlete():
 def send_coach():
 
     users = helper_db.getUsers()
-    
+
 
     athletes = []
 
     for user in users:
-       
+
         permission_id = user.permission_id
 
         if permission_id == 3:
