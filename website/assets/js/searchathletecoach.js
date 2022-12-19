@@ -1,7 +1,7 @@
 
 function fetchathletes(name='') {
   document.getElementById("list_athletes").innerHTML = "loading...";
-  fetch(`http://127.0.0.1:5000/athletes?name=${name}`)
+  fetch(`/athletes?name=${name}`)
     .then(response => response.json())
     .then(data => {
 
@@ -32,7 +32,7 @@ function fetchathletes(name='') {
 
 function fetchacoaches(name='') {
   document.getElementById("list_coaches").innerHTML = "loading...";
-  fetch(`http://127.0.0.1:5000/coaches?name=${name}`)
+  fetch(`/coaches?name=${name}`)
     .then(response => response.json())
     .then(data => {
 
