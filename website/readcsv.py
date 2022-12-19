@@ -1,6 +1,9 @@
+# Importing csv module to read csv files
 import csv
+# Importing SQLAlchemy to interact with database
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+# Importing models to interact with database
 from .models import User, Entry, Team
 
 # Function to read user csv file and populate database
