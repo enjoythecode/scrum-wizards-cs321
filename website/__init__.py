@@ -77,8 +77,10 @@ def create_app():
     from .addcoach import addcoach
     from .addathlete import addathlete
     from .addadmin import addadmin
+    from .adduser import adduser
     from .athletepermissions import athletepermissions
     from .coachpermissions import coachpermissions
+    from .userpermissions import userpermissions
     from .hawkins import hawkins
 
     # Registers all blueprints
@@ -88,8 +90,10 @@ def create_app():
     app.register_blueprint(addcoach, url_prefix='/')
     app.register_blueprint(addadmin, url_prefix='/')
     app.register_blueprint(addathlete, url_prefix='/')
+    app.register_blueprint(adduser, url_prefix='/')
     app.register_blueprint(athletepermissions, url_prefix='/')
     app.register_blueprint(coachpermissions, url_prefix='/')
+    app.register_blueprint(userpermissions, url_prefix='/')
     app.register_blueprint(hawkins, url_prefix='/')
 
     # Creates database if it does not exist
