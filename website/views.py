@@ -23,10 +23,10 @@ def getStatus():
 
     return status
 
-
+#creates database with user names and ids
 def make_database(user_id):
-
-    return {'user_id' : user_id, 'Name':helper_db.getUserById(user_id).first_name + ' ' + helper_db.getUserById(user_id).last_name}
+    name = helper_db.getUserById(user_id).first_name + ' ' + helper_db.getUserById(user_id).last_name
+    return {'user_id' : user_id, 'Name':name}
 
 def restructure_user_data(user):
     return {'user_id' : user.id, 'Name':user.first_name + ' ' + user.last_name}
@@ -40,11 +40,12 @@ def hello():
 @views.route('/home', methods=['GET'])
 @login_required
 def home():
-    if current_user.permission_id == 0:
+    user_per = current_user.permission_id
+    if  user_per== 0:
         return redirect("/superadmin/home.html")
-    elif current_user.permission_id == 1:
+    elif  user_per == 1:
         return redirect("/superadmin/home.html")
-    elif current_user.permission_id == 2:
+    elif  user_per == 2:
         return redirect("/team_dashboard")
     else:
         return redirect("/individual_dashboard")
@@ -63,14 +64,10 @@ def send_admin():
     # need to fix this so it filters the user by permission id
     users = helper_db.getUsers()
 
-
-    allusers = []
     coaches = []
     athletes = []
     admin = []
     for user in users:
-        allusers.append(restructure_user_data(user))
-
         permission_id = user.permission_id
 
         if permission_id == 3:
@@ -79,6 +76,8 @@ def send_admin():
             coaches.append(restructure_user_data(user))
         else:
             admin.append(restructure_user_data(user))
+
+    allusers = coaches + athletes + admin
 
     playerStatus = []
     for i in range(len(allusers)):
