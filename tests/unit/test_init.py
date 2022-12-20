@@ -43,7 +43,7 @@ def test_addDummyTeams(client):
     assert helper_db.getTeamByName("Women's Tennis")
     assert helper_db.getTeamByName("Women's Volleyball")
 
-    
+
 def test_addDummyUserList(client):
     addDummyUserList()
     addDummyUser()
@@ -68,7 +68,7 @@ def test_addPermissionList(client):
 def test_addDummyEntry(client):
     addDummyUser()
     addDummyEntry()
-    
+
     test_user_id = helper_db.getUserByName("Chandra", "Gowda").id
     test_entry = helper_db.getEntriesByUser(test_user_id)[0]
     assert test_entry.category == Category.sleep
@@ -111,4 +111,3 @@ def test_addDummyDB(client):
     assert test_entry.value == 0
 
     assert len(helper_db.getTeams()) == 30
-    
