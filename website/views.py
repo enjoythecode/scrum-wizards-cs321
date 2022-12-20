@@ -118,9 +118,9 @@ def send_individual():
     calorie_data = calorie,
     sports = sportsNotes,
     performance = performanceNotes,
-    nutrition = nutritionNotes, 
-    sleep_circle = sleep_circle, 
-    readyness_circle = readyness_circle, 
+    nutrition = nutritionNotes,
+    sleep_circle = sleep_circle,
+    readyness_circle = readyness_circle,
     calorie_circle = calorie_circle )
 
 @views.route('/athlete')
@@ -137,8 +137,8 @@ def send_athlete():
     sleep_data = sleep,
     readyness_data = readyness,
     calorie_data = calorie,
-    sleep_circle = sleep_circle, 
-    readyness_circle = readyness_circle, 
+    sleep_circle = sleep_circle,
+    readyness_circle = readyness_circle,
     calorie_circle = calorie_circle )
 
 
@@ -186,8 +186,8 @@ def send_coach():
     athlete_images = images1,
     readyness_data = readyness,
     calorie_data = calorie,
-    sleep_circle = sleep_circle, 
-    readyness_circle = readyness_circle, 
+    sleep_circle = sleep_circle,
+    readyness_circle = readyness_circle,
     calorie_circle = calorie_circle )
 
 
@@ -210,9 +210,9 @@ def send_team():
     sleep_data = Sleep,
     quality_data = Quality,
     calorie_intake = Calorie,
-    recovery_rate = Recovery, 
-    sleep_circle = sleep_circle, 
-    readyness_circle=readyness_circle, 
+    recovery_rate = Recovery,
+    sleep_circle = sleep_circle,
+    readyness_circle=readyness_circle,
     calorie_circle=calorie_circle)
 
 @views.route('/superadmin/<path:path>', methods=["GET"])
