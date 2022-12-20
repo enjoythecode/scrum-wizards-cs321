@@ -23,10 +23,10 @@ def getStatus():
 
     return status
 
-
+#creates database with user names and ids
 def make_database(user_id):
-
-    return {'user_id' : user_id, 'Name':helper_db.getUserById(user_id).first_name + ' ' + helper_db.getUserById(user_id).last_name}
+    name = helper_db.getUserById(user_id).first_name + ' ' + helper_db.getUserById(user_id).last_name
+    return {'user_id' : user_id, 'Name':name}
 
 def restructure_user_data(user):
     return {'user_id' : user.id, 'Name':user.first_name + ' ' + user.last_name}
@@ -40,11 +40,12 @@ def hello():
 @views.route('/home', methods=['GET'])
 @login_required
 def home():
-    if current_user.permission_id == 0:
+    user_per = current_user.permission_id
+    if  user_per== 0:
         return redirect("/superadmin/home.html")
-    elif current_user.permission_id == 1:
+    elif  user_per == 1:
         return redirect("/superadmin/home.html")
-    elif current_user.permission_id == 2:
+    elif  user_per == 2:
         return redirect("/team_dashboard")
     else:
         return redirect("/individual_dashboard")
@@ -54,7 +55,6 @@ def login():
     return render_template("login.html")
 
 @views.route('/assets/<path:path>')
-
 def send_asset(path):
     return send_from_directory('assets', path)
 
@@ -63,14 +63,10 @@ def send_admin():
     # need to fix this so it filters the user by permission id
     users = helper_db.getUsers()
 
-
-    allusers = []
     coaches = []
     athletes = []
     admin = []
     for user in users:
-        allusers.append(restructure_user_data(user))
-
         permission_id = user.permission_id
 
         if permission_id == 3:
@@ -80,20 +76,26 @@ def send_admin():
         else:
             admin.append(restructure_user_data(user))
 
+    allusers = coaches + athletes + admin
+
     playerStatus = []
     for i in range(len(allusers)):
-        playerStatus.append(getStatus())
+        status = getStatus()
+        playerStatus.append(status)
 
     out_season = ["Lacrosse", "Nordic Ski", "Basketball", "Swimming", "Indoor Track", "Hockey"]
+    num_ath = len(athletes)
+    num_coach = len(coaches)
+    num_oteam = len(out_season)
 
     return render_template("superadmin/home.html",
     athletes = athletes,
     status = playerStatus,
     coach_names = coaches,
     teams_out = out_season,
-    num_athletes= len(athletes),
-    num_coaches = len(coaches),
-    num_out_teams = len(out_season)
+    num_athletes= num_ath,
+    num_coaches = num_coach,
+    num_out_teams = num_oteam
     )
 
 @views.route('/individual_dashboard')
@@ -116,7 +118,10 @@ def send_individual():
     calorie_data = calorie,
     sports = sportsNotes,
     performance = performanceNotes,
-    nutrition = nutritionNotes, sleep_circle = sleep_circle, readyness_circle = readyness_circle, calorie_circle = calorie_circle )
+    nutrition = nutritionNotes,
+    sleep_circle = sleep_circle,
+    readyness_circle = readyness_circle,
+    calorie_circle = calorie_circle )
 
 @views.route('/athlete')
 def send_athlete():
@@ -132,7 +137,9 @@ def send_athlete():
     sleep_data = sleep,
     readyness_data = readyness,
     calorie_data = calorie,
-    sleep_circle = sleep_circle, readyness_circle = readyness_circle, calorie_circle = calorie_circle )
+    sleep_circle = sleep_circle,
+    readyness_circle = readyness_circle,
+    calorie_circle = calorie_circle )
 
 
 
@@ -157,8 +164,6 @@ def send_coach():
     dataframe = pd.read_csv(file)
     html_df = dataframe.to_html()
 
-
-
     users1 = athletes
     images1 = ["/assets/images/faces/face6.jpg",
     "/assets/images/faces/face8.jpg",
@@ -181,7 +186,9 @@ def send_coach():
     athlete_images = images1,
     readyness_data = readyness,
     calorie_data = calorie,
-    sleep_circle = sleep_circle, readyness_circle = readyness_circle, calorie_circle = calorie_circle )
+    sleep_circle = sleep_circle,
+    readyness_circle = readyness_circle,
+    calorie_circle = calorie_circle )
 
 
 @views.route('/team_dashboard')
@@ -203,7 +210,10 @@ def send_team():
     sleep_data = Sleep,
     quality_data = Quality,
     calorie_intake = Calorie,
-    recovery_rate = Recovery, sleep_circle = sleep_circle, readyness_circle=readyness_circle, calorie_circle=calorie_circle)
+    recovery_rate = Recovery,
+    sleep_circle = sleep_circle,
+    readyness_circle=readyness_circle,
+    calorie_circle=calorie_circle)
 
 @views.route('/superadmin/<path:path>', methods=["GET"])
 def send_superadmin(path):
