@@ -25,7 +25,6 @@ def filter_by_permission(permission_id, name = ''):
         if user.permission_id == permission_id:
             updated_user = {'user_id' : user.id, 'Name':user.first_name + ' ' + user.last_name, 'status': getStatus()}
             if name.lower() in updated_user['Name'].lower():
-
                 athletes.append(updated_user)
 
     return athletes

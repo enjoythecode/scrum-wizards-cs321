@@ -283,6 +283,8 @@ def addDummyUserList():
         void
     '''
 
+    dummyEmailList = []
+
     # Importing the User model here to avoid circular import
     from .models import User
     # Importing the faker library to generate random data
